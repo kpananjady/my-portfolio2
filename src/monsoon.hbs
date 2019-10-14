@@ -1,0 +1,54 @@
+---
+headline: "A historical analysis of the Indian monsoon"
+subhead: "Examining drought from the 1850s to the present"
+published_date: "October 14, 2019"
+site: "http://www.littlecolumns.com"
+siteName: "Little Columns"
+url: "http://littlecolumns.com/learn/d3-javascript-tooling/"
+kicker: "INDIAN MONSOON"
+author:
+    name: "Kasturi Pananjady"
+    url: "http://jonathansoma.com/"
+    twitterHandle: "@dangerscarf"
+analytics": ""
+---
+<!-- 
+  This line means, use default.hbs layout from src/html/layouts/
+-->
+
+
+
+
+{{!< default}}
+
+<!-- 
+  Put some content into an .hbs file inside of /partials, 
+  and you can just throw it in anywhere!
+-->
+
+
+
+<!-- 
+  Charts are exactly the same.
+-->
+
+{{> story/monsoon-chart-1 }}
+
+<!-- 
+  If you want to use something exported from ai2html...
+    1. Rename the exported .html file to .hbs
+    2. Put the .hbs file inside of 'html/story'
+    3. Move the exported images to the images folder
+    4. Include the partial normally like below
+  -->
+
+
+<!--
+  You can also put the actual HTML here if you really want to,
+  although it's a little less organized looking
+-->
+
+<div class="story-body">
+    <h2>This is why the media is so fixated on July rainfall. You generally know my the middle of the month is the monsson has failed.</h2>
+    <p>Heavy rainfall later in the year often does not save the monsoon.</p>
+</div>
