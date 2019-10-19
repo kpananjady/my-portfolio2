@@ -1,11 +1,11 @@
 ---
-headline: "Racial bias in policing"
-subhead: "An analysis of traffic stop data in Rhode Island"
+headline: "Is there racial bias in policing?"
+subhead: "An analysis of traffic stop data in Rhode Island from 2005-2015"
 published_date: "October 14, 2019"
 site: "http://www.littlecolumns.com"
 siteName: "Little Columns"
 url: "http://littlecolumns.com/learn/d3-javascript-tooling/"
-kicker: "STANFORD POLICING PROJECT"
+kicker: "STANFORD OPEN POLICING PROJECT"
 author:
     name: "Kasturi Pananjady"
     url: "http://jonathansoma.com/"
@@ -17,6 +17,9 @@ analytics": ""
 -->
 
 
+<div class="story-body">
+    <p>You can find a link to the data <a href='https://openpolicing.stanford.edu/data/'>here</a>, and the Stanford methodology <a href='https://openpolicing.stanford.edu/tutorials/'>here</a>. I used pandas, seaborn, ai2html and d3 to analyze and visualize interesting findings.</p>
+</div>
 
 
 {{!< default}}
@@ -45,8 +48,9 @@ analytics": ""
   You can also put the actual HTML here if you really want to,
   although it's a little less organized looking
 -->
+{{> story/black_sunset_all_pdf_2 }}
 
 <div class="story-body">
-    <h2>Implications</h2>
-    <p>This suggests that minorities are being searched on flimsier evidence than whites.</p>
+    <h2>Further Work</h2>
+    <p>I haven't yet run a regression on the Veil of Darkness Test; when Columbia covers algorithms in the spring I'll give it a go. I also haven't made an attempt to identify precincts yet, which would be the next step in terms of data verification and further exploration.</p>
 </div>

@@ -1,57 +1,40 @@
 ---
-headline: "I will keep adding to this and prettify this page later! Thx"
-subhead: "It's the stuff between the --- dashes, it's called frontmatter"
-published_date: "January 1, 1970"
+headline: "That's NumberWang!"
+subhead: "A blog of in-progress data journalism work by Kasturi Pananjady"
+published_date: "October 18, 2019"
 site: "http://www.littlecolumns.com"
 siteName: "Little Columns"
 url: "http://littlecolumns.com/learn/d3-javascript-tooling/"
-kicker: "Little Columns Project Template"
+kicker: "AN EVOLVING PORTFOLIO WEBSITE"
 author:
     name: "Kasturi Pananjady"
-    url: "http://jonathansoma.com/"
-    twitterHandle: "@dangerscarf"
+    url: "http://www.browndailyherald.com/author/kasturipananjady/"
+    twitterHandle: "@kpananjady"
 analytics": ""
 ---
 <!-- 
   This line means, use default.hbs layout from src/html/layouts/
 -->
-<p><a href='sample.hbs'>This is the link to the sample page.</a></p>
-<p><a  href='monsoon.hbs'>Monsoon time!</a></p>
-<p><a  href='traffic.hbs'>Traffic stop data in Rhode Island</a></p>
+
+
+<div class="story-body">
+ <p>Hi! My name is Kasturi Pananjady, and I am a data journalism master's student at Columbia University. I have previously worked at <a href='http://www.browndailyherald.com/author/kasturipananjady/'>The Brown Daily Herald</a>, <a href='https://thewire.in/caste/kakkoos-divya-bharathi-arrest-reasons'>The Wire</a> and <a href='https://www.thehindu.com/profile/author/Kasturi-Pananjady/'>The Hindu</a>. Those links should take you to the work I did there.</p>
+ <p>This is a website where I'm documenting some of the new and exciting things I am learning in class. I often go back and revise my work when I feel like I can do a better job, so expect some changes! For instance, this iteration of my portfolio tinkers a lot with interactivity and responsiveness. In the further work section of my projects I often mull over what I'd like to do next. If you have feedback, please send it my way so I can add it to my list of things I need to learn!</p> 
+
+ {{> story/basic }}
+
+<h2>Some work</h2>
+<p><a href='sample.hbs'>This is the link to some sentiment analysis I did of New York Times comments and 2020 Democratic candidates.</a></p>
+<p><a  href='monsoon.hbs'>Failures of the Indian monsoon: How can we predict them and how often do they occur?</a></p>
+<p><a  href='traffic.hbs'>Traffic stop and search data in Rhode Island: Beyond the benchmark test to assess racial bias</a></p>
+</div>
 
 
 
 {{!< default}}
 
-<!-- 
-  Put some content into an .hbs file inside of /partials, 
-  and you can just throw it in anywhere!
--->
-
-{{> story/basic }}
-
-<!-- 
-  Charts are exactly the same.
--->
-
-{{> story/chart }}
-
-<!-- 
-  If you want to use something exported from ai2html...
-    1. Rename the exported .html file to .hbs
-    2. Put the .hbs file inside of 'html/story'
-    3. Move the exported images to the images folder
-    4. Include the partial normally like below
-  -->
-
-{{> story/illustrator_demo }}
-
-<!--
-  You can also put the actual HTML here if you really want to,
-  although it's a little less organized looking
--->
 
 <div class="story-body">
-    <h2>Here is some body copy</h2>
-    <p>I can put code in <code>src/index.hbs</code> directly, but it's nicer to put it in a partial.</p>
+    <h4>A note on the name</h4>
+    <p class="chart-source">NumberWang is recurring comedy sketch in <i>That Mitchell and Webb Look</i>, a show about guessing the number known as NumberWang. Dire consequences await you if you get it wrong. It's hard to explain. Think of it like debugging code. Olivia Coleman is probably the most famous NumberWang contestant there ever was.</p>
 </div>

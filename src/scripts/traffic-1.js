@@ -4,7 +4,7 @@ import d3Annotation from 'd3-svg-annotation'
 d3.tip = d3Tip
 
 const margin = { top: 30, left: 120, right: 30, bottom: 30 }
-const height = 400 - margin.top - margin.bottom
+const height = 300 - margin.top - margin.bottom
 const width = 680 - margin.left - margin.right
 
 console.log('Building chart 3')
@@ -22,11 +22,11 @@ const yPositionScale = d3
   .padding(0.25)
 const xPositionScale = d3
   .scaleLinear()
-  .domain([0.3, 0.4])
+  .domain([0, 0.4])
   .range([0, width])
 const colorScale = d3
   .scaleOrdinal()
-  .range(['lightgrey', 'lightgrey', 'lightgrey', 'pink'])
+  .range(['lightgrey', 'lightgrey', 'lightgrey', 'lightblue'])
 
 d3.csv(require('../data/hit_rates.csv'))
   .then(ready)
@@ -83,21 +83,32 @@ function ready(datapoints) {
     .attr('height', yPositionScale.bandwidth())
     .attr('x', 0)
     .attr('y', d => yPositionScale(d.subject_race))
+    .on('mouseover', tip.show)
+    .on('mouseout', tip.hide)
+    //  .attr('width', 0)
+    //  .transition()
+    //  .ease(d3.easeElastic)
+    //  .attr('width', d => yPositionScale(d.percent))
+    .attr('width', 0)
+    .transition()
+    .duration(1000)
+    .ease(d3.easeElastic)
     .attr('width', d => xPositionScale(d.percent))
+    // .attr('width', d => xPositionScale(d.percent))
     .attr('fill', function(d) {
       return colorScale(d.subject_race)
     })
-    .on('mouseover', tip.show)
-    .on('mouseout', tip.hide)
+  //   .on('mouseover', tip.show)
+  //   .on('mouseout', tip.hide)
 
-  svg
-    .append('text')
-    .text(
-      'Rate of success in finding contraband is lower among minorities than whites'
-    )
-    .style('text-anchor', 'middle')
-    .attr('x', width / 2)
-    .attr('dy', -10)
+  //  svg
+  //  . append('text')
+  // .text(
+  //  'Rate of success in finding contraband is lower among minorities than whites'
+  // )
+  // .style('text-anchor', 'middle')
+  // .attr('x', width / 2)
+  // .attr('dy', -10)
 
   const xAxis = d3.axisBottom(xPositionScale).ticks(6)
 
