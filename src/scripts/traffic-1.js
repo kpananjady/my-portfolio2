@@ -44,31 +44,7 @@ const tip = d3
 
 svg.call(tip)
 
-const annotations = [
-  {
-    note: {
-      label: 'Longer text to show text wrapping',
-      title: 'Minorities have lower hit rates'
-    },
-    data: {
-      Date: '2015-12-14',
-      Close: 118
-    },
-    y: 200,
-    x: 100,
-    dx: -5,
-    dy: 20
-  }
-]
-
 function ready(datapoints) {
-  const counts = datapoints.map(function(d) {
-    return +d.percent
-  })
-
-  const maxC = d3.max(counts)
-  const minC = d3.min(counts)
-
   const race = datapoints.map(function(d) {
     return d.subject_race
   })

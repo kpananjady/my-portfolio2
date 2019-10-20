@@ -1,14 +1,36 @@
 <div class="story-body">
+    <h2>Beyond the benchmark test</h2>
+<p>Hover for stop rates.</p>
+    <div id="chart-00"></div>
+        <p>This is a visualization of the typical way we understand racial disparities in policing; we typically count the number of stops by race, adjust for population demographics of the area in question and then compare how likely people of different races are to be stopped. In this case, I tallied up the number of stops by race and then divided those numbers by the numbers of people of each race recorded as living in Rhode Island in the 2010 Census.</p>
+        <p>This methodology gives rise to the often touted statistic that black drivers are <code>2.5</code> times more likely to be stopped than their white counterparts in Rhode Island.</p>
+  <h5><i>Jeff Guo, Washington Post, 2015</i></h5>
+  <p style="text-align: center"><img src="images/2.5.png"></p>
+<p> </p>
+        <p>One of the main problems with this strategy is that the demographic population of an area might actually we a bad proxy for who exactly is on the roads when police make these stops and searches. We have no real way of knowing what this sample size really looks like, and it could be unrepresentative of the state as a whole.</p>
+        <p> So are there other ways to think about potential bias in policing? According to the Stanford Open Policing Project, there are. Researchers published their methodology online with the idea that journalists make use of it in local contexts. I didn't see this work extended to Rhode Island after a bit of light googling, so I thought I'd try it and see what I found.</p>
+</div>
+
+<script src="scripts/traffic-0.js"></script>
+<div class="story-body">
     <h2>Hit rates and race</h2>
-    <p>Rate of success in finding contraband is lower among minorities than white people. This suggests that minorities are searched based on flimsier evidence once they're stopped when compared to white people. Hover over for precise hit rates. In this analysis, we will focus on black-white disparities.</p>
+    <p>One way is to move past the act of stopping a driver and to think about the steps that follow. Once a driver is stopped, the police then make a decision to search the individual, or not. This search may then be successful — or not. The hit rate is the number of successful searches of a given demographic divided by the number of people of that demographic that were searched. In an ideal world, hit rates would be the same across races. </p>
+        <p>The rate of success in finding contraband is lower among minorities than white people. This suggests that more minorities are searched based on flimsier evidence once they're stopped when compared to white people.</p>
+         <p>Hover over for precise hit rates.</p> 
     <div id="chart-01"></div>
+    <p>For the purposes of further analysis, we will focus on black-white disparities given the widespread prevalence of the <code>2.5</code> times statistic.</p>
+
+  
+  <!-- If you use images, the path is just images/___ -->
 </div>
 
 <script src="scripts/traffic-1.js"></script>
 
 <div class="story-body">
     <h2>White hit rate vs black hit rate disaggregated by precinct</h2>
-        <p>Only six precincts reported both black and white successful searches. This analysis assumes that the department entry <code>000</code> was the same as <code>0</code>. Four out of six departments had lower black hit rates than white ones. The dots are sized according to the cumulative number of white and black searches. Hover to see what the numbers are.</p>
+        <p>This difference might seem slight, but to see if it's part of a trend in policing we're going to disaggregate by department.</p>
+        <p>After significant data cleaning, it appears that only six precincts reported both black and white successful searches. This seems a little suspicious to me, and follow up reporting would definitely have to check this out. (This analysis assumes that the department entry <code>000</code> was the same as <code>0</code>.)</p>
+        <p>Four out of six departments had lower black hit rates than white ones. The dots are sized according to the cumulative number of white and black searches. Hover to see what the numbers are.</p>
         <div class="chart-row" >
             <div style="text-align:center;" class="chart">
         <div id="chart-02"></div>
@@ -20,6 +42,7 @@
 
 <div class="story-body">
     <h2>Veil of Darkness Test</h2>
-        <p>Moving away from searching for a second, the hypothesis I'm trying to test here is: Does darkness have an effect on the likelihood of black drivers being stopped while driving? The theory is that  </p>
+        <p>Moving away from searching and back to stopping, here's another way to think about the problem. Assume that at any given time on any day of the year, the people on the road are roughly the same. (This assumption is slightly complicated by seasonal occupations, in my opinion, especially in a state like Rhode Island that's so agro-based, but nevetheless let's give it a go.)<p>
+        <p>Over the course of the year, darkness falls at different periods in the "inter-twilight" period, roughly <code>4pm</code> to <code>9pm</code>. The hypothesis we're trying to test here is: Does darkness have an effect on the likelihood of black drivers being stopped while driving? The theory is that after dark, the likelihood of black drivers being stopped would decrease. But that's not what I found in the trend line in my analysis.</p>
         </div>
 
