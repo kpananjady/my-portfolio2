@@ -2,7 +2,7 @@ import * as d3 from 'd3'
 
 const margin = { top: 20, left: 0, right: 0, bottom: 0 }
 const height = 450 - margin.top - margin.bottom
-const width = 400 - margin.left - margin.right
+const width = 1000 - margin.left - margin.right
 
 const svg = d3
   .select('#chart-9')
@@ -43,10 +43,28 @@ const radiusScale = d3
 
 const bands = [0.2, 0.4, 0.6, 0.8, 1]
 
+const names = [
+  'LeBron James',
+  'Kevin Durant',
+  'James Harden',
+  'Stephen Curry',
+  'Kawhi Leonard',
+  'Chris Paul',
+  'Anthony Davis',
+  'Giannis Antetokounmpo',
+  'Russell Westbrook',
+  'Joel Embiid',
+  'Jimmy Butler'
+]
+
 const circleScale = d3
   .scalePoint()
-  .range([-width / 2, width / 2])
-  .padding(0.2)
+  .domain(names)
+  .range([-width / 3, width / 3])
+  .padding(0.5)
+
+// .domain(names)
+// .padding(0.2)
 
 function ready(datapoints) {
   const maxMinutes = 60
@@ -59,26 +77,19 @@ function ready(datapoints) {
   const maxSteals = 5
   const maxBlocks = 5
 
-  const line = d3
-    .radialLine()
-    .angle(d => angleScale(d.name))
-    .radius(d => radiusScale(+d.value))
-
   svg
     .selectAll('.player-data')
     .data(datapoints)
     .enter()
     .append('g')
-    .attr('transform', function(d) {
+    .attr('transform', function(d, i) {
       console.log(d, 'data')
-      return `translate(${circleScale(d.Name)},0)`
+      console.log(d.Name, 'name')
+      // console.log(circleScale(d.Name), 'circleScale')
+      return `translate(${circleScale(d.Name)},50)`
     })
     .each(function(d) {
       const container = d3.select(this)
-      container
-        .append('circle')
-        .attr('r', 3)
-        .attr('fill', 'black')
 
       const player = d
 
@@ -94,5 +105,250 @@ function ready(datapoints) {
         { name: 'BLK', value: +player.BLK / maxBlocks },
         { name: 'MP', value: +player.MP / maxMinutes }
       ]
+      console.log(customDatapoints, 'custom')
+
+      const line = d3
+        .radialLine()
+        .angle(d => angleScale(d.name))
+        .radius(d => radiusScale(+d.value))
+
+      const name = d.Name.replace(' ', '')
+
+      container
+        .append('g')
+        .attr('mask', `url(#${name})`)
+        .selectAll('.band')
+        .data(bands)
+        .enter()
+        .append('circle')
+        .attr('fill', 'none')
+        .attr('stroke', 'lightgrey')
+        .attr('r', function(d) {
+          return radiusScale(d)
+        })
+        .attr('fill', (d, i) => {
+          if (i % 2 === 0) {
+            return '#c94435'
+          } else {
+            return '#FFB81C'
+          }
+        })
+        .lower()
+
+      container
+        .append('mask')
+        .attr('id', `${name}`)
+        .append('path')
+        .datum(customDatapoints)
+        .attr('d', line)
+        .attr('stroke', 'black')
+        .attr('fill', 'white')
+
+      container
+        .selectAll('.bands')
+        .data(bands)
+        .enter()
+        .append('circle')
+        .attr('fill', 'none')
+        .attr('stroke', 'lightgrey')
+        .attr('r', function(d) {
+          return radiusScale(d)
+        })
+        .attr('fill', (d, i) => {
+          if (i % 2 === 0) {
+            return '#e8e7e5'
+          } else {
+            return '#f6f6f6'
+          }
+        })
+        .lower()
+
+      container
+        .selectAll('.label')
+        .data(customDatapoints)
+        .enter()
+        .append('text')
+        .text(d => d.name)
+        .attr('text-anchor', 'middle')
+        .attr('alignment-baseline', 'middle')
+        .style('transform', function(d) {
+          console.log(angleScale(d))
+          return `rotate(${angleScale(d.name)}rad)`
+        })
+        .attr('y', -radius - 10)
+
+      container
+        .selectAll('.ticks')
+        .data(bands)
+        .enter()
+        .append('text')
+        .text(d => d * maxMinutes)
+        .attr('x', 0)
+        .attr('y', function(d) {
+          return -radiusScale(d)
+        })
+        .attr('text-anchor', 'middle')
+        .attr('alignment-baseline', 'middle')
+
+      container
+        .selectAll('.ticks')
+        .data(bands)
+        .enter()
+        .append('text')
+        .text(d => d * maxPoints)
+        .attr('x', 0)
+        .attr('y', function(d) {
+          return -radiusScale(d)
+        })
+        .attr('text-anchor', 'middle')
+        .attr('alignment-baseline', 'middle')
+        .style('transform', function(d) {
+          console.log(angleScale(d))
+          return `rotate(${angleScale('PTS')}rad)`
+        })
+
+      container
+        .selectAll('.ticks')
+        .data(bands)
+        .enter()
+        .append('text')
+        .text(d => d * maxFG)
+        .attr('x', 0)
+        .attr('y', function(d) {
+          return -radiusScale(d)
+        })
+        .attr('text-anchor', 'middle')
+        .attr('alignment-baseline', 'middle')
+        .style('transform', function(d) {
+          console.log(angleScale(d))
+          return `rotate(${angleScale('FG')}rad)`
+        })
+
+      container
+        .selectAll('.ticks')
+        .data(bands)
+        .enter()
+        .append('text')
+        .text(d => d * maxFG)
+        .attr('x', 0)
+        .attr('y', function(d) {
+          return -radiusScale(d)
+        })
+        .attr('text-anchor', 'middle')
+        .attr('alignment-baseline', 'middle')
+        .style('transform', function(d) {
+          console.log(angleScale(d))
+          return `rotate(${angleScale('FG')}rad)`
+        })
+
+      container
+        .selectAll('.ticks')
+        .data(bands)
+        .enter()
+        .append('text')
+        .text(d => d * maxthreePoint)
+        .attr('x', 0)
+        .attr('y', function(d) {
+          return -radiusScale(d)
+        })
+        .attr('text-anchor', 'middle')
+        .attr('alignment-baseline', 'middle')
+        .style('transform', function(d) {
+          console.log(angleScale(d))
+          return `rotate(${angleScale('three_p')}rad)`
+        })
+
+      container
+        .selectAll('.ticks')
+        .data(bands)
+        .enter()
+        .append('text')
+        .text(d => d * maxfreeThrows)
+        .attr('x', 0)
+        .attr('y', function(d) {
+          return -radiusScale(d)
+        })
+        .attr('text-anchor', 'middle')
+        .attr('alignment-baseline', 'middle')
+        .style('transform', function(d) {
+          console.log(angleScale(d))
+          return `rotate(${angleScale('FT')}rad)`
+        })
+
+      container
+        .selectAll('.ticks')
+        .data(bands)
+        .enter()
+        .append('text')
+        .text(d => d * maxRebounds)
+        .attr('x', 0)
+        .attr('y', function(d) {
+          return -radiusScale(d)
+        })
+        .attr('text-anchor', 'middle')
+        .attr('alignment-baseline', 'middle')
+        .style('transform', function(d) {
+          console.log(angleScale(d))
+          return `rotate(${angleScale('TRB')}rad)`
+        })
+
+      container
+        .selectAll('.ticks')
+        .data(bands)
+        .enter()
+        .append('text')
+        .text(d => d * maxAssists)
+        .attr('x', 0)
+        .attr('y', function(d) {
+          return -radiusScale(d)
+        })
+        .attr('text-anchor', 'middle')
+        .attr('alignment-baseline', 'middle')
+        .style('transform', function(d) {
+          console.log(angleScale(d))
+          return `rotate(${angleScale('AST')}rad)`
+        })
+
+      container
+        .selectAll('.ticks')
+        .data(bands)
+        .enter()
+        .append('text')
+        .text(d => d * maxSteals)
+        .attr('x', 0)
+        .attr('y', function(d) {
+          return -radiusScale(d)
+        })
+        .attr('text-anchor', 'middle')
+        .attr('alignment-baseline', 'middle')
+        .style('transform', function(d) {
+          console.log(angleScale(d))
+          return `rotate(${angleScale('STL')}rad)`
+        })
+
+      container
+        .selectAll('.ticks')
+        .data(bands)
+        .enter()
+        .append('text')
+        .text(d => d * maxBlocks)
+        .attr('x', 0)
+        .attr('y', function(d) {
+          return -radiusScale(d)
+        })
+        .attr('text-anchor', 'middle')
+        .attr('alignment-baseline', 'middle')
+        .style('transform', function(d) {
+          console.log(angleScale(d))
+          return `rotate(${angleScale('BLK')}rad)`
+        })
+
+      container
+        .append('text')
+        .text(0)
+        .attr('x', 0)
+        .attr('y', 0)
+        .attr('text-anchor', 'middle')
+        .attr('alignment-baseline', 'middle')
     })
 }

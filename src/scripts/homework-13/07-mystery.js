@@ -11,11 +11,573 @@ const svg = d3
   .attr('width', width + margin.left + margin.right)
   .append('g')
   .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+  .append('g')
+  .attr('transform', `translate(${width / 2},${height / 2})`)
 
 d3.csv(require('/data/time-binned.csv'))
   .then(ready)
   .catch(err => console.log('Failed on', err))
 
+const bands = [
+  '00:00',
+  '01:00',
+  '02:00',
+  '03:00',
+  '04:00',
+  '05:00',
+  '06:00',
+  '07:00',
+  '08:00',
+  '09:00',
+  '10:00',
+  '11:00',
+  '12:00',
+  '13:00',
+  '14:00',
+  '15:00',
+  '16:00',
+  '17:00',
+  '18:00',
+  '19:00',
+  '20:00',
+  '21:00',
+  '22:00',
+  '23:00',
+  '00:00'
+]
+
+const colorScale = d3.scaleOrdinal().range(['black', 'white'])
+
+const angleScale = d3.scaleBand().range([0, Math.PI * 2])
+
+const radius = 150
+
+const radiusScale = d3
+  .scaleLinear()
+  .domain([10000, 50000])
+  .range([0, radius])
+const line = d3
+  .radialArea()
+  .innerRadius(d => radiusScale(d.total))
+  .angle(d => angleScale(d.time))
+  .outerRadius(radius - 35)
+
+const arc = d3
+  .arc()
+  .radius(d => radiusScale(radius + 30))
+  .startAngle(d => angleScale(d.time))
+  .endAngle(d => angleScale(d.time) + angleScale.bandwidth())
+
+const blueTimes = [
+  '19:00',
+  '19:15',
+  '19:30',
+  '19:45',
+  '20:00',
+  '20:15',
+  '20:30',
+  '20:45',
+  '21:00',
+  '21:15'
+]
 function ready(datapoints) {
-  
+  datapoints.push(datapoints[0])
+
+  const times = datapoints.map(d => d.time)
+  console.log(times, 'times')
+  angleScale.domain(times)
+
+  svg
+    .selectAll('.circle-round')
+    .data(bands)
+    .enter()
+    .append('circle')
+    .attr('class', '.circle-round')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale(d)}rad)`
+    })
+    .attr('cy', function(d) {
+      return -radius - 30
+    })
+    .attr('r', 3)
+    .attr('fill', 'grey')
+    .lower()
+
+  svg
+    .append('path')
+    .datum(datapoints)
+    .attr('fill', 'orange')
+    .attr('d', line)
+    .attr('stroke', 'none')
+    .lower()
+
+  svg
+    .append('circle')
+    .attr('r', radius + 30)
+    .attr('stroke', 'grey')
+    .attr('fill', 'none')
+    .lower()
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('Midnight')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('00:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('01')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('01:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('02')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('02:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('03')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('03:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('04')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('04:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('05')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('05:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('06')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('06:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('07')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('07:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('08')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('08:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('09')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('09:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('10')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('10:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('11')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('11:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('12')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('12:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('13')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('13:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('13')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('13:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('14')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('14:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('15')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('15:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('16')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('16:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('17')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('17:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('18')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('18:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('19')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('19:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('20')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('20:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('21')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('21:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('22')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('22:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('23')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .style('transform', function(d) {
+      console.log(angleScale(d))
+      return `rotate(${angleScale('23:00')}rad)`
+    })
+    .attr('y', -radius - 10)
+    .attr('stroke', 'grey')
+    .attr('font-size', '9px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('EVERYONE!')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .attr('dy', -30)
+    .attr('dx', -30)
+    .attr('stroke', 'grey')
+    .attr('font-size', '12px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('EVERYONE!')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .attr('dy', -30)
+    .attr('dx', -30)
+    .attr('stroke', 'grey')
+    .attr('font-size', '12px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('is born at 8 am.')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .attr('dy', -10)
+    .attr('dx', -30)
+    .attr('stroke', 'grey')
+    .attr('font-size', '12px')
+
+  svg
+    .selectAll('.ticks')
+    .data(bands)
+    .enter()
+    .append('text')
+    .text('(Read Macbeth for details)')
+    .attr('text-anchor', 'middle')
+    .attr('alignment-baseline', 'middle')
+    .attr('dy', 5)
+    .attr('dx', -30)
+    .attr('stroke', 'grey')
+    .attr('font-size', '12px')
+    .style('stroke-weight', 1)
+  svg
+    .selectAll('.path')
+    .data(datapoints)
+    .enter()
+    .append('path')
+    .attr('class', 'arc')
+    .attr('d', d => arc(d))
+    .attr('stroke', 'black')
+  //  .lower()
 }
