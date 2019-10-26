@@ -46,7 +46,7 @@ const bands = [
   '00:00'
 ]
 
-const colorScale = d3.scaleOrdinal().range(['black', 'white'])
+const colorScale = d3.scaleOrdinal().range(['blue', 'orange'])
 
 const angleScale = d3.scaleBand().range([0, Math.PI * 2])
 
@@ -87,7 +87,67 @@ function ready(datapoints) {
   console.log(times, 'times')
   angleScale.domain(times)
 
+  const gradient = svg
+    .append('svg:defs')
+    .append('svg:linearGradient')
+    .attr('id', 'gradient')
+    .attr('x1', '50%')
+    .attr('y1', '40%')
+    .attr('x2', '50%')
+    .attr('y2', '100%')
+    .attr('spreadMethod', 'pad')
+
+  gradient
+    .append('svg:stop')
+    .attr('offset', '0%')
+    .attr('stop-color', 'blue')
+    .attr('stop-opacity', 1)
+
+  gradient
+    .append('svg:stop')
+    .attr('offset', '100%')
+    .attr('stop-color', 'orange')
+    .attr('stop-opacity', 1)
+
+  // gradient
+  //   .selectAll('stop')
+  //   .data([
+  //     { offset: '0%', color: '#2c7bb6' },
+  //     { offset: '12.5%', color: '#00a6ca' },
+  //     { offset: '25%', color: '#00ccbc' },
+  //     { offset: '37.5%', color: '#90eb9d' },
+  //     { offset: '50%', color: '#ffff8c' },
+  //     { offset: '62.5%', color: '#f9d057' },
+  //     { offset: '75%', color: '#f29e2e' },
+  //     { offset: '87.5%', color: '#e76818' },
+  //     { offset: '100%', color: '#d7191c' }
+  //   ])
+  //   .enter()
+  //   .append('stop')
+  //   .attr('offset', function(d) {
+  //     return d.offset
+  //   })
+  //   .attr('stop-color', function(d) {
+  //     return d.color
+  //   })
+  //   .attr('stop-opacity', 1)
+
   svg
+    .append('mask')
+    .attr('id', 'newMask')
+    .append('path')
+    .datum(datapoints)
+    //   .attr('fill', 'orange')
+    .attr('d', line)
+    .attr('stroke', 'none')
+    //   .datum(datapoints)
+    //   .attr('d', line)
+    //   .attr('stroke', 'black')
+    .attr('fill', 'white')
+
+  svg
+    .append('g')
+    .attr('mask', 'url(#newMask)')
     .selectAll('.circle-round')
     .data(bands)
     .enter()
@@ -105,9 +165,11 @@ function ready(datapoints) {
     .lower()
 
   svg
+    .append('g')
+    .attr('mask', 'url(#newMask)')
     .append('path')
     .datum(datapoints)
-    .attr('fill', 'orange')
+    .attr('fill', 'url(#gradient)')
     .attr('d', line)
     .attr('stroke', 'none')
     .lower()
@@ -120,9 +182,9 @@ function ready(datapoints) {
     .lower()
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('Midnight')
     .attr('text-anchor', 'middle')
@@ -136,9 +198,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('01')
     .attr('text-anchor', 'middle')
@@ -152,9 +214,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('02')
     .attr('text-anchor', 'middle')
@@ -168,9 +230,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('03')
     .attr('text-anchor', 'middle')
@@ -184,9 +246,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('04')
     .attr('text-anchor', 'middle')
@@ -200,9 +262,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('05')
     .attr('text-anchor', 'middle')
@@ -216,9 +278,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('06')
     .attr('text-anchor', 'middle')
@@ -232,9 +294,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('07')
     .attr('text-anchor', 'middle')
@@ -248,9 +310,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('08')
     .attr('text-anchor', 'middle')
@@ -264,9 +326,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('09')
     .attr('text-anchor', 'middle')
@@ -280,9 +342,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('10')
     .attr('text-anchor', 'middle')
@@ -296,9 +358,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('11')
     .attr('text-anchor', 'middle')
@@ -312,9 +374,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('12')
     .attr('text-anchor', 'middle')
@@ -328,9 +390,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('13')
     .attr('text-anchor', 'middle')
@@ -344,9 +406,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('13')
     .attr('text-anchor', 'middle')
@@ -360,9 +422,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('14')
     .attr('text-anchor', 'middle')
@@ -376,9 +438,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('15')
     .attr('text-anchor', 'middle')
@@ -392,9 +454,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('16')
     .attr('text-anchor', 'middle')
@@ -408,9 +470,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('17')
     .attr('text-anchor', 'middle')
@@ -424,9 +486,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('18')
     .attr('text-anchor', 'middle')
@@ -440,9 +502,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('19')
     .attr('text-anchor', 'middle')
@@ -456,9 +518,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('20')
     .attr('text-anchor', 'middle')
@@ -472,9 +534,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('21')
     .attr('text-anchor', 'middle')
@@ -488,9 +550,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('22')
     .attr('text-anchor', 'middle')
@@ -504,9 +566,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('23')
     .attr('text-anchor', 'middle')
@@ -520,9 +582,9 @@ function ready(datapoints) {
     .attr('font-size', '9px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('EVERYONE!')
     .attr('text-anchor', 'middle')
@@ -533,9 +595,9 @@ function ready(datapoints) {
     .attr('font-size', '12px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('EVERYONE!')
     .attr('text-anchor', 'middle')
@@ -546,9 +608,9 @@ function ready(datapoints) {
     .attr('font-size', '12px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('is born at 8 am.')
     .attr('text-anchor', 'middle')
@@ -559,9 +621,9 @@ function ready(datapoints) {
     .attr('font-size', '12px')
 
   svg
-    .selectAll('.ticks')
-    .data(bands)
-    .enter()
+    // .selectAll('.ticks')
+    // .data(bands)
+    // .enter()
     .append('text')
     .text('(Read Macbeth for details)')
     .attr('text-anchor', 'middle')

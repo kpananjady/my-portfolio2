@@ -1,8 +1,8 @@
 import * as d3 from 'd3'
 
 const margin = { top: 20, left: 0, right: 0, bottom: 0 }
-const height = 450 - margin.top - margin.bottom
-const width = 1000 - margin.left - margin.right
+const height = 1600 - margin.top - margin.bottom
+const width = 1500 - margin.left - margin.right
 
 const svg = d3
   .select('#chart-9')
@@ -11,8 +11,8 @@ const svg = d3
   .attr('width', width + margin.left + margin.right)
   .append('g')
   .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
-  .append('g')
-  .attr('transform', `translate(${width / 2},${height / 2})`)
+// .append('g')
+// .attr('transform', `translate(${width / 2},${height / 2})`)
 
 d3.csv(require('/data/nba.csv'))
   .then(ready)
@@ -57,12 +57,6 @@ const names = [
   'Jimmy Butler'
 ]
 
-const circleScale = d3
-  .scalePoint()
-  .domain(names)
-  .range([-width / 3, width / 3])
-  .padding(0.5)
-
 // .domain(names)
 // .padding(0.2)
 
@@ -81,19 +75,89 @@ function ready(datapoints) {
     .selectAll('.player-data')
     .data(datapoints)
     .enter()
+    // .append('svg')
+    // .attr('height', 450)
+    // .attr('width', 400)
+    // .append('svg')
+    // .attr('height', 1000)
+    // .attr('width', 1000)
     .append('g')
-    .attr('transform', function(d, i) {
-      console.log(d, 'data')
-      console.log(d.Name, 'name')
-      // console.log(circleScale(d.Name), 'circleScale')
-      return `translate(${circleScale(d.Name)},50)`
-    })
-    .each(function(d) {
+    // .append('g')
+    //  .attr('transform', `translate(${400 / 2},${400 / 2})`)
+    //  .attr('transform', function(d, i) {
+    //  console.log(d, 'data')
+    // console.log(d.Name, 'name')
+    // console.log(circleScale(d.Name), 'circleScale')
+    //     return `translate(${circleScale(d.Name)},50)`
+    // })
+    .each(function(d, i) {
       const container = d3.select(this)
+      container.attr('transform', `translate(${200},${200})`)
 
+      if (i === 2) {
+        container.attr('transform', `translate(${900},${200})`)
+      }
+
+      if (i === 3) {
+        container.attr('transform', `translate(${200},${600})`)
+      }
+
+      if (i === 4) {
+        container.attr('transform', `translate(${550},${600})`)
+      }
+
+      if (i === 5) {
+        container.attr('transform', `translate(${900},${600})`)
+      }
+
+      if (i === 6) {
+        container.attr('transform', `translate(${200},${1000})`)
+      }
+
+      if (i === 7) {
+        container.attr('transform', `translate(${550},${1000})`)
+      }
+
+      if (i === 7) {
+        container.attr('transform', `translate(${900},${1000})`)
+      }
+
+      if (i === 8) {
+        container.attr('transform', `translate(${200},${1400})`)
+      }
+
+      if (i === 9) {
+        container.attr('transform', `translate(${550},${1400})`)
+      }
+
+      if (i === 10) {
+        container.attr('transform', `translate(${900},${1400})`)
+      }
+
+      if (i === 10) {
+        container.attr('transform', `translate(${900},${1400})`)
+      }
+
+      if (i === 11) {
+        container.attr('transform', `translate(${550},${1000})`)
+      }
+
+      if (i === 12) {
+        container.attr('transform', `translate(${900},${1400})`)
+      }
+
+      if (i === 1) {
+        container.attr('transform', `translate(${550},${200})`)
+      }
       const player = d
 
+      //  const name = player.Name
+      // const team = player.team
+
+      //  console.log(name, team, 'name and team')
       const customDatapoints = [
+        // { name: 'name', value: player.Name },
+        // { name: 'team', value: player.Team },
         { name: 'MP', value: +player.MP / maxMinutes },
         { name: 'PTS', value: +player.PTS / maxPoints },
         { name: 'FG', value: +player.FG / maxFG },
@@ -113,6 +177,13 @@ function ready(datapoints) {
         .radius(d => radiusScale(+d.value))
 
       const name = d.Name.replace(' ', '')
+      const nameFinal = d.Name
+      const team = d.Team
+
+      // cons
+      console.log(nameFinal)
+
+      const index = i
 
       container
         .append('g')
@@ -127,10 +198,18 @@ function ready(datapoints) {
           return radiusScale(d)
         })
         .attr('fill', (d, i) => {
-          if (i % 2 === 0) {
-            return '#c94435'
+          if (index % 2 === 0) {
+            if (i % 2 === 0) {
+              return '#c94435'
+            } else {
+              return '#FFB81C'
+            }
           } else {
-            return '#FFB81C'
+            if (i % 2 === 0) {
+              return '#0000ff'
+            } else {
+              return '#FFB81C'
+            }
           }
         })
         .lower()
@@ -144,6 +223,7 @@ function ready(datapoints) {
         .attr('stroke', 'black')
         .attr('fill', 'white')
 
+      console.log('index', index)
       container
         .selectAll('.bands')
         .data(bands)
@@ -345,9 +425,22 @@ function ready(datapoints) {
 
       container
         .append('text')
-        .text(0)
+        // .data(customDatapoints)
+        //   .enter()
+        .text(nameFinal)
         .attr('x', 0)
-        .attr('y', 0)
+        .attr('y', -200)
+        .attr('text-anchor', 'middle')
+        .style('font-size', '18px')
+        .attr('alignment-baseline', 'middle')
+
+      container
+        .append('text')
+        // .data(customDatapoints)
+        // .enter()
+        .text(team)
+        .attr('x', 0)
+        .attr('y', -180)
         .attr('text-anchor', 'middle')
         .attr('alignment-baseline', 'middle')
     })
