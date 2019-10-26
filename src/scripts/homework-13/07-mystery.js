@@ -146,8 +146,8 @@ function ready(datapoints) {
     .attr('fill', 'white')
 
   svg
-    .append('g')
-    .attr('mask', 'url(#newMask)')
+    // .append('g')
+    //  .attr('mask', 'url(#newMask)')
     .selectAll('.circle-round')
     .data(bands)
     .enter()
