@@ -46,7 +46,7 @@ function ready(datapoints) {
     })
     .entries(datapoints)
 
-  const colorScale = d3.scaleOrdinal().range(['pink', 'cyan', 'magenta'])
+  const colorScale = d3.scaleOrdinal().range(['red', 'orange', 'green'])
 
   console.log(nested, 'nested')
 

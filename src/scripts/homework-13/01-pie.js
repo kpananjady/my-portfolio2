@@ -23,7 +23,7 @@ const pie = d3.pie().value(function(d) {
 
 const radius = 100
 
-const colorScale = d3.scaleOrdinal().range(['pink', 'cyan', 'magenta'])
+const colorScale = d3.scaleOrdinal().range(['red', 'orange', 'green'])
 
 const arc = d3
   .arc()
