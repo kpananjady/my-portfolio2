@@ -18,7 +18,7 @@ const svg = d3
 
 const xPositionScale = d3
   .scaleLinear()
-  .domain([0, 10])
+  .domain([2010, 2019])
   .range([0, width])
 const yPositionScale = d3
   .scaleLinear()
