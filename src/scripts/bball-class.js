@@ -1,7 +1,7 @@
 import * as d3 from 'd3'
 
 const margin = { top: 30, left: 30, right: 30, bottom: 30 }
-const height = 400 - margin.top - margin.bottom
+const height = 200 - margin.top - margin.bottom
 const width = 680 - margin.left - margin.right
 
 console.log('Building chart 3')
@@ -46,7 +46,8 @@ function ready(datapoints) {
     .append('path')
     .datum(datapoints)
     .attr('fill', 'none')
-    .attr('stroke', 'black')
+    .attr('stroke', 'blue')
+    .attr('stroke-width', 3)
     .attr('d', line)
 
   // Add your axes
