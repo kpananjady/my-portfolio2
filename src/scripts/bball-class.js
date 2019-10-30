@@ -1,4 +1,6 @@
 import * as d3 from 'd3'
+import d3Tip from 'd3-tip'
+d3.tip = d3Tip
 
 const margin = { top: 30, left: 30, right: 30, bottom: 30 }
 const height = 200 - margin.top - margin.bottom
@@ -29,6 +31,16 @@ const yPositionScale = d3
 
 // Import your data file using d3.csv
 
+const tip = d3
+  .tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return `Loss rate: <span style='color:grey'>${d.rate}</span>`
+  })
+
+svg.call(tip)
+
 d3.csv(require('../data/rentention_rate.csv'))
   .then(ready)
   .catch(err => {
@@ -47,8 +59,27 @@ function ready(datapoints) {
     .datum(datapoints)
     .attr('fill', 'none')
     .attr('stroke', 'blue')
-    .attr('stroke-width', 3)
+    .attr('stroke-width', 2)
+    .attr('opacity', 0.5)
     .attr('d', line)
+
+  svg
+    .selectAll('circle')
+    .data(datapoints)
+    .enter()
+    .append('circle')
+    .attr('r', 3)
+    .attr('cx', function(d) {
+      return xPositionScale(+d.period)
+    })
+    .attr('cy', function(d) {
+      return yPositionScale(+d.rate)
+    })
+    .attr('fill', 'blue')
+    .attr('stroke', 'blue')
+    .attr('opacity', 0.5)
+    .on('mouseover', tip.show)
+    .on('mouseout', tip.hide)
 
   // Add your axes
   const xAxis = d3.axisBottom(xPositionScale).tickFormat(d3.format('d'))
