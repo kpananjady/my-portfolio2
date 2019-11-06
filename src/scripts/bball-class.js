@@ -89,9 +89,10 @@ function ready(datapoints) {
     .attr('transform', 'translate(0,' + height + ')')
     .call(xAxis)
 
-  const yAxis = d3.axisLeft(yPositionScale)
+  const yAxis = d3.axisLeft(yPositionScale).ticks(2)
   svg
     .append('g')
     .attr('class', 'axis y-axis')
+    // .attr('fill', 'white')
     .call(yAxis)
 }
