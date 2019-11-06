@@ -89,7 +89,6 @@ function ready(datapoints) {
     .append('path')
     .attr('class', 'temp')
     .datum(nycDatapoints)
-    .transition()
     .attr('d', line)
     .attr('fill', 'none')
   // .attr('opacity', 0.75)
@@ -123,7 +122,6 @@ function ready(datapoints) {
     container
       .select('.temp')
       .datum(bDatapoints)
-      .transition()
       .attr('d', line)
       .attr('fill', 'purple')
       .attr('opacity', 0.75)
@@ -145,8 +143,6 @@ function ready(datapoints) {
     container
       .select('.temp')
       .datum(sDatapoints)
-      .transition()
-
       .attr('d', line)
       .attr('fill', 'salmon')
       .attr('opacity', 0.75)
@@ -158,8 +154,6 @@ function ready(datapoints) {
     container
       .select('.temp')
       .datum(limaDatapoints)
-      .transition()
-
       .attr('d', line)
       .attr('fill', 'orange')
       .attr('opacity', 0.75)
@@ -175,8 +169,6 @@ function ready(datapoints) {
     container
       .select('.temp')
       .datum(tusconDatapoints)
-      .transition()
-
       .attr('d', line)
       .attr('fill', 'red')
       .attr('opacity', 0.75)
