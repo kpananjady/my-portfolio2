@@ -14,7 +14,7 @@ const svg = d3
   .append('g')
   .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
-let radius = width / 2
+let radius = 200
 
 const radiusScale = d3
   .scaleLinear()
@@ -89,7 +89,6 @@ function ready(datapoints) {
     .append('path')
     .attr('class', 'temp')
     .datum(nycDatapoints)
-    .transition()
     .attr('d', line)
     .attr('fill', 'none')
   // .attr('opacity', 0.75)
@@ -123,7 +122,6 @@ function ready(datapoints) {
     container
       .select('.temp')
       .datum(bDatapoints)
-      .transition()
       .attr('d', line)
       .attr('fill', 'purple')
       .attr('opacity', 0.75)
@@ -145,8 +143,6 @@ function ready(datapoints) {
     container
       .select('.temp')
       .datum(sDatapoints)
-      .transition()
-
       .attr('d', line)
       .attr('fill', 'salmon')
       .attr('opacity', 0.75)
@@ -158,8 +154,6 @@ function ready(datapoints) {
     container
       .select('.temp')
       .datum(limaDatapoints)
-      .transition()
-
       .attr('d', line)
       .attr('fill', 'orange')
       .attr('opacity', 0.75)
@@ -175,8 +169,6 @@ function ready(datapoints) {
     container
       .select('.temp')
       .datum(tusconDatapoints)
-      .transition()
-
       .attr('d', line)
       .attr('fill', 'red')
       .attr('opacity', 0.75)
@@ -232,7 +224,7 @@ function ready(datapoints) {
 
     // console.log(newHeight, 'newheight')
 
-    radius = newWidth / 2
+    radius = newWidth / 2 - 50
 
     radiusScale.range([40, radius])
     // Update axes
@@ -241,6 +233,7 @@ function ready(datapoints) {
       return radiusScale(d)
     })
 
+    container.selectAll('.temp-notes').attr('y', d => -radiusScale(d))
     container.select('.temp').attr('d', line)
 
     // container.select('text').text('Lima')
