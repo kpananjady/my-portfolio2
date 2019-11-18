@@ -1,6 +1,6 @@
 ---
-headline: "A historical analysis of the Indian monsoon"
-subhead: "Examining drought from the 1850s to the present"
+headline: "Why the obsession with July rainfall in India?"
+subhead: "Examining drought from the 1870s to the present"
 published_date: "October 14, 2019"
 site: "http://www.littlecolumns.com"
 siteName: "Little Columns"
@@ -17,8 +17,11 @@ analytics": ""
 -->
 
 
-
-
+<div class="story-body">
+  This data was OCR'd out of a pdf published by the Indian Institute of Tropical Meteorology, accessible <a href='https://www.tropmet.res.in/~lip/Publication/RR-pdf/RR-138.pdf'>here</a>.
+  <p>The Indian monsoon is a period of heavy rainfall between June and September; it is brought about by multiple rain bearing winds that appraoch and retreat from different parts of the country at different times. Monsoon prediction keeps India's agro-based economy grounded, and each summer newspapers meticulosuly track daily rainfall. Why is it that stakes get higher come July each year?</p>
+</div>
+{{!-- {{!< bootstrap}} --}}
 {{!< default}}
 
 <!-- 
@@ -27,7 +30,8 @@ analytics": ""
 -->
 
 
-
+<div class="row mt-3">
+  <div class="col-12">
 <!-- 
   Charts are exactly the same.
 -->
@@ -43,6 +47,8 @@ analytics": ""
   -->
 
 
+  </div>
+</div>
 <!--
   You can also put the actual HTML here if you really want to,
   although it's a little less organized looking
@@ -51,7 +57,28 @@ analytics": ""
 {{!-- {{> story/JJAS_rolling_bounds}} --}}
 
 
-<div class="story-body">
-    <h2>This is why the media is so fixated on July rainfall. You generally know my the middle of the month is the monsson has failed.</h2>
-    <p>Heavy rainfall later in the year often does not save the monsoon.</p>
-</div>
+<style>
+  .sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+  }
+
+  #chart-1 .axis line {
+    stroke: #999;
+    stroke-width: 0.5;
+    stroke-dasharray: 3 2;
+  }
+
+  p small {
+    background: #fff880;
+  }
+
+  .colored-text {
+    padding: 1px 7px;
+    display: inline-block;
+  }
+</style>
+<link rel="stylesheet" href="styles/responsive.css">
+
+<script src="scripts/scrollytelling.js"></script>

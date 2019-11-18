@@ -5,7 +5,8 @@
     {"node":2,"name":"node2"},
     {"node":3,"name":"node3"},
     {"node":4,"name":"node4"},
-    {"node":5,"name":"node5"}
+    {"node":5,"name":"node5"},
+    {"node":6,"name":"node6"}
 
     ],
     "links":[
@@ -13,6 +14,7 @@
     {"source":1,"target":4,"value":2},
     {"source":1,"target":3,"value":2},
     {"source":1,"target":5,"value":2},
+    {"source":6,"target":5,"value":2},
 
     {"source":0,"target":3,"value":2},
     {"source":2,"target":4,"value":5},

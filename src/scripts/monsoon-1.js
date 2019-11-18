@@ -2,9 +2,9 @@ import * as d3 from 'd3'
 import d3Tip from 'd3-tip'
 d3.tip = d3Tip
 
-const margin = { top: 30, left: 40, right: 30, bottom: 30 }
+const margin = { top: 30, left: 300, right: 30, bottom: 30 }
 const height = 400 - margin.top - margin.bottom
-const width = 600 - margin.left - margin.right
+const width = 700 - margin.left - margin.right
 
 const svg = d3
   .select('#chart-1')
@@ -25,8 +25,9 @@ const tip = d3
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return `${d.rainfall} <span style='color:grey'>${d.year}</span>`
+    return `<span style='color:white'>${d.rainfall} <span style='color:grey'>${d.year}</span>`
   })
+  .style('background-color', 'black')
 
 svg.call(tip)
 
@@ -124,4 +125,5 @@ function ready(datapoints) {
     .attr('class', 'axis x-axis')
     .attr('transform', 'translate(0,' + height + ')')
     .call(xAxis)
+    .call(g => svg.select('.domain').remove())
 }
