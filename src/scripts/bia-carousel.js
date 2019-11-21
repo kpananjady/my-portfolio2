@@ -49,7 +49,7 @@ cellsRange.addEventListener('change', changeCarousel)
 cellsRange.addEventListener('input', changeCarousel)
 
 function changeCarousel() {
-  cellCount = 9
+  cellCount = 10
   theta = 360 / cellCount
   const cellSize = isHorizontal ? cellWidth : cellHeight
   radius = Math.round(cellSize / 2 / Math.tan(Math.PI / cellCount))
