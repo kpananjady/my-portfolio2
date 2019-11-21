@@ -1,0 +1,244 @@
+---
+headline: "Beatrice Bugané"
+subhead: "1996-2019"
+published_date: "November 20, 2019"
+site: "http://www.littlecolumns.com"
+siteName: "Little Columns"
+url: "http://littlecolumns.com/learn/d3-javascript-tooling/"
+kicker: "OBITUARY"
+author:
+    name: "Kasturi Pananjady"
+    url: "http://www.browndailyherald.com/author/kasturipananjady/"
+    twitterHandle: "@kpananjady"
+analytics": ""
+---
+{{!< bootstrap}}
+{{> story/bia/bia_carousel }}
+
+<style>
+
+  body{
+    background-image: url('images/vienna2.png');;
+     height: 500px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  }
+
+.p-t-2{
+    background-image: url('images/bia.png');;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+
+
+ } 
+
+ {{!-- div.image:before {
+   content:url('images/bia.png');
+} --}}
+
+.scene {
+  width: 210px;
+  height: 140px;
+  position: relative;
+  perspective: 1000px;
+}
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.carousel__cell {
+  position: absolute;
+  width: 190px;
+  height: 150px;
+  left: 10px;
+  top: 10px;
+  background-color: rgba(255,255,255, 0.6);
+
+}
+
+.radio {
+  visibility:hidden;
+}
+
+.carousel__cell:nth-child(1) { transform: rotateY(  0deg); }
+.carousel__cell:nth-child(2) { transform: rotateY( 40deg); }
+.carousel__cell:nth-child(3) { transform: rotateY( 80deg); }
+.carousel__cell:nth-child(4) { transform: rotateY(120deg); }
+.carousel__cell:nth-child(5) { transform: rotateY(160deg); }
+.carousel__cell:nth-child(6) { transform: rotateY(200deg); }
+.carousel__cell:nth-child(7) { transform: rotateY(240deg); }
+.carousel__cell:nth-child(8) { transform: rotateY(280deg); }
+.carousel__cell:nth-child(9) { transform: rotateY(320deg); }
+
+.carousel__cell:nth-child(1) { transform: rotateY(  0deg) translateZ(288px); }
+.carousel__cell:nth-child(2) { transform: rotateY( 40deg) translateZ(288px); }
+.carousel__cell:nth-child(3) { transform: rotateY( 80deg) translateZ(288px); }
+.carousel__cell:nth-child(4) { transform: rotateY(120deg) translateZ(288px); }
+.carousel__cell:nth-child(5) { transform: rotateY(160deg) translateZ(288px); }
+.carousel__cell:nth-child(6) { transform: rotateY(200deg) translateZ(288px); }
+.carousel__cell:nth-child(7) { transform: rotateY(240deg) translateZ(288px); }
+.carousel__cell:nth-child(8) { transform: rotateY(280deg) translateZ(288px); }
+.carousel__cell:nth-child(9) { transform: rotateY(320deg) translateZ(288px); }
+
+.carousel {
+  transform: translateZ(-288px) rotateY(-160deg);
+}
+
+.scene {
+  margin: 0 auto;
+}
+
+body {
+    font-family: 'PT Mono';
+    color: #171717;
+}
+
+a {
+    color: #000;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+    background-image: linear-gradient(180deg,transparent 75%,#fcf113 0);
+    background-size: 0 100%;
+    background-repeat: no-repeat;
+    -webkit-transition: background-size .4s ease;
+    transition: background-size .4s ease;
+}
+
+a:hover,
+a:focus {
+    color: #222;
+    outline: 0 !important;
+    background-size: 100% 100%;
+    text-decoration: none;
+}
+
+h2 {
+      font-size: 3rem;
+      background-color: rgba(255,255,255, 0.6);
+
+}
+
+.byline{
+  background-color: white;
+
+}
+
+.banner{
+   height: 300px;
+   width: 50px;
+}
+
+.date{
+  background-color: white;
+}
+h1 {
+    font-size: 6rem;
+    font-weight: 300;
+      background-color: rgba(255,255,255, 0.6);
+}
+
+@media (max-width:768px) {
+    h1 {
+        font-size: 4rem;
+    }
+}
+
+@keyframes typing {
+    from { width: 100%;  }
+    to { width:0; }
+}
+
+@keyframes typingReverse {
+    from { width: 0;  }
+    to { width: 100%; }
+}
+
+@keyframes blink-cursor {
+    from, to { border-color: transparent; }
+    50% { border-color: #999; }
+}
+
+@keyframes cursor-wait {
+    from, to { border-color: #999; }
+    50% { border-color: transparent; }
+}
+
+@keyframes hide-me {
+    100% { visibility:hidden; height:0; width:0; }
+}
+
+@keyframes show-me {
+    from,to { visibility:visible; height:auto; width:auto; }
+}
+
+.typing-words { 
+font-size: 3rem;
+}
+
+.typing-words .word {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.typing-words .word:after {
+    content: attr(text);
+    color: transparent;
+    background: #fff; 
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    z-index: 1;
+    border-left: 3px solid transparent;
+}
+
+.typing-words .word:nth-child(1) {
+    animation: 3s show-me 0s;
+}
+
+.typing-words .word:nth-child(1):after {
+    animation: 1s typing steps(6), typingReverse 1s steps(6) 1s forwards, 0.6s blink-cursor step-end infinite, 0.6s cursor-wait step-end 1 1s;
+}
+
+.typing-words .word:nth-child(2) {
+    animation: 3s show-me 3s;
+}
+
+.typing-words .word:nth-child(2):after {
+    animation: 1s typing 3s steps(5), typingReverse 1s steps(5) 4s forwards, 0.6s blink-cursor step-end infinite, 0.6s cursor-wait step-end 1 5s;
+}
+
+.typing-words .word:nth-child(3) {
+    animation: 2s show-me 6s forwards;
+}
+
+.typing-words .word:nth-child(3):after {
+    animation: 1s typing 6s steps(6) forwards, 0.6s blink-cursor 6s step-end 6;
+}
+
+.idk{
+  color: white;
+}
+
+
+
+</style>
+
+<link rel="stylesheet" href="styles/responsive.css">
+{{!-- <link rel="stylesheet" href="styles/scrollytelling.css"> --}}
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
+
+<script src="scripts/scrollytelling.js"></script>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
