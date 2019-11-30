@@ -1,0 +1,49 @@
+---
+headline: "When is it time to leave home?"
+subhead: "A visualization of why I'm spending the winter studying social equity in the context of buyouts in New Jersey"
+published_date: "November 29, 2019"
+site: "http://www.littlecolumns.com"
+siteName: "Little Columns"
+url: "http://littlecolumns.com/learn/d3-javascript-tooling/"
+kicker: "FEMA BUYOUTS DATA COLUMN"
+author:
+    name: "Kasturi Pananjady"
+    url: "http://www.browndailyherald.com/author/kasturipananjady/"
+    twitterHandle: "@kpananjady"
+analytics": ""
+---
+{{!< default}}
+<!-- 
+  
+  This line means, use default.hbs layout from src/html/layouts/
+-->
+{{> story/cartogram-attempt }}
+
+<div class='story-body'><h2>Note</h2>
+<p>This data was obtained via FOIA request by NPR. I did my analysis in pandas, drew a house in Illustrator and drew on this d3 code <a href='https://bl.ocks.org/veltman/938ea2d0ef98c02633bec15d6fb3a177'>here</a> for the force diagram. New Jersey is an interesting place to study this because the they also have a state run program. Check back here for updates on how my masters project is going!</p>
+</div>
+<style>
+  .sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+  }
+
+  #chart-1 .axis line {
+    stroke: #999;
+    stroke-width: 0.5;
+    stroke-dasharray: 3 2;
+  }
+
+  p small {
+    background: #fff880;
+  }
+
+  .colored-text {
+    padding: 1px 7px;
+    display: inline-block;
+  }
+</style>
+
+<link rel="stylesheet" href="styles/scrollytelling.css">
+<script src="scripts/scrollytelling.js"></script>

@@ -47,6 +47,7 @@
     "d3-sankey": "^0.12.3",
     "d3-sankey-diagram": "^0.7.3",
     "d3-svg-annotation": "^2.5.0",
-    "d3-tip": "^0.9.1"
+    "d3-tip": "^0.9.1",
+    "data": "^0.6.1"
   }
 }
