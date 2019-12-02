@@ -1,6 +1,8 @@
 import * as d3 from 'd3'
+import d3Tip from 'd3-tip'
+d3.tip = d3Tip
 
-const margin = { top: 20, left: 150, right: 0, bottom: 70 }
+const margin = { top: 20, left: 200, right: 0, bottom: 70 }
 
 const height = 700 - margin.top - margin.bottom
 const width = 600 - margin.left - margin.right
@@ -12,6 +14,19 @@ const svg = d3
   .attr('width', width + margin.left + margin.right)
   .append('g')
   .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
+
+const parseTime = d3.timeParse('%Y')
+let step = 'False'
+
+const tip = d3
+  .tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return `Number of searches: <span style='color:grey'>${d}</span>`
+  })
+
+svg.call(tip)
 
 Promise.all([
   d3.csv(require('/data/school.csv')),
@@ -26,21 +41,49 @@ function ready([ces, wages,students]) {
   wages.forEach(function(d) {
     const newDict = {
       firstCol: +d['2014'],
-      secondCol: +d['2019']
+      secondCol: +d['2019'],
+      thirdCol: +d['2015'],
+      fourthCol: +d['2016'],
+      fifthCol: +d['2017'],
+      sixthCol: +d['2018'],
     }
 
     const id = d.SchoolName
     dictName[id] = newDict
   })
 
+  const dict2 = {}
+  students.forEach(function(d) {
+    const newDict = {
+      firstCol: +d['ELLstudents']
+    }
+
+    const id = d.name
+    dict2[id] = newDict
+  })
+
   ces.forEach(function(d) {
     d.change_since_recession =
       ((+d['2019'] - +d['2014']) / +d['2014']) * 100
 
+    d.avgElls = (d['2014'] + d['2015'] + d['2016'] + d['2017'] + d['2018'] + d['2019'])/5
+
+    d.avgNElls = parseFloat(dictName[d.SchoolName].firstCol) + parseFloat(dictName[d.SchoolName].secondCol) + parseFloat(dictName[d.SchoolName].thirdCol) + parseFloat(dictName[d.SchoolName].fourthCol) + parseFloat(dictName[d.SchoolName].fifthCol) + parseFloat(dictName[d.SchoolName].sixthCol) /5
+
+    d.change_never_ells =   
+    ((parseFloat(dictName[d.SchoolName].secondCol) - parseFloat(dictName[d.SchoolName].firstCol)) / parseFloat(dictName[d.SchoolName].firstCol)) * 100
+
+    d.diff = +d['2019'] - parseFloat(dictName[d.SchoolName].secondCol)
+
+    // console.log(d.change_since_recession)
+    // console.log(d.change_never_ells)
+    // console.log(d.diff, d.SchoolName, 'difference')
     d.average =
-      (parseFloat(dictName[d.SchoolName].firstCol) +
-        parseFloat(dictName[d.SchoolName].secondCol)) /
-      2
+      (parseFloat(dict2[d.SchoolName].firstCol)) 
+  })
+
+  ces = ces.filter(function(d) {
+    return !isNaN(d.diff)
   })
 
   const yPositionScaleMacro = d3
@@ -52,6 +95,16 @@ function ready([ces, wages,students]) {
     .scaleLinear()
     .domain([15, 50])
     .range([0, width - 50])
+
+  const xPositionScaleFull = d3
+    .scaleLinear()
+    .domain([parseTime('2014'), parseTime('2019')])
+    .range([0, width])
+
+const yPositionScaleFull = d3
+    .scaleLinear()
+    .domain([15, 50])
+    .range([width/2, width/2])
 
   const colorScale = d3
     .scaleThreshold()
@@ -72,7 +125,7 @@ function ready([ces, wages,students]) {
 
   svg
     .append('text')
-    .text('Jobs since recession')
+    .text('ELL performance')
     .attr('id', 'jobs')
     .attr(
       'transform',
@@ -82,6 +135,9 @@ function ready([ces, wages,students]) {
     .attr('font-size', 13)
     .attr('font-weight', 'bold')
     .attr('dy', 0)
+    .attr('dx', -20)
+
+  svg.append('text').attr('x', -150).attr('y',200).text('Hover for school names!').attr('id', 'schoolname')
 
   svg
     .append('text')
@@ -125,7 +181,7 @@ function ready([ces, wages,students]) {
   svg
     .append('text')
     .attr('id', 'wages')
-    .text('Wages')
+    .text('Students')
     .attr('transform', `translate(${width / 2},${height})`)
     .attr('text-anchor', 'middle')
     .attr('font-size', 13)
@@ -162,10 +218,10 @@ function ready([ces, wages,students]) {
       })
 
       const color_var = d.change_since_recession
+      const color_diff = d.diff
+      const schoolname = d.SchoolName
 
       const dataColumns1 = Object.keys(d).filter(d => d[0] === '2')
-
-      const parseTime = d3.timeParse('%Y')
 
       const datapoints1 = dataColumns1.map(colName => {
         return {
@@ -173,13 +229,18 @@ function ready([ces, wages,students]) {
           jobs: +d[colName],
           date: parseTime(colName),
           pct_change:
-            ((+d[colName] - +d['2014']) / +d['2014']) * 100
+            ((+d[colName] - +d['2014']) / +d['2014']) * 100,
+          diff: d.diff
         }
       })
 
       const median = d3.median(datapoints1, function(d) {
         return d.pct_change
       })
+
+      if(typeof(median) === 'undefined' || !isFinite(median) || isNaN(median)) {
+          return
+      }
 
       // d3.select('#step-highlight').on('stepin', function() {
       //   container.select('.path_next')
@@ -210,9 +271,9 @@ function ready([ces, wages,students]) {
         .attr('class', 'chart')
         .attr('transform', () => {
           const x = chartDimensions.widthCD / 2
-          const y = yPositionScaleMicro(median)
+          const y = yPositionScaleMicro(median) * -1
           // const y = 0
-          return `translate(-${x},-${y})`
+          return `translate(-${x},${y})`
           // return `translate(-${x})`
         })
         .append('path')
@@ -222,34 +283,33 @@ function ready([ces, wages,students]) {
           return line(d)
         })
         .attr('stroke', function(d) {
+            console.log(schoolname)
           return colorScale(color_var)
         })
         .attr('stroke-width', 2)
         .attr('fill', 'none')
     })
     .on('mouseover', function(d) {
-      d3.select(this)
-        .raise()
-
-        .select('path')
-        .attr('stroke', 'blue')
+        console.log(d.SchoolName, 'schoolname')
+        d3.select('#schoolname').text('School Name: ' + d.SchoolName)
+    tip.show 
+    //   d3.select(this)
+    //     .raise()
+    //     .select('path')
+    //     .attr('stroke-width', 4)
+         
     })
     .on('mouseout', function(d) {
-      const color_var = d.change_since_recession
+    //   d3.select(this)
+    //     .select('path')
+    //     .attr('stroke-width', 2)
+    //     .lower()
 
-      const colorScale = d3
-        .scaleThreshold()
-        .domain([-15, 0, 15])
-        .range(['#c94a38', '#e67950', '#b2d16d', '#7cb564', '#479050'])
-      d3.select(this)
-        .select('path')
-        .attr('stroke', function(d) {
-          return colorScale(color_var)
-        })
+        tip.hide  
     })
 
   d3.select('#step-jobs').on('stepin', function() {
-    console.log('jobs')
+   // console.log('jobs')
     svg
       .selectAll('.center_lines')
       .transition()
@@ -289,16 +349,26 @@ function ready([ces, wages,students]) {
       // .attr('stroke', function(d) {
       //   return colorScale(d.change_since_recession)
       // })
-      console.log('highlight')
-    })
-    .on('stepout', function(d) {
+      //console.log('highlight')
+    // })
+    // .on('stepout', function(d) {
       // svg
       // .selectAll('.center_lines')
 
-      svg.selectAll('.path_next').attr('stroke', function(d) {
-        console.log(d.pct_change, 'change since rec?')
-        return 'blue'
+      svg.selectAll('.path_next').attr('opacity', 0.5).attr('stroke', function(d) {
+        console.log(d[0].diff, 'change since rec?')
+        step = 'True'
+        if (d[0].diff>0){
+            return 'purple'
+        }
+        else {
+            return 'grey'
+        }
       })
+    })
+    .on('stepout', function() {
+        step = 'False'
+
     })
 
   function render() {
