@@ -58,10 +58,10 @@ function ready([json,buyouts,colors]) {
 //    console.log(json, buyouts)
    
 //    nodes = topojson.feature(json, json.objects.states).features;
-svg.append('circle').attr('r', 10).attr('fill', 'blue').attr('cx', -10).attr('cy',10)
+svg.append('circle').attr('r', 10).attr('fill', 'brown').attr('cx', -10).attr('cy',10)
 svg.append('text').text('<1990').attr('x', 6).attr('y',15)
 
-svg.append('circle').attr('r', 10).attr('fill', 'green').attr('cx', -10).attr('cy',40)
+svg.append('circle').attr('r', 10).attr('fill', 'red').attr('cx', -10).attr('cy',40)
 svg.append('text').text('<2000').attr('x', 6).attr('y',45)
 
 svg.append('circle').attr('r', 10).attr('fill', 'yellow').attr('cx', -10).attr('cy',70)
@@ -231,7 +231,7 @@ svg.append('text').text('<2017').attr('x', 6).attr('y',105)
 
           .attr("fill", function(d){
             //   console.log(d.id,'node.id')
-              colorVar = 'blue'
+              colorVar = 'brown'
               colors.forEach(function(b){
                   if (b.State===d.id){
                     colorVar = b.color
