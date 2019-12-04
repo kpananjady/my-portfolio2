@@ -68,11 +68,15 @@ function ready([ces, wages,students]) {
 
     d.avgElls = (d['2014'] + d['2015'] + d['2016'] + d['2017'] + d['2018'] + d['2019'])/5
 
+    d.ypos = +d['2019']
+    d.yos2=+d['2014']
+
     d.avgNElls = parseFloat(dictName[d.SchoolName].firstCol) + parseFloat(dictName[d.SchoolName].secondCol) + parseFloat(dictName[d.SchoolName].thirdCol) + parseFloat(dictName[d.SchoolName].fourthCol) + parseFloat(dictName[d.SchoolName].fifthCol) + parseFloat(dictName[d.SchoolName].sixthCol) /5
 
     d.change_never_ells =   
     ((parseFloat(dictName[d.SchoolName].secondCol) - parseFloat(dictName[d.SchoolName].firstCol)) / parseFloat(dictName[d.SchoolName].firstCol)) * 100
 
+    d.diff2 = +d['2014'] - parseFloat(dictName[d.SchoolName].firstCol)
     d.diff = +d['2019'] - parseFloat(dictName[d.SchoolName].secondCol)
 
     // console.log(d.change_since_recession)
@@ -88,7 +92,7 @@ function ready([ces, wages,students]) {
 
   const yPositionScaleMacro = d3
     .scaleLinear()
-    .domain([-200, 3300])
+    .domain([-10, 100])
     .range([height, 0])
 
   const xPositionScaleMacro = d3
@@ -108,7 +112,7 @@ const yPositionScaleFull = d3
 
   const colorScale = d3
     .scaleThreshold()
-    .domain([-15, 0, 15])
+    .domain([-50, 0, 300])
     .range(['#c94a38', '#e67950', '#b2d16d', '#7cb564', '#479050'])
 
   svg
@@ -134,10 +138,10 @@ const yPositionScaleFull = d3
     .attr('text-anchor', 'middle')
     .attr('font-size', 13)
     .attr('font-weight', 'bold')
-    .attr('dy', 0)
-    .attr('dx', -20)
+    .attr('dy', -50)
+    .attr('dx', 30)
 
-  svg.append('text').attr('x', -150).attr('y',200).text('Hover for school names!').attr('id', 'schoolname')
+  svg.append('text').attr('x', -150).attr('y',20).text('Hover for school').attr('id', 'schoolname')
 
   svg
     .append('text')
@@ -150,22 +154,22 @@ const yPositionScaleFull = d3
     .attr('text-anchor', 'middle')
     .attr('font-size', 13)
     .attr('font-weight', 'bold')
-    .attr('dy', 0)
+    .attr('dy', -50)
     .attr('dx', -20)
 
-  svg
-    .append('text')
-    .attr('id', 'arrowTwo')
-    .text('<-----')
-    .attr(
-      'transform',
-      `translate(${-120},${yPositionScaleMacro(0) + 100}) rotate(-90)`
-    )
-    .attr('text-anchor', 'middle')
-    .attr('font-size', 13)
-    .attr('font-weight', 'bold')
-    .attr('dy', 0)
-    .attr('dx', -20)
+//   svg
+//     .append('text')
+//     .attr('id', 'arrowTwo')
+//     .text('<-----')
+//     .attr(
+//       'transform',
+//       `translate(${-120},${yPositionScaleMacro(0) + 100}) rotate(-90)`
+//     )
+//     .attr('text-anchor', 'middle')
+//     .attr('font-size', 13)
+//     .attr('font-weight', 'bold')
+//     .attr('dy', 0)
+//     .attr('dx', -20)
 
   svg
     .append('text')
@@ -230,7 +234,9 @@ const yPositionScaleFull = d3
           date: parseTime(colName),
           pct_change:
             ((+d[colName] - +d['2014']) / +d['2014']) * 100,
-          diff: d.diff
+          diff: d.diff,
+          diff2:d.diff2,
+          color_var: color_var
         }
       })
 
@@ -283,14 +289,14 @@ const yPositionScaleFull = d3
           return line(d)
         })
         .attr('stroke', function(d) {
-            console.log(schoolname)
+            // console.log(schoolname)
           return colorScale(color_var)
         })
         .attr('stroke-width', 2)
         .attr('fill', 'none')
     })
     .on('mouseover', function(d) {
-        console.log(d.SchoolName, 'schoolname')
+        // console.log(d.SchoolName, 'schoolname')
         d3.select('#schoolname').text('School Name: ' + d.SchoolName)
     tip.show 
     //   d3.select(this)
@@ -315,10 +321,14 @@ const yPositionScaleFull = d3
       .transition()
       .attr('transform', function(d) {
         const xpos = xPositionScaleMacro(d.average)
-        const ypos = yPositionScaleMacro(d.change_since_recession)
+        const ypos = yPositionScaleMacro(d.ypos)
         return `translate(${xpos},${ypos})`
       })
 
+    //   svg.selectAll('.path_next')      
+    //   .transition()
+    //   .delay(250)
+    //   .attr('stroke', colorScale(d[0].color_var))
     // .delay(1000)
     // .transition()
     // .attr('transform', function(d) {
@@ -327,7 +337,7 @@ const yPositionScaleFull = d3
     //   return `translate(${xpos},${ypos})`
     // })
 
-    console.log('highlight')
+    // console.log('highlight')
   })
 
   d3.select('#step-centered').on('stepout', function() {
@@ -355,10 +365,57 @@ const yPositionScaleFull = d3
       // svg
       // .selectAll('.center_lines')
 
-      svg.selectAll('.path_next').attr('opacity', 0.5).attr('stroke', function(d) {
-        console.log(d[0].diff, 'change since rec?')
+      svg.selectAll('.path_next')
+      .transition()
+      .delay(250)
+      .attr('opacity', 0.5).attr('stroke', function(d) {
         step = 'True'
         if (d[0].diff>0){
+            // console.log('1')
+            return 'purple'         
+        }
+        else {
+            console.log('2')
+            return 'grey'
+        }
+      })
+    })
+    .on('stepout', function() {
+        step = 'False'
+    })
+
+d3.select('#step-last')
+    .on('stepin', function() {
+        console.log('here')
+
+    // svg
+    //     .selectAll('.center_lines')
+    //     .transition()
+    //     .attr('transform', function(d) {
+    //       const xpos = xPositionScaleMacro(0)
+    //       const ypos = yPositionScaleMacro(d.ypos2)
+    //       return `translate(${xpos},${ypos})`
+    //     })
+
+      svg.selectAll('.path_next').attr('stroke', 'grey')
+      // .transition()
+      // .duration(1000)
+      // .attr('stroke', function(d) {
+      //   return colorScale(d.change_since_recession)
+      // })
+      //console.log('highlight')
+    // })
+    // .on('stepout', function(d) {
+      // svg
+      // .selectAll('.center_lines')
+
+      svg.selectAll('.path_next')      
+      .transition()
+      .delay(250)
+      .attr('opacity', 0.5).attr('stroke', function(d) {
+        console.log(d[0].diff2, 'change since rec 2?')
+        step = 'True'
+        if (d[0].diff2>0){
             return 'purple'
         }
         else {
@@ -368,8 +425,8 @@ const yPositionScaleFull = d3
     })
     .on('stepout', function() {
         step = 'False'
-
     })
+
 
   function render() {
     const svgContainer = svg.node().closest('div')
