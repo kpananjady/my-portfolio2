@@ -129,7 +129,7 @@ const yPositionScaleFull = d3
 
   svg
     .append('text')
-    .text('ELL performance')
+    .text('Ever ELL performance')
     .attr('id', 'jobs')
     .attr(
       'transform',
