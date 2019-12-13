@@ -18,15 +18,7 @@ const svg = d3
 const parseTime = d3.timeParse('%Y')
 let step = 'False'
 
-const tip = d3
-  .tip()
-  .attr('class', 'd3-tip')
-  .offset([-10, 0])
-  .html(function(d) {
-    return `Number of searches: <span style='color:grey'>${d}</span>`
-  })
 
-svg.call(tip)
 
 Promise.all([
   d3.csv(require('/data/school.csv')),
@@ -38,6 +30,22 @@ Promise.all([
 
 function ready([ces, wages,students]) {
   const dictName = {}
+
+
+  const tip = d3
+  .tip()
+  .attr('class', 'd3-tip d3-tip-scrolly')
+  .style('pointer-events', 'none')
+  .offset([-10, 0])
+  .html(function(d) {
+    return `${d.SchoolName}`
+  })
+
+  svg.call(tip)
+
+  let toolTipElement = d3.select(".d3-tip-scrolly")
+  d3.select("#chart-4").append(d => toolTipElement.node())
+
   wages.forEach(function(d) {
     const newDict = {
       firstCol: +d['2014'],
@@ -295,24 +303,20 @@ const yPositionScaleFull = d3
         .attr('stroke-width', 2)
         .attr('fill', 'none')
     })
-    .on('mouseover', function(d) {
-        // console.log(d.SchoolName, 'schoolname')
-        d3.select('#schoolname').text('School Name: ' + d.SchoolName)
-    tip.show 
-    //   d3.select(this)
-    //     .raise()
-    //     .select('path')
-    //     .attr('stroke-width', 4)
-         
-    })
-    .on('mouseout', function(d) {
-    //   d3.select(this)
-    //     .select('path')
-    //     .attr('stroke-width', 2)
-    //     .lower()
+   
+.on('mouseover', function(d) {
+  // show the tooltip
+  tip.show.call(this, d)
 
-        tip.hide  
-    })
+  let coords = this.getBoundingClientRect()
+  let y = coords.y + (coords.height / 2)
+
+  d3.select(".d3-tip-scrolly")
+    .style('top', y + 'px')
+})
+.on('mouseout', tip.hide)
+    .on('mouseout',
+        tip.hide )
 
   d3.select('#step-jobs').on('stepin', function() {
    // console.log('jobs')
