@@ -244,7 +244,8 @@ const yPositionScaleFull = d3
             ((+d[colName] - +d['2014']) / +d['2014']) * 100,
           diff: d.diff,
           diff2:d.diff2,
-          color_var: color_var
+          color_var: color_var,
+          schoolname: d.SchoolName
         }
       })
 
@@ -310,9 +311,13 @@ const yPositionScaleFull = d3
 
   let coords = this.getBoundingClientRect()
   let y = coords.y + (coords.height / 2)
+  // console.log(coords.width)
+  let x = (coords.width) 
+  // console.log(x)
 
   d3.select(".d3-tip-scrolly")
     .style('top', y + 'px')
+    .style('left', x + 'px')
 })
 .on('mouseout', tip.hide)
     .on('mouseout',
@@ -322,12 +327,14 @@ const yPositionScaleFull = d3
    // console.log('jobs')
     svg
       .selectAll('.center_lines')
+      .attr('stroke', 'red')
       .transition()
       .attr('transform', function(d) {
         const xpos = xPositionScaleMacro(d.average)
         const ypos = yPositionScaleMacro(d.ypos)
         return `translate(${xpos},${ypos})`
       })
+   
 
     //   svg.selectAll('.path_next')      
     //   .transition()
@@ -353,6 +360,9 @@ const yPositionScaleFull = d3
         const ypos = yPositionScaleMacro(0)
         return `translate(${xpos},${ypos})`
       })
+      .attr('stroke', function(d) {
+        return colorScale(d.color_var)
+      })
   })
 
   d3.select('#step-highlight')
@@ -376,10 +386,10 @@ const yPositionScaleFull = d3
         step = 'True'
         if (d[0].diff>0){
             // console.log('1')
-            return 'purple'         
+            return 'green'         
         }
         else {
-            console.log('2')
+            // console.log('2')
             return 'grey'
         }
       })
@@ -388,39 +398,18 @@ const yPositionScaleFull = d3
         step = 'False'
     })
 
-d3.select('#step-last')
+d3.select('#step-final')
     .on('stepin', function() {
-        console.log('here')
-
-    // svg
-    //     .selectAll('.center_lines')
-    //     .transition()
-    //     .attr('transform', function(d) {
-    //       const xpos = xPositionScaleMacro(0)
-    //       const ypos = yPositionScaleMacro(d.ypos2)
-    //       return `translate(${xpos},${ypos})`
-    //     })
-
-      svg.selectAll('.path_next').attr('stroke', 'grey')
-      // .transition()
-      // .duration(1000)
-      // .attr('stroke', function(d) {
-      //   return colorScale(d.change_since_recession)
-      // })
-      //console.log('highlight')
-    // })
-    // .on('stepout', function(d) {
-      // svg
-      // .selectAll('.center_lines')
+        // console.log('here')
 
       svg.selectAll('.path_next')      
       .transition()
       .delay(250)
       .attr('opacity', 0.5).attr('stroke', function(d) {
-        console.log(d[0].diff2, 'change since rec 2?')
+        console.log(d, 'change since rec 2?')
         step = 'True'
-        if (d[0].diff2>0){
-            return 'purple'
+        if (d[0].schoolname==='P.S. 083 DONALD HERTZ'){
+            return 'blue'
         }
         else {
             return 'grey'

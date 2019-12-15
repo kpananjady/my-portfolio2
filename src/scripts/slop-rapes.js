@@ -18,8 +18,8 @@ const svg = d3
 
 const parseTime = d3.timeParse('%Y')
 
-const xPositionScale = d3.scaleLinear().range([0, width])
-const yPositionScale = d3.scaleLinear().range([height, 0])
+let xPositionScale = d3.scaleLinear().range([0, width])
+let yPositionScale = d3.scaleLinear().range([height, 0])
 
 const colorScale = d3
   .scaleOrdinal()
@@ -82,14 +82,17 @@ function ready(datapoints) {
 
     const tip = d3
     .tip()
-    .attr('class', 'd3-tip')
+    .attr('class', 'd3-tip d3-tip-scrolly')
     .offset([-10, 0])
     .html(function(d) {
-    return `${d.key}`
+        console.log(d)
+    return `${d.key}'s rates of reported assault | ${d.values[0].Year} : ${d.values[0].rate} ---> ${d.values[6].Year} : ${d.values[6].rate}`
    })
 
-   svg.call(tip)    
+   svg.call(tip)
 
+   let toolTipElement = d3.select(".d3-tip-scrolly")
+   d3.select("#chart-1").append(d => toolTipElement.node())
   const nested = d3
     .nest()
     .key(function(d) {
@@ -117,8 +120,35 @@ function ready(datapoints) {
       .attr('stroke-width', 2)
       .attr('fill', 'none')
       .attr('opacity',0.5)
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide)
+      .on('mouseover', function(d) {
+        // show the tooltip
+        tip.show.call(this, d)
+      
+        let coords = d3.mouse(this) 
+        console.log(coords)
+        let y = coords[1] 
+        let x = coords[0] 
+        console.log(x)
+
+        d3.select(this).attr('stroke', 'purple').attr('stroke-width', 4)
+
+      
+        d3.select(".d3-tip-scrolly")
+        .style("left", x + "px")  
+        .style("top", y+ "px")  
+
+      })
+      .on('mouseout', function(d){
+          tip.hide
+          d3.select(this).attr('stroke', function(d) {
+            if (d.key ==='Delhi' || d.key ==='India') {
+                return 'red'
+            } else {return 'grey'
+            }
+          }).attr('stroke-width', 2)
+        }
+
+          )
     //   .on('mouseover', function(d) {
     //     d3.select(this)
     //       .raise()
@@ -198,14 +228,107 @@ function ready(datapoints) {
   svg
   .append('text')
   .attr('font-size', '24')
-  .attr('id', '2017')
+  .attr('id', 'label')
   .attr('text-anchor', 'middle')
   .text('2017')
   .attr('x', xPositionScale(parseTime(2017)))
   .attr('y', -40)
-  .attr('dx', 100)
+
+  svg
+  .append('text')
+  .attr('font-size', '24')
+  .attr('text-anchor', 'middle')
+  .text('2011')
+  .attr('x', xPositionScale(parseTime(2011)))
+  .attr('y', -40)
+
+  svg
+  .append('line')
+  .attr('id','first') // attach a line
+  .style('stroke', 'pink') // colour the line
+  .style('stroke-dasharray', '3, 3')
+  .attr('stroke-width', 3)
+  .attr('x1', xPositionScale(parseTime(2012))) // x position of the first end of the line
+  .attr('y1', height) // y position of the first end of the line
+  .attr('x2', xPositionScale(parseTime(2012))) // x position of the second end of the line
+  .attr('y2', 0)
+  .attr('opacity',0.5)
 
 
+  svg
+  .append('line')
+  .attr('id','second') // attach a line
+  .style('stroke', 'pink') // colour the line
+  .style('stroke-dasharray', '3, 3')
+  .attr('stroke-width', 3)
+  .attr('x1', xPositionScale(parseTime(2012))) // x position of the first end of the line
+  .attr('y1', height) // y position of the first end of the line
+  .attr('x2', xPositionScale(parseTime(2012))) // x position of the second end of the line
+  .attr('y2', 0)
+  .attr('opacity',0.5)
+
+
+  svg
+  .append('line')
+  .attr('id','third') // attach a line
+  .style('stroke', 'pink') // colour the line
+  .style('stroke-dasharray', '3, 3')
+  .attr('stroke-width', 3)
+  .attr('x1', xPositionScale(parseTime(2013))) // x position of the first end of the line
+  .attr('y1', height) // y position of the first end of the line
+  .attr('x2', xPositionScale(parseTime(2013))) // x position of the second end of the line
+  .attr('y2', 0)
+  .attr('opacity',0.5)
+
+  svg
+  .append('line')
+  .attr('id','fourth') // attach a line
+  .style('stroke', 'pink') // colour the line
+  .style('stroke-dasharray', '3, 3')
+  .attr('stroke-width', 3)
+  .attr('x1', xPositionScale(parseTime(2014))) // x position of the first end of the line
+  .attr('y1', height) // y position of the first end of the line
+  .attr('x2', xPositionScale(parseTime(2014))) // x position of the second end of the line
+  .attr('y2', 0)
+  .attr('opacity',0.5)
+
+
+  svg
+  .append('line')
+  .attr('id','fifth') // attach a line
+  .style('stroke', 'pink') // colour the line
+  .style('stroke-dasharray', '3, 3')
+  .attr('stroke-width', 3)
+  .attr('x1', xPositionScale(parseTime(2015))) // x position of the first end of the line
+  .attr('y1', height) // y position of the first end of the line
+  .attr('x2', xPositionScale(parseTime(2015))) // x position of the second end of the line
+  .attr('y2', 0)
+  .attr('opacity',0.5)
+
+  svg
+  .append('line')
+  .attr('id','sixth') // attach a line
+  .style('stroke', 'pink') // colour the line
+  .style('stroke-dasharray', '3, 3')
+  .attr('stroke-width', 3)
+  .attr('x1', xPositionScale(parseTime(2016))) // x position of the first end of the line
+  .attr('y1', height) // y position of the first end of the line
+  .attr('x2', xPositionScale(parseTime(2016))) // x position of the second end of the line
+  .attr('y2', 0)
+  .attr('opacity',0.5)
+
+
+  svg
+  .append('line')
+  .attr('id','seventh') // attach a line
+  .style('stroke', 'pink') // colour the line
+  .style('stroke-dasharray', '3, 3')
+  .attr('stroke-width', 3)
+  .attr('x1', xPositionScale(parseTime(2017))) // x position of the first end of the line
+  .attr('y1', height) // y position of the first end of the line
+  .attr('x2', xPositionScale(parseTime(2017))) // x position of the second end of the line
+  .attr('y2', 0)
+  .attr('opacity',0.5)
   // const rectWidth =
   //   xPositionScale(parseTime('February-17')) -
   //   xPositionScale(parseTime('November-16'))
@@ -258,53 +381,74 @@ function ready(datapoints) {
     //   xAxis.ticks(null)
     // }
 
-    // console.log(newHeight, 'newheight')
+    console.log(newWidth, 'newW')
+    console.log(xPositionScale(parseTime(2014)), 'xPosScale(20)1')
+
     xPositionScale.range([0, newWidth])
-    yPositionScale.range([newHeight, 0])
+    console.log(xPositionScale(parseTime(2014)), 'xPosScale(20)2')
 
-    listYears.forEach(draw)
+    // yPositionScale.range([newHeight, 0])
 
-    svg.select('#title').attr('x', newWidth / 2)
+    // listYears.forEach(draw)
 
     // svg.select('.x-axis').call(xAxis)
     // svg.select('.y-axis').call(yAxis)
     // // Update things you draw
 
+    
     svg
-      .selectAll('circle')
-      .attr('cy', function(d) {
-        return yPositionScale(d.values[0].rate)
-      })
-      .attr('cx', function(d) {
-        return xPositionScale(d.values[0].datetime)
-      })
+    .select('#label')
+    .attr('x', xPositionScale(parseTime(2017)))
+    .attr('y', -40)
 
-
-    svg
-    .selectAll('circle-new')
-    .attr('cy', function(d) {
-      return yPositionScale(d.values[6].rate)
-    })
-    .attr('cx', function(d) {
-      return xPositionScale(parseTime(2017))
-    })
-
-    // svg
-    // .select('2017')
-    // .attr('x', xPositionScale(parseTime(2017)))
-    // .attr('y', -40)
+    svg.select('#first')
+    .attr('x1', xPositionScale(parseTime(2011))) // x position of the first end of the line
+    .attr('y1', height) // y position of the first end of the line
+    .attr('x2', xPositionScale(parseTime(2011))) // x position of the second end of the line
+    .attr('y2', 0)
+    .attr('opacity',0.5)
   
+    svg.select('#second')
+    .attr('x1', xPositionScale(parseTime(2012))) // x position of the first end of the line
+    .attr('y1', height) // y position of the first end of the line
+    .attr('x2', xPositionScale(parseTime(2012))) // x position of the second end of the line
+    .attr('y2', 0)
+    .attr('opacity',0.5)
 
-    svg
-      .selectAll('.labels')
-      .attr('y', function(d) {
-        return yPositionScale(d.values[0].rate)
-      })
-      .attr('x', function(d) {
-        return xPositionScale(d.values[0].datetime)
-      })
+    svg.select('#third')
+    .attr('x1', xPositionScale(parseTime(2013))) // x position of the first end of the line
+    .attr('y1', height) // y position of the first end of the line
+    .attr('x2', xPositionScale(parseTime(2013))) // x position of the second end of the line
+    .attr('y2', 0)
+    .attr('opacity',0.5)
 
+    svg.select('#fourth')
+    .attr('x1', xPositionScale(parseTime(2014))) // x position of the first end of the line
+    .attr('y1', height) // y position of the first end of the line
+    .attr('x2', xPositionScale(parseTime(2014))) // x position of the second end of the line
+    .attr('y2', 0)
+    .attr('opacity',0.5)
 
+    svg.select('#fifth')
+    .attr('x1', xPositionScale(parseTime(2015))) // x position of the first end of the line
+    .attr('y1', height) // y position of the first end of the line
+    .attr('x2', xPositionScale(parseTime(2015))) // x position of the second end of the line
+    .attr('y2', 0)
+    .attr('opacity',0.5)
+
+    svg.select('#sixth')
+    .attr('x1', xPositionScale(parseTime(2016))) // x position of the first end of the line
+    .attr('y1', height) // y position of the first end of the line
+    .attr('x2', xPositionScale(parseTime(2016))) // x position of the second end of the line
+    .attr('y2', 0)
+    .attr('opacity',0.5)
+
+    svg.select('#seventh')
+    .attr('x1', xPositionScale(parseTime(2017))) // x position of the first end of the line
+    .attr('y1', height) // y position of the first end of the line
+    .attr('x2', xPositionScale(parseTime(2017))) // x position of the second end of the line
+    .attr('y2', 0)
+    .attr('opacity',0.5)
     //  svg.select('text').attr('x', xPositionScale(parseTime(2017)))
 
     svg.selectAll('.path_next').attr('d', function(d) {

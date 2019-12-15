@@ -3,20 +3,20 @@
 <div class="story-body">
     <h2>July</h2>
     <p>In red are the drought years; in blue, below average rain for the month. Hover to see the amount of rainfall received and the years.</p>
-    <div id="chart-1"></div>
+    <div class='chart' id="chart-1"></div>
 </div>
 
 <script src="scripts/monsoon-1.js"></script>
 
 <div class="story-body">
-    <h2>This is why the media is so fixated on July rainfall. You generally know by the middle of the month if the monsson has failed.</h2>
+    <p>This is why the media is so fixated on July rainfall. You generally know by the middle of the month if the monsoon has failed.</p>
     <p>Any year that has rain under 10 percent of the mean monsoon rainfall is considered a drought year. By comparison, here's below average rain in August and June and how they line up with drought years.</p>
 </div>
 
 <div class="story-body">
     <h2>June</h2>
     <p>Hover to see the amount of rainfall received and the years.</p>
-    <div id="chart-2"></div>
+    <div class='chart' id="chart-2"></div>
 </div>
 
 <script src="scripts/monsoon-2.js"></script>
@@ -24,7 +24,7 @@
 <div class="story-body">
     <h2>August</h2>
     <p>Hover to see the amount of rainfall received and the years.</p>
-    {{!-- <div id="chart-3"></div> --}}
+    <div class='chart' id="chart-3"></div>
 </div>
 
 
@@ -35,7 +35,7 @@
   
 </div> --}}
 
-<div class="story-body scrollytelling">
+{{!-- <div class="story-body scrollytelling">
     <div id="chart-2"></div>
     <div id="chart-3" class="chart">
     </div>
@@ -46,10 +46,14 @@
     {{!-- <div id="chart-3"></div> --}}
     </div>
 
-    <div class="step" id = 'idk'>Here's some more text</div>
     </div>
-</div>
+</div> --}}
 
 <script src="scripts/monsoon-3.js"></script>
 
 
+<style>
+    .chart {
+   position:center;
+    }
+</style>

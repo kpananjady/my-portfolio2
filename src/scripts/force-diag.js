@@ -75,16 +75,16 @@ d3.tip = d3Tip
 
       var ticked = function() {
         data.nodes[0].fx = chartWidth / 2;
-        data.nodes[0].fy = chartHeight / 2;
+        data.nodes[0].fy = chartHeight/2;
 
-        data.nodes[1].fx = chartWidth / 2 + 50;
-        data.nodes[1].fy = chartHeight / 2 + 50;
+        // data.nodes[1].fx = chartWidth / 2 + 50;
+        // data.nodes[1].fy = chartHeight / 2 + 50;
 
-        data.nodes[2].fx = chartWidth / 2 + 100;
-        data.nodes[2].fy = chartHeight / 2 + 100;
+        // data.nodes[2].fx = chartWidth / 2 + 100;
+        // data.nodes[2].fy = chartHeight / 2 + 100;
 
-        data.nodes[6].fx = chartWidth / 2 - 200;
-        data.nodes[6].fy = chartHeight / 2 - 200;
+        // data.nodes[6].fx = chartWidth / 2 - 200;
+        // data.nodes[6].fy = chartHeight / 2 - 200;
         link
           .attr("x1", function(d) { return d.source.x; })
           .attr("y1", function(d) { return d.source.y; })

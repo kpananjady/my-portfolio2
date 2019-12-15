@@ -25,7 +25,7 @@ const tip = d3
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return `${d.rainfall} <span style='color:grey'>${d.year}</span>`
+    return `<span style='color:white'>${d.rainfall} <span style='color:grey'>${d.year}</span>`
   })
   .style('background-color', 'black')
 
