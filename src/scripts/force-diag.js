@@ -77,6 +77,20 @@ d3.tip = d3Tip
         data.nodes[0].fx = chartWidth / 2;
         data.nodes[0].fy = chartHeight/2;
 
+
+        data.nodes[1].fx = (chartWidth / 4) + (chartWidth / 4);
+        data.nodes[1].fy = (chartHeight/4) ;
+
+        data.nodes[2].fx = (chartWidth / 3) ;
+        data.nodes[2].fy = (chartHeight/3) + (chartWidth / 3);
+
+        data.nodes[5].fx = chartWidth / 2;
+        data.nodes[5].fy = 3 * chartHeight/4;
+
+
+        data.nodes[6].fx = chartWidth / 4;
+        data.nodes[6].fy = chartHeight/4;
+
         // data.nodes[1].fx = chartWidth / 2 + 50;
         // data.nodes[1].fy = chartHeight / 2 + 50;
 
