@@ -23,7 +23,6 @@ d3.csv(require('../data/july.csv'))
 const tip = d3
   .tip()
   .attr('class', 'd3-tip')
-  .offset([-10, 0])
   .html(function(d) {
     return `<span style='color:white'>${d.rainfall} <span style='color:grey'>${d.year}</span>`
   })
@@ -106,8 +105,9 @@ function ready(datapoints) {
     .attr('fill', 'blue')
     .attr('stroke', 'blue')
     .attr('opacity', 0.5)
-    .on('mouseover', tip.show)
-    .on('mouseout', tip.hide)
+    .on('mouseover', function(d){
+      console.log(d)
+     })
 
   svg
     .append('text')
