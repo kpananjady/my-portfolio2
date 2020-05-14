@@ -120,12 +120,16 @@ function ready([json,json2, schools]) {
         .attr('stroke', 'white')
         .lower()
       
+        svg.selectAll('circle')
+      .attr('fill', function(d){
+        return colorScale(d.Rating)
+      })
         })
         .on('stepout', function(d){
       
         })
 
-      d3.select('#step-test')
+        d3.select('#step-test')
         .on('stepin', function(d){
 
 
@@ -142,9 +146,37 @@ function ready([json,json2, schools]) {
       .attr('stroke', 'white')
       .lower()
 
+      svg.selectAll('circle')
+      .attr('fill', function(d){
+        return colorScale(d.Rating)
+      })
+
         })
         .on('stepout', function(d){
 
+        })
+
+        d3.select('#step-75')
+        .on('stepin', function(d){
+
+           svg.selectAll('circle')
+      .attr('fill', function(d){
+        console.log(d.School_DBN.startsWith('75'))
+        if(d.School_DBN.startsWith(7)){
+          console.log(d.School_DBN)
+          return colorScale(d.Rating)
+        } else {
+          return 'lightgrey'
+        }
+      })
+      
+
+        })
+        .on('stepout', function(d){
+          svg.selectAll('circle')
+      .attr('fill', function(d){
+        return colorScale(d.Rating)
+      })
         })
   
         function render() {

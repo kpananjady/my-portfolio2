@@ -1,5 +1,4 @@
-,"Geographic
-  District",Borough,Building Code,School DBN,Location Code,SchoolName,Grades Served,Pre-K,Address,BAP Rating,Accessibility Description,Rating,Address_Full,Lat,Lng
+,Geographic_District,Borough,Building Code,School_DBN,Location Code,SchoolName,Grades Served,Pre-K,Address,BAP Rating,Accessibility Description,Rating,Address_Full,Lat,Lng
 0,7,Bronx,X040,07X179,X179,P.S. 179,Elementary,X,468 EAST 140 STREET,1 out of 10,Partially Accessible,1.0,"468 EAST 140 STREET, NEW YORK CITY, NY",40.8091409,-73.92013759999999
 1,7,Bronx,X040,07X369,X369,Young Leaders Elementary School,Elementary,X,468 EAST 140 STREET,1 out of 10,Partially Accessible,1.0,"468 EAST 140 STREET, NEW YORK CITY, NY",40.8091409,-73.92013759999999
 2,7,Bronx,X040,75X352,X352,The Vida Bogart School for All Children,K-8,,468 EAST 140 STREET,1 out of 10,Partially Accessible,1.0,"468 EAST 140 STREET, NEW YORK CITY, NY",40.8091409,-73.92013759999999
