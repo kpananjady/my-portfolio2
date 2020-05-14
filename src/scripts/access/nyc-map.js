@@ -24,7 +24,7 @@ const projection = d3.geoMercator()
     .translate([(width) / 2, (height)/2]);
 const path = d3.geoPath().projection(projection)
 
-const colorScale = d3.scaleSequential(d3.interpolateRdBu).domain([0, 10])
+const colorScale = d3.scaleSequential(d3.interpolateSpectral).domain([0, 10])
 
 
 
@@ -67,14 +67,33 @@ function ready([json,json2, schools]) {
       .attr('stroke', 'white')
       .raise()
       
+      svg.append('circle').attr('r', 6).attr('fill', colorScale(10)).attr('cx', 1).attr('cy',25)
+      svg.append('text').text('10').attr('x', 20).attr('y',30)
+
+      svg.append('circle').attr('r', 6).attr('fill', colorScale(8)).attr('cx', 1).attr('cy',55)
+      svg.append('text').text('8').attr('x', 20).attr('y',60)
+
+      svg.append('circle').attr('r',6).attr('fill',  colorScale(6)).attr('cx', 1).attr('cy',85)
+      svg.append('text').text('6').attr('x', 20).attr('y',90)
+
+      svg.append('circle').attr('r', 6).attr('fill',  colorScale(4)).attr('cx', 1).attr('cy',115)
+      svg.append('text').text('4').attr('x', 20).attr('y',120)
+
+      svg.append('circle').attr('r', 6).attr('fill',  colorScale(2)).attr('cx', 1).attr('cy',145)
+      svg.append('text').text('2').attr('x', 20).attr('y',150)
+
+      svg.append('circle').attr('r', 6).attr('fill',  colorScale(0)).attr('cx', 1).attr('cy',175)
+      svg.append('text').text('0').attr('x', 20).attr('y',180)
+
+      svg.append('text').text('Department of Education Accessibility Ratings').attr('x', 60).attr('y',15)
 
 
       svg
-      .selectAll('circle')
+      .selectAll('.circle-school')
       .data(schools)
       .enter()
       .append('circle')
-      .attr('class', 'schools')
+      .attr('class', 'circle-school')
       .attr('r', 2.5)
       .attr('opacity',0.5)
       .attr('transform', function(d) {
@@ -120,7 +139,7 @@ function ready([json,json2, schools]) {
         .attr('stroke', 'white')
         .lower()
       
-        svg.selectAll('circle')
+        svg.selectAll('.circle-school')
       .attr('fill', function(d){
         return colorScale(d.Rating)
       })
@@ -146,7 +165,7 @@ function ready([json,json2, schools]) {
       .attr('stroke', 'white')
       .lower()
 
-      svg.selectAll('circle')
+      svg.selectAll('.circle-school')
       .attr('fill', function(d){
         return colorScale(d.Rating)
       })
@@ -159,7 +178,7 @@ function ready([json,json2, schools]) {
         d3.select('#step-75')
         .on('stepin', function(d){
 
-           svg.selectAll('circle')
+           svg.selectAll('.circle-school')
       .attr('fill', function(d){
         console.log(d.School_DBN.startsWith('75'))
         if(d.School_DBN.startsWith(7)){
@@ -173,7 +192,7 @@ function ready([json,json2, schools]) {
 
         })
         .on('stepout', function(d){
-          svg.selectAll('circle')
+          svg.selectAll('.circle-school')
       .attr('fill', function(d){
         return colorScale(d.Rating)
       })
@@ -204,7 +223,7 @@ function ready([json,json2, schools]) {
       
           // Update axes
           svg
-            .select('.schools')
+            .select('.circle-school')
             .attr('transform', function(d) {
               const coords = [d.Lng, d.Lat]
               return `translate(${projection(coords)})`
