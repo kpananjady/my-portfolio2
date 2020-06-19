@@ -122,7 +122,7 @@ svg.append('text').text('<2017').attr('x', 6).attr('y',105)
 
 
 
-//   console.log(topojson.feature(json, json.objects.states).features, 'nodes')
+   console.log(topojson.feature(json, json.objects.states).features, 'nodes')
 //   console.log(topojson.neighbors(json.objects.states.geometries), 'neighbors')
 
   var nodes = topojson.feature(json, json.objects.states).features

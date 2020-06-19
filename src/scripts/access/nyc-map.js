@@ -51,6 +51,7 @@ Promise.all([
 
 function ready([json,json2, schools]) {
 
+  console.log(json)
     const boroughs = topojson.feature(json, json.objects.boroughs)
     console.log(boroughs.features)
     const districts = topojson.feature(json2, json2.objects.school_districts)
@@ -85,7 +86,6 @@ function ready([json,json2, schools]) {
       svg.append('circle').attr('r', 6).attr('fill',  colorScale(0)).attr('cx', 1).attr('cy',175)
       svg.append('text').text('0').attr('x', 20).attr('y',180)
 
-      svg.append('text').text('Department of Education Accessibility Ratings').attr('x', 60).attr('y',15)
 
 
       svg

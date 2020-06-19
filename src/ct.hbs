@@ -1,0 +1,54 @@
+---
+headline: "Outcome of zoning policy in CT"
+subhead: "The map below is colored based on the concentration of black and Hispanic residents. Click to see how zoning policy influences diversity."
+published_date: "June 2020"
+site: "http://www.littlecolumns.com"
+siteName: "Little Columns"
+url: "http://littlecolumns.com/learn/d3-javascript-tooling/"
+kicker: "CT Map + Zoning"
+
+---
+{{!< default}}
+<!-- 
+  
+  This line means, use default.hbs layout from src/html/layouts/
+-->
+{{> story/map_ct }}
+
+<style>
+  .sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+  }
+
+  #chart-1 .axis line {
+    stroke: #999;
+    stroke-width: 0.5;
+    stroke-dasharray: 3 2;
+  }
+
+  p small {
+    background: #fff880;
+  }
+
+  .colored-text {
+    padding: 1px 7px;
+    display: inline-block;
+  }
+
+
+    #nav-container {
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    #toggle {
+      background: #ddd;
+      padding: 5px 10px;
+    }
+</style>
+
+<link rel="stylesheet" href="styles/scrollytelling.css">
+<script src="scripts/scrollytelling.js"></script>
