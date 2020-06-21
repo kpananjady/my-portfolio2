@@ -21,7 +21,7 @@ let svg = d3
 
   const projection = d3.geoMercator()
     .center([-72.68, 41.8])
-    .scale(width*25)
+    .scale(width*30)
     .translate([(width) / 2, (height)/2]);
 const path = d3.geoPath().projection(projection)
 
@@ -401,7 +401,7 @@ function ready([json, json2, race, housing]) {
 
         
         projection
-        .scale(newWidth*25)
+        .scale(newWidth*30)
         .translate([(newWidth) / 2, (newHeight)/2]);
         
         svg.selectAll('.towns')
