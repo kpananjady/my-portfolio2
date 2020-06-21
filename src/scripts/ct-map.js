@@ -20,8 +20,8 @@ let svg = d3
   .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
   const projection = d3.geoMercator()
-    .center([-72.6, 41.8])
-    .scale(16500)
+    .center([-72.68, 41.8])
+    .scale(width*25)
     .translate([(width) / 2, (height)/2]);
 const path = d3.geoPath().projection(projection)
 
@@ -78,7 +78,7 @@ function ready([json, json2, race, housing]) {
          .attr("y",-55
          )
          .attr("height", 20)
-         .attr("x", 20)
+         .attr("x", width/35)
          .attr('rx',10)
          .attr("width",0.4*width)
          .attr('fill', '#E9967A')
@@ -89,7 +89,7 @@ function ready([json, json2, race, housing]) {
          .attr("y",-55
          )
          .attr("height", 20)
-         .attr("x", 20)
+         .attr("x", width/35)
          .attr("width",0)
          .attr('fill', '#B22222')
          .attr('rx',10)
@@ -101,7 +101,7 @@ function ready([json, json2, race, housing]) {
          .attr('class', 'bar_hispanic_state_100')
          .attr("y",-15)
          .attr("height", 20)
-         .attr("x", 20)
+         .attr("x", width/35)
          .attr("width",0.4*width)
          .attr('fill', 'lightgrey')
          .attr('rx',10)
@@ -112,7 +112,7 @@ function ready([json, json2, race, housing]) {
          .attr('class', 'bar_hispanic_state')
          .attr("y",-15)
          .attr("height", 20)
-         .attr("x", 20)
+         .attr("x", width/35)
          .attr("width",yPositionScale(16))
          .attr('fill', 'grey')
          .attr('rx',10)
@@ -174,7 +174,7 @@ function ready([json, json2, race, housing]) {
          .attr("y",45
          )
          .attr("height", 20)
-         .attr("x", 20)
+         .attr("x", width/35)
          .attr("width",0.4*width)
          .attr('fill', '#E9967A')
          .attr('rx',10)
@@ -185,7 +185,7 @@ function ready([json, json2, race, housing]) {
          .attr('class', 'bar_black')
          .attr("y",45)
          .attr("height", 20)
-         .attr("x", 20)
+         .attr("x", width/35)
          .attr("width",0)
          .attr('fill', '#B22222')
          .attr('rx',10)
@@ -193,11 +193,11 @@ function ready([json, json2, race, housing]) {
          
          svg
          .append('rect')
-         .attr('class', 'bar_race_state_100')
+         .attr('class', 'bar_black_state_100')
          .attr("y",85
          )
          .attr("height", 20)
-         .attr("x", 20)
+         .attr("x", width/35)
          .attr("width",0.4*width)
          .attr('fill', 'lightgrey')
          .attr('rx',10)
@@ -210,7 +210,7 @@ function ready([json, json2, race, housing]) {
          .attr("y",85
          )
          .attr("height", 20)
-         .attr("x", 20)
+         .attr("x",width/35)
          .attr("width",yPositionScale(10))
          .attr('fill', 'grey')
          .attr('rx',10)
@@ -223,7 +223,7 @@ function ready([json, json2, race, housing]) {
          .attr("y",150
          )
          .attr("height", 20)
-         .attr("x", 20)
+         .attr("x", width/35)
          .attr("width",0.4*width)
          .attr('fill', '#E9967A')
          .attr('rx',10)
@@ -231,11 +231,11 @@ function ready([json, json2, race, housing]) {
 
          svg
          .append('rect')
-         .attr('class', 'bar_affordable_town')
+         .attr('class', 'bar_affordable')
          .attr("y",150
          )
          .attr("height", 20)
-         .attr("x", 20)
+         .attr("x", width/35)
          .attr("width",0)
          .attr('fill', '#B22222')
          .attr('rx',10)
@@ -245,7 +245,7 @@ function ready([json, json2, race, housing]) {
 
          svg
          .append('rect')
-         .attr('class', 'bar_3_state_100')
+         .attr('class', 'bar_affordable_state_100')
          .attr("y",190
          )
          .attr("height", 20)
@@ -332,7 +332,7 @@ function ready([json, json2, race, housing]) {
 
         housing.forEach(function(r){if (r.Town===d.properties.NAME10){
           svg.select('.affordable_housing').text('% Affordable' + " " + r['Percent Affordable'])
-          svg.select('.bar_affordable_town')
+          svg.select('.bar_affordable')
           .transition()
           .duration(700)
           .ease(d3.easeElastic).attr('width', yPositionScale(r['Percent Affordable']))
@@ -347,4 +347,94 @@ function ready([json, json2, race, housing]) {
       d3.select('#toggle').on('click', () => {
         svg.selectAll('.towns').attr('fill', 'black')
       })
+
+
+
+      function render() {
+        const svgContainer = svg.node().closest('div')
+        const svgWidth = svgContainer.offsetWidth
+        // Do you want it to be full height? Pick one of the two below
+        const svgHeight = height + margin.top + margin.bottom
+        // const svgHeight = window.innerHeight
+    
+        const actualSvg = d3.select(svg.node().closest('svg'))
+        actualSvg.attr('width', svgWidth).attr('height', svgHeight)
+    
+        const newWidth = svgWidth - margin.left - margin.right
+        const newHeight = svgHeight - margin.top - margin.bottom
+
+
+        yPositionScale.range([0,0.4*newWidth])
+
+        svg.select('.bar_5_state_100').attr('width', 0.4*newWidth)
+        svg.select('.bar_affordable_town_100').attr('width', 0.4*newWidth)
+        svg.select('.bar_3_state_100').attr('width', 0.4*newWidth)
+
+        svg.select('.bar_hispanic_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+        svg.select('.bar_hispanic_state_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+        svg.select('.bar_hispanic_state').attr("x", newWidth/35)
+        svg.select('.bar_hispanic').attr("x", newWidth/35)
+
+
+        svg.select('.bar_black_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+        svg.select('.bar_black_state_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+        svg.select('.bar_black').attr("x", newWidth/35)
+        svg.select('.bar_race_state').attr("x", newWidth/35)
+
+             
+        svg.select('.bar_affordable_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+        svg.select('.bar_affordable_state_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+        svg.select('.bar_affordable').attr("x", newWidth/35)
+        svg.select('.bar_affordable_state').attr("x", newWidth/35)
+
+        svg.select('.bar_4_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+        svg.select('.bar_4_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+
+        svg.select('.bar_5_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+        svg.select('.bar_5_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+        
+        
+        
+        svg.select('.bar_2_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+        svg.select('.bar_2_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+
+
+        
+        projection
+        .scale(newWidth*25)
+        .translate([(newWidth) / 2, (newHeight)/2]);
+        
+        svg.selectAll('.towns')
+        .attr('d', path)
+ 
+        svg.select('.towns')
+        .on('mouseover', function(d) {
+
+          svg.select('.town_name').text(d.properties.NAME10)
+          race.forEach(function(r){if (r.Name_to_join===d.properties.NAME10){
+            svg.select('.bar_black') .transition()
+            .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(r['Black alone']))
+
+            svg.select('.bar_hispanic') .transition()
+            .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(r['Hispanic']))
+
+            }
+            housing.forEach(function(r){if (r.Town===d.properties.NAME10){
+              svg.select('.bar_affordable_town')
+              .transition()
+              .duration(700)
+              .ease(d3.easeElastic).attr('width', yPositionScale(r['Percent Affordable']))
+    
+            }
+          })
+
+          })
+
+        })
+      }
+      window.addEventListener('resize', render)
+
+      // And now that the page has loaded, let's just try
+      // to do it once before the page has resized
+      render()
     }
