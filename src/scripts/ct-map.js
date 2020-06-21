@@ -20,8 +20,8 @@ let svg = d3
   .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
   const projection = d3.geoMercator()
-    .center([-72.68, 41.8])
-    .scale(width*30)
+    .center([-72.68, 41.85])
+    .scale(width*20)
     .translate([(width) / 2, (height)/2]);
 const path = d3.geoPath().projection(projection)
 
@@ -60,7 +60,7 @@ function ready([json, json2, race, housing]) {
     // console.log(boroughs.features)
     // const districts = topojson.feature(json2, json2.objects.school_districts)
 
-         svg.append('text').attr('class', 'town_name').text('Hover on towns to see how they compare').attr('alignment-baseline', 'middle').attr('y',-120).attr('font-size', '30px').attr('font-weight', 5)
+         svg.append('text').attr('class', 'town_name').text('Hover on the towns below!').attr('alignment-baseline', 'middle').attr('y',-120).attr('font-size', '30px').attr('font-weight', 5)
          svg.append('text').attr('class', 'race_black').text('Race black').attr('x', 20).attr('y',40).attr('font-weight', 5)
 
          svg.append('text').attr('class', 'race_hispanic').text('Race Hispanic').attr('x', 20).attr('y',-65).attr('font-weight', 5)
@@ -401,7 +401,7 @@ function ready([json, json2, race, housing]) {
 
         
         projection
-        .scale(newWidth*30)
+        .scale(newWidth*26)
         .translate([(newWidth) / 2, (newHeight)/2]);
         
         svg.selectAll('.towns')
