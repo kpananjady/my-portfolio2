@@ -400,9 +400,28 @@ function ready([json, json2, race, housing]) {
 
 
         
+        if (newWidth > 500) {
+
+          console.log(newWidth, 'newWidth 1')
         projection
-        .scale(newWidth*26)
+        .scale(newWidth*25)
         .translate([(newWidth) / 2, (newHeight)/2]);
+
+        } else if (newWidth > 400){
+          console.log(newWidth, 'newWidth 2')
+
+          projection
+        .scale(newWidth*35)
+        .translate([(newWidth) / 2, (newHeight)/2]);
+        }
+        
+        else {
+
+          console.log(newWidth, 'newWidth 3')
+          projection
+          .scale(newWidth*40)
+          .translate([(newWidth) / 2, (newHeight)/2]);
+        }
         
         svg.selectAll('.towns')
         .attr('d', path)
