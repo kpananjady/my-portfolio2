@@ -3,9 +3,9 @@ import * as topojson from 'topojson'
 import d3Tip from 'd3-tip'
 d3.tip = d3Tip
 
-let margin = { top: 200, left: 150, right: 150, bottom: 0 }
+let margin = { top: 160, left: 150, right: 150, bottom: 0 }
 
-let height = 800 - margin.top - margin.bottom
+let height = 700 - margin.top - margin.bottom
 
 let width = 1000 - margin.left - margin.right
 
@@ -20,7 +20,7 @@ let svg = d3
   .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
   const projection = d3.geoMercator()
-    .center([-72.68, 42])
+    .center([-72.68, 41.95])
     .scale(width*20)
     .translate([(width) / 2, (height)/2]);
 const path = d3.geoPath().projection(projection)
@@ -62,16 +62,16 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          svg.append('text').attr('class', 'town_name').text('Hover on the towns below!').attr('alignment-baseline', 'middle').attr('y',-140).attr('font-size', '30px').attr('font-weight', 5)
        
          svg.append('text').attr('class', 'housing_stock').text('HOUSING STOCK: TOWN vs STATE AVERAGES').attr('x', width/35).attr('y',-90).attr('font-weight', 5)
-         svg.append('text').attr('class', 'housing_stock').text('DEMOGRAPHICS: TOWN vs STATE AVERAGES').attr('x', width/35).attr('y',145).attr('font-weight', 5)
+         svg.append('text').attr('class', 'housing_stock').text('DEMOGRAPHICS: TOWN vs STATE AVERAGES').attr('x', width/35).attr('y',130).attr('font-weight', 5)
 
 
          svg.append('text').attr('class', 'label_1').text('% Single Family Homes').attr('x', width/35).attr('y',-65).attr('font-weight', 5)
          svg.append('text').attr('class', 'label_3').text('% Government Assisted').attr('x', width/35).attr('y',40).attr('font-weight', 5)
-         svg.append('text').attr('class', 'label_5').text('% Black').attr('x', width/35).attr('y',170).attr('font-weight', 5)
+         svg.append('text').attr('class', 'label_5').text('% Black').attr('x', width/35).attr('y',155).attr('font-weight', 5)
 
          svg.append('text').attr('class', 'label_2').text('Median Sale Price').attr('x', 0.4*width+35).attr('y',-65).attr('font-weight', 5)
          svg.append('text').attr('class', 'label_4').text('% Deed Restricted').attr('x', 0.4*width+35).attr('y',40).attr('font-weight', 5)
-         svg.append('text').attr('class', 'label_6').text('% Hispanic').attr('x', 0.4*width+35).attr('y',170).attr('font-weight', 5)
+         svg.append('text').attr('class', 'label_6').text('% Hispanic').attr('x', 0.4*width+35).attr('y',155).attr('font-weight', 5)
 
 
         //  svg.append('circle').attr('r', 6).attr('fill', colorScale('Exempt')).attr('cx', 3*width/4).attr('cy',height-100)
@@ -107,7 +107,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          svg
          .append('rect')
          .attr('class', 'bar_1_state_100')
-         .attr("y",-15)
+         .attr("y",-25)
          .attr("height", 20)
          .attr("x", width/35)
          .attr("width",0.4*width)
@@ -118,7 +118,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          svg
          .append('rect')
          .attr('class', 'bar_1_state')
-         .attr("y",-15)
+         .attr("y",-25)
          .attr("height", 20)
          .attr("x", width/35)
          .attr("width",yPositionScale(90))
@@ -155,7 +155,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          svg
          .append('rect')
          .attr('class', 'bar_2_state_100')
-         .attr("y",-15)
+         .attr("y",-25)
          .attr("height", 20)
          .attr("x", 0.4*width+35)
          .attr("width",0.4*width)
@@ -167,7 +167,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          svg
          .append('rect')
          .attr('class', 'bar_2_state')
-         .attr("y",-15)
+         .attr("y",-25)
          .attr("height", 20)
          .attr("x", 0.4*width+35)
          .attr("width",yPositionScale(90))
@@ -191,7 +191,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          svg
          .append('rect')
          .attr('class', 'bar_4')
-         .attr("y",85
+         .attr("y",75
          )
          .attr("height", 20)
          .attr("x",0.4*width+35)
@@ -203,7 +203,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          svg
          .append('rect')
          .attr('class', 'bar_4_state_100')
-         .attr("y",85
+         .attr("y",75
          )
          .attr("height", 20)
          .attr("x", 0.4*width + 35)
@@ -216,7 +216,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          svg
          .append('rect')
          .attr('class', 'bar_4_state')
-         .attr("y",85)
+         .attr("y",75)
          .attr("height", 20)
          .attr("x", 0.4*width+35)
          .attr("width",yPositionScale(90))
@@ -253,7 +253,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          svg
          .append('rect')
          .attr('class', 'bar_3_state_100')
-         .attr("y",85
+         .attr("y",75
          )
          .attr("height", 20)
          .attr("x", width/35)
@@ -266,7 +266,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          svg
          .append('rect')
          .attr('class', 'bar_3_state')
-         .attr("y",85
+         .attr("y",75
          )
          .attr("height", 20)
          .attr("x",width/35)
@@ -280,7 +280,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          svg
          .append('rect')
          .attr('class', 'bar_5_town_100')
-         .attr("y",180
+         .attr("y",165
          )
          .attr("height", 20)
          .attr("x", width/35)
@@ -292,7 +292,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          svg
          .append('rect')
          .attr('class', 'bar_5')
-         .attr("y",180
+         .attr("y",165
          )
          .attr("height", 20)
          .attr("x", width/35)
@@ -304,7 +304,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          svg
          .append('rect')
          .attr('class', 'bar_5_state_100')
-         .attr("y",220
+         .attr("y",195
          )
          .attr("height", 20)
          .attr("x", 20)
@@ -316,7 +316,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          svg
          .append('rect')
          .attr('class', 'bar_5_state')
-         .attr("y",220
+         .attr("y",195
          )
          .attr("height", 20)
          .attr("x",width/35)
@@ -329,7 +329,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          svg
          .append('rect')
          .attr('class', 'bar_6_state_100')
-         .attr("y",220)
+         .attr("y",195)
          .attr("height", 20)
          .attr("x", 0.4*width +35)
          .attr("width",0.4*width)
@@ -352,7 +352,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
         svg
         .append('rect')
         .attr('class', 'bar_6_town_100')
-        .attr("y",180)
+        .attr("y",165)
         .attr("height", 20)
         .attr("x", 0.4*width +35)
         .attr("width",0.4*width)
@@ -363,7 +363,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
         svg
         .append('rect')
         .attr('class', 'bar_6')
-        .attr("y",180)
+        .attr("y",165)
         .attr("height", 20)
         .attr("x", 0.4*width +35)
         .attr("width",0)
@@ -376,7 +376,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          svg
          .append('rect')
          .attr('class', 'bar_6_state')
-         .attr("y",220)
+         .attr("y",195)
          .attr("height", 20)
          .attr("x", 0.4*width+35)
          .attr("width",yPositionScale(16))
