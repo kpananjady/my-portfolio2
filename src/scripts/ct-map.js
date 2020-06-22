@@ -610,7 +610,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
 
           console.log(newWidth, 'newWidth 3')
           projection
-          .scale(newWidth*22)
+          .scale(newWidth*25)
           .translate([(newWidth) / 2, (newHeight)/2]);
         }
         
