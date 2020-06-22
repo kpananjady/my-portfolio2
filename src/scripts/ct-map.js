@@ -20,7 +20,7 @@ let svg = d3
   .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
   const projection = d3.geoMercator()
-    .center([-72.68, 41.65])
+    .center([-72.68, 41.5])
     .scale(width*20)
     .translate([(width) / 2, (height)/2]);
 const path = d3.geoPath().projection(projection)
@@ -409,7 +409,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
         return colorVar
 
     })
-      .attr('stroke', 'white')
+      .attr('stroke', 'lightgrey')
       .on('mouseover', function(d) {
         d3.select(this).attr('opacity', '0.5')
 
@@ -481,6 +481,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
       //     }
       // }) 
       d3.select('#toggle').on('click', () => {
+        d3.select('#toggle').attr('fill', 'grey')
         svg.selectAll('.towns').attr('fill', function(d){
           var colorVar=0 
             housing.forEach(function(r){if (r.Town===d.properties.NAME10){
@@ -585,14 +586,14 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
 
           console.log(newWidth, 'newWidth 1')
         projection
-        .scale(newWidth*25)
+        .scale(newWidth*20)
         .translate([(newWidth) / 2, (newHeight)/2]);
 
-        } else if (newWidth > 400){
+        } else if (newWidth > 450){
           console.log(newWidth, 'newWidth 2')
 
           projection
-        .scale(newWidth*35)
+        .scale(newWidth*20)
         .translate([(newWidth) / 2, (newHeight)/2]);
         }
         
@@ -600,7 +601,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
 
           console.log(newWidth, 'newWidth 3')
           projection
-          .scale(newWidth*40)
+          .scale(newWidth*30)
           .translate([(newWidth) / 2, (newHeight)/2]);
         }
         
