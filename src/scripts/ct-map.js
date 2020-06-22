@@ -20,7 +20,7 @@ let svg = d3
   .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
   const projection = d3.geoMercator()
-    .center([-72.68, 41.78])
+    .center([-72.68, 41.7])
     .scale(width*20)
     .translate([(width) / 2, (height)/2]);
 const path = d3.geoPath().projection(projection)
@@ -62,7 +62,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          svg.append('text').attr('class', 'town_name').text('Hover on the towns below!').attr('alignment-baseline', 'middle').attr('y',-130).attr('font-size', '30px').attr('font-weight', 5)
        
          svg.append('text').attr('class', 'housing_stock').text('HOUSING STOCK: TOWN vs STATE AVERAGES').attr('x', width/35).attr('y',-90).attr('font-weight', 5)
-         svg.append('text').attr('class', 'housing_stock').text('DEMOGRAPHICS: TOWN vs STATE AVERAGES').attr('x', width/35).attr('y',130).attr('font-weight', 5)
+         svg.append('text').attr('class', 'housing_stock').text('DEMOGRAPHICS: TOWN vs STATE AVERAGES').attr('x', width/35).attr('y',125).attr('font-weight', 5)
 
 
          svg.append('text').attr('class', 'label_1').text('% Single Family Homes').attr('x', width/35).attr('y',-65).attr('font-weight', 5)
@@ -595,14 +595,14 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
 
           console.log(newWidth, 'newWidth 1')
         projection
-        .scale(newWidth*15)
+        .scale(newWidth*10)
         .translate([(newWidth) / 2, (newHeight)/2]);
 
         } else if (newWidth > 450){
           console.log(newWidth, 'newWidth 2')
 
           projection
-        .scale(newWidth*20)
+        .scale(newWidth*15)
         .translate([(newWidth) / 2, (newHeight)/2]);
         }
         
@@ -610,7 +610,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
 
           console.log(newWidth, 'newWidth 3')
           projection
-          .scale(newWidth*30)
+          .scale(newWidth*15)
           .translate([(newWidth) / 2, (newHeight)/2]);
         }
         
