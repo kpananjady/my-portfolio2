@@ -447,30 +447,30 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
 
         svg.select('.town_name').text(d.properties.NAME10)
         race.forEach(function(r){if (r.Name_to_join===d.properties.NAME10){
-          svg.select('.label_3').text('% Black' + " " + r['Black alone'])
-          svg.select('.bar_3') .transition()
+// black            
+          svg.select('.label_5').text('% Black' + " " + r['Black alone'])
+          svg.select('.bar_5') .transition()
           .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(r['Black alone']))
 
-          console.log(r['Hispanic'])
-          svg.select('.race').text('% Black' + " " + r['Black alone'])
-          svg.select('.label_1').text('% Hispanic' + " " + r['Hispanic'])
+// hispanic
+          svg.select('.label_6').text('% Hispanic' + " " + r['Hispanic'])
 
-          svg.select('.bar_1') .transition()
+          svg.select('.bar_6') .transition()
           .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(r['Hispanic']))
 
           }
 
       })
+// affordable
+    //   housing.forEach(function(r){if (r.Town===d.properties.NAME10){
+    //     svg.select('.label_5').text('% Affordable' + " " + r['Percent Affordable'])
+    //     svg.select('.bar_5')
+    //     .transition()
+    //     .duration(700)
+    //     .ease(d3.easeElastic).attr('width', yPositionScale(r['Percent Affordable']))
 
-      housing.forEach(function(r){if (r.Town===d.properties.NAME10){
-        svg.select('.label_5').text('% Affordable' + " " + r['Percent Affordable'])
-        svg.select('.bar_5')
-        .transition()
-        .duration(700)
-        .ease(d3.easeElastic).attr('width', yPositionScale(r['Percent Affordable']))
-
-      }
-    })
+    //   }
+    // })
   })
       .raise()
 
