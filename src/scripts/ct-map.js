@@ -59,7 +59,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
     console.log(towns, 'towns')
 
 // towns
-         svg.append('text').attr('class', 'town_name').text('Hover on the towns below!').attr('alignment-baseline', 'middle').attr('y',-135).attr('font-size', '30px').attr('font-weight', 5)
+         svg.append('text').attr('class', 'town_name').text('Hover on the towns below!').attr('alignment-baseline', 'middle').attr('y',-130).attr('font-size', '30px').attr('font-weight', 5)
        
          svg.append('text').attr('class', 'housing_stock').text('HOUSING STOCK: TOWN vs STATE AVERAGES').attr('x', width/35).attr('y',-90).attr('font-weight', 5)
          svg.append('text').attr('class', 'housing_stock').text('DEMOGRAPHICS: TOWN vs STATE AVERAGES').attr('x', width/35).attr('y',130).attr('font-weight', 5)
@@ -595,7 +595,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
 
           console.log(newWidth, 'newWidth 1')
         projection
-        .scale(newWidth*20)
+        .scale(newWidth*15)
         .translate([(newWidth) / 2, (newHeight)/2]);
 
         } else if (newWidth > 450){
