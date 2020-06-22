@@ -3,9 +3,9 @@ import * as topojson from 'topojson'
 import d3Tip from 'd3-tip'
 d3.tip = d3Tip
 
-let margin = { top: 150, left: 150, right: 150, bottom: 150 }
+let margin = { top: 200, left: 150, right: 150, bottom: 150 }
 
-let height = 1000 - margin.top - margin.bottom
+let height = 1200 - margin.top - margin.bottom
 
 let width = 1000 - margin.left - margin.right
 
@@ -20,7 +20,7 @@ let svg = d3
   .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
   const projection = d3.geoMercator()
-    .center([-72.68, 41.85])
+    .center([-72.68, 41.65])
     .scale(width*20)
     .translate([(width) / 2, (height)/2]);
 const path = d3.geoPath().projection(projection)
@@ -30,12 +30,10 @@ var yPositionScale = d3.scaleLinear()
             .domain([0, 100]);
 
 
-const colorScale = d3.scaleOrdinal()
-.domain(['Exempt', 'Non-Exempt'])
-.range(["#E97A", "#dcdcdc"])
 
 
-const colorScale2 = d3.scaleSequential(d3.interpolateViridis).domain([0, 774340.5])
+
+const colorScale = d3.scaleSequential(d3.interpolateOranges).domain([0, 100])
 
 
 d3.json('data/Town_Boundary_Index_Map.geojson', function(err, data){
@@ -46,35 +44,45 @@ Promise.all([
     d3.json(require('/data/Town_Boundary_Index_Map.geojson')),
     d3.json(require('/data/ct_towns_simplified.topojson')),
     d3.csv(require('/data/race_by_town_ct.csv')),
-    d3.csv(require('/data/affordable_housing.csv'))
+    d3.csv(require('/data/affordable_housing.csv')),
+    d3.csv(require('/data/2018_ACS_Housing - Sheet1.csv')),
+    d3.csv(require('/data/Median_Sales_Prices_by_Year_and_Municipality.csv'))
   ]).then(ready)
   .catch(err => console.log('Failed on', err))
 
 
 
 
-function ready([json, json2, race, housing]) {
+function ready([json, json2, race, housing, single_family, single_family_sales]) {
     
     const towns = topojson.feature(json2, json2.objects.townct_37800_0000_2010_s100_census_1_shp_wgs84)
     console.log(towns, 'towns')
-    // console.log(boroughs.features)
-    // const districts = topojson.feature(json2, json2.objects.school_districts)
 
-         svg.append('text').attr('class', 'town_name').text('Hover on the towns below!').attr('alignment-baseline', 'middle').attr('y',-120).attr('font-size', '30px').attr('font-weight', 5)
-         svg.append('text').attr('class', 'race_black').text('Race black').attr('x', 20).attr('y',40).attr('font-weight', 5)
-
-         svg.append('text').attr('class', 'race_hispanic').text('Race Hispanic').attr('x', 20).attr('y',-65).attr('font-weight', 5)
-         svg.append('text').attr('class', 'affordable_housing').text('Affordable Housing').attr('x', 20).attr('y',145).attr('font-weight', 5)
-
-         svg.append('circle').attr('r', 6).attr('fill', colorScale('Exempt')).attr('cx', 3*width/4).attr('cy',height-100)
-
-         svg.append('circle').attr('r', 6).attr('fill', colorScale('Non-Exempt')).attr('cx', width/2).attr('cy',height-100)
+// towns
+         svg.append('text').attr('class', 'town_name').text('Hover on the towns below!').attr('alignment-baseline', 'middle').attr('y',-140).attr('font-size', '30px').attr('font-weight', 5)
+       
+         svg.append('text').attr('class', 'housing_stock').text('HOUSING STOCK: TOWN vs STATE AVERAGES').attr('x', width/35).attr('y',-90).attr('font-weight', 5)
+         svg.append('text').attr('class', 'housing_stock').text('DEMOGRAPHICS: TOWN vs STATE AVERAGES').attr('x', width/35).attr('y',145).attr('font-weight', 5)
 
 
+         svg.append('text').attr('class', 'label_1').text('% Single Family Homes').attr('x', width/35).attr('y',-65).attr('font-weight', 5)
+         svg.append('text').attr('class', 'label_3').text('% Government Assisted').attr('x', width/35).attr('y',40).attr('font-weight', 5)
+         svg.append('text').attr('class', 'label_5').text('% Black').attr('x', width/35).attr('y',170).attr('font-weight', 5)
+
+         svg.append('text').attr('class', 'label_2').text('Median Sale Price').attr('x', 0.4*width+35).attr('y',-65).attr('font-weight', 5)
+         svg.append('text').attr('class', 'label_4').text('% Deed Restricted').attr('x', 0.4*width+35).attr('y',40).attr('font-weight', 5)
+         svg.append('text').attr('class', 'label_6').text('% Hispanic').attr('x', 0.4*width+35).attr('y',170).attr('font-weight', 5)
+
+
+        //  svg.append('circle').attr('r', 6).attr('fill', colorScale('Exempt')).attr('cx', 3*width/4).attr('cy',height-100)
+
+        //  svg.append('circle').attr('r', 6).attr('fill', colorScale('Non-Exempt')).attr('cx', width/2).attr('cy',height-100)
+
+// bar_1
 
          svg
          .append('rect')
-         .attr('class', 'bar_hispanic_town_100')
+         .attr('class', 'bar_1_town_100')
          .attr("y",-55
          )
          .attr("height", 20)
@@ -85,7 +93,7 @@ function ready([json, json2, race, housing]) {
 
          svg
          .append('rect')
-         .attr('class', 'bar_hispanic')
+         .attr('class', 'bar_1')
          .attr("y",-55
          )
          .attr("height", 20)
@@ -98,7 +106,7 @@ function ready([json, json2, race, housing]) {
    
          svg
          .append('rect')
-         .attr('class', 'bar_hispanic_state_100')
+         .attr('class', 'bar_1_state_100')
          .attr("y",-15)
          .attr("height", 20)
          .attr("x", width/35)
@@ -109,16 +117,16 @@ function ready([json, json2, race, housing]) {
 
          svg
          .append('rect')
-         .attr('class', 'bar_hispanic_state')
+         .attr('class', 'bar_1_state')
          .attr("y",-15)
          .attr("height", 20)
          .attr("x", width/35)
-         .attr("width",yPositionScale(16))
+         .attr("width",yPositionScale(90))
          .attr('fill', 'grey')
          .attr('rx',10)
          .attr('ry',10)
 
-
+//bar_2
 
          svg
          .append('rect')
@@ -129,6 +137,18 @@ function ready([json, json2, race, housing]) {
          .attr("x",0.4*width+35)
          .attr("width",0.4*width)
          .attr('fill', '#E9967A')
+         .attr('rx',10)
+         .attr('ry',10)
+
+         svg
+         .append('rect')
+         .attr('class', 'bar_2')
+         .attr("y",-55
+         )
+         .attr("height", 20)
+         .attr("x",0.4*width+35)
+         .attr("width",0)
+         .attr('fill', '#B22222')
          .attr('rx',10)
          .attr('ry',10)
    
@@ -143,6 +163,19 @@ function ready([json, json2, race, housing]) {
          .attr('rx',10)
          .attr('ry',10)
 
+
+         svg
+         .append('rect')
+         .attr('class', 'bar_2_state')
+         .attr("y",-15)
+         .attr("height", 20)
+         .attr("x", 0.4*width+35)
+         .attr("width",yPositionScale(90))
+         .attr('fill', 'grey')
+         .attr('rx',10)
+         .attr('ry',10)
+
+//bar_4         
          svg
          .append('rect')
          .attr('class', 'bar_4_town_100')
@@ -157,6 +190,18 @@ function ready([json, json2, race, housing]) {
 
          svg
          .append('rect')
+         .attr('class', 'bar_4')
+         .attr("y",85
+         )
+         .attr("height", 20)
+         .attr("x",0.4*width+35)
+         .attr("width",0)
+         .attr('fill', '#B22222')
+         .attr('rx',10)
+         .attr('ry',10)
+
+         svg
+         .append('rect')
          .attr('class', 'bar_4_state_100')
          .attr("y",85
          )
@@ -166,11 +211,25 @@ function ready([json, json2, race, housing]) {
          .attr('fill', 'lightgrey')
          .attr('rx',10)
          .attr('ry',10)
-        
+
 
          svg
          .append('rect')
-         .attr('class', 'bar_black_town_100')
+         .attr('class', 'bar_4_state')
+         .attr("y",85)
+         .attr("height", 20)
+         .attr("x", 0.4*width+35)
+         .attr("width",yPositionScale(90))
+         .attr('fill', 'grey')
+         .attr('rx',10)
+         .attr('ry',10)
+
+
+        
+//bar_3
+         svg
+         .append('rect')
+         .attr('class', 'bar_3_town_100')
          .attr("y",45
          )
          .attr("height", 20)
@@ -182,7 +241,7 @@ function ready([json, json2, race, housing]) {
    
          svg
          .append('rect')
-         .attr('class', 'bar_black')
+         .attr('class', 'bar_3')
          .attr("y",45)
          .attr("height", 20)
          .attr("x", width/35)
@@ -193,7 +252,7 @@ function ready([json, json2, race, housing]) {
          
          svg
          .append('rect')
-         .attr('class', 'bar_black_state_100')
+         .attr('class', 'bar_3_state_100')
          .attr("y",85
          )
          .attr("height", 20)
@@ -206,21 +265,22 @@ function ready([json, json2, race, housing]) {
 
          svg
          .append('rect')
-         .attr('class', 'bar_race_state')
+         .attr('class', 'bar_3_state')
          .attr("y",85
          )
          .attr("height", 20)
          .attr("x",width/35)
-         .attr("width",yPositionScale(10))
+         .attr("width",yPositionScale(90))
          .attr('fill', 'grey')
          .attr('rx',10)
          .attr('ry',10)
 
+//bar_5
 
          svg
          .append('rect')
-         .attr('class', 'bar_affordable_town_100')
-         .attr("y",150
+         .attr('class', 'bar_5_town_100')
+         .attr("y",180
          )
          .attr("height", 20)
          .attr("x", width/35)
@@ -231,8 +291,8 @@ function ready([json, json2, race, housing]) {
 
          svg
          .append('rect')
-         .attr('class', 'bar_affordable')
-         .attr("y",150
+         .attr('class', 'bar_5')
+         .attr("y",180
          )
          .attr("height", 20)
          .attr("x", width/35)
@@ -241,12 +301,10 @@ function ready([json, json2, race, housing]) {
          .attr('rx',10)
          .attr('ry',10)
 
-         
-
          svg
          .append('rect')
-         .attr('class', 'bar_affordable_state_100')
-         .attr("y",190
+         .attr('class', 'bar_5_state_100')
+         .attr("y",220
          )
          .attr("height", 20)
          .attr("x", 20)
@@ -254,11 +312,24 @@ function ready([json, json2, race, housing]) {
          .attr('fill', 'lightgrey')
          .attr('rx',10)
          .attr('ry',10)
-   
+
          svg
          .append('rect')
-         .attr('class', 'bar_5_state_100')
-         .attr("y",190)
+         .attr('class', 'bar_5_state')
+         .attr("y",220
+         )
+         .attr("height", 20)
+         .attr("x",width/35)
+         .attr("width",yPositionScale(10))
+         .attr('fill', 'grey')
+         .attr('rx',10)
+         .attr('ry',10)
+
+//bar_6   
+         svg
+         .append('rect')
+         .attr('class', 'bar_6_state_100')
+         .attr("y",220)
          .attr("height", 20)
          .attr("x", 0.4*width +35)
          .attr("width",0.4*width)
@@ -266,28 +337,54 @@ function ready([json, json2, race, housing]) {
          .attr('rx',10)
          .attr('ry',10)
 
+        //  svg
+        //  .append('rect')
+        //  .attr('class', 'bar_6')
+        //  .attr("y",180
+        //  )
+        //  .attr("height", 20)
+        //  .attr("x",0.4*width+35)
+        //  .attr("width",0)
+        //  .attr('fill', '#B22222')
+        //  .attr('rx',10)
+        //  .attr('ry',10)
+
+        svg
+        .append('rect')
+        .attr('class', 'bar_6_town_100')
+        .attr("y",180)
+        .attr("height", 20)
+        .attr("x", 0.4*width +35)
+        .attr("width",0.4*width)
+        .attr('fill', '#E9967A')
+        .attr('rx',10)
+        .attr('ry',10)
+
+        svg
+        .append('rect')
+        .attr('class', 'bar_6')
+        .attr("y",180)
+        .attr("height", 20)
+        .attr("x", 0.4*width +35)
+        .attr("width",0)
+        .attr('fill', '#B22222')
+        .attr('rx',10)
+        .attr('ry',10)
+
+      
+
          svg
          .append('rect')
-         .attr('class', 'bar_5_town_100')
-         .attr("y",150)
+         .attr('class', 'bar_6_state')
+         .attr("y",220)
          .attr("height", 20)
-         .attr("x", 0.4*width +35)
-         .attr("width",0.4*width)
-         .attr('fill', '#E9967A')
+         .attr("x", 0.4*width+35)
+         .attr("width",yPositionScale(16))
+         .attr('fill', 'grey')
          .attr('rx',10)
          .attr('ry',10)
 
    
-
-   
-        //  svg
-        //  .append('rect')
-        //  .attr('class', 'something_else')
-        //  .attr("y",85)
-        //  .attr("height", 20)
-        //  .attr("x", 0.4*width)
-        //  .attr("width",5)
-        //  .attr('fill', 'lightblue');
          
 // d.properties.Name works if you want to use json
 
@@ -300,11 +397,14 @@ function ready([json, json2, race, housing]) {
       .attr('d', path)
       .attr('fill', function(d){
         var colorVar = 0;
-        housing.forEach(function(r){if (r.Town===d.properties.NAME10){
-          console.log(r['Status'])
-            colorVar = colorScale(r['Status'])
-            }
-        })      
+         
+
+        race.forEach(function(r){if (r.Name_to_join===d.properties.NAME10){
+          // console.log(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
+          colorVar = colorScale(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
+
+        }
+      })  
   
         return colorVar
 
@@ -315,41 +415,97 @@ function ready([json, json2, race, housing]) {
 
           svg.select('.town_name').text(d.properties.NAME10)
           race.forEach(function(r){if (r.Name_to_join===d.properties.NAME10){
-            svg.select('.race_black').text('% Black' + " " + r['Black alone'])
-            svg.select('.bar_black') .transition()
+// black            
+            svg.select('.label_5').text('% Black' + " " + r['Black alone'])
+            svg.select('.bar_5') .transition()
             .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(r['Black alone']))
 
-            console.log(r['Hispanic'])
-            svg.select('.race').text('% Black' + " " + r['Black alone'])
-            svg.select('.race_hispanic').text('% Hispanic' + " " + r['Hispanic'])
+// hispanic
+            svg.select('.label_6').text('% Hispanic' + " " + r['Hispanic'])
 
-            svg.select('.bar_hispanic') .transition()
+            svg.select('.bar_6') .transition()
             .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(r['Hispanic']))
 
             }
 
         })
+// affordable
+      //   housing.forEach(function(r){if (r.Town===d.properties.NAME10){
+      //     svg.select('.label_5').text('% Affordable' + " " + r['Percent Affordable'])
+      //     svg.select('.bar_5')
+      //     .transition()
+      //     .duration(700)
+      //     .ease(d3.easeElastic).attr('width', yPositionScale(r['Percent Affordable']))
 
-        housing.forEach(function(r){if (r.Town===d.properties.NAME10){
-          svg.select('.affordable_housing').text('% Affordable' + " " + r['Percent Affordable'])
-          svg.select('.bar_affordable')
-          .transition()
-          .duration(700)
-          .ease(d3.easeElastic).attr('width', yPositionScale(r['Percent Affordable']))
-
-        }
-      })
+      //   }
+      // })
     }).on('mouseout', function(d){
       d3.select(this).attr('opacity', '1')
     })
+    .on('click', function(d) {
+      d3.select(this).attr('opacity', '0.5')
+
+        svg.select('.town_name').text(d.properties.NAME10)
+        race.forEach(function(r){if (r.Name_to_join===d.properties.NAME10){
+          svg.select('.label_3').text('% Black' + " " + r['Black alone'])
+          svg.select('.bar_3') .transition()
+          .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(r['Black alone']))
+
+          console.log(r['Hispanic'])
+          svg.select('.race').text('% Black' + " " + r['Black alone'])
+          svg.select('.label_1').text('% Hispanic' + " " + r['Hispanic'])
+
+          svg.select('.bar_1') .transition()
+          .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(r['Hispanic']))
+
+          }
+
+      })
+
+      housing.forEach(function(r){if (r.Town===d.properties.NAME10){
+        svg.select('.label_5').text('% Affordable' + " " + r['Percent Affordable'])
+        svg.select('.bar_5')
+        .transition()
+        .duration(700)
+        .ease(d3.easeElastic).attr('width', yPositionScale(r['Percent Affordable']))
+
+      }
+    })
+  })
       .raise()
 
+
+      // housing.forEach(function(r){if (r.Town===d.properties.NAME10){
+      //   console.log(r['Status'])
+      //     colorVar = colorScale(r['Percent Affordable'])
+      //     }
+      // }) 
       d3.select('#toggle').on('click', () => {
-        svg.selectAll('.towns').attr('fill', 'black')
+        svg.selectAll('.towns').attr('fill', function(d){
+          var colorVar=0 
+            housing.forEach(function(r){if (r.Town===d.properties.NAME10){
+            colorVar = colorScale(r['Percent Affordable'])
+          }
+      }) 
+          return colorVar 
+        })
+      })
+
+      d3.select('#toggle2').on('click', () => {
+        svg.selectAll('.towns').attr('fill', function(d){
+          var colorVar=0 
+          race.forEach(function(r){if (r.Name_to_join===d.properties.NAME10){
+            // console.log(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
+            colorVar = colorScale(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
+  
+          }
+        })  
+          return colorVar 
+        })
       })
 
 
-
+// resize function
       function render() {
         const svgContainer = svg.node().closest('div')
         const svgWidth = svgContainer.offsetWidth
@@ -366,40 +522,65 @@ function ready([json, json2, race, housing]) {
 
         yPositionScale.range([0,0.4*newWidth])
 
-        svg.select('.bar_5_state_100').attr('width', 0.4*newWidth)
-        svg.select('.bar_affordable_town_100').attr('width', 0.4*newWidth)
-        svg.select('.bar_3_state_100').attr('width', 0.4*newWidth)
 
-        svg.select('.bar_hispanic_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
-        svg.select('.bar_hispanic_state_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
-        svg.select('.bar_hispanic_state').attr("x", newWidth/35)
-        svg.select('.bar_hispanic').attr("x", newWidth/35)
+        svg.selectAll('.housing_stock').attr('x', newWidth/35)
+
+        // labels
+
+      svg.select('.label_1').attr('x', newWidth/35)
+        svg.select('.label_3').attr('x', newWidth/35)
+      svg.select('.label_5').attr('x', newWidth/35)
+
+      svg.select('.label_2').attr('x', 0.4*newWidth+60)
+        svg.select('.label_4').attr('x', 0.4*newWidth+60)
+        svg.select('.label_6').attr('x', 0.4*newWidth+60)
+     
+     // bar_1  
+     svg.select('.bar_1_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+     svg.select('.bar_1_state_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+     svg.select('.bar_1_state').attr("x", newWidth/35).attr('width', yPositionScale(90))
+     svg.select('.bar_1').attr("x", newWidth/35)
+     
+     // bar_2    
+
+     svg.select('.bar_2_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+     svg.select('.bar_2_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+     svg.select('.bar_2_state').attr("x", 0.4*newWidth+60).attr('width', yPositionScale(90))
+     svg.select('.bar_2').attr("x", 0.4*newWidth+60)
+
+     // bar_3  
+     
+     
+     svg.select('.bar_3_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+     svg.select('.bar_3_state_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+     svg.select('.bar_3').attr("x", newWidth/35)
+     svg.select('.bar_3_state').attr("x", newWidth/35).attr('width', yPositionScale(90))
+
+     // bar_4    
 
 
-        svg.select('.bar_black_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
-        svg.select('.bar_black_state_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
-        svg.select('.bar_black').attr("x", newWidth/35)
-        svg.select('.bar_race_state').attr("x", newWidth/35)
+     svg.select('.bar_4_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+     svg.select('.bar_4_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+     svg.select('.bar_4_state').attr("x", 0.4*newWidth+60).attr('width', yPositionScale(90))
+     svg.select('.bar_4').attr("x", 0.4*newWidth+60)
 
-             
-        svg.select('.bar_affordable_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
-        svg.select('.bar_affordable_state_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
-        svg.select('.bar_affordable').attr("x", newWidth/35)
-        svg.select('.bar_affordable_state').attr("x", newWidth/35)
+     // bar_5    
 
-        svg.select('.bar_4_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
-        svg.select('.bar_4_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+     svg.select('.bar_5_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+     svg.select('.bar_5_state_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+     svg.select('.bar_5').attr("x", newWidth/35)
+     svg.select('.bar_5_state').attr("x", newWidth/35).attr('width', yPositionScale(10))
 
-        svg.select('.bar_5_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
-        svg.select('.bar_5_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+     // bar_6    
+
+        svg.select('.bar_6_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+        svg.select('.bar_6_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+        svg.select('.bar_6_state').attr("x", 0.4*newWidth+60).attr('width', yPositionScale(16))
+        svg.select('.bar_6').attr("x", 0.4*newWidth+60)
         
-        
-        
-        svg.select('.bar_2_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
-        svg.select('.bar_2_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
 
+      // projection 
 
-        
         if (newWidth > 500) {
 
           console.log(newWidth, 'newWidth 1')
@@ -430,22 +611,24 @@ function ready([json, json2, race, housing]) {
         .on('mouseover', function(d) {
 
           svg.select('.town_name').text(d.properties.NAME10)
+
+
           race.forEach(function(r){if (r.Name_to_join===d.properties.NAME10){
-            svg.select('.bar_black') .transition()
+            svg.select('.bar_5') .transition()
             .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(r['Black alone']))
 
-            svg.select('.bar_hispanic') .transition()
+            svg.select('.bar_6') .transition()
             .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(r['Hispanic']))
 
             }
-            housing.forEach(function(r){if (r.Town===d.properties.NAME10){
-              svg.select('.bar_affordable_town')
-              .transition()
-              .duration(700)
-              .ease(d3.easeElastic).attr('width', yPositionScale(r['Percent Affordable']))
+          //   housing.forEach(function(r){if (r.Town===d.properties.NAME10){
+          //     svg.select('.bar_5_town')
+          //     .transition()
+          //     .duration(700)
+          //     .ease(d3.easeElastic).attr('width', yPositionScale(r['Percent Affordable']))
     
-            }
-          })
+          //   }
+          // })
 
           })
 
