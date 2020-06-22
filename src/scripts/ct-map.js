@@ -3,9 +3,9 @@ import * as topojson from 'topojson'
 import d3Tip from 'd3-tip'
 d3.tip = d3Tip
 
-let margin = { top: 200, left: 150, right: 150, bottom: 150 }
+let margin = { top: 200, left: 150, right: 150, bottom: 0 }
 
-let height = 1200 - margin.top - margin.bottom
+let height = 800 - margin.top - margin.bottom
 
 let width = 1000 - margin.left - margin.right
 
@@ -20,7 +20,7 @@ let svg = d3
   .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
   const projection = d3.geoMercator()
-    .center([-72.68, 41.5])
+    .center([-72.68, 42])
     .scale(width*20)
     .translate([(width) / 2, (height)/2]);
 const path = d3.geoPath().projection(projection)
