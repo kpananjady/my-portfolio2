@@ -20,7 +20,7 @@ let svg = d3
   .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
   const projection = d3.geoMercator()
-    .center([-72.68, 41.95])
+    .center([-72.68, 41.78])
     .scale(width*20)
     .translate([(width) / 2, (height)/2]);
 const path = d3.geoPath().projection(projection)
@@ -66,11 +66,11 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
 
 
          svg.append('text').attr('class', 'label_1').text('% Single Family Homes').attr('x', width/35).attr('y',-65).attr('font-weight', 5)
-         svg.append('text').attr('class', 'label_3').text('% Government Assisted').attr('x', width/35).attr('y',30).attr('font-weight', 5)
+         svg.append('text').attr('class', 'label_3').text('% Government Subsidized').attr('x', width/35).attr('y',30).attr('font-weight', 5)
          svg.append('text').attr('class', 'label_5').text('% Black').attr('x', width/35).attr('y',155).attr('font-weight', 5)
 
          svg.append('text').attr('class', 'label_2').text('Median Sale Price').attr('x', 0.4*width+35).attr('y',-65).attr('font-weight', 5)
-         svg.append('text').attr('class', 'label_4').text('% Deed Restricted').attr('x', 0.4*width+35).attr('y',30).attr('font-weight', 5)
+         svg.append('text').attr('class', 'label_4').text('% Tenant Rental Aid').attr('x', 0.4*width+35).attr('y',30).attr('font-weight', 5)
          svg.append('text').attr('class', 'label_6').text('% Hispanic').attr('x', 0.4*width+35).attr('y',155).attr('font-weight', 5)
 
 
@@ -429,16 +429,24 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
             }
 
         })
-// affordable
-      //   housing.forEach(function(r){if (r.Town===d.properties.NAME10){
-      //     svg.select('.label_5').text('% Affordable' + " " + r['Percent Affordable'])
-      //     svg.select('.bar_5')
-      //     .transition()
-      //     .duration(700)
-      //     .ease(d3.easeElastic).attr('width', yPositionScale(r['Percent Affordable']))
 
-      //   }
-      // })
+        housing.forEach(function(r){if (r.Town===d.properties.NAME10){
+
+          svg.select('.label_3').text('% Govt Subsidized' + " " + Math.round(100*parseFloat(r['Government Assisted'].replace(',',''))/parseFloat(r['Total Housing Units 2010 Census'].replace(',',''))))
+          svg.select('.bar_3')
+          .transition()
+          .duration(700)
+          .ease(d3.easeElastic).attr('width', yPositionScale(100*parseFloat(r['Government Assisted'].replace(',',''))/parseFloat(r['Total Housing Units 2010 Census'].replace(',',''))))
+
+          svg.select('.label_4').text('% Tenant Rental Aid' + " " + Math.round(100*parseFloat(r['Tenant Rental Assistance'].replace(',',''))/parseFloat(r['Total Housing Units 2010 Census'].replace(',',''))))
+          svg.select('.bar_4')
+          .transition()
+          .duration(700)
+          .ease(d3.easeElastic).attr('width', yPositionScale(100*parseFloat(r['Tenant Rental Assistance'].replace(',',''))/parseFloat(r['Total Housing Units 2010 Census'].replace(',',''))))
+
+
+        }
+      })
     }).on('mouseout', function(d){
       d3.select(this).attr('opacity', '1')
     })
@@ -504,6 +512,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
           return colorVar 
         })
       })
+
 
 
 // resize function
