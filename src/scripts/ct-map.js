@@ -54,6 +54,8 @@ Promise.all([
 
 
 function ready([json, json2, race, housing, single_family, single_family_sales]) {
+
+  var colorCurr = 0
     
     const towns = topojson.feature(json2, json2.objects.townct_37800_0000_2010_s100_census_1_shp_wgs84)
     console.log(towns, 'towns')
@@ -411,7 +413,9 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
     })
       .attr('stroke', 'lightgrey')
       .on('mouseover', function(d) {
-        d3.select(this).attr('opacity', '0.5')
+
+        colorCurr = d3.select(this).style('fill')
+        d3.select(this).attr('fill', 'lightgrey').attr('opacity','0.5')
 
           svg.select('.town_name').text(d.properties.NAME10)
           race.forEach(function(r){if (r.Name_to_join===d.properties.NAME10){
@@ -448,7 +452,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
         }
       })
     }).on('mouseout', function(d){
-      d3.select(this).attr('opacity', '1')
+      d3.select(this).attr('fill', colorCurr).attr('opacity','1')
     })
     .on('click', function(d) {
       d3.select(this).attr('opacity', '0.5')
@@ -595,10 +599,13 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
 
           console.log(newWidth, 'newWidth 1')
         projection
-        .scale(newWidth*10)
+        .scale(newWidth*17)
         .translate([(newWidth) / 2, (newHeight)/2]);
 
         } else if (newWidth > 450){
+
+          svg.select('.label_1').text('% Single Family')
+          svg.select('.label_3').text('% Govt Subsidized')
           console.log(newWidth, 'newWidth 2')
 
           projection
@@ -606,12 +613,66 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
         .translate([(newWidth) / 2, (newHeight)/2]);
         }
         
-        else {
+        else if (newWidth > 250) {
 
           console.log(newWidth, 'newWidth 3')
           projection
           .scale(newWidth*25)
           .translate([(newWidth) / 2, (newHeight)/2]);
+        }
+        
+        
+        else {
+          console.log(newWidth, 'newWidth 4')
+
+          projection
+          .scale(newWidth*45)
+          .translate([(newWidth) / 2, (newHeight)/2]);
+
+          svg.select('.label_1').text('% Single Family').attr('x', 5)
+
+
+          svg.select('.bar_1_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/45)
+          svg.select('.bar_1_state_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+          svg.select('.bar_1_state').attr("x", newWidth/35).attr('width', yPositionScale(90))
+          svg.select('.bar_1').attr("x", newWidth/35)
+          
+          // bar_2    
+     
+          svg.select('.bar_2_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+          svg.select('.bar_2_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+          svg.select('.bar_2_state').attr("x", 0.4*newWidth+60).attr('width', yPositionScale(90))
+          svg.select('.bar_2').attr("x", 0.4*newWidth+60)
+     
+          // bar_3  
+          
+          
+          svg.select('.bar_3_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+          svg.select('.bar_3_state_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+          svg.select('.bar_3').attr("x", newWidth/35)
+          svg.select('.bar_3_state').attr("x", newWidth/35).attr('width', yPositionScale(90))
+     
+          // bar_4    
+     
+     
+          svg.select('.bar_4_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+          svg.select('.bar_4_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+          svg.select('.bar_4_state').attr("x", 0.4*newWidth+60).attr('width', yPositionScale(90))
+          svg.select('.bar_4').attr("x", 0.4*newWidth+60)
+     
+          // bar_5    
+     
+          svg.select('.bar_5_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+          svg.select('.bar_5_state_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+          svg.select('.bar_5').attr("x", newWidth/35)
+          svg.select('.bar_5_state').attr("x", newWidth/35).attr('width', yPositionScale(10))
+     
+          // bar_6    
+     
+             svg.select('.bar_6_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+             svg.select('.bar_6_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+             svg.select('.bar_6_state').attr("x", 0.4*newWidth+60).attr('width', yPositionScale(16))
+             svg.select('.bar_6').attr("x", 0.4*newWidth+60)
         }
         
         svg.selectAll('.towns')
