@@ -642,7 +642,9 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
           console.log(newWidth, 'newWidth 2')
 
           projection
-        .scale(newWidth*15)
+        .scale(newWidth*20)
+        .center([-72.68, 41.7])
+
         .translate([(newWidth) / 2, (newHeight)/2]);
         }
         
@@ -650,7 +652,8 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
 
           console.log(newWidth, 'newWidth 3')
           projection
-          .scale(newWidth*25)
+          .center([-72.68, 41.7])
+          .scale(newWidth*30)
           .translate([(newWidth) / 2, (newHeight)/2]);
         }
         
@@ -660,59 +663,66 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
 
           projection
           .scale(svgWidth*20)
-          .center([-72, 41.5])
+          .center([-71.8, 41.5])
           .translate([(svgWidth) / 2, (svgHeight)/2]);
 
-          svg.select('.label_1').attr('x', svgWidth/55).text('% SF')
-          svg.select('.label_3').attr('x', svgWidth/35).text('% GS')
-        svg.select('.label_5').attr('x', svgWidth/35)
+
+          svg.select('.town_name').attr('x', -svgWidth/35)
+          svg.select('.housing_stock').attr('x', -svgWidth/35)
+
+          svg.select('.demo').attr('x', -svgWidth/35)
+
+
+          svg.select('.label_1').attr('x', -svgWidth/35).text('% SF')
+          svg.select('.label_3').attr('x', -svgWidth/35).text('% GS')
+        svg.select('.label_5').attr('x', -svgWidth/35)
   
-        svg.select('.label_2').attr('x', 0.2*svgWidth+60)
-          svg.select('.label_4').attr('x', 0.2*svgWidth+60)
-          svg.select('.label_6').attr('x', 0.2*svgWidth+60)
+        svg.select('.label_2').attr('x', 0.2*svgWidth+30)
+          svg.select('.label_4').attr('x', 0.2*svgWidth+30)
+          svg.select('.label_6').attr('x', 0.2*svgWidth+30)
        
        // bar_1  
-       svg.select('.bar_1_town_100').attr('width', 0.2*svgWidth).attr("x", svgWidth/35)
-       svg.select('.bar_1_state_100').attr('width', 0.2*svgWidth).attr("x", svgWidth/35)
-       svg.select('.bar_1_state').attr("x", svgWidth/35).attr('width', yPositionScale(64.4))
-       svg.select('.bar_1').attr("x", svgWidth/35).attr('width', 0)
+       svg.select('.bar_1_town_100').attr('width', 0.2*svgWidth).attr("x", -svgWidth/35)
+       svg.select('.bar_1_state_100').attr('width', 0.2*svgWidth).attr("x", -svgWidth/35)
+       svg.select('.bar_1_state').attr("x", -svgWidth/35).attr('width', yPositionScale(64.4))
+       svg.select('.bar_1').attr("x", -svgWidth/35).attr('width', 0)
        
        // bar_2    
   
-       svg.select('.bar_2_state_100').attr("x",0.2*svgWidth+60).attr('width', 0.2*svgWidth)
-       svg.select('.bar_2_town_100').attr("x",0.2*svgWidth+60).attr('width', 0.2*svgWidth)
-       svg.select('.bar_2_state').attr("x", 0.2*svgWidth+60).attr('width', yPositionScale(90))
-       svg.select('.bar_2').attr("x", 0.2*svgWidth+60).attr('width', 0)
+       svg.select('.bar_2_state_100').attr("x",0.2*svgWidth+30).attr('width', 0.2*svgWidth)
+       svg.select('.bar_2_town_100').attr("x",0.2*svgWidth+30).attr('width', 0.2*svgWidth)
+       svg.select('.bar_2_state').attr("x", 0.2*svgWidth+30).attr('width', yPositionScale(90))
+       svg.select('.bar_2').attr("x", 0.2*svgWidth+30).attr('width', 0)
   
        // bar_3  
        
        
-       svg.select('.bar_3_town_100').attr('width', 0.2*svgWidth).attr("x", svgWidth/35)
-       svg.select('.bar_3_state_100').attr('width', 0.2*svgWidth).attr("x", svgWidth/35)
+       svg.select('.bar_3_town_100').attr('width', 0.2*svgWidth).attr("x", -svgWidth/35)
+       svg.select('.bar_3_state_100').attr('width', 0.2*svgWidth).attr("x", -svgWidth/35)
        svg.select('.bar_3').attr("x", svgWidth/35).attr('width', 0)
-       svg.select('.bar_3_state').attr("x", svgWidth/35).attr('width', yPositionScale(90))
+       svg.select('.bar_3_state').attr("x", -svgWidth/35).attr('width', yPositionScale(90))
   
        // bar_4    
   
   
-       svg.select('.bar_4_town_100').attr("x",0.2*svgWidth+60).attr('width', 0.2*svgWidth)
-       svg.select('.bar_4_state_100').attr("x",0.2*svgWidth+60).attr('width', 0.2*svgWidth)
-       svg.select('.bar_4_state').attr("x", 0.2*svgWidth+60).attr('width', yPositionScale(90))
-       svg.select('.bar_4').attr("x", 0.2*svgWidth+60).attr('width', 0)
+       svg.select('.bar_4_town_100').attr("x",0.2*svgWidth+30).attr('width', 0.2*svgWidth)
+       svg.select('.bar_4_state_100').attr("x",0.2*svgWidth+30).attr('width', 0.2*svgWidth)
+       svg.select('.bar_4_state').attr("x", 0.2*svgWidth+30).attr('width', yPositionScale(90))
+       svg.select('.bar_4').attr("x", 0.2*svgWidth+30).attr('width', 0)
   
        // bar_5    
   
-       svg.select('.bar_5_town_100').attr('width', 0.2*svgWidth).attr("x", svgWidth/35)
-       svg.select('.bar_5_state_100').attr('width', 0.2*svgWidth).attr("x", svgWidth/35)
-       svg.select('.bar_5').attr("x", svgWidth/35).attr('width', 0)
+       svg.select('.bar_5_town_100').attr('width', 0.2*svgWidth).attr("x", -svgWidth/35)
+       svg.select('.bar_5_state_100').attr('width', 0.2*svgWidth).attr("x", -svgWidth/35)
+       svg.select('.bar_5').attr("x", -svgWidth/35).attr('width', 0)
        svg.select('.bar_5_state').attr("x", svgWidth/35).attr('width', yPositionScale(10))
   
        // bar_6    
   
-          svg.select('.bar_6_town_100').attr("x",0.2*svgWidth+60).attr('width', 0.2*svgWidth)
-          svg.select('.bar_6_state_100').attr("x",0.2*svgWidth+60).attr('width', 0.2*svgWidth)
-          svg.select('.bar_6_state').attr("x", 0.2*svgWidth+60).attr('width', yPositionScale(16))
-          svg.select('.bar_6').attr("x", 0.2*svgWidth+60).attr('width', 0)
+          svg.select('.bar_6_town_100').attr("x",0.2*svgWidth+30).attr('width', 0.2*svgWidth)
+          svg.select('.bar_6_state_100').attr("x",0.2*svgWidth+30).attr('width', 0.2*svgWidth)
+          svg.select('.bar_6_state').attr("x", 0.2*svgWidth+30).attr('width', yPositionScale(16))
+          svg.select('.bar_6').attr("x", 0.2*svgWidth+30).attr('width', 0)
 
         }
         
