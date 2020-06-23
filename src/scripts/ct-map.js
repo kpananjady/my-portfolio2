@@ -126,7 +126,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          .attr("y",-25)
          .attr("height", 20)
          .attr("x", width/35)
-         .attr("width",yPositionScale(90))
+         .attr("width",yPositionScale(64.4))
          .attr('fill', 'grey')
          .attr('rx',10)
          .attr('ry',10)
@@ -437,9 +437,19 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
 
         })
 
-        single_family_sales.forEach(function(r){if (r.NAME===d.properties.NAME10){
-          
-        }
+        single_family.forEach(function(r){if (r.NAME===d.properties.NAME10){
+
+          console.log('here')
+          var totalUnits = parseFloat(r['DP04_0007E'].replace(',','')) + parseFloat(r['DP04_0008E'].replace(',',''))
+          var percentage = 100*totalUnits/parseFloat(r['DP04_0006E'].replace(',',''))
+
+          svg.select('.label_1').text('% SF Homes' + " " + Math.round(percentage))
+
+          svg.select('.bar_1') .transition()
+            .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(Math.round(percentage)))
+
+            }
+
       })
 
         single_family_sales.forEach(function(r){if (r.Municipality===d.properties.NAME10){
@@ -570,7 +580,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
      // bar_1  
      svg.select('.bar_1_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
      svg.select('.bar_1_state_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
-     svg.select('.bar_1_state').attr("x", newWidth/35).attr('width', yPositionScale(90))
+     svg.select('.bar_1_state').attr("x", newWidth/35).attr('width', yPositionScale(64.4))
      svg.select('.bar_1').attr("x", newWidth/35)
      
      // bar_2    
