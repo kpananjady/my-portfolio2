@@ -513,6 +513,15 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
   })
       .raise()
 
+      svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', height-150).attr('font-size', 10)
+      svg.append('text').attr('id', 'box4-text').text('100').attr('x',width-95).attr('y', height-150).attr('font-size', 10)
+
+
+      svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-150).attr('fill', colorScale(0))
+      svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-150).attr('fill', colorScale(25))
+      svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-150).attr('fill', colorScale(75))
+      svg.append('rect').attr('id', 'box4').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-150).attr('fill', colorScale(100))
+
 
       // housing.forEach(function(r){if (r.Town===d.properties.NAME10){
       //   console.log(r['Status'])
@@ -624,6 +633,13 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
         svg.select('.bar_6_state').attr("x", 0.4*newWidth+60).attr('width', yPositionScale(16))
         svg.select('.bar_6').attr("x", 0.4*newWidth+60).attr('width', 0)
         
+        svg.select('#box1-text').text('0').attr('x',newWidth-150).attr('y', height-150).attr('font-size', 10)
+        svg.select('#box4-text').text('100').attr('x',newWidth-65).attr('y', height-150).attr('font-size', 10)
+
+        svg.select('#box1').attr('x', newWidth-150)
+        svg.select('#box2').attr('x', newWidth-125)
+        svg.select('#box3').attr('x', newWidth-100)
+        svg.select('#box4').attr('x', newWidth-75)
 
       // projection 
 
@@ -724,9 +740,16 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
   
           svg.select('.bar_6_town_100').attr("x", 0.2*svgWidth).attr('width', 0.3*svgWidth)
           svg.select('.bar_6_state_100').attr("x", 0.2*svgWidth).attr('width', 0.3*svgWidth)
-          svg.select('.bar_6_state').attr("x", 0.3*svgWidth).attr('width', yPositionScale(16))
+          svg.select('.bar_6_state').attr("x", 0.2*svgWidth).attr('width', yPositionScale(16))
           svg.select('.bar_6').attr("x", 0.2*svgWidth).attr('width', 0)
 
+          svg.select('#box1').attr('x', newWidth-75).attr('fill', colorScale(0))
+        svg.select('#box2').attr('x', newWidth-50).attr('fill', colorScale(25))
+        svg.select('#box3').attr('x', newWidth-25).attr('fill', colorScale(75))
+        svg.select('#box4').attr('x', newWidth-0).attr('fill', colorScale(100))
+
+        svg.select('#box1-text').text('0').attr('x',newWidth-75).attr('y', height-150).attr('font-size', 10)
+        svg.select('#box4-text').text('100').attr('x',newWidth-0).attr('y', height-150).attr('font-size', 10)
         }
         
         svg.selectAll('.towns')
