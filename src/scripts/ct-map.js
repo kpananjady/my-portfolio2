@@ -175,7 +175,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          .attr("y",-25)
          .attr("height", 20)
          .attr("x", 0.4*width+35)
-         .attr("width",yPositionScale(90))
+         .attr("width",yPriceScale(262000))
          .attr('fill', 'grey')
          .attr('rx',10)
          .attr('ry',10)
@@ -224,7 +224,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          .attr("y",70)
          .attr("height", 20)
          .attr("x", 0.4*width+35)
-         .attr("width",yPositionScale(90))
+         .attr("width",yPositionScale(0.21))
          .attr('fill', 'grey')
          .attr('rx',10)
          .attr('ry',10)
@@ -275,7 +275,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          )
          .attr("height", 20)
          .attr("x",width/35)
-         .attr("width",yPositionScale(90))
+         .attr("width",yPositionScale(2.2))
          .attr('fill', 'grey')
          .attr('rx',10)
          .attr('ry',10)
@@ -634,7 +634,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
 
      svg.select('.bar_2_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
      svg.select('.bar_2_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
-     svg.select('.bar_2_state').attr("x", 0.4*newWidth+60).attr('width', yPositionScale(90))
+     svg.select('.bar_2_state').attr("x", 0.4*newWidth+60).attr('width', yPriceScale(262000))
      svg.select('.bar_2').attr("x", 0.4*newWidth+60).attr('width', 0)
 
      // bar_3  
@@ -643,14 +643,14 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
      svg.select('.bar_3_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
      svg.select('.bar_3_state_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
      svg.select('.bar_3').attr("x", newWidth/35).attr('width', 0)
-     svg.select('.bar_3_state').attr("x", newWidth/35).attr('width', yPositionScale(90))
+     svg.select('.bar_3_state').attr("x", newWidth/35).attr('width', yPositionScale(2.2))
 
      // bar_4    
 
 
      svg.select('.bar_4_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
      svg.select('.bar_4_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
-     svg.select('.bar_4_state').attr("x", 0.4*newWidth+60).attr('width', yPositionScale(90))
+     svg.select('.bar_4_state').attr("x", 0.4*newWidth+60).attr('width', yPositionScale(0.21))
      svg.select('.bar_4').attr("x", 0.4*newWidth+60).attr('width', 0)
 
      // bar_5    
@@ -745,7 +745,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
   
        svg.select('.bar_2_state_100').attr("x",0.2*svgWidth).attr('width', 0.3*svgWidth)
        svg.select('.bar_2_town_100').attr("x", 0.2*svgWidth).attr('width', 0.3*svgWidth)
-       svg.select('.bar_2_state').attr("x", 0.2*svgWidth).attr('width', yPositionScale(90))
+       svg.select('.bar_2_state').attr("x", 0.2*svgWidth).attr('width', yPriceScale(262000))
        svg.select('.bar_2').attr("x", 0.2*svgWidth).attr('width', 0)
   
        // bar_3  
@@ -754,14 +754,14 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
        svg.select('.bar_3_town_100').attr('width', 0.3*svgWidth).attr("x", -svgWidth/4)
        svg.select('.bar_3_state_100').attr('width', 0.3*svgWidth).attr("x", -svgWidth/4)
        svg.select('.bar_3').attr("x", -svgWidth/4).attr('width', 0)
-       svg.select('.bar_3_state').attr("x", -svgWidth/4).attr('width', yPositionScale(90))
+       svg.select('.bar_3_state').attr("x", -svgWidth/4).attr('width', yPositionScale(2.2))
   
        // bar_4    
   
   
        svg.select('.bar_4_town_100').attr("x", 0.2*svgWidth).attr('width', 0.3*svgWidth)
        svg.select('.bar_4_state_100').attr("x", 0.2*svgWidth).attr('width', 0.3*svgWidth)
-       svg.select('.bar_4_state').attr("x", 0.2*svgWidth).attr('width', yPositionScale(90))
+       svg.select('.bar_4_state').attr("x", 0.2*svgWidth).attr('width', yPositionScale(0.21))
        svg.select('.bar_4').attr("x", 0.2*svgWidth).attr('width', 0)
   
        // bar_5    
