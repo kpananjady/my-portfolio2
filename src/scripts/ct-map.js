@@ -498,7 +498,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
           .duration(700)
           .ease(d3.easeElastic).attr('width', yPositionScale2(100*parseFloat(r['Government Assisted'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
 
-          svg.select('.label_4').text('% Housing Vouchers' + " " + Math.round(100*parseFloat(r['Tenant Rental Assistance'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
+          svg.select('.label_4').text('% Vouchers' + " " + Math.round(100*parseFloat(r['Tenant Rental Assistance'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
           svg.select('.bar_4')
           .transition()
           .duration(700)
@@ -512,8 +512,8 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
     })
     .on('click', function(d) {
 
-      colorCurr = d3.select(this).style('fill')
-      d3.select(this).attr('fill', 'lightgrey').attr('opacity','0.5')
+      // colorCurr = d3.select(this).style('fill')
+      // d3.select(this).attr('fill', 'lightgrey').attr('opacity','0.5')
 
         svg.select('.town_name').text(d.properties.NAME10)
         race.forEach(function(r){if (r.Name_to_join===d.properties.NAME10){
@@ -776,6 +776,9 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
           svg.select('#median-sub').attr('x', -10)
           svg.select('#median-black').attr('x', -10)
 
+          svg.select('#median-price').attr('x', yPositionScale(80)+svgWidth/6)
+        svg.select('#median-voucher').attr('x', yPositionScale(80)+svgWidth/6)
+        svg.select('#median-hisp').attr('x', yPositionScale(80)+svgWidth/6)
 
        // bar_1  
        svg.select('.bar_1_town_100').attr('width', 0.3*svgWidth).attr("x", -svgWidth/4)
