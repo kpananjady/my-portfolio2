@@ -30,14 +30,29 @@ var yPositionScale = d3.scaleLinear()
             .domain([0, 100]);
 
 
+            var yPositionScale2 = d3.scaleLinear()
+            .range([0, 0.4*width])
+            .domain([0, 25]);
            
 
 var yPriceScale = d3.scaleLinear()
 .range([0, 0.4*width])
-.domain([100000, 1500000]);
+.domain([100000, 1700000]);
 
 const colorScale = d3.scaleSequential(d3.interpolateOranges).domain([0, 100])
 
+
+const tip = d3
+.tip()
+.attr('class', 'd3-tip d3-tip-scrolly')
+.style('pointer-events', 'none')
+.offset([-10, 0])
+.html(function(d) {
+  return `${d.SchoolName}`
+})
+
+
+svg.call(tip)
 
 d3.json('data/Town_Boundary_Index_Map.geojson', function(err, data){
   var geojson = geo2rect.compute(data);
@@ -131,6 +146,8 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          .attr('rx',10)
          .attr('ry',10)
 
+        svg.append('text').attr('id', 'median-sf').text('64.4').attr('y',-11).attr('x', yPositionScale(80)).attr('font-weight', 5).attr('font-size',13)
+
 //bar_2
 
          svg
@@ -175,10 +192,12 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          .attr("y",-25)
          .attr("height", 20)
          .attr("x", 0.4*width+35)
-         .attr("width",yPriceScale(262000))
+         .attr("width",yPriceScale(253241))
          .attr('fill', 'grey')
          .attr('rx',10)
          .attr('ry',10)
+
+         svg.append('text').attr('id', 'median-price').text('253K').attr('y',-11).attr('x', yPositionScale(80)+(0.4*width)+35).attr('font-weight', 5).attr('font-size',13)
 
 //bar_4         
          svg
@@ -224,11 +243,12 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          .attr("y",70)
          .attr("height", 20)
          .attr("x", 0.4*width+35)
-         .attr("width",yPositionScale(0.21))
+         .attr("width",yPositionScale2(0.21))
          .attr('fill', 'grey')
          .attr('rx',10)
          .attr('ry',10)
 
+         svg.append('text').attr('id', 'median-voucher').text('0.21').attr('y',85).attr('x', yPositionScale2(20)+(0.4*width)+35).attr('font-weight', 5).attr('font-size',13)
 
         
 //bar_3
@@ -275,10 +295,14 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          )
          .attr("height", 20)
          .attr("x",width/35)
-         .attr("width",yPositionScale(2.2))
+         .attr("width",yPositionScale2(2.2))
          .attr('fill', 'grey')
          .attr('rx',10)
          .attr('ry',10)
+
+
+         svg.append('text').attr('id', 'median-sub').text('2.2').attr('y',85).attr('x', yPositionScale2(20)).attr('font-weight', 5).attr('font-size',13)
+
 
 //bar_5
 
@@ -329,6 +353,9 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          .attr('fill', 'grey')
          .attr('rx',10)
          .attr('ry',10)
+
+         svg.append('text').attr('id', 'median-black').text('10').attr('y',209).attr('x', yPositionScale(80)).attr('font-weight', 5).attr('font-size',13)
+
 
 //bar_6   
          svg
@@ -388,6 +415,8 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
          .attr('fill', 'grey')
          .attr('rx',10)
          .attr('ry',10)
+
+         svg.append('text').attr('id', 'median-hisp').text('16').attr('y',209).attr('x', yPositionScale(80)+35).attr('font-weight', 5).attr('font-size',13)
 
    
          
@@ -452,7 +481,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
       })
 
         single_family_sales.forEach(function(r){if (r.Municipality===d.properties.NAME10){
-          svg.select('.label_2').text('Price:' + " " + r['2019'])
+          svg.select('.label_2').text('Price:' + " $" + r['2019'])
 
           svg.select('.bar_2') .transition()
           .duration(700).ease(d3.easeElastic).attr('width', yPriceScale(r['2019'].replace('$','').replace( new RegExp(',','g'),'')))
@@ -467,13 +496,13 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
           svg.select('.bar_3')
           .transition()
           .duration(700)
-          .ease(d3.easeElastic).attr('width', yPositionScale(100*parseFloat(r['Government Assisted'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
+          .ease(d3.easeElastic).attr('width', yPositionScale2(100*parseFloat(r['Government Assisted'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
 
           svg.select('.label_4').text('% Housing Vouchers' + " " + Math.round(100*parseFloat(r['Tenant Rental Assistance'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
           svg.select('.bar_4')
           .transition()
           .duration(700)
-          .ease(d3.easeElastic).attr('width', yPositionScale(100*parseFloat(r['Tenant Rental Assistance'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
+          .ease(d3.easeElastic).attr('width', yPositionScale2(100*parseFloat(r['Tenant Rental Assistance'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
 
 
         }
@@ -518,7 +547,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
     })
 
       single_family_sales.forEach(function(r){if (r.Municipality===d.properties.NAME10){
-        svg.select('.label_2').text('Price:' + " " + r['2019'])
+        svg.select('.label_2').text('Price:' + " $" + r['2019'])
 
         svg.select('.bar_2') .transition()
         .duration(700).ease(d3.easeElastic).attr('width', yPriceScale(r['2019'].replace('$','').replace( new RegExp(',','g'),'')))
@@ -533,13 +562,13 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
         svg.select('.bar_3')
         .transition()
         .duration(700)
-        .ease(d3.easeElastic).attr('width', yPositionScale(100*parseFloat(r['Government Assisted'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
+        .ease(d3.easeElastic).attr('width', yPositionScale2(100*parseFloat(r['Government Assisted'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
 
         svg.select('.label_4').text('% Housing Vouchers' + " " + Math.round(100*parseFloat(r['Tenant Rental Assistance'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
         svg.select('.bar_4')
         .transition()
         .duration(700)
-        .ease(d3.easeElastic).attr('width', yPositionScale(100*parseFloat(r['Tenant Rental Assistance'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
+        .ease(d3.easeElastic).attr('width', yPositionScale2(100*parseFloat(r['Tenant Rental Assistance'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
 
 
       }
@@ -604,6 +633,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
 
 
         yPositionScale.range([0,0.4*newWidth])
+        yPositionScale2.range([0,0.4*newWidth])
         yPriceScale.range([0,0.4*newWidth])
 
         svg.selectAll('.housing_stock').attr('x', newWidth/35)
@@ -614,6 +644,12 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
        
          svg.select('.housing_stock').text('HOUSING STOCK: TOWN vs STATE').attr('x', svgWidth/35).attr('y',-90).attr('font-weight', 5)
          svg.select('.demo').text('DEMOGRAPHICS: TOWN vs STATE').attr('x', width/35).attr('y',125).attr('font-weight', 5)
+        svg.select('#median-sf').attr('x', yPositionScale(80))
+        svg.select('#median-price').attr('x', yPositionScale(80)+0.4*newWidth+35)
+        svg.select('#median-sub').attr('x', yPositionScale(80))
+        svg.select('#median-voucher').attr('x', yPositionScale(80)+0.4*newWidth+35)
+        svg.select('#median-black').attr('x', yPositionScale(80))
+        svg.select('#median-hisp').attr('x', yPositionScale(80)+0.4*newWidth+35)
 
 
       svg.select('.label_1').attr('x', newWidth/35).text('% Single Family')
@@ -634,7 +670,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
 
      svg.select('.bar_2_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
      svg.select('.bar_2_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
-     svg.select('.bar_2_state').attr("x", 0.4*newWidth+60).attr('width', yPriceScale(262000))
+     svg.select('.bar_2_state').attr("x", 0.4*newWidth+60).attr('width', yPriceScale(253241))
      svg.select('.bar_2').attr("x", 0.4*newWidth+60).attr('width', 0)
 
      // bar_3  
@@ -643,14 +679,14 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
      svg.select('.bar_3_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
      svg.select('.bar_3_state_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
      svg.select('.bar_3').attr("x", newWidth/35).attr('width', 0)
-     svg.select('.bar_3_state').attr("x", newWidth/35).attr('width', yPositionScale(2.2))
+     svg.select('.bar_3_state').attr("x", newWidth/35).attr('width', yPositionScale2(2.2))
 
      // bar_4    
 
 
      svg.select('.bar_4_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
      svg.select('.bar_4_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
-     svg.select('.bar_4_state').attr("x", 0.4*newWidth+60).attr('width', yPositionScale(0.21))
+     svg.select('.bar_4_state').attr("x", 0.4*newWidth+60).attr('width', yPositionScale2(0.21))
      svg.select('.bar_4').attr("x", 0.4*newWidth+60).attr('width', 0)
 
      // bar_5    
@@ -712,6 +748,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
           console.log(newWidth, 'newWidth 4')
 
           yPositionScale.range([0,0.3*svgWidth])
+          yPositionScale2.range([0,0.3*svgWidth])
           yPriceScale.range([0,0.3*svgWidth])
 
           
@@ -727,14 +764,19 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
           svg.select('.demo').attr('x', -svgWidth/4)
 
 
-          svg.select('.label_1').attr('x', -svgWidth/4).text('% SF')
-          svg.select('.label_3').attr('x', -svgWidth/4).text('% GS')
+          svg.select('.label_1').attr('x', -svgWidth/4).text('% Single Family')
+          svg.select('.label_3').attr('x', -svgWidth/4).text('% Subsidized')
         svg.select('.label_5').attr('x', -svgWidth/4)
   
         svg.select('.label_2').attr('x', 0.2*svgWidth)
           svg.select('.label_4').attr('x', 0.2*svgWidth)
           svg.select('.label_6').attr('x', 0.2*svgWidth)
        
+          svg.select('#median-sf').attr('x', -10)
+          svg.select('#median-sub').attr('x', -10)
+          svg.select('#median-black').attr('x', -10)
+
+
        // bar_1  
        svg.select('.bar_1_town_100').attr('width', 0.3*svgWidth).attr("x", -svgWidth/4)
        svg.select('.bar_1_state_100').attr('width', 0.3*svgWidth).attr("x", -svgWidth/4)
@@ -745,7 +787,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
   
        svg.select('.bar_2_state_100').attr("x",0.2*svgWidth).attr('width', 0.3*svgWidth)
        svg.select('.bar_2_town_100').attr("x", 0.2*svgWidth).attr('width', 0.3*svgWidth)
-       svg.select('.bar_2_state').attr("x", 0.2*svgWidth).attr('width', yPriceScale(262000))
+       svg.select('.bar_2_state').attr("x", 0.2*svgWidth).attr('width', yPriceScale(253241))
        svg.select('.bar_2').attr("x", 0.2*svgWidth).attr('width', 0)
   
        // bar_3  
@@ -754,14 +796,14 @@ function ready([json, json2, race, housing, single_family, single_family_sales])
        svg.select('.bar_3_town_100').attr('width', 0.3*svgWidth).attr("x", -svgWidth/4)
        svg.select('.bar_3_state_100').attr('width', 0.3*svgWidth).attr("x", -svgWidth/4)
        svg.select('.bar_3').attr("x", -svgWidth/4).attr('width', 0)
-       svg.select('.bar_3_state').attr("x", -svgWidth/4).attr('width', yPositionScale(2.2))
+       svg.select('.bar_3_state').attr("x", -svgWidth/4).attr('width', yPositionScale2(2.2))
   
        // bar_4    
   
   
        svg.select('.bar_4_town_100').attr("x", 0.2*svgWidth).attr('width', 0.3*svgWidth)
        svg.select('.bar_4_state_100').attr("x", 0.2*svgWidth).attr('width', 0.3*svgWidth)
-       svg.select('.bar_4_state').attr("x", 0.2*svgWidth).attr('width', yPositionScale(0.21))
+       svg.select('.bar_4_state').attr("x", 0.2*svgWidth).attr('width', yPositionScale2(0.21))
        svg.select('.bar_4').attr("x", 0.2*svgWidth).attr('width', 0)
   
        // bar_5    
