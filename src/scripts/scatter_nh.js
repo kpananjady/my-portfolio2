@@ -24,9 +24,14 @@ const yPositionScale = d3
   .domain([0, 120])
   .range([height, 0])
 
+  const yPositionScale2 = d3
+  .scaleLinear()
+  .domain([0, 400])
+  .range([height, 0])
+
 const radiusScale = d3
   .scaleSqrt()
-  .domain([0, 150])
+  .domain([0, 120])
   .range([2, 15])
 
 const tip = d3
@@ -34,7 +39,7 @@ const tip = d3
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return `Name: <span style='color:grey'>${d['Provider Name_x']}</span>`
+    return `${d['Provider Name_x']}`
   })
 
   const tip2 = d3
@@ -69,6 +74,7 @@ function draw(value) {
 function draw_2(value) {
   svg
     .append('line') // attach a line
+    .attr('class', 'y_lines')
     .style('stroke', 'lightgrey') // colour the line
     .style('stroke-dasharray', '3, 3')
     .attr('stroke-width', 3)
@@ -81,21 +87,46 @@ d3.csv(require('../data/NH.csv')).then(ready)
 
 function ready(datapoints) {
 
-svg.append('text').attr('class', 'graph_name').text('Confirmed cases in 192 CT Nursing Homes').attr('alignment-baseline', 'middle').attr('y',-55).attr('font-size', '30px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_name').text('Confirmed COVID-19 Cases').attr('alignment-baseline', 'middle').attr('y',-55).attr('font-size', '25px').attr('font-weight', 5)
 
   console.log('Data read in:', datapoints)
 
-  ticks_x.forEach(draw)
+//   ticks_x.forEach(draw)
   ticks_y.forEach(draw_2)
-//   svg
-//     .append('line')
-//     .attr('x1', xPositionScale(0))
-//     .attr('y1', yPositionScale(0))
-//     .attr('x2', xPositionScale(0.5))
-//     .attr('y2', yPositionScale(0.5))
-//     .attr('stroke-width', 2)
-//     .attr('stroke', 'grey')
-//     .attr('stroke-dasharray', '5,5')
+
+
+  svg
+    .append('line') // attach a line
+    .attr('id', 'line_100')
+    .style('stroke', 'lightgrey') // colour the line
+    .style('stroke-dasharray', '3, 3')
+    .attr('stroke-width', 3)
+    .attr('x1', xPositionScale(100)) // x position of the first end of the line
+    .attr('y1', height) // y position of the first end of the line
+    .attr('x2', xPositionScale(100)) // x position of the second end of the line
+    .attr('y2', 0)
+
+    svg
+    .append('line') // attach a line
+    .attr('id', 'line_200')
+    .style('stroke', 'lightgrey') // colour the line
+    .style('stroke-dasharray', '3, 3')
+    .attr('stroke-width', 3)
+    .attr('x1', xPositionScale(200)) // x position of the first end of the line
+    .attr('y1', height) // y position of the first end of the line
+    .attr('x2', xPositionScale(200)) // x position of the second end of the line
+    .attr('y2', 0)
+
+    svg
+    .append('line') // attach a line
+    .attr('id', 'line_300')
+    .style('stroke', 'lightgrey') // colour the line
+    .style('stroke-dasharray', '3, 3')
+    .attr('stroke-width', 3)
+    .attr('x1', xPositionScale(300)) // x position of the first end of the line
+    .attr('y1', height) // y position of the first end of the line
+    .attr('x2', xPositionScale(300)) // x position of the second end of the line
+    .attr('y2', 0)
 
   svg
     .selectAll('circle')
@@ -114,7 +145,7 @@ svg.append('text').attr('class', 'graph_name').text('Confirmed cases in 192 CT N
 
     d3.select('#toggle').on('click', () => {
 
-        svg.select('.graph_name').text('Confirmed Cases from 192 CT Nursing Homes')
+        svg.select('.graph_name').text('Confirmed COVID-19 Cases Among Staff')
         svg.selectAll('.n_homes')
         .transition()
         .duration(1500)
@@ -126,7 +157,7 @@ svg.append('text').attr('class', 'graph_name').text('Confirmed cases in 192 CT N
 
 
     d3.select('#toggle2').on('click', () => {
-        svg.select('.graph_name').text('Suspected Cases from 192 CT Nursing Homes')
+        svg.select('.graph_name').text('Suspected COVID-19 Cases')
         svg.selectAll('.n_homes')
         .transition()
         .duration(1500)
@@ -138,8 +169,25 @@ svg.append('text').attr('class', 'graph_name').text('Confirmed cases in 192 CT N
         .on('mouseout', tip2.hide)
     })
 
+    d3.select('#toggle3').on('click', () => {
+        svg.select('.graph_name').text('Suspected and Confirmed COVID-19 Cases')
+        svg.selectAll('.n_homes')
+        .transition()
+        .duration(1500)
+        .ease(d3.easeElastic)
+        .attr('r', d => radiusScale(parseFloat(d['Staff Total Suspected COVID-19'])+parseFloat(d['Staff Total Confirmed COVID-19'])))
+        .attr('cx', d => xPositionScale(d['Average Daily Count of All Employees']))
+        .attr('cy', function(d){
+            var suspected_and_confirmed = parseFloat(d['Staff Total Suspected COVID-19'])+parseFloat(d['Staff Total Confirmed COVID-19'])
+            
+            return yPositionScale(suspected_and_confirmed)
+        })
+       
+    })
+
   svg
     .append('text')
+    .attr('id', 'x_label')
     .text('Average Daily Count of Employees')
     .style('text-anchor', 'middle')
     .attr('x', width / 2)
@@ -165,7 +213,7 @@ svg.append('text').attr('class', 'graph_name').text('Confirmed cases in 192 CT N
 
     .call(yAxis)
 
-  const xAxis = d3.axisBottom(xPositionScale).ticks(4)
+  var xAxis = d3.axisBottom(xPositionScale).ticks(4)
   svg
     .append('g')
     .attr('class', 'axis x-axis')
@@ -174,32 +222,46 @@ svg.append('text').attr('class', 'graph_name').text('Confirmed cases in 192 CT N
     .call(xAxis)
 
 
-//   function make_x_gridlines() {
-//     return d3.axisBottom(x).ticks(5)
-//   }
+    function render() {
+        const svgContainer = svg.node().closest('div')
+        const svgWidth = svgContainer.offsetWidth
+        // Do you want it to be full height? Pick one of the two below
+        const svgHeight = height + margin.top + margin.bottom
+        // const svgHeight = window.innerHeight
+    
+        const actualSvg = d3.select(svg.node().closest('svg'))
+        actualSvg.attr('width', svgWidth).attr('height', svgHeight)
+    
+        const newWidth = svgWidth - margin.left - margin.right
+        const newHeight = svgHeight - margin.top - margin.bottom
 
-//   // gridlines in y axis function
-//   function make_y_gridlines() {
-//     return d3.axisLeft(y).ticks(5)
-//   }
 
-//   svg
-//     .append('g')
-//     .attr('class', 'grid')
-//     .attr('transform', 'translate(0,' + height + ')')
-//     .call(
-//       make_x_gridlines()
-//         .tickSize(-height)
-//         .tickFormat('')
-//     )
+        xPositionScale.range([0,newWidth])
 
-  // add the Y gridlines
-//   svg
-//     .append('g')
-//     .attr('class', 'grid')
-//     .call(
-//       make_y_gridlines()
-//         .tickSize(-width)
-//         .tickFormat('')
-//     )
+        svg.selectAll('.n_homes').attr('cx', d => xPositionScale(d['Average Daily Count of All Employees']))
+        svg.selectAll('.y_lines').attr('x1', newWidth) // x position of the first end of the line
+
+       
+        svg.select('#line_100')
+        .attr('x1', xPositionScale(100)) // x position of the first end of the line
+       .attr('x2', xPositionScale(100)) // x position of the second end of the line
+
+        svg.select('#line_200')
+        .attr('x1', xPositionScale(200)) // x position of the first end of the line
+       .attr('x2', xPositionScale(200))
+        svg.select('#line_300')
+        .attr('x1', xPositionScale(300)) // x position of the first end of the line
+       .attr('x2', xPositionScale(300))
+
+        svg.select('#x_label').attr('x', newWidth/2)
+
+       xAxis = d3.axisBottom(xPositionScale).ticks(4)
+       svg.select('.x-axis').call(xAxis)
+
+    }
+    window.addEventListener('resize', render)
+
+    // And now that the page has loaded, let's just try
+    // to do it once before the page has resized
+    render()
 }
