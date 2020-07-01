@@ -2,7 +2,7 @@ import * as d3 from 'd3'
 import d3Tip from 'd3-tip'
 d3.tip = d3Tip
 
-const margin = { top: 100, left: 50, right: 50, bottom: 50 }
+const margin = { top: 100, left: 150, right: 50, bottom: 50 }
 const height = 600 - margin.top - margin.bottom
 const width = 700 - margin.left - margin.right
 
@@ -37,7 +37,7 @@ const radiusScale = d3
 const tip = d3
   .tip()
   .attr('class', 'd3-tip')
-  .offset([-10, 0])
+  .offset([-20, 0])
   .html(function(d) {
     return `${d['Provider Name_x']}`
   })
@@ -45,7 +45,7 @@ const tip = d3
   const tip2 = d3
   .tip()
   .attr('class', 'd3-tip')
-  .offset([-10, 0])
+  .offset([-20, 0])
   .html(function(d) {
     return `Name: <span style='color:grey'>${d['Provider Name_x']}, ${d['Staff Total Suspected COVID-19']} </span>`
   })  
@@ -145,7 +145,7 @@ svg.append('text').attr('class', 'graph_name').text('Confirmed COVID-19 Cases').
 
     d3.select('#toggle').on('click', () => {
 
-        svg.select('.graph_name').text('Confirmed COVID-19 Cases Among Staff')
+        svg.select('.graph_name').text('Confirmed COVID-19 Cases')
         svg.selectAll('.n_homes')
         .transition()
         .duration(1500)
@@ -170,7 +170,7 @@ svg.append('text').attr('class', 'graph_name').text('Confirmed COVID-19 Cases').
     })
 
     d3.select('#toggle3').on('click', () => {
-        svg.select('.graph_name').text('Suspected and Confirmed COVID-19 Cases')
+        svg.select('.graph_name').text('Suspected + Confirmed COVID-19 Cases')
         svg.selectAll('.n_homes')
         .transition()
         .duration(1500)
