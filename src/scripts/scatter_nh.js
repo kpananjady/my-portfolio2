@@ -4,7 +4,7 @@ d3.tip = d3Tip
 
 const margin = { top: 100, left: 50, right: 50, bottom: 50 }
 const height = 600 - margin.top - margin.bottom
-const width = 800 - margin.left - margin.right
+const width = 700 - margin.left - margin.right
 
 const svg = d3
   .select('#chart-1')
@@ -81,7 +81,7 @@ d3.csv(require('../data/NH.csv')).then(ready)
 
 function ready(datapoints) {
 
-svg.append('text').attr('class', 'graph_name').text('Confirmed cases in 192 CT Nursing Homess').attr('alignment-baseline', 'middle').attr('y',-55).attr('font-size', '30px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_name').text('Confirmed cases in 192 CT Nursing Homes').attr('alignment-baseline', 'middle').attr('y',-55).attr('font-size', '30px').attr('font-weight', 5)
 
   console.log('Data read in:', datapoints)
 
@@ -109,6 +109,7 @@ svg.append('text').attr('class', 'graph_name').text('Confirmed cases in 192 CT N
     .attr('fill', 'darkblue')
     .attr('opacity', 0.25)
     .on('mouseover', tip.show)
+    .on('click', tip.show)
     .on('mouseout', tip.hide)
 
     d3.select('#toggle').on('click', () => {
