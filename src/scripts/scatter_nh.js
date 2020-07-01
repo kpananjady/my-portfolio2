@@ -2,7 +2,7 @@ import * as d3 from 'd3'
 import d3Tip from 'd3-tip'
 d3.tip = d3Tip
 
-const margin = { top: 100, left: 150, right: 50, bottom: 50 }
+var margin = { top: 100, left: 200, right: 50, bottom: 50 }
 const height = 600 - margin.top - margin.bottom
 const width = 700 - margin.left - margin.right
 
@@ -87,7 +87,7 @@ d3.csv(require('../data/NH.csv')).then(ready)
 
 function ready(datapoints) {
 
-svg.append('text').attr('class', 'graph_name').text('Confirmed COVID-19 Cases').attr('alignment-baseline', 'middle').attr('y',-55).attr('font-size', '25px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_name').text('Confirmed COVID-19 Cases').attr('alignment-baseline', 'middle').attr('y',-55).attr('x',-150).attr('font-size', '25px').attr('font-weight', 5)
 
   console.log('Data read in:', datapoints)
 
@@ -226,6 +226,8 @@ svg.append('text').attr('class', 'graph_name').text('Confirmed COVID-19 Cases').
         const svgContainer = svg.node().closest('div')
         const svgWidth = svgContainer.offsetWidth
         // Do you want it to be full height? Pick one of the two below
+        // margin = { top: 100, left: 100, right: 50, bottom: 50 }
+
         const svgHeight = height + margin.top + margin.bottom
         // const svgHeight = window.innerHeight
     
@@ -257,6 +259,22 @@ svg.append('text').attr('class', 'graph_name').text('Confirmed COVID-19 Cases').
 
        xAxis = d3.axisBottom(xPositionScale).ticks(4)
        svg.select('.x-axis').call(xAxis)
+
+       d3.select('#toggle3').on('click', () => {
+        svg.select('.graph_name').text('Suspected + Confirmed COVID-19')
+        svg.selectAll('.n_homes')
+        .transition()
+        .duration(1500)
+        .ease(d3.easeElastic)
+        .attr('r', d => radiusScale(parseFloat(d['Staff Total Suspected COVID-19'])+parseFloat(d['Staff Total Confirmed COVID-19'])))
+        .attr('cx', d => xPositionScale(d['Average Daily Count of All Employees']))
+        .attr('cy', function(d){
+            var suspected_and_confirmed = parseFloat(d['Staff Total Suspected COVID-19'])+parseFloat(d['Staff Total Confirmed COVID-19'])
+            
+            return yPositionScale(suspected_and_confirmed)
+        })
+       
+    })
 
     }
     window.addEventListener('resize', render)
