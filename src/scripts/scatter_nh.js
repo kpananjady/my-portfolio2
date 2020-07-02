@@ -242,7 +242,7 @@ svg.append('text').attr('class', 'graph_name').text('Confirmed COVID-19 Cases').
 
         svg.selectAll('.n_homes').attr('cx', d => xPositionScale(d['Average Daily Count of All Employees']))
         svg.selectAll('.y_lines').attr('x1', newWidth) // x position of the first end of the line
-
+        svg.select('y-axis').attr('x',-50)
        
         svg.select('#line_100')
         .attr('x1', xPositionScale(100)) // x position of the first end of the line
@@ -260,6 +260,34 @@ svg.append('text').attr('class', 'graph_name').text('Confirmed COVID-19 Cases').
        xAxis = d3.axisBottom(xPositionScale).ticks(4)
        svg.select('.x-axis').call(xAxis)
 
+
+       d3.select('#toggle3').on('click', () => {
+        svg.select('.graph_name').text('All Staff COVID-19')
+        svg.selectAll('.n_homes')
+        .transition()
+        .duration(1500)
+        .ease(d3.easeElastic)
+        .attr('r', d => radiusScale(parseFloat(d['Staff Total Suspected COVID-19'])+parseFloat(d['Staff Total Confirmed COVID-19'])))
+        .attr('cx', d => xPositionScale(d['Average Daily Count of All Employees']))
+        .attr('cy', function(d){
+            var suspected_and_confirmed = parseFloat(d['Staff Total Suspected COVID-19'])+parseFloat(d['Staff Total Confirmed COVID-19'])
+            
+            return yPositionScale(suspected_and_confirmed)
+        })
+       
+    })
+
+
+       if (newWidth < 200){
+        console.log(newWidth)
+
+        svg.select('.graph_name').attr('x', -180)
+
+        svg.select('#x_label').attr('x', (newWidth-40)/2)
+
+        
+
+       }
        d3.select('#toggle3').on('click', () => {
         svg.select('.graph_name').text('Suspected + Confirmed COVID-19')
         svg.selectAll('.n_homes')
