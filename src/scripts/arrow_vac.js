@@ -4,7 +4,7 @@ import { exportDefaultSpecifier } from '@babel/types'
 d3.tip = d3Tip
 
 var margin = { top: 100, left: 100, right: 50, bottom: 50 }
-const height = 600 - margin.top - margin.bottom
+const height = 500 - margin.top - margin.bottom
 const width = 700 - margin.left - margin.right
 
 const svg = d3
