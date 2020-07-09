@@ -35,7 +35,7 @@ const svg = d3
 console.log(datapoints, 'this is the data')
 
 svg.append('text').attr('class', 'graph_name').text('Vaccinations rise in June after pandemic plummet').attr('alignment-baseline', 'middle').attr('y',-75).attr('x',-90).attr('font-size', '25px').attr('font-weight', 5)
-svg.append('text').attr('class', 'graph_sub').text('Department of Public Health doses supplied to medical providers').attr('alignment-baseline', 'middle').attr('y',-40).attr('x',-80).attr('font-size', '15px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_sub').text('Department of Public Health doses supplied to medical providers, 2020 v 2019').attr('alignment-baseline', 'middle').attr('y',-40).attr('x',-80).attr('font-size', '15px').attr('font-weight', 5)
 svg.append('circle').attr('cx', -90).attr('cy', 50).attr('r', 5)    .style("fill", "#4C4082")
 
 svg.append('text').attr('x', -80).attr('y', 53).attr('r', 5).text('2020').attr('font-size', '10px').attr('font-weight', 5)
@@ -219,13 +219,19 @@ svg
   svg.selectAll(".my_line") .attr("x1", function(d) { return xPositionScale(d.month)+xPositionScale.bandwidth()/2; })
   .attr("x2", function(d) { return xPositionScale(d.month)+xPositionScale.bandwidth()/2; })
 
+
+  if (newWidth>450){
+    svg.select('.graph_name').text('Vaccinations rise in June after pandemic plummet')
+    }
+
+
   if (newWidth<450){
   svg.select('.graph_name').text('Vaccinations rise in June after pandemic drop')
   }
 
   if (newWidth<250){
-    svg.select('.graph_name').attr('font-size', '17px')
-    svg.select('.graph_sub').text('DPH doses supplied to medical providers').attr('font-size', '15px')
+    svg.select('.graph_name').attr('font-size', '14px')
+    svg.select('.graph_sub').text('DPH doses supplied to medical providers, 2020 v 2019').attr('font-size', '10px')
 
     xPositionScale.domain(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'])
 
