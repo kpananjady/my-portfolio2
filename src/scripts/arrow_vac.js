@@ -34,8 +34,8 @@ const svg = d3
 
 console.log(datapoints, 'this is the data')
 
-svg.append('text').attr('class', 'graph_name').text('Vaccinations rise in June after pandemic downtick').attr('alignment-baseline', 'middle').attr('y',-75).attr('x',-90).attr('font-size', '25px').attr('font-weight', 5)
-svg.append('text').attr('class', 'graph_name').text('Department of Public Health doses supplied to doctors, 2019 v 2020').attr('alignment-baseline', 'middle').attr('y',-40).attr('x',-80).attr('font-size', '15px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_name').text('Vaccinations rise in June after pandemic plummet').attr('alignment-baseline', 'middle').attr('y',-75).attr('x',-90).attr('font-size', '25px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_name').text('Department of Public Health doses supplied to medical providers').attr('alignment-baseline', 'middle').attr('y',-40).attr('x',-80).attr('font-size', '15px').attr('font-weight', 5)
 svg.append('circle').attr('cx', -90).attr('cy', 50).attr('r', 5)    .style("fill", "#4C4082")
 
 svg.append('text').attr('x', -80).attr('y', 53).attr('r', 5).text('2020').attr('font-size', '10px').attr('font-weight', 5)
