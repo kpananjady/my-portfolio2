@@ -23,7 +23,7 @@ const svg = d3
   .attr('class', 'd3-tip')
   .offset([-20, 0])
   .html(function(d) {
-    return `${d['Difference']}`
+    return `At least ${d['Difference']} work out of state`
   })
 
   svg.call(tip)
@@ -37,7 +37,7 @@ const svg = d3
   
   
     const xPositionScale = d3.scaleLinear()
-    .range([10,width ])
+    .range([0,width ])
     .domain([1550,1900])
 
 
@@ -68,10 +68,10 @@ console.log(datapoints, 'this is the data')
 svg.append('text').attr('class', 'graph_name').text('Connecticut residents working out of state').attr('alignment-baseline', 'middle').attr('y',-175).attr('x',-90).attr('font-size', '25px').attr('font-weight', 5)
 svg.append('text').attr('class', 'graph_name').text('has surged dramatically since 2013').attr('alignment-baseline', 'middle').attr('y',-145).attr('x',-90).attr('font-size', '25px').attr('font-weight', 5)
 
-svg.append('text').attr('class', 'graph_sub').text('The state doesn’t track precisely how many Connecticut residents work').attr('alignment-baseline', 'middle').attr('y',-100).attr('x',-80).attr('font-size', '15px').attr('font-weight', 5)
-svg.append('text').attr('class', 'graph_sub').text('in neighboring states. But it does track how many Connecticut citizens').attr('alignment-baseline', 'middle').attr('y',-80).attr('x',-80).attr('font-size', '15px').attr('font-weight', 5)
-svg.append('text').attr('class', 'graph_sub').text('have jobs, and that’s steadily become much larger than the number').attr('alignment-baseline', 'middle').attr('y',-60).attr('x',-80).attr('font-size', '15px').attr('font-weight', 5)
-svg.append('text').attr('class', 'graph_sub').text('of people who work for Connecticut-based employers.').attr('alignment-baseline', 'middle').attr('y',-40).attr('x',-80).attr('font-size', '15px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_sub').text('The state doesn’t track precisely how many Connecticut residents work').attr('alignment-baseline', 'middle').attr('y',-100).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_sub').text('in neighboring states. But it does track how many Connecticut citizens').attr('alignment-baseline', 'middle').attr('y',-80).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_sub').text('have jobs, and that’s steadily become much larger than the number').attr('alignment-baseline', 'middle').attr('y',-60).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_sub').text('of people who work for Connecticut-based employers.').attr('alignment-baseline', 'middle').attr('y',-40).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
 
 svg.append('circle').attr('cx', -90).attr('cy', 50).attr('r', 5)    .style("fill", "#4C4082")
 
@@ -250,7 +250,7 @@ svg.selectAll("mycircle1")
     const newWidth = svgWidth - margin.left - margin.right
     const newHeight = svgHeight - margin.top - margin.bottom
 
-    xPositionScale.range([0,newWidth])
+    xPositionScale.range([20,newWidth])
 
     svg.selectAll('.x_lines').remove()
 
@@ -299,13 +299,15 @@ svg.selectAll("mycircle1")
 
 
   if (newWidth<450){
-    svg.selectAll('.graph_name').attr('alignment-baseline', 'middle').attr('font-size', '25px').attr('font-weight', 5)
+
+    svg.selectAll('.graph_name').attr('alignment-baseline', 'middle').attr('font-size', '20px').attr('font-weight', 5)
     
-    svg.selectAll('.graph_sub').attr('alignment-baseline', 'middle').attr('font-size', '15px').attr('font-weight', 5)
+    svg.selectAll('.graph_sub').attr('alignment-baseline', 'middle').attr('font-size', '10px').attr('font-weight', 5)
    
   }
 
   if (newWidth<250){
+
 
     svg.selectAll('.graph_name').attr('alignment-baseline', 'middle').attr('font-size', '17px').attr('font-weight', 5)
     
