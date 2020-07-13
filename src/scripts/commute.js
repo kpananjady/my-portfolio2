@@ -37,7 +37,7 @@ const svg = d3
   
   
     const xPositionScale = d3.scaleLinear()
-    .range([0,width ])
+    .range([10,width ])
     .domain([1550,1900])
 
 
@@ -54,6 +54,7 @@ const svg = d3
           .attr('y1', height) // y position of the first end of the line
           .attr('x2', xPositionScale(value)) // x position of the second end of the line
           .attr('y2', 0)
+          .lower()
       }
       
     
@@ -78,7 +79,7 @@ svg.append('text').attr('x', -80).attr('y', 53).attr('r', 5).text('CT employee')
 
 svg.append('text').attr('x', -80).attr('y', 23).attr('r', 5).text('CT res employed').attr('font-size', '10px').attr('font-weight', 5)
 svg.append('circle').attr('cx', -90).attr('cy', 20).attr('r', 5).style("fill", "#C0C0C0")
-svg.append('circle').attr('cx', -90).attr('cy', 20).attr('r', 5).style("fill", "#C0C0C0")
+svg.append('rect').attr('x', -90).attr('y', 20).attr('r', 5).style("fill", "#C0C0C0")
 
 
 
@@ -266,6 +267,7 @@ svg.selectAll("mycircle1")
           .attr('y1', height) // y position of the first end of the line
           .attr('x2', xPositionScale(value)) // x position of the second end of the line
           .attr('y2', 0)
+          .lower()
       }
       
     
@@ -305,7 +307,7 @@ svg.selectAll("mycircle1")
 
   if (newWidth<250){
 
-    svg.selectAll('.graph_name').attr('alignment-baseline', 'middle').attr('font-size', '20px').attr('font-weight', 5)
+    svg.selectAll('.graph_name').attr('alignment-baseline', 'middle').attr('font-size', '17px').attr('font-weight', 5)
     
     svg.selectAll('.graph_sub').attr('alignment-baseline', 'middle').attr('font-size', '10px').attr('font-weight', 5)
 //     svg.select('.graph_name').attr('font-size', '14px')
