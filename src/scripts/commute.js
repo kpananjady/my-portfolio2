@@ -23,7 +23,7 @@ const svg = d3
   .attr('class', 'd3-tip')
   .offset([-20, 0])
   .html(function(d) {
-    return `At least ${d['Difference']}k residents worked out of state`
+    return `${d['Difference']}k`
   })
 
   svg.call(tip)
@@ -81,7 +81,8 @@ svg.append('text').attr('x', -80).attr('y', 33).attr('r', 5).text('(millions)').
 
 svg.append('circle').attr('cx', -90).attr('cy', 20).attr('r', 5).style("fill", "#C0C0C0")
 svg.append('rect').attr('x', -90).attr('y', 20).attr('r', 5).style("fill", "#C0C0C0")
-svg.append('text').attr('x', -80).attr('y', 73).attr('r', 5).text('CT employees').attr('font-size', '10px').attr('font-weight', 5)
+svg.append('text').attr('x', -80).attr('y', 63).attr('r', 5).text('People working').attr('font-size', '10px').attr('font-weight', 5)
+svg.append('text').attr('x', -80).attr('y', 73).attr('r', 5).text('in CT').attr('font-size', '10px').attr('font-weight', 5)
 svg.append('text').attr('x', -80).attr('y', 83).attr('r', 5).text('(millions)').attr('font-size', '10px').attr('font-weight', 5)
 
 
