@@ -23,7 +23,7 @@ const svg = d3
   .attr('class', 'd3-tip')
   .offset([-20, 0])
   .html(function(d) {
-    return `At least ${d['Difference']} work out of state`
+    return `At least ${d['Difference']}k residents worked out of state`
   })
 
   svg.call(tip)
@@ -38,7 +38,7 @@ const svg = d3
   
     const xPositionScale = d3.scaleLinear()
     .range([0,width ])
-    .domain([1550,1900])
+    .domain([1.550,1.900])
 
 
     function draw(value) {
@@ -58,7 +58,7 @@ const svg = d3
       }
       
     
-    const ticks_x = [1650,1700,1750, 1800,1850]
+    const ticks_x = [1.650,1.700,1.750, 1.800,1.850]
 
     ticks_x.forEach(draw)
 
@@ -73,13 +73,16 @@ svg.append('text').attr('class', 'graph_sub').text('in neighboring states. But i
 svg.append('text').attr('class', 'graph_sub').text('have jobs, and that’s steadily become much larger than the number').attr('alignment-baseline', 'middle').attr('y',-60).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
 svg.append('text').attr('class', 'graph_sub').text('of people who work for Connecticut-based employers.').attr('alignment-baseline', 'middle').attr('y',-40).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
 
-svg.append('circle').attr('cx', -90).attr('cy', 50).attr('r', 5)    .style("fill", "#4C4082")
+svg.append('circle').attr('cx', -90).attr('cy', 70).attr('r', 5)    .style("fill", "#4C4082")
 
-svg.append('text').attr('x', -80).attr('y', 53).attr('r', 5).text('CT employee').attr('font-size', '10px').attr('font-weight', 5)
+svg.append('text').attr('x', -80).attr('y', 14).attr('r', 5).text('CT residents').attr('font-size', '10px').attr('font-weight', 5)
+svg.append('text').attr('x', -80).attr('y', 23).attr('r', 5).text('employed').attr('font-size', '10px').attr('font-weight', 5)
+svg.append('text').attr('x', -80).attr('y', 33).attr('r', 5).text('(millions)').attr('font-size', '10px').attr('font-weight', 5)
 
-svg.append('text').attr('x', -80).attr('y', 23).attr('r', 5).text('CT res employed').attr('font-size', '10px').attr('font-weight', 5)
 svg.append('circle').attr('cx', -90).attr('cy', 20).attr('r', 5).style("fill", "#C0C0C0")
 svg.append('rect').attr('x', -90).attr('y', 20).attr('r', 5).style("fill", "#C0C0C0")
+svg.append('text').attr('x', -80).attr('y', 73).attr('r', 5).text('CT employees').attr('font-size', '10px').attr('font-weight', 5)
+svg.append('text').attr('x', -80).attr('y', 83).attr('r', 5).text('(millions)').attr('font-size', '10px').attr('font-weight', 5)
 
 
 
@@ -200,9 +203,46 @@ svg.selectAll("mycircle1")
     svg
     .append('text')
     .attr('id', 'tick1')
-    .attr('x', xPositionScale(1650))
+    .attr('x', xPositionScale(1.650))
     .attr('y', height+20)
-    .text('1650')
+    .text('1.650')
+    .attr('font-size', '12px').attr('font-weight', 5)
+    .style("text-anchor", "middle")
+
+    svg
+    .append('text')
+    .attr('id', 'tick2')
+    .attr('x', xPositionScale(1.700))
+    .attr('y', height+20)
+    .text('1.700')
+    .attr('font-size', '12px').attr('font-weight', 5)
+    .style("text-anchor", "middle")
+
+    svg
+    .append('text')
+    .attr('id', 'tick3')
+    .attr('x', xPositionScale(1.750))
+    .attr('y', height+20)
+    .text('1.750')
+    .attr('font-size', '12px').attr('font-weight', 5)
+    .style("text-anchor", "middle")
+
+
+    svg
+    .append('text')
+    .attr('id', 'tick4')
+    .attr('x', xPositionScale(1.800))
+    .attr('y', height+20)
+    .text('1.800')
+    .attr('font-size', '12px').attr('font-weight', 5)
+    .style("text-anchor", "middle")
+
+    svg
+    .append('text')
+    .attr('id', 'tick5')
+    .attr('x', xPositionScale(1.850))
+    .attr('y', height+20)
+    .text('1.850')
     .attr('font-size', '12px').attr('font-weight', 5)
     .style("text-anchor", "middle")
 
@@ -271,7 +311,7 @@ svg.selectAll("mycircle1")
       }
       
     
-    const ticks_x = [1650,1700,1750, 1800,1850]
+    const ticks_x = [1.650,1.700,1.750, 1.800,1.850]
 
     ticks_x.forEach(draw)
     console.log(xPositionScale(1650))
@@ -292,7 +332,12 @@ svg.selectAll("mycircle1")
       .attr("y1", function(d) { return yPositionScale(d['Month/Year'])+yPositionScale.bandwidth()/2; })
       .attr("y2", function(d) { return yPositionScale(d['Month/Year'])+yPositionScale.bandwidth()/2; })
 
-      svg.select('#tick1')  .attr('x', xPositionScale(1650))
+      svg.select('#tick1')  .attr('x', xPositionScale(1.650))
+      svg.select('#tick2')  .attr('x', xPositionScale(1.700))
+      svg.select('#tick3')  .attr('x', xPositionScale(1.750))
+      svg.select('#tick4')  .attr('x', xPositionScale(1.800))
+      svg.select('#tick5')  .attr('x', xPositionScale(1.850))
+
 //   if (newWidth>450){
 //     svg.select('.graph_name').text('Vaccinations rise in June after pandemic plummet')
 //     }
