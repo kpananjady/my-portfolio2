@@ -3,8 +3,8 @@ import d3Tip from 'd3-tip'
 import { exportDefaultSpecifier } from '@babel/types'
 d3.tip = d3Tip
 
-var margin = { top: 200, left: 100, right: 50, bottom: 50 }
-const height = 500 - margin.top - margin.bottom
+var margin = { top: 300, left: 100, right: 50, bottom: 50 }
+const height = 650 - margin.top - margin.bottom
 const width = 700 - margin.left - margin.right
 
 
@@ -65,13 +65,19 @@ const svg = d3
 
 console.log(datapoints, 'this is the data')
 
-svg.append('text').attr('class', 'graph_name').text('Connecticut residents working out of state').attr('alignment-baseline', 'middle').attr('y',-175).attr('x',-90).attr('font-size', '25px').attr('font-weight', 5)
-svg.append('text').attr('class', 'graph_name').text('has surged dramatically since 2013').attr('alignment-baseline', 'middle').attr('y',-145).attr('x',-90).attr('font-size', '25px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_name').text('Connecticut residents working out of state').attr('alignment-baseline', 'middle').attr('y',-245).attr('x',-90).attr('font-size', '25px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_name').text('has surged dramatically since 2013').attr('alignment-baseline', 'middle').attr('y',-215).attr('x',-90).attr('font-size', '25px').attr('font-weight', 5)
 
-svg.append('text').attr('class', 'graph_sub').text('The state doesn’t track precisely how many Connecticut residents work').attr('alignment-baseline', 'middle').attr('y',-100).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
-svg.append('text').attr('class', 'graph_sub').text('in neighboring states. But it does track how many Connecticut citizens').attr('alignment-baseline', 'middle').attr('y',-80).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
-svg.append('text').attr('class', 'graph_sub').text('have jobs, and that’s steadily become much larger than the number').attr('alignment-baseline', 'middle').attr('y',-60).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
-svg.append('text').attr('class', 'graph_sub').text('of people who work for Connecticut-based employers.').attr('alignment-baseline', 'middle').attr('y',-40).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_sub').text('The Labor Department doesn’t report, specifically, how many Connecticut').attr('alignment-baseline', 'middle').attr('y',-170).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_sub').text('residents work out of state, but there still is a way to demonstrate').attr('alignment-baseline', 'middle').attr('y',-150).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_sub').text('that number has been growing for years.').attr('alignment-baseline', 'middle').attr('y',-130).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
+
+
+
+
+svg.append('text').attr('class', 'graph_sub').text('The difference between the dots shows total employment among').attr('alignment-baseline', 'middle').attr('y',-90).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_sub').text('Connecticut residents far exceeds the total number of people').attr('alignment-baseline', 'middle').attr('y',-70).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_sub').text('working here — many of whom come from neighboring states.').attr('alignment-baseline', 'middle').attr('y',-50).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
 
 svg.append('circle').attr('cx', -90).attr('cy', 70).attr('r', 5)    .style("fill", "#4C4082")
 
