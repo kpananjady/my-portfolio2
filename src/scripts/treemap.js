@@ -113,7 +113,8 @@ const svg = d3
       .on('mouseover', function(d){
         d3.select(this).attr('opacity','0.5')
           svg.select('.school_name').text(d.data.name)
-          svg.select('.sub').text(d.data.value + ' | '+ +d.data.Grad_revenue + +d.data.Ugrad_revenue)
+          var revenue = +d.data.Grad_revenue + +d.data.Ugrad_revenue
+          svg.select('.sub').text(d.data.value + ' students | $'+ revenue)
           svg.select('.bar_5') .transition()
             .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(+d.data.percent))
 
@@ -154,7 +155,8 @@ const svg = d3
       .on('mouseover', function(d){
         d3.select(this).attr('opacity','0.5')
           svg.select('.school_name').text(d.data.name)
-          svg.select('.sub').text(d.data.value + ' | '+ +d.data.Grad_revenue + +d.data.Ugrad_revenue)
+          var revenue = +d.data.Grad_revenue + +d.data.Ugrad_revenue
+          svg.select('.sub').text(d.data.value + ' students | $'+ revenue)
 
       }
       )
@@ -198,7 +200,8 @@ const svg = d3
       .on('mouseover', function(d){
         d3.select(this).attr('opacity','0.5')
         svg.select('.school_name').text(d.data.name)
-        svg.select('.sub').text(d.data.value + ' | '+ +d.data.Grad_revenue + +d.data.Ugrad_revenue)
+        var revenue = +d.data.Grad_revenue + +d.data.Ugrad_revenue
+        svg.select('.sub').text(d.data.value + ' students | $'+ revenue)
 
     }
       )
@@ -297,7 +300,8 @@ const svg = d3
       .on('mouseover', function(d){
         d3.select(this).attr('opacity','0.5')
         svg.select('.school_name').text(d.data.name)
-        svg.select('.sub').text(d.data.value + ' | '+ +d.data.Grad_revenue + +d.data.Ugrad_revenue)
+        var revenue = +d.data.Grad_revenue + +d.data.Ugrad_revenue
+        svg.select('.sub').text(d.data.value + ' students | $'+ revenue)
 
         svg.select('.bar_5') .transition()
             .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(+d.data.percent))
@@ -376,7 +380,8 @@ const svg = d3
       .on('mouseover', function(d){
         d3.select(this).attr('opacity','0.5')
         svg.select('.school_name').text(d.data.name)
-        svg.select('.sub').text(d.data.value + ' | '+ +d.data.Grad_revenue + +d.data.Ugrad_revenue)
+        var revenue = +d.data.Grad_revenue + +d.data.Ugrad_revenue
+        svg.select('.sub').text(d.data.value + ' students | $'+ revenue)
 
     }
       )
@@ -420,7 +425,8 @@ const svg = d3
       .on('mouseover', function(d){
         d3.select(this).attr('opacity','0.5')
         svg.select('.school_name').text(d.data.name)
-        svg.select('.sub').text(d.data.value + ' | '+ +d.data.Grad_revenue + +d.data.Ugrad_revenue)
+        var revenue = +d.data.Grad_revenue + +d.data.Ugrad_revenue
+        svg.select('.sub').text(d.data.value + ' students | $'+ revenue)
 
     }
       )
