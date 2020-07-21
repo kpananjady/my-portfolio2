@@ -3,9 +3,9 @@ import d3Tip from 'd3-tip'
 import { exportDefaultSpecifier } from '@babel/types'
 d3.tip = d3Tip
 
-var margin = { top: 150, left: 100, right: 50, bottom: 50 }
+var margin = { top: 250, left: 70, right: 70, bottom: 50 }
 const height = 650 - margin.top - margin.bottom
-const width = 800 - margin.left - margin.right
+const width = 700 - margin.left - margin.right
 
 const svg = d3
   .select('#chart-1')
@@ -16,122 +16,94 @@ const svg = d3
   .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
 
-//   var fader = function(color) { return d3.interpolateRgb(color, "#fff")(0.2); },
-//   color = d3.scaleOrdinal().range([
-// "#1f77b4","#ff7f0e"
-// ,"#2ca02c"
-// ,"#d62728"
-// ,"#9467bd"
-// ,"#8c564b"
-// ,"#e377c2"
-// ,"#7f7f7f"
-// ,"#bcbd22"
-// ,"#17becf"
-//   ]),
-//   format = d3.format(",d");
-
-// var treemap = d3.treemap()
-//   .tile(d3.treemapResquarify)
-//   .size([width, height])
-//   .round(true)
-//   .paddingInner(1);
-
   d3.csv(require('../data/dummydata2_treemap.csv')).then(ready)
 
-// function sumByCount(d) {
-//     return d.children ? 0 : 1;
-//   }
-  
-//   function sumBySize(d) {
-//     return d.size;
-//   }
-  
+  var yPositionScale = d3.scaleLinear()
+            .range([0, 0.4*width])
+            .domain([0, 25]);
 
-//   d3.json(require('../data/dummydata_treemap.json')).then(ready)
 
   function ready(data) {
 
+    svg.append('text').attr('class', 'school_name').text('Hover on the schools below!').attr('alignment-baseline', 'middle').attr('y',-190).attr('font-size', '30px').attr('font-weight', 5).attr('x', -50)
+    svg.append('text').attr('class', 'sub').text('11,000 students | approx. 199 million').attr('alignment-baseline', 'middle').attr('y',-150).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
-    svg.append('text').attr('class', 'town_name').text('Hover on the schools below!').attr('alignment-baseline', 'middle').attr('y',-110).attr('font-size', '30px').attr('font-weight', 5)
+    svg.append('text').attr('class', 'label_1').text('% International Students').attr('x', width/35).attr('y',-65).attr('font-weight', 5)
+    svg.append('text').attr('class', 'label_2').text('Ugrad-Grad Breakdown') .attr("x", 0.4*width+100).attr('y',-65).attr('font-weight', 5)
 
 
-//     var root = d3.hierarchy(data)
-//       .eachBefore(function(d) { d.data.id = (d.parent ? d.parent.data.id + "." : "") + d.data.name; })
-//       .sum(sumBySize)
-//       .sort(function(a, b) { return b.height - a.height || b.value - a.value; });
 
-//   treemap(root);
+    svg
+         .append('rect')
+         .attr('class', 'bar_5_town_100')
+         .attr("y",-50
+         )
+         .attr("height", 20)
+         .attr("x", width/35)
+         .attr("width",0.4*width)
+         .attr('fill', 'lightgrey')
+         .attr('rx',10)
+         .attr('ry',10)
 
-//   var cell = svg.selectAll("g")
-//     .data(root.leaves())
-//     .enter().append("g")
-//       .attr("transform", function(d) { return "translate(" + d.x0 + "," + d.y0 + ")"; });
+         svg
+         .append('rect')
+         .attr('class', 'bar_5')
+         .attr("y",-50
+         )
+         .attr("height", 20)
+         .attr("x", width/35)
+         .attr("width",0)
+         .attr('fill', '#69b3a2')
+         .attr('rx',10)
+         .attr('ry',10)
 
-//   cell.append("rect")
-//       .attr("id", function(d) { return d.data.id; })
-//       .attr("width", function(d) { return d.x1 - d.x0; })
-//       .attr("height", function(d) { return d.y1 - d.y0; })
-//       .attr("fill", function(d) { return color(d.parent.data.id); });
+         svg
+         .append('rect')
+         .attr('class', 'bar_6_town_100')
+         .attr("y",-50)
+         .attr("height", 20)
+         .attr("x", 0.4*width +width/2 +width/10)
+         .attr("width",0.4*width)
+         .attr('fill', 'lightgrey')
+         .attr('rx',10)
+         .attr('ry',10)
+ 
+         svg
+         .append('rect')
+         .attr('class', 'bar_6')
+         .attr("y",-50)
+         .attr("height", 20)
+         .attr("x", 0.4*width +width/2 +width/10)
+         .attr("width",0)
+         .attr('fill', '#69b3a2')
+         .attr('rx',10)
+         .attr('ry',10)
+      
+         svg.append('text').attr('id', 'percent').text('25%').attr('y',-37).attr('x', yPositionScale(25)-15).attr('font-weight', 5).attr('font-size',13)
 
-//   cell.append("clipPath")
-//       .attr("id", function(d) { return "clip-" + d.data.id; })
-//     .append("use")
-//       .attr("xlink:href", function(d) { return "#" + d.data.id; });
 
-//   cell.append("text")
-//       .attr("clip-path", function(d) { return "url(#clip-" + d.data.id + ")"; })
-//     .selectAll("tspan")
-//       .data(function(d) { return d.data.name.split(/(?=[A-Z][^A-Z])/g); })
-//     .enter().append("tspan")
-//       .attr("x", 4)
-//       .attr("y", function(d, i) { return 13 + i * 10; })
-//       .text(function(d) { return d; });
-
-//   cell.append("title")
-//       .text(function(d) { return d.data.id + "\n" + format(d.value); });
-
-//   d3.selectAll("input")
-//       .data([sumBySize, sumByCount], function(d) { return d ? d.name : this.value; })
-//       .on("change", changed);
-
-//   var timeout = d3.timeout(function() {
-//     d3.select("input[value=\"sumByCount\"]")
-//         .property("checked", true)
-//         .dispatch("change");
-//   }, 2000);
-
-//   function changed(sum) {
-//     timeout.stop();
-
-//     treemap(root.sum(sum));
-
-//     cell.transition()
-//         .duration(750)
-//         .attr("transform", function(d) { return "translate(" + d.x0 + "," + d.y0 + ")"; })
-//       .select("rect")
-//         .attr("width", function(d) { return d.x1 - d.x0; })
-//         .attr("height", function(d) { return d.y1 - d.y0; });
-//   }
 
 
     var root = d3.stratify()
     .id(function(d) { return d.name; })   // Name of the entity (column name is name in csv)
     .parentId(function(d) { return d.parent; })   // Name of the parent (column name is parent in csv)
     (data);
-  root.sum(function(d) { return +d.value })   
+    root.sum(function(d) { return +d.value })   
 
 
-  d3.treemap()
-    .size([width, height])
-    .padding(4)
-    (root)
+    d3.treemap()
+        .size([width, height])
+        .padding(4)
+        (root)
 
     console.log(root.leaves())
+
     svg
-    .selectAll("rect")
+    .selectAll("rect-tree")
     .data(root.leaves())
     .enter()
     .append("rect")
+    .attr('class', 'treemap')
       .attr('x', function (d) { return d.x0; })
       .attr('y', function (d) { return d.y0;})
       .attr('width', function (d) { return d.x1 - d.x0; })
@@ -140,7 +112,50 @@ const svg = d3
       .style("fill", "#69b3a2")
       .on('mouseover', function(d){
         d3.select(this).attr('opacity','0.5')
-          svg.select('.town_name').text(d.data.name)
+          svg.select('.school_name').text(d.data.name)
+          svg.select('.sub').text(d.data.value + ' | '+ +d.data.Grad_revenue + +d.data.Ugrad_revenue)
+          svg.select('.bar_5') .transition()
+            .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(+d.data.percent))
+
+      }
+      )
+      .on('mouseout',function(d){
+        d3.select(this).attr('opacity','1')
+
+      })
+      
+      d3.select('#toggle').on('click', () => {
+        root = d3.stratify()
+    .id(function(d) { return d.name; })   // Name of the entity (column name is name in csv)
+    .parentId(function(d) { return d.parent; })   // Name of the parent (column name is parent in csv)
+    (data);
+    root.sum(function(d) { return +d.value })   
+
+    d3.treemap()
+        .size([width, height])
+        .padding(4)
+        (root)
+
+    svg.selectAll('.treemap').remove()
+    
+    
+        svg
+    .selectAll("rect-tree")
+    .data(root.leaves())
+    .enter()
+    .append("rect")
+    .attr('class', 'treemap')
+      .attr('x', function (d) { return d.x0; })
+      .attr('y', function (d) { return d.y0;})
+      .attr('width', function (d) { return d.x1 - d.x0; })
+      .attr('height', function (d) { return d.y1 - d.y0; })
+      .style("stroke", "none")
+      .style("fill", "#69b3a2")
+      .on('mouseover', function(d){
+        d3.select(this).attr('opacity','0.5')
+          svg.select('.school_name').text(d.data.name)
+          svg.select('.sub').text(d.data.value + ' | '+ +d.data.Grad_revenue + +d.data.Ugrad_revenue)
+
       }
       )
       .on('mouseout',function(d){
@@ -148,54 +163,280 @@ const svg = d3
 
       })
 
-      d3.select('#toggle').on('click', () => {
-        d3.select(this).attr('fill','grey')
 
-        svg.selectAll('.towns').attr('fill', function(d){
-          var colorVar=0 
-            housing.forEach(function(r){if (r.Town===d.properties.NAME10){
-            colorVar = colorScale(r['Percent Affordable'])
-          }
-      }) 
-          return colorVar 
-        })
       })
 
-  // and to add the text labels
-//   svg
-//     .selectAll("text-name")
-//     .data(root.leaves())
-//     .enter()
-//     .append("text")
-//       .attr("x", function(d){ return d.x0+5})    // +10 to adjust position (more right)
-//       .attr("y", function(d){ return d.y0-10})    // +20 to adjust position (lower)
-//       .text(function(d){ return d.data.name})
-//       .attr("font-size", "15px")
-//       .attr("fill", "white")
-//       .call(wrap, 20);
 
-    function wrap(text, width) {
-        text.each(function() {
-          let text = d3.select(this),
-            words = text.text().split(/\s+/).reverse(),
-            word,
-            line = [],
-            lineNumber = 0,
-            lineHeight = 1.1, // ems
-            x = text.attr("x"),
-            y = text.attr("y"),
-            dy = 1.1,
-            tspan = text.text(null).append("tspan").attr("x", x).attr("y", y).attr("dy", dy + "em");
-          while (word = words.pop()) {
-            line.push(word);
-            tspan.text(line.join(" "));
-            if (tspan.node().getComputedTextLength() > width) {
-              line.pop();
-              tspan.text(line.join(" "));
-              line = [word];
-              tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
-            }
-          }
-        });
+
+      d3.select('#toggle2').on('click', () => {
+        root = d3.stratify()
+    .id(function(d) { return d.name; })   // Name of the entity (column name is name in csv)
+    .parentId(function(d) { return d.parent; })   // Name of the parent (column name is parent in csv)
+    (data);
+    root.sum(function(d) { return (+d.Grad_revenue + +d.Ugrad_revenue)/2 })   
+
+    d3.treemap()
+        .size([width, height])
+        .padding(4)
+        (root)
+
+    svg.selectAll('.treemap').remove()
+    
+    
+        svg
+    .selectAll("rect-tree")
+    .data(root.leaves())
+    .enter()
+    .append("rect")
+    .attr('class', 'treemap')
+      .attr('x', function (d) { return d.x0; })
+      .attr('y', function (d) { return d.y0;})
+      .attr('width', function (d) { return d.x1 - d.x0; })
+      .attr('height', function (d) { return d.y1 - d.y0; })
+      .style("stroke", "none")
+      .style("fill", "#69b3a2")
+      .on('mouseover', function(d){
+        d3.select(this).attr('opacity','0.5')
+        svg.select('.school_name').text(d.data.name)
+        svg.select('.sub').text(d.data.value + ' | '+ +d.data.Grad_revenue + +d.data.Ugrad_revenue)
+
+    }
+      )
+      .on('mouseout',function(d){
+        d3.select(this).attr('opacity','1')
+
+      })
+
+
+      })
+
+
+    // function wrap(text, width) {
+    //     text.each(function() {
+    //       let text = d3.select(this),
+    //         words = text.text().split(/\s+/).reverse(),
+    //         word,
+    //         line = [],
+    //         lineNumber = 0,
+    //         lineHeight = 1.1, // ems
+    //         x = text.attr("x"),
+    //         y = text.attr("y"),
+    //         dy = 1.1,
+    //         tspan = text.text(null).append("tspan").attr("x", x).attr("y", y).attr("dy", dy + "em");
+    //       while (word = words.pop()) {
+    //         line.push(word);
+    //         tspan.text(line.join(" "));
+    //         if (tspan.node().getComputedTextLength() > width) {
+    //           line.pop();
+    //           tspan.text(line.join(" "));
+    //           line = [word];
+    //           tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+    //         }
+    //       }
+    //     });
+    //   }
+
+      function render() {
+        const svgContainer = svg.node().closest('div')
+        const svgWidth = svgContainer.offsetWidth
+        // Do you want it to be full height? Pick one of the two below
+        const svgHeight = height + margin.top + margin.bottom
+        // const svgHeight = window.innerHeight
+    
+        const actualSvg = d3.select(svg.node().closest('svg'))
+        actualSvg.attr('width', svgWidth).attr('height', svgHeight)
+    
+        const newWidth = svgWidth - margin.left - margin.right
+
+        yPositionScale.range([0,0.4*newWidth])
+
+        svg.select('#percent').attr('x', yPositionScale(25)-15)
+
+
+        svg.select('.bar_5_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+        svg.select('.bar_5').attr("x", newWidth/35).attr('width', 0)
+        svg.select('.label_1').attr('x', newWidth/35).text('% Intl')
+
+   
+        // bar_6    
+   
+           svg.select('.bar_6_town_100').attr("x",0.4*newWidth+100).attr('width', 0.4*newWidth)
+           svg.select('.bar_6').attr("x", 0.4*newWidth+100).attr('width', 0)
+           svg.select('.label_2').attr('x', 0.4*newWidth+100).text('Ugrad-Grad')
+
+
+     root = d3.stratify()
+    .id(function(d) { return d.name; })   // Name of the entity (column name is name in csv)
+    .parentId(function(d) { return d.parent; })   // Name of the parent (column name is parent in csv)
+    (data);
+    root.sum(function(d) { return +d.value })   
+
+
+        d3.treemap()
+        .size([newWidth, height])
+        .padding(4)
+        (root)
+
+        console.log(root.leaves()[0].parent,'2')
+
+        svg.selectAll('.treemap').remove()
+    
+    
+        svg
+    .selectAll("rect-tree")
+    .data(root.leaves())
+    .enter()
+    .append("rect")
+    .attr('class', 'treemap')
+      .attr('x', function (d) { return d.x0; })
+      .attr('y', function (d) { return d.y0;})
+      .attr('width', function (d) { return d.x1 - d.x0; })
+      .attr('height', function (d) { return d.y1 - d.y0; })
+      .style("stroke", "none")
+      .style("fill", "#69b3a2")
+      .on('mouseover', function(d){
+        d3.select(this).attr('opacity','0.5')
+        svg.select('.school_name').text(d.data.name)
+        svg.select('.sub').text(d.data.value + ' | '+ +d.data.Grad_revenue + +d.data.Ugrad_revenue)
+
+        svg.select('.bar_5') .transition()
+            .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(+d.data.percent))
+        
+    }
+      )
+      .on('mouseout',function(d){
+        d3.select(this).attr('opacity','1')
+
+      })
+    
+      if (newWidth>450){
+        svg.select('.school_name').attr('font-size', '25px')
+        }
+    
+    
+      if (newWidth<450){
+      svg.select('.school_name').attr('font-size', '20px')
+
+      svg.select('.school_name').attr('font-size', '20px')
+
+        svg.select('.bar_5_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+        svg.select('.bar_5').attr("x", newWidth/35).attr('width', 0)
+        svg.select('.label_1').attr('x', newWidth/35).text('% Intl')
+
+   
+        // bar_6    
+   
+           svg.select('.bar_6_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+           svg.select('.bar_6').attr("x", 0.4*newWidth+600).attr('width', 0)
+           svg.select('.label_2').attr('x', 0.4*newWidth+60).text('Ugrad-Grad')
       }
+    
+      if (newWidth<250){
+        svg.select('.school_name').attr('font-size', '15px')
+
+        svg.select('.bar_5_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
+        svg.select('.bar_5').attr("x", newWidth/35).attr('width', 0)
+        svg.select('.label_1').attr('x', newWidth/35).text('% Intl')
+
+   
+        // bar_6    
+   
+           svg.select('.bar_6_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
+           svg.select('.bar_6').attr("x", 0.4*newWidth+600).attr('width', 0)
+           svg.select('.label_2').attr('x', 0.4*newWidth+60).text('Ugrad-Grad')
+      }
+
+      d3.select('#toggle').on('click', () => {
+        root = d3.stratify()
+    .id(function(d) { return d.name; })   // Name of the entity (column name is name in csv)
+    .parentId(function(d) { return d.parent; })   // Name of the parent (column name is parent in csv)
+    (data);
+    root.sum(function(d) { return +d.value })   
+
+    d3.treemap()
+        .size([newWidth, height])
+        .padding(4)
+        (root)
+
+    svg.selectAll('.treemap').remove()
+    
+    
+        svg
+    .selectAll("rect-tree")
+    .data(root.leaves())
+    .enter()
+    .append("rect")
+    .attr('class', 'treemap')
+      .attr('x', function (d) { return d.x0; })
+      .attr('y', function (d) { return d.y0;})
+      .attr('width', function (d) { return d.x1 - d.x0; })
+      .attr('height', function (d) { return d.y1 - d.y0; })
+      .style("stroke", "none")
+      .style("fill", "#69b3a2")
+      .on('mouseover', function(d){
+        d3.select(this).attr('opacity','0.5')
+        svg.select('.school_name').text(d.data.name)
+        svg.select('.sub').text(d.data.value + ' | '+ +d.data.Grad_revenue + +d.data.Ugrad_revenue)
+
+    }
+      )
+      .on('mouseout',function(d){
+        d3.select(this).attr('opacity','1')
+
+      })
+
+
+      })
+
+
+
+      d3.select('#toggle2').on('click', () => {
+        root = d3.stratify()
+    .id(function(d) { return d.name; })   // Name of the entity (column name is name in csv)
+    .parentId(function(d) { return d.parent; })   // Name of the parent (column name is parent in csv)
+    (data);
+    root.sum(function(d) { return (+d.Grad_revenue + +d.Ugrad_revenue)/2 })   
+
+    d3.treemap()
+        .size([newWidth, height])
+        .padding(4)
+        (root)
+
+    svg.selectAll('.treemap').remove()
+    
+    
+        svg
+    .selectAll("rect-tree")
+    .data(root.leaves())
+    .enter()
+    .append("rect")
+    .attr('class', 'treemap')
+      .attr('x', function (d) { return d.x0; })
+      .attr('y', function (d) { return d.y0;})
+      .attr('width', function (d) { return d.x1 - d.x0; })
+      .attr('height', function (d) { return d.y1 - d.y0; })
+      .style("stroke", "none")
+      .style("fill", "#69b3a2")
+      .on('mouseover', function(d){
+        d3.select(this).attr('opacity','0.5')
+        svg.select('.school_name').text(d.data.name)
+        svg.select('.sub').text(d.data.value + ' | '+ +d.data.Grad_revenue + +d.data.Ugrad_revenue)
+
+    }
+      )
+      .on('mouseout',function(d){
+        d3.select(this).attr('opacity','1')
+
+      })
+
+
+      })
+
+
+      }
+      window.addEventListener('resize', render)
+
+      // And now that the page has loaded, let's just try
+      // to do it once before the page has resized
+      render()
   }
