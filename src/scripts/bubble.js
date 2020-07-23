@@ -206,7 +206,7 @@ Promise.all([
             console.log(newWidth, 'newWidth 2')
   
             projection
-          .scale(newWidth*20)
+          .scale(newWidth*30)
           .center([-72.68, 41])
   
           .translate([(newWidth) / 2, (newHeight)/2]);
@@ -230,12 +230,12 @@ Promise.all([
           })
           }
           
-          else if (newWidth > 250) {
+          else if (newWidth > 300) {
   
             console.log(newWidth, 'newWidth 3')
             projection
             .center([-72.68, 41])
-            .scale(newWidth*28)
+            .scale(newWidth*30)
             .translate([(newWidth) / 2, (newHeight)/2]);
 
             svg.selectAll('.towns')
