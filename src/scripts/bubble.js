@@ -5,7 +5,7 @@ d3.tip = d3Tip
 
 let margin = { top: 100, left: 50, right: 50, bottom: 0 }
 
-let height = 800 - margin.top - margin.bottom
+let height = 650 - margin.top - margin.bottom
 
 let width = 1000 - margin.left - margin.right
 
@@ -49,7 +49,7 @@ Promise.all([
 
   function ready([json2, biden, trump]) {
 
-    svg.append('text').attr('class', 'school_name').text('Biden outpaces Trump in fundraising').attr('alignment-baseline', 'middle').attr('y',-34).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'school_name').text('Biden outpaces Trump in fundraising').attr('alignment-baseline', 'middle').attr('y',-50).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
 
       const towns = topojson.feature(json2, json2.objects.townct_37800_0000_2010_s100_census_1_shp_wgs84)
       console.log(towns, 'towns')
@@ -206,7 +206,7 @@ Promise.all([
             console.log(newWidth, 'newWidth 2')
   
             projection
-          .scale(newWidth*30)
+          .scale(newWidth*0)
           .center([-72.68, 41])
   
           .translate([(newWidth) / 2, (newHeight)/2]);
@@ -230,12 +230,12 @@ Promise.all([
           })
           }
           
-          else if (newWidth > 300) {
+          else if (newWidth > 250) {
   
             console.log(newWidth, 'newWidth 3')
             projection
             .center([-72.68, 41])
-            .scale(newWidth*30)
+            .scale(newWidth*28)
             .translate([(newWidth) / 2, (newHeight)/2]);
 
             svg.selectAll('.towns')
@@ -263,10 +263,11 @@ Promise.all([
             console.log(newWidth, 'newWidth 4')
 
   
+            svg.select('.school_name').attr('font-size', '15px')
             
             projection
             .scale(svgWidth*25)
-            .center([-72, 41.5])
+            .center([-72.4, 40.4])
             .translate([(svgWidth) / 2, (svgHeight)/2]);
 
             svg.selectAll('.towns')
