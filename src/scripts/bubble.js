@@ -90,6 +90,7 @@ Promise.all([
       })
       .attr('opacity', 0.5)
       .on('mouseover', tip.show)
+      .on('click', tip.show)
 
 
       d3.select('#toggle').on('click', () => {
@@ -121,6 +122,7 @@ Promise.all([
       })
       .attr('opacity', 0.5)
       .on('mouseover', tip.show)
+      .on('click', tip.show)
 
       })
 
@@ -154,6 +156,7 @@ Promise.all([
       })
       .attr('opacity', 0.5)
       .on('mouseover', tip.show)
+      .on('click', tip.show)
 
       })
 
