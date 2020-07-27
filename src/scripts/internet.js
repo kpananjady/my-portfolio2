@@ -50,7 +50,7 @@ Promise.all([
 
 
     svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', height-300).attr('font-size', 10)
-      svg.append('text').attr('id', 'box4-text').text('100').attr('x',width-95).attr('y', height-300).attr('font-size', 10)
+      svg.append('text').attr('id', 'box4-text').text('>800').attr('x',width-95).attr('y', height-300).attr('font-size', 10)
 
 
       svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-300).attr('fill', colorScale(0))
@@ -84,7 +84,7 @@ Promise.all([
           return color
       })  
       .attr('stroke', 'white')  
-      .attr('opacity', 0.5)
+      .attr('opacity', 0.4)
 
       var towns2 = svg
       .selectAll('path-town')
