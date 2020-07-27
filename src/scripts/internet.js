@@ -45,8 +45,8 @@ Promise.all([
 
   function ready([json2, json, internet]) {
 
-    svg.append('text').attr('class', 'title').text('See how internet access compares in your town').attr('alignment-baseline', 'middle').attr('y',-50).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
-    svg.append('text').attr('class', 'sub-title').text('How many households in every 1,000 have good connections').attr('alignment-baseline', 'middle').attr('y',-25).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'title').text('See how internet access compares in your town').attr('alignment-baseline', 'middle').attr('y',-90).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text('How many households in every 1,000 have good connections').attr('alignment-baseline', 'middle').attr('y',-65).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
 
     svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', height-300).attr('font-size', 10)
@@ -93,7 +93,7 @@ Promise.all([
       .append('path')
       .attr('class', 'towns')
       .attr('d', path)
-      .style('fill', 'none')  
+      .style('fill', 'grey')  
       .attr('stroke', 'white')  
       .attr('opacity',0.3)
       .on('mouseover', tip.show)
@@ -129,7 +129,7 @@ Promise.all([
 
             console.log(newWidth, 'newWidth 1')
             projection
-            .scale(newWidth*17)
+            .scale(newWidth*25)
             .center([-72.68, 41])
             .translate([(newWidth) / 2, (newHeight)/2]);
 
