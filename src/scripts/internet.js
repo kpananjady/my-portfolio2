@@ -3,7 +3,7 @@ import * as topojson from 'topojson'
 import d3Tip from 'd3-tip'
 d3.tip = d3Tip
 
-let margin = { top: 100, left: 50, right: 50, bottom: 0 }
+let margin = { top: 200, left: 50, right: 50, bottom: 0 }
 
 let height = 650 - margin.top - margin.bottom
 
