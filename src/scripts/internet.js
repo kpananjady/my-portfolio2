@@ -98,7 +98,7 @@ Promise.all([
       .append('path')
       .attr('class', 'towns')
       .attr('d', path)
-      .style('fill', 'grey')  
+      .style('fill', 'none')  
       .attr('stroke', 'white')  
       .attr('opacity',0.3)
       .on('mouseover', tip.show)
