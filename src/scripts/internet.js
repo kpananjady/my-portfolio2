@@ -55,17 +55,17 @@ Promise.all([
     svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', height-200).attr('font-size', 10)
       svg.append('text').attr('id', 'box4-text').text('>800').attr('x',width-95).attr('y', height-200).attr('font-size', 10)
 
-      svg.append('rect').attr('id', 'box0').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', height-200).attr('fill', colorScale(0)).attr('opacity',0.4)
-      svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-200).attr('fill', colorScale(1)).attr('opacity',0.4)
-      svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-200).attr('fill', colorScale(2)).attr('opacity',0.4)
-      svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-200).attr('fill', colorScale(4)).attr('opacity',0.4)
-      svg.append('rect').attr('id', 'box4').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-200).attr('fill', colorScale(5)).attr('opacity',0.4)
+      svg.append('rect').attr('id', 'box0').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', height-200).attr('fill', colorScale(0)).attr('opacity',0.7)
+      svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-200).attr('fill', colorScale(1)).attr('opacity',0.7)
+      svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-200).attr('fill', colorScale(2)).attr('opacity',0.7)
+      svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-200).attr('fill', colorScale(4)).attr('opacity',0.7)
+      svg.append('rect').attr('id', 'box4').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-200).attr('fill', colorScale(5)).attr('opacity',0.7)
 
-      svg.append('rect').attr('id', 'box0-m').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', height-200).style('fill', 'grey').attr('opacity',0.2)
-      svg.append('rect').attr('id', 'box1-m').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-200).style('fill', 'grey').attr('opacity',0.2)
-      svg.append('rect').attr('id', 'box2-m').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-200).style('fill', 'grey').attr('opacity',0.2)
-      svg.append('rect').attr('id', 'box3-m').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-200).style('fill', 'grey').attr('opacity',0.2)
-      svg.append('rect').attr('id', 'box4-m').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-200).style('fill', 'grey').attr('opacity',0.2)
+      svg.append('rect').attr('id', 'box0-m').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', height-200).style('fill', 'white').attr('opacity',0.4)
+      svg.append('rect').attr('id', 'box1-m').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-200).style('fill', 'white').attr('opacity',0.4)
+      svg.append('rect').attr('id', 'box2-m').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-200).style('fill', 'white').attr('opacity',0.4)
+      svg.append('rect').attr('id', 'box3-m').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-200).style('fill', 'white').attr('opacity',0.4)
+      svg.append('rect').attr('id', 'box4-m').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-200).style('fill', 'white').attr('opacity',0.4)
     const tract = topojson.feature(json, json.objects.tracts_ct)
 
       const towns = topojson.feature(json2, json2.objects.townct_37800_0000_2010_s100_census_1_shp_wgs84)
@@ -191,11 +191,9 @@ Promise.all([
   
           } else if (newWidth > 450){
   
-            svg.selectAll('.title').attr('font-size', '15px')
-            svg.selectAll('.sub-title').attr('font-size', '10px')
 
             projection
-          .scale(newWidth*0)
+          .scale(newWidth*20)
           .center([-72.68, 41])
   
           .translate([(newWidth) / 2, (newHeight)/2]);
@@ -207,14 +205,14 @@ Promise.all([
         .attr('d', path)
 
 
-          } else if (newWidth > 250) {
+          } else if (newWidth > 350) {
 
             svg.selectAll('.title').attr('font-size', '15px')
             svg.selectAll('.sub-title').attr('font-size', '10px')
   
             console.log(newWidth, 'newWidth 3')
             projection
-            .center([-72.68, 41])
+            .center([-72.68, 40.7])
             .scale(newWidth*28)
             .translate([(newWidth) / 2, (newHeight)/2]);
 
@@ -223,6 +221,41 @@ Promise.all([
 
         svg.selectAll('.tracts')
         .attr('d', path)
+
+          }
+          
+          else if (newWidth > 250) {
+
+            svg.selectAll('.title').attr('font-size', '15px')
+            svg.selectAll('.sub-title').attr('font-size', '10px')
+  
+            console.log(newWidth, 'newWidth 3')
+            projection
+            .center([-72.68, 40.3])
+            .scale(newWidth*28)
+            .translate([(newWidth) / 2, (newHeight)/2]);
+
+            svg.selectAll('.towns')
+        .attr('d', path)
+
+        svg.selectAll('.tracts')
+        .attr('d', path)
+
+        svg.select('#box1-text').text('0').attr('x',newWidth-175).attr('y', height-400).attr('font-size', 10)
+        svg.select('#box4-text').text('>=800').attr('x',newWidth-75).attr('y', height-400).attr('font-size', 10)
+
+
+        svg.select('#box0').attr('y', height-400)
+        svg.select('#box1').attr('y', height-400)
+        svg.select('#box2').attr('y', height-400)
+        svg.select('#box3').attr('y', height-400)
+        svg.select('#box4').attr('y', height-400)
+
+        svg.select('#box0-m').attr('y', height-400)
+        svg.select('#box1-m').attr('y', height-400)
+        svg.select('#box2-m').attr('y', height-400)
+        svg.select('#box3-m').attr('y', height-400)
+        svg.select('#box4-m').attr('y', height-400)
 
           }
           
