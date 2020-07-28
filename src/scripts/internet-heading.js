@@ -9,6 +9,8 @@ let height = 150 - margin.top - margin.bottom
 
 let width = 1000 - margin.left - margin.right
 
+const colorScale = d3.scaleSequential(d3.interpolateOranges).domain([0, 5])
+
 let svg = d3
   .select('#chart-0')
   .append('svg')
@@ -21,9 +23,24 @@ let svg = d3
 
   function ready(dummydata) {
 
-    svg.append('text').attr('class', 'title').text('See how internet access compares in your town').attr('alignment-baseline', 'middle').attr('y',65).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
-    svg.append('text').attr('class', 'sub-title').text('How many households in every 1,000 have good connections').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'title').text('See how internet access compares in your town').attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text('How many households in every 1,000 have good connections?').attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text('The darker an area, the more households with good connections there are.').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
+    // svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', 100).attr('font-size', 10)
+    // svg.append('text').attr('id', 'box4-text').text('>800').attr('x',width-95).attr('y', 100).attr('font-size', 10)
+
+    // svg.append('rect').attr('id', 'box0').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', 100).attr('fill', colorScale(0)).attr('opacity',0.7)
+    // svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', 100).attr('fill', colorScale(1)).attr('opacity',0.7)
+    // svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', 100).attr('fill', colorScale(2)).attr('opacity',0.7)
+    // svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', 100).attr('fill', colorScale(4)).attr('opacity',0.7)
+    // svg.append('rect').attr('id', 'box4').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', 100).attr('fill', colorScale(5)).attr('opacity',0.7)
+
+    // svg.append('rect').attr('id', 'box0-m').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', 100).style('fill', 'white').attr('opacity',0.4)
+    // svg.append('rect').attr('id', 'box1-m').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', 100).style('fill', 'white').attr('opacity',0.4)
+    // svg.append('rect').attr('id', 'box2-m').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', 100).style('fill', 'white').attr('opacity',0.4)
+    // svg.append('rect').attr('id', 'box3-m').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', 100).style('fill', 'white').attr('opacity',0.4)
+    // svg.append('rect').attr('id', 'box4-m').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', 100).style('fill', 'white').attr('opacity',0.4)
 
     function render() {
         const svgContainer = svg.node().closest('div')
