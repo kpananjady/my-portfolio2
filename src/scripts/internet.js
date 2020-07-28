@@ -9,6 +9,9 @@ let height = 650 - margin.top - margin.bottom
 
 let width = 1000 - margin.left - margin.right
 
+var centered;
+
+
 let svg = d3
   .select('#chart-1')
   .append('svg')
@@ -64,11 +67,38 @@ Promise.all([
       svg.append('rect').attr('id', 'box3-m').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-300).style('fill', 'grey').attr('opacity',0.2)
       svg.append('rect').attr('id', 'box4-m').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-300).style('fill', 'grey').attr('opacity',0.2)
     const tract = topojson.feature(json, json.objects.tracts_ct)
-      console.log(tract, 'towns')
 
       const towns = topojson.feature(json2, json2.objects.townct_37800_0000_2010_s100_census_1_shp_wgs84)
-      console.log(towns, 'towns')
 
+      function clicked(d) {
+        var x, y, k;
+
+        console.log('here')
+      
+        if (d && centered !== d) {
+          var centroid = path.centroid(d);
+          x = centroid[0];
+          y = centroid[1];
+          k = 4;
+          centered = d;
+        } else {
+          x = width / 2;
+          y = height / 2;
+          k = 1;
+          centered = null;
+        }
+      
+        svg.selectAll("path")
+            .classed("active", centered && function(d) { 
+                console.log(centered,'centered')
+                return d === centered; 
+            });
+      
+        svg.transition()
+            .duration(750)
+            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+            .style("stroke-width", 1.5 / k + "px");
+      }
 
       var tracts = svg
       .selectAll('path-tract')
@@ -81,15 +111,14 @@ Promise.all([
         // console.log(d.properties.geoid)
         var color = 0
         internet.forEach(function(r){if (r.tractcode===d.properties.geoid){
-            console.log(colorScale(r.pcat_10x1))
             color = colorScale(r.pcat_10x1)
             }
         })
 
           return color
       })  
-      .attr('stroke', 'white')  
-      .attr('opacity', 0.4)
+      .attr('stroke', 'none')  
+      .attr('opacity', 0.7)
 
       var towns2 = svg
       .selectAll('path-town')
@@ -98,11 +127,17 @@ Promise.all([
       .append('path')
       .attr('class', 'towns')
       .attr('d', path)
-      .style('fill', 'none')  
+      .style('fill', 'white')  
       .attr('stroke', 'white')  
-      .attr('opacity',0.3)
+      .attr('stroke-width', 1)  
+      .attr('opacity',0.5)
       .on('mouseover', tip.show)
-      .on('click', tip.show)
+      .on('mouseout', tip.hide)
+      .on('click', clicked)
+
+
+
+      
 
 
       function render() {
