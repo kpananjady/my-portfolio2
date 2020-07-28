@@ -63,16 +63,16 @@ let svg = d3
   
           } else if (newWidth > 450){
   
-            svg.selectAll('.title').attr('font-size', '16px')
-            svg.selectAll('.sub-title').attr('font-size', '11px')
+            svg.selectAll('.title').attr('font-size', '15px')
+            svg.selectAll('.sub-title').attr('font-size', '10px')
          
 
           }
           
           else if (newWidth > 250) {
 
-            svg.selectAll('.title').attr('font-size', '15px')
-            svg.selectAll('.sub-title').attr('font-size', '10px')
+            svg.selectAll('.title').attr('font-size', '12px')
+            svg.selectAll('.sub-title').attr('font-size', '9px')
 
           }
           
