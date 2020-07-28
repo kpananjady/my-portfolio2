@@ -5,7 +5,7 @@ d3.tip = d3Tip
 
 let margin = { top: 150, left: 50, right: 50, bottom: 0 }
 
-let height = 650 - margin.top - margin.bottom
+let height = 600 - margin.top - margin.bottom
 
 let width = 1000 - margin.left - margin.right
 
@@ -52,20 +52,20 @@ Promise.all([
     // svg.append('text').attr('class', 'sub-title').text('How many households in every 1,000 have good connections').attr('alignment-baseline', 'middle').attr('y',-65).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
 
-    svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', height-300).attr('font-size', 10)
-      svg.append('text').attr('id', 'box4-text').text('>800').attr('x',width-95).attr('y', height-300).attr('font-size', 10)
+    svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', height-200).attr('font-size', 10)
+      svg.append('text').attr('id', 'box4-text').text('>800').attr('x',width-95).attr('y', height-200).attr('font-size', 10)
 
-      svg.append('rect').attr('id', 'box0').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', height-300).attr('fill', colorScale(0)).attr('opacity',0.4)
-      svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-300).attr('fill', colorScale(1)).attr('opacity',0.4)
-      svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-300).attr('fill', colorScale(2)).attr('opacity',0.4)
-      svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-300).attr('fill', colorScale(4)).attr('opacity',0.4)
-      svg.append('rect').attr('id', 'box4').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-300).attr('fill', colorScale(5)).attr('opacity',0.4)
+      svg.append('rect').attr('id', 'box0').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', height-200).attr('fill', colorScale(0)).attr('opacity',0.4)
+      svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-200).attr('fill', colorScale(1)).attr('opacity',0.4)
+      svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-200).attr('fill', colorScale(2)).attr('opacity',0.4)
+      svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-200).attr('fill', colorScale(4)).attr('opacity',0.4)
+      svg.append('rect').attr('id', 'box4').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-200).attr('fill', colorScale(5)).attr('opacity',0.4)
 
-      svg.append('rect').attr('id', 'box0-m').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', height-300).style('fill', 'grey').attr('opacity',0.2)
-      svg.append('rect').attr('id', 'box1-m').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-300).style('fill', 'grey').attr('opacity',0.2)
-      svg.append('rect').attr('id', 'box2-m').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-300).style('fill', 'grey').attr('opacity',0.2)
-      svg.append('rect').attr('id', 'box3-m').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-300).style('fill', 'grey').attr('opacity',0.2)
-      svg.append('rect').attr('id', 'box4-m').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-300).style('fill', 'grey').attr('opacity',0.2)
+      svg.append('rect').attr('id', 'box0-m').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', height-200).style('fill', 'grey').attr('opacity',0.2)
+      svg.append('rect').attr('id', 'box1-m').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-200).style('fill', 'grey').attr('opacity',0.2)
+      svg.append('rect').attr('id', 'box2-m').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-200).style('fill', 'grey').attr('opacity',0.2)
+      svg.append('rect').attr('id', 'box3-m').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-200).style('fill', 'grey').attr('opacity',0.2)
+      svg.append('rect').attr('id', 'box4-m').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-200).style('fill', 'grey').attr('opacity',0.2)
     const tract = topojson.feature(json, json.objects.tracts_ct)
 
       const towns = topojson.feature(json2, json2.objects.townct_37800_0000_2010_s100_census_1_shp_wgs84)
@@ -153,8 +153,8 @@ Promise.all([
         const newWidth = svgWidth - margin.left - margin.right
         const newHeight = svgHeight - margin.top - margin.bottom
 
-        svg.select('#box1-text').text('0').attr('x',newWidth-175).attr('y', height-300).attr('font-size', 10)
-        svg.select('#box4-text').text('>=800').attr('x',newWidth-75).attr('y', height-300).attr('font-size', 10)
+        svg.select('#box1-text').text('0').attr('x',newWidth-175).attr('y', height-200).attr('font-size', 10)
+        svg.select('#box4-text').text('>=800').attr('x',newWidth-75).attr('y', height-200).attr('font-size', 10)
 
         svg.select('#box0').attr('x', newWidth-175)
         svg.select('#box1').attr('x', newWidth-150)
