@@ -2,7 +2,7 @@ import * as d3 from 'd3'
 import d3Tip from 'd3-tip'
 d3.tip = d3Tip
 
-var margin = { top: 300, left: 100, right: 50, bottom: 50 }
+var margin = { top: 300, left: 50, right: 50, bottom: 50 }
 const height = 550 - margin.top - margin.bottom
 const width = 700 - margin.left - margin.right
 
@@ -97,11 +97,11 @@ svg.append('text').attr('class', 'sub_name').text('but rarely remain flat.').att
     .style('text-anchor', 'middle')
     .attr('x', 0)
     .attr('dy', height/2)
-    .attr('dx', -40)
-    .attr('font-size', '14px')
+    .attr('dx', -30)
+    .attr('font-size', '10px')
     .attr('font-weight', 5)
 
-  const yAxis = d3.axisLeft(yPositionScale).ticks(4)
+  const yAxis = d3.axisLeft(yPositionScale).ticks(4).tickFormat(function(d) { return Math.round(d * 1/1000000) +'M'}) 
   svg
     .append('g')
     .attr('class', 'axis y-axis')
