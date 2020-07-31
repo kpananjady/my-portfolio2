@@ -16,29 +16,29 @@ const svg = d3
   .append('g')
   .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
 
-  d3.csv(require('../data/commuter.csv')).then(ready)
+  d3.csv(require('../data/deliquencies.csv')).then(ready)
 
-  // const tip = d3
-  // .tip()
-  // .attr('class', 'd3-tip')
-  // .offset([-20, 0])
-  // .html(function(d) {
-  //   return `${d['Difference']}k`
-  // })
+  const tip = d3
+  .tip()
+  .attr('class', 'd3-tip')
+  .offset([-20, 0])
+  .html(function(d) {
+    return `${d['Difference']}k`
+  })
 
-  // svg.call(tip)
+  svg.call(tip)
 
   function ready(datapoints) {
 
 
     const yPositionScale = d3.scaleBand()
-    .domain(datapoints.map(function(d) { return d['Month/Year']; }))
+    .domain(datapoints.map(function(d) { return d['Month']; }))
     .range([ 0, height]);
   
   
     const xPositionScale = d3.scaleLinear()
     .range([0,width ])
-    .domain([1.550,1.900])
+    .domain([0,10])
 
 
     function draw(value) {
@@ -58,19 +58,19 @@ const svg = d3
       }
       
     
-    const ticks_x = [1.650,1.700,1.750, 1.800,1.850]
+    const ticks_x = [2,4,6,8,10]
 
     ticks_x.forEach(draw)
 
 
 console.log(datapoints, 'this is the data')
 
-svg.append('text').attr('class', 'graph_name').text('Connecticut residents working out of state').attr('alignment-baseline', 'middle').attr('y',-245).attr('x',-90).attr('font-size', '25px').attr('font-weight', 5)
-svg.append('text').attr('class', 'graph_name').text('has surged dramatically since 2013').attr('alignment-baseline', 'middle').attr('y',-215).attr('x',-90).attr('font-size', '25px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_name').text('Connecticut delinquences spike during pandemic,').attr('alignment-baseline', 'middle').attr('y',-245).attr('x',-90).attr('font-size', '25px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_name').text('outpace national average').attr('alignment-baseline', 'middle').attr('y',-215).attr('x',-90).attr('font-size', '25px').attr('font-weight', 5)
 
-svg.append('text').attr('class', 'graph_sub').text('The Labor Department doesn’t report, specifically, how many Connecticut').attr('alignment-baseline', 'middle').attr('y',-170).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
-svg.append('text').attr('class', 'graph_sub').text('residents work out of state, but there still is a way to demonstrate').attr('alignment-baseline', 'middle').attr('y',-150).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
-svg.append('text').attr('class', 'graph_sub').text('that number has been growing for years.').attr('alignment-baseline', 'middle').attr('y',-130).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_sub').text("The state's delinquency rate is usually higher than the national, ").attr('alignment-baseline', 'middle').attr('y',-170).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_sub').text('average. But the gulf has widened durign the pandemic, which means').attr('alignment-baseline', 'middle').attr('y',-150).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_sub').text('that per capita we suffering more.').attr('alignment-baseline', 'middle').attr('y',-130).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
 
 
 
@@ -81,15 +81,15 @@ svg.append('text').attr('class', 'graph_sub').text('working here — many of who
 
 svg.append('circle').attr('cx', -90).attr('cy', 70).attr('r', 5)    .style("fill", "#4C4082")
 
-svg.append('text').attr('x', -80).attr('y', 14).attr('r', 5).text('CT residents').attr('font-size', '10px').attr('font-weight', 5)
-svg.append('text').attr('x', -80).attr('y', 23).attr('r', 5).text('employed').attr('font-size', '10px').attr('font-weight', 5)
-svg.append('text').attr('x', -80).attr('y', 33).attr('r', 5).text('(millions)').attr('font-size', '10px').attr('font-weight', 5)
+svg.append('text').attr('x', -80).attr('y', 14).attr('r', 5).text('CT mortage').attr('font-size', '10px').attr('font-weight', 5)
+svg.append('text').attr('x', -80).attr('y', 23).attr('r', 5).text('delinquency').attr('font-size', '10px').attr('font-weight', 5)
+svg.append('text').attr('x', -80).attr('y', 33).attr('r', 5).text('rate').attr('font-size', '10px').attr('font-weight', 5)
 
 svg.append('circle').attr('cx', -90).attr('cy', 20).attr('r', 5).style("fill", "#C0C0C0")
 svg.append('rect').attr('x', -90).attr('y', 20).attr('r', 5).style("fill", "#C0C0C0")
-svg.append('text').attr('x', -80).attr('y', 63).attr('r', 5).text('People working').attr('font-size', '10px').attr('font-weight', 5)
-svg.append('text').attr('x', -80).attr('y', 73).attr('r', 5).text('in CT').attr('font-size', '10px').attr('font-weight', 5)
-svg.append('text').attr('x', -80).attr('y', 83).attr('r', 5).text('(millions)').attr('font-size', '10px').attr('font-weight', 5)
+svg.append('text').attr('x', -80).attr('y', 63).attr('r', 5).text('National').attr('font-size', '10px').attr('font-weight', 5)
+svg.append('text').attr('x', -80).attr('y', 73).attr('r', 5).text('morgage').attr('font-size', '10px').attr('font-weight', 5)
+svg.append('text').attr('x', -80).attr('y', 83).attr('r', 5).text('delinquency rate').attr('font-size', '10px').attr('font-weight', 5)
 
 
 
@@ -102,9 +102,9 @@ svg.selectAll("mycircle1")
 
   .attr("cx", function(d) { 
 
-    return xPositionScale(parseFloat(d['Connecticut residents employed']))
+    return xPositionScale(parseFloat(d['Connecticut DQ Rate']))
 })
-  .attr("cy", function(d) { return yPositionScale(d['Month/Year'])+yPositionScale.bandwidth()/2; })
+  .attr("cy", function(d) { return yPositionScale(d['Month'])+yPositionScale.bandwidth()/2; })
   .attr("r", "6")
   .style("fill", "#C0C0C0")
 
@@ -115,9 +115,9 @@ svg.selectAll("mycircle1")
   .attr('class', 'my_circle2')
     .attr("cx", function(d) { 
 
-      return xPositionScale(parseFloat(d['People working in Connecticut']))
+      return xPositionScale(parseFloat(d['National DQ Rate']))
   })
-    .attr("cy", function(d) { return yPositionScale(d['Month/Year'])+yPositionScale.bandwidth()/2; })
+    .attr("cy", function(d) { return yPositionScale(d['Month'])+yPositionScale.bandwidth()/2; })
     .attr("r", "6")
     .style("fill", "#4C4082")
 
@@ -166,10 +166,10 @@ svg.selectAll("mycircle1")
     .enter()
     .append("line")
     .attr('class', 'my_line')
-      .attr("x2",   function(d) { return xPositionScale(d['Connecticut residents employed'])} )
-      .attr("x1", function(d) { return xPositionScale(d['People working in Connecticut']) })
-      .attr("y1", function(d) { return yPositionScale(d['Month/Year'])+yPositionScale.bandwidth()/2; })
-      .attr("y2", function(d) { return yPositionScale(d['Month/Year'])+yPositionScale.bandwidth()/2; })
+      .attr("x2",   function(d) { return xPositionScale(d['Connecticut DQ Rate'])} )
+      .attr("x1", function(d) { return xPositionScale(d['National DQ Rate']) })
+      .attr("y1", function(d) { return yPositionScale(d['Month'])+yPositionScale.bandwidth()/2; })
+      .attr("y2", function(d) { return yPositionScale(d['Month'])+yPositionScale.bandwidth()/2; })
       .attr("stroke", 'grey')
       .attr("stroke-width", "12px")
       .attr('opacity', 0.2)
@@ -201,36 +201,36 @@ svg.selectAll("mycircle1")
     .data(datapoints)
     .enter()
     .append('text')
-    .attr('y', function(d){return yPositionScale(d['Month/Year'])+yPositionScale.bandwidth()/2})
+    .attr('y', function(d){return yPositionScale(d['Month'])+yPositionScale.bandwidth()/2})
     .attr('x', 0)
-    .text(d => d['Month/Year'])
+    .text(d => d['Month'])
     .attr('font-size', '12px').attr('font-weight', 5)
 
 
     svg
     .append('text')
     .attr('id', 'tick1')
-    .attr('x', xPositionScale(1.650))
+    .attr('x', xPositionScale(2))
     .attr('y', height+20)
-    .text('1.650')
+    .text('2')
     .attr('font-size', '12px').attr('font-weight', 5)
     .style("text-anchor", "middle")
 
     svg
     .append('text')
     .attr('id', 'tick2')
-    .attr('x', xPositionScale(1.700))
+    .attr('x', xPositionScale(4))
     .attr('y', height+20)
-    .text('1.700')
+    .text('4')
     .attr('font-size', '12px').attr('font-weight', 5)
     .style("text-anchor", "middle")
 
     svg
     .append('text')
     .attr('id', 'tick3')
-    .attr('x', xPositionScale(1.750))
+    .attr('x', xPositionScale(6))
     .attr('y', height+20)
-    .text('1.750')
+    .text('6')
     .attr('font-size', '12px').attr('font-weight', 5)
     .style("text-anchor", "middle")
 
@@ -238,18 +238,18 @@ svg.selectAll("mycircle1")
     svg
     .append('text')
     .attr('id', 'tick4')
-    .attr('x', xPositionScale(1.800))
+    .attr('x', xPositionScale(8))
     .attr('y', height+20)
-    .text('1.800')
+    .text('8')
     .attr('font-size', '12px').attr('font-weight', 5)
     .style("text-anchor", "middle")
 
     svg
     .append('text')
     .attr('id', 'tick5')
-    .attr('x', xPositionScale(1.850))
+    .attr('x', xPositionScale(10))
     .attr('y', height+20)
-    .text('1.850')
+    .text('10')
     .attr('font-size', '12px').attr('font-weight', 5)
     .style("text-anchor", "middle")
 
@@ -318,8 +318,7 @@ svg.selectAll("mycircle1")
       }
       
     
-    const ticks_x = [1.650,1.700,1.750, 1.800,1.850]
-
+      const ticks_x = [0,2,4,6,8]
     ticks_x.forEach(draw)
     console.log(xPositionScale(1650))
 

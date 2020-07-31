@@ -53,7 +53,7 @@ function ready(datapoints) {
 
     xPositionScale.domain(d3.extent(datapoints, function(d) { return d['Fiscal Year'] }));
 // yPositionScale.domain(d3.extent(datapoints, function(d) { return d['Inflation adj'] }));
-yPositionScale.domain([0,4700000000])
+yPositionScale.domain([0,5000000000])
 
 svg.append('text').attr('class', 'graph_name').text('A Fiscal Rollercoaster').attr('alignment-baseline', 'middle').attr('y',-275).attr('x',-25).attr('font-size', '25px').attr('font-weight', 5)
 
@@ -65,10 +65,10 @@ svg.append('text').attr('class', 'sub_name').text('but rarely remain flat.').att
 
 
 svg.append('circle').attr('class', 'key-circle').attr('r',5).attr('cx',-20).attr('cy',-50).attr('fill', 'darkblue').attr('opacity', 0.5)
-svg.append('text').attr('class', 'sub_name').text('Inflation adjusted').attr('alignment-baseline', 'middle').attr('y',-50).attr('x',-10).attr('font-size', '20px').attr('font-weight', 5)
+svg.append('text').attr('class', 'key_name').text('Inflation adjusted').attr('alignment-baseline', 'middle').attr('y',-50).attr('x',-10).attr('font-size', '10px').attr('font-weight', 5)
 
 svg.append('circle').attr('class', 'key-circle').attr('r',5).attr('cx',80).attr('cy',-50).attr('fill', 'red').attr('opacity', 0.5)
-svg.append('text').attr('class', 'sub_name').text('Estimated').attr('alignment-baseline', 'middle').attr('y',-50).attr('x',90).attr('font-size', '20px').attr('font-weight', 5)
+svg.append('text').attr('class', 'key_name').text('Estimated').attr('alignment-baseline', 'middle').attr('y',-50).attr('x',90).attr('font-size', '10px').attr('font-weight', 5)
 
 
 // Though most state income tax receipts come from paycheck withholding, about one-third come from quarterly filings tied heavily to capital gains and other investment earnings. One of the most volatile revenue sources, these quarterly filings typically surge or plunge by double-digit percentages, but rarely remain flat.
@@ -170,10 +170,16 @@ svg.append('text').attr('class', 'sub_name').text('Estimated').attr('alignment-b
        xAxis = d3.axisBottom(xPositionScale).ticks(15).tickFormat(d3.format("d"))
 			 svg.select('.x-axis').call(xAxis)
 			 
-			 svg.select('.graph_name').attr('font-size', '15px')
-        svg.selectAll('.sub_name').attr('font-size', '10px')
+			 svg.select('.graph_name').attr('font-size', '20px')
+        svg.selectAll('.sub_name').attr('font-size', '15px')
 		
 
+				if (newWidth < 450){
+
+					svg.select('.graph_name').attr('font-size', '15px')
+					svg.selectAll('.sub_name').attr('font-size', '10px')
+	
+				}
        if (newWidth < 200){
 
         svg.select('.graph_name').attr('font-size', '20px')
