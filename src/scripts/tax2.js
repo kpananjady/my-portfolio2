@@ -55,20 +55,41 @@ function ready(datapoints) {
 // yPositionScale.domain(d3.extent(datapoints, function(d) { return d['Inflation adj'] }));
 yPositionScale.domain([0,4700000000])
 
-svg.append('text').attr('class', 'graph_name').text('A Fiscal Rollercoaster').attr('alignment-baseline', 'middle').attr('y',-275).attr('x',0).attr('font-size', '25px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_name').text('A Fiscal Rollercoaster').attr('alignment-baseline', 'middle').attr('y',-275).attr('x',-25).attr('font-size', '25px').attr('font-weight', 5)
 
-svg.append('text').attr('class', 'sub_name').text('Though most state income tax receipts come from paycheck withholding,').attr('alignment-baseline', 'middle').attr('y',-220).attr('x',0).attr('font-size', '20px').attr('font-weight', 5)
-svg.append('text').attr('class', 'sub_name').text('about one-third come from quarterly filings tied heavily to capital gains').attr('alignment-baseline', 'middle').attr('y',-190).attr('x',0).attr('font-size', '20px').attr('font-weight', 5)
-svg.append('text').attr('class', 'sub_name').text('and other investment earnings. One of the most volatile revenue sources, ').attr('alignment-baseline', 'middle').attr('y',-160).attr('x',0).attr('font-size', '20px').attr('font-weight', 5)
-svg.append('text').attr('class', 'sub_name').text('these quarterly filings typically surge or plunge by double-digit percentages,').attr('alignment-baseline', 'middle').attr('y',-130).attr('x',0).attr('font-size', '20px').attr('font-weight', 5)
-svg.append('text').attr('class', 'sub_name').text('but rarely remain flat.').attr('alignment-baseline', 'middle').attr('y',-100).attr('x',0).attr('font-size', '20px').attr('font-weight', 5)
+svg.append('text').attr('class', 'sub_name').text('Though most state income tax receipts come from paycheck withholding,').attr('alignment-baseline', 'middle').attr('y',-220).attr('x',-25).attr('font-size', '20px').attr('font-weight', 5)
+svg.append('text').attr('class', 'sub_name').text('about one-third come from quarterly filings tied heavily to capital gains').attr('alignment-baseline', 'middle').attr('y',-190).attr('x',-25).attr('font-size', '20px').attr('font-weight', 5)
+svg.append('text').attr('class', 'sub_name').text('and other investment earnings. One of the most volatile revenue sources, ').attr('alignment-baseline', 'middle').attr('y',-160).attr('x',-25).attr('font-size', '20px').attr('font-weight', 5)
+svg.append('text').attr('class', 'sub_name').text('these quarterly filings typically surge or plunge by double-digit percentages,').attr('alignment-baseline', 'middle').attr('y',-130).attr('x',-25).attr('font-size', '20px').attr('font-weight', 5)
+svg.append('text').attr('class', 'sub_name').text('but rarely remain flat.').attr('alignment-baseline', 'middle').attr('y',-100).attr('x',-25).attr('font-size', '20px').attr('font-weight', 5)
+
+
+svg.append('circle').attr('class', 'key-circle').attr('r',5).attr('cx',-20).attr('cy',-50).attr('fill', 'darkblue').attr('opacity', 0.5)
+svg.append('text').attr('class', 'sub_name').text('Inflation adjusted').attr('alignment-baseline', 'middle').attr('y',-50).attr('x',-10).attr('font-size', '20px').attr('font-weight', 5)
+
+svg.append('circle').attr('class', 'key-circle').attr('r',5).attr('cx',80).attr('cy',-50).attr('fill', 'red').attr('opacity', 0.5)
+svg.append('text').attr('class', 'sub_name').text('Estimated').attr('alignment-baseline', 'middle').attr('y',-50).attr('x',90).attr('font-size', '20px').attr('font-weight', 5)
+
 
 // Though most state income tax receipts come from paycheck withholding, about one-third come from quarterly filings tied heavily to capital gains and other investment earnings. One of the most volatile revenue sources, these quarterly filings typically surge or plunge by double-digit percentages, but rarely remain flat.
 
 	console.log('Data read in:', datapoints)
 	
+	svg.append('path')
+	.datum(datapoints)
+	.attr('class', 'path_next')
+	.attr('d', function(d) {
+		return line(d)
+	})
+	.attr('stroke', 'darkblue')
+	.attr('stroke-width', 2)
+	.attr('fill', 'none')
+	.attr('opacity',0.5)
+	.lower()
+
+
   svg
-    .selectAll('circle')
+    .selectAll('circle-points')
     .data(datapoints)
     .enter()
     .append('circle')
@@ -76,19 +97,15 @@ svg.append('text').attr('class', 'sub_name').text('but rarely remain flat.').att
     .attr('r', 5)
     .attr('cx', d => xPositionScale(d['Fiscal Year']))
     .attr('cy', d => yPositionScale( d['Inflation adj']))
-    .attr('fill', 'darkblue')
-    .attr('opacity', 0.25)
+    .attr('fill', function(d){
+			if(d['Fiscal Year']==2020){
+				return 'red'
+			}
+			return 'darkblue'
+		})
+    .attr('opacity', 0.55)
     
-    svg.append('path')
-    .datum(datapoints)
-    .attr('class', 'path_next')
-    .attr('d', function(d) {
-      return line(d)
-    })
-    .attr('stroke', 'darkblue')
-    .attr('stroke-width', 2)
-    .attr('fill', 'none')
-    .attr('opacity',0.5)
+
 
 
   svg
@@ -101,7 +118,7 @@ svg.append('text').attr('class', 'sub_name').text('but rarely remain flat.').att
     .attr('font-size', '10px')
     .attr('font-weight', 5)
 
-  const yAxis = d3.axisLeft(yPositionScale).ticks(4).tickFormat(function(d) { return Math.round(d * 1/1000000) +'M'}) 
+  const yAxis = d3.axisLeft(yPositionScale).ticks(4).tickFormat(function(d) { return Math.round(d * 1/1000000000) +'B'}) 
   svg
     .append('g')
     .attr('class', 'axis y-axis')
@@ -162,7 +179,7 @@ svg.append('text').attr('class', 'sub_name').text('but rarely remain flat.').att
         svg.select('.graph_name').attr('font-size', '20px')
         svg.selectAll('.sub_name').attr('font-size', '10px')
 
-			
+				xAxis.remove()
 
              
        
