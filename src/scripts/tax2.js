@@ -55,7 +55,7 @@ function ready(datapoints) {
 // yPositionScale.domain(d3.extent(datapoints, function(d) { return d['Inflation adj'] }));
 yPositionScale.domain([0,5000000000])
 
-svg.append('text').attr('class', 'graph_name').text('A Fiscal Rollercoaster').attr('alignment-baseline', 'middle').attr('y',-275).attr('x',-25).attr('font-size', '25px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_name').text('A fiscal rollercoaster').attr('alignment-baseline', 'middle').attr('y',-275).attr('x',-25).attr('font-size', '25px').attr('font-weight', 5)
 
 svg.append('text').attr('class', 'sub_name').text('Though most state income tax receipts come from paycheck withholding,').attr('alignment-baseline', 'middle').attr('y',-220).attr('x',-25).attr('font-size', '20px').attr('font-weight', 5)
 svg.append('text').attr('class', 'sub_name').text('about one-third come from quarterly filings tied heavily to capital gains').attr('alignment-baseline', 'middle').attr('y',-190).attr('x',-25).attr('font-size', '20px').attr('font-weight', 5)
