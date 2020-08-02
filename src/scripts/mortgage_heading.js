@@ -54,9 +54,12 @@ let svg = d3
     
         const newWidth = svgWidth - margin.left - margin.right
         const newHeight = svgHeight - margin.top - margin.bottom
+        console.log('here')
+
 
         if (newWidth > 500) {
 
+          console.log('here')
             svg.selectAll('.title').attr('font-size', '20px')
             svg.selectAll('.sub-title').attr('font-size', '15px')
         

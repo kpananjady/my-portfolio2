@@ -457,26 +457,26 @@ svg.selectAll("mycircle1")
 //       svg.select('#tick4')  .attr('x', xPositionScale(1.800))
 //       svg.select('#tick5')  .attr('x', xPositionScale(1.850))
 
-// //   if (newWidth>450){
-// //     svg.select('.graph_name').text('Vaccinations rise in June after pandemic plummet')
-// //     }
+//   if (newWidth>450){
+//     svg.select('.graph_name').text('Vaccinations rise in June after pandemic plummet')
+//     }
 
 
-//   if (newWidth<450){
+  if (newWidth<450){
 
-//     svg.selectAll('.graph_name').attr('alignment-baseline', 'middle').attr('font-size', '20px').attr('font-weight', 5)
+    svg.selectAll('.graph_name').attr('alignment-baseline', 'middle').attr('font-size', '20px').attr('font-weight', 5)
     
-//     svg.selectAll('.graph_sub').attr('alignment-baseline', 'middle').attr('font-size', '10px').attr('font-weight', 5)
+    svg.selectAll('.graph_sub').attr('alignment-baseline', 'middle').attr('font-size', '10px').attr('font-weight', 5)
    
-//   }
+  }
 
-//   if (newWidth<250){
+  if (newWidth<250){
 
 
-//     svg.selectAll('.graph_name').attr('alignment-baseline', 'middle').attr('font-size', '17px').attr('font-weight', 5)
+    svg.selectAll('.graph_name').attr('alignment-baseline', 'middle').attr('font-size', '17px').attr('font-weight', 5)
     
-//     svg.selectAll('.graph_sub').attr('alignment-baseline', 'middle').attr('font-size', '10px').attr('font-weight', 5)
-// //     svg.select('.graph_name').attr('font-size', '14px')
+    svg.selectAll('.graph_sub').attr('alignment-baseline', 'middle').attr('font-size', '10px').attr('font-weight', 5)
+//     svg.select('.graph_name').attr('font-size', '14px')
 // //     svg.select('.graph_sub').text('DPH doses supplied to medical providers, 2020 v 2019').attr('font-size', '10px')
 
 // //     xPositionScale.domain(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'])
@@ -492,7 +492,7 @@ svg.selectAll("mycircle1")
 // //     xPositionScale.range([0,newWidth])
 // //     xAxis = d3.axisBottom(xPositionScale).ticks(4)
 // //     svg.select('.x-axis').call(xAxis)
-//     }
+    }
 
 }
 window.addEventListener('resize', render)
