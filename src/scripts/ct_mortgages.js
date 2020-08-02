@@ -23,7 +23,7 @@ const svg = d3
   .attr('class', 'd3-tip')
   .offset([-20, 0])
   .html(function(d) {
-    return `${Math.round(d['Connecticut DQ Rate']-d['National DQ Rate'])}%`
+    return `${(d['Connecticut DQ Rate']-d['National DQ Rate']).toFixed(2)}%`
   })
 
   svg.call(tip)
@@ -90,9 +90,9 @@ console.log(datapoints, 'this is the data')
 svg.append('text').attr('class', 'graph_name').text('Connecticut delinquences spike during pandemic,').attr('alignment-baseline', 'middle').attr('y',-150).attr('x',-90).attr('font-size', '25px').attr('font-weight', 5)
 svg.append('text').attr('class', 'graph_name').text('outpace national average').attr('alignment-baseline', 'middle').attr('y',-120).attr('x',-90).attr('font-size', '25px').attr('font-weight', 5)
 
-svg.append('text').attr('class', 'graph_sub').text("CT's delinquency rate has historically been higher than the national").attr('alignment-baseline', 'middle').attr('y',-90).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
-svg.append('text').attr('class', 'graph_sub').text('average. But the gulf has widened during the pandemic, which means').attr('alignment-baseline', 'middle').attr('y',-70).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
-svg.append('text').attr('class', 'graph_sub').text('that per capita we suffering more.').attr('alignment-baseline', 'middle').attr('y',-50).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_sub').text("CT's mortgage delinquency rate has historically been higher than the").attr('alignment-baseline', 'middle').attr('y',-90).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_sub').text('national average. But the gulf between the two has widened in the ').attr('alignment-baseline', 'middle').attr('y',-70).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_sub').text('past few months.').attr('alignment-baseline', 'middle').attr('y',-50).attr('x',-90).attr('font-size', '15px').attr('font-weight', 5)
 
 
 
