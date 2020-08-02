@@ -4,7 +4,7 @@ import d3Tip from 'd3-tip'
 import { exportDefaultSpecifier } from '@babel/types'
 d3.tip = d3Tip
 
-let margin = { top: 0, left: 0, right: 400, bottom: 50 }
+let margin = { top: 0, left: 0, right: 100, bottom: 50 }
 
 let height = 500 - margin.top - margin.bottom
 let width = 1000 - margin.left - margin.right
@@ -21,7 +21,7 @@ let svg = d3
 
 
 
-const colorScale = d3.scaleSequential(d3.interpolateOranges).domain([0, 15])
+const colorScale = d3.scaleSequential(d3.interpolateBlues).domain([0, 15])
 
 Promise.all([
   d3.json(require('/data/us_states.topojson')),
@@ -101,12 +101,12 @@ function ready([json, mortgages]) {
             const newWidth = svgWidth - margin.left - margin.right
             const newHeight = svgHeight - margin.top - margin.bottom
 
-            // projection
-            // .scale(700).fitSize([newWidth, newHeight], states)
+            projection
+            .scale(700).fitSize([newWidth,newHeight], states)
     
-            // path = d3.geoPath().projection(projection)
+            path.projection(projection)
 
-            // svg.selectAll('.state').attr('d', path)
+            svg.selectAll('.state').attr('d', path)
 
             console.log(newWidth)
 

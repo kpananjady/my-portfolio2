@@ -104,7 +104,7 @@ svg.append('text').attr('x', -80).attr('y', 14).attr('r', 5).text('CT mortage').
 svg.append('text').attr('x', -80).attr('y', 23).attr('r', 5).text('delinquency').attr('font-size', '10px').attr('font-weight', 5)
 svg.append('text').attr('x', -80).attr('y', 33).attr('r', 5).text('rate').attr('font-size', '10px').attr('font-weight', 5)
 
-svg.append('circle').attr('cx', -90).attr('cy', 20).attr('r', 5).style("fill", "#4C4082")
+svg.append('circle').attr('cx', -90).attr('cy', 20).attr('r', 5).style("fill", "#000080")
 svg.append('rect').attr('x', -90).attr('y', 20).attr('r', 5).style("fill", "#C0C0C0")
 svg.append('text').attr('x', -80).attr('y', 63).attr('r', 5).text('National').attr('font-size', '10px').attr('font-weight', 5)
 svg.append('text').attr('x', -80).attr('y', 73).attr('r', 5).text('morgage').attr('font-size', '10px').attr('font-weight', 5)
@@ -160,7 +160,7 @@ svg.selectAll("mycircle1")
 })
   .attr("cy", function(d) { return yPositionScale(d['Connecticut DQ Rate']) })
   .attr("r", "6")
-  .style("fill", "#4C4082")
+  .style("fill", "#000080")
 
   svg.selectAll("mycircle2")
   .data(datapoints)
