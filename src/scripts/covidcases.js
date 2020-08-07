@@ -3,8 +3,8 @@ import d3Tip from 'd3-tip'
 import { exportDefaultSpecifier } from '@babel/types'
 d3.tip = d3Tip
 
-var margin = { top: 20, left: 50, right: 50, bottom: 50 }
-const height = 650 - margin.top - margin.bottom
+var margin = { top: 20, left: 0, right: 50, bottom: 100 }
+const height = 450 - margin.top - margin.bottom
 const width = 700 - margin.left - margin.right
 
 var cellSize = calcCellSize(width, height, 13, 8);
@@ -100,15 +100,15 @@ svg.call(tip)
 
 
   function ready([states_data,datapoints]) {
+    svg.append('rect').attr('id', 'box00').attr('width', 25).attr('height', 5).attr('x',width-200).attr('y', height+50).attr('fill', colorScale(0)).attr('opacity',1)
+    svg.append('rect').attr('id', 'box0').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', height+50).attr('fill', colorScale(200)).attr('opacity',1)
+    svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height+50).attr('fill', colorScale(400)).attr('opacity',1)
+    svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height+50).attr('fill', colorScale(600)).attr('opacity',1)
+    svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height+50).attr('fill', colorScale(800)).attr('opacity',1)
 
-    svg.append('rect').attr('id', 'box0').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', height-100).attr('fill', colorScale(0)).attr('opacity',0.7)
-    svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-100).attr('fill', colorScale(200)).attr('opacity',0.7)
-    svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-100).attr('fill', colorScale(400)).attr('opacity',0.7)
-    svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-100).attr('fill', colorScale(800)).attr('opacity',0.7)
+    svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-200).attr('y', height+45).attr('font-size', 10)
 
-    svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-175).attr('y', height-105).attr('font-size', 10)
-
-    svg.append('text').attr('id', 'box4-text').text('800').attr('x',width-95).attr('y', height-105).attr('font-size', 10)
+    svg.append('text').attr('id', 'box4-text').text('800').attr('x',width-95).attr('y', height+45).attr('font-size', 10)
 
      var states = gridMap.selectAll(".state")
       .data(states_data, function(d) { return d.code })
@@ -172,6 +172,13 @@ svg.call(tip)
           })
           .text(function(d) { return d.code; })
           .style("text-anchor", "middle").attr('font-size', '15px').attr('font-weight', 5)
+          .attr('fill', function(d){
+              if (d.code ==='NY'){
+                  return "white"
+              } else {
+                  return 'black'
+              }
+          })
   
 
 
@@ -313,8 +320,30 @@ states.enter()
         return ((d.row - 1) * cellSize) + (cellSize /2 + 5);
       })
       .text(function(d) { return d.code; })
-      .style("text-anchor", "middle").attr('font-size', '15px').attr('font-weight', 5)
+      .style("text-anchor", "middle").attr('font-size', function(d){
+          if (newWidth<400){
+              return '10px'
+          } else {
+              return '15px'
+          }
+      }).attr('font-weight', 5)
+      .attr('fill', function(d){
+        if (d.code ==='NY'){
+            return "white"
+        } else {
+            return 'black'
+        }
+    })
 
+
+      svg.select('#box1-text').attr('x',newWidth-200)
+      svg.select('#box4-text').attr('x',newWidth-95)
+
+      svg.select('#box00').attr('x', newWidth-200).attr('y', height+50)
+      svg.select('#box0').attr('x', newWidth-175)
+      svg.select('#box1').attr('x', newWidth-150)
+      svg.select('#box2').attr('x', newWidth-125)
+      svg.select('#box3').attr('x', newWidth-100)
         }
         window.addEventListener('resize', render)
     
