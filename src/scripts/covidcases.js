@@ -108,7 +108,7 @@ svg.call(tip)
 
     svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-200).attr('y', height+45).attr('font-size', 10)
 
-    svg.append('text').attr('id', 'box4-text').text('800').attr('x',width-95).attr('y', height+45).attr('font-size', 10)
+    svg.append('text').attr('id', 'box4-text').text('800+').attr('x',width-95).attr('y', height+45).attr('font-size', 10)
 
      var states = gridMap.selectAll(".state")
       .data(states_data, function(d) { return d.code })
