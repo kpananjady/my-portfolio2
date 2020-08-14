@@ -120,14 +120,14 @@ svg
          )
          .attr("height", 15)
          .attr("x",0.4*width+65)
-         .attr("width",62/100*0.4*width)
+         .attr("width",61/100*0.4*width)
          .attr('fill', 'darkblue')
          .attr('rx',10)
          .attr('ry',10)
          .attr('opacity', 0.25)
 
-         svg.append('text').attr('class', 'label').text('62%').attr('alignment-baseline', 'middle').attr('y',-97).attr('x',2*0.4*width+30).attr('font-size', '10px').attr('font-weight', 5)
-         svg.append('text').attr('class', 'label').text('41%').attr('alignment-baseline', 'middle').attr('y',-57).attr('x',2*0.4*width+30).attr('font-size', '10px').attr('font-weight', 5)
+         svg.append('text').attr('class', 'label').text('61%').attr('alignment-baseline', 'middle').attr('y',-97).attr('x',2*0.4*width+30).attr('font-size', '10px').attr('font-weight', 5)
+         svg.append('text').attr('class', 'label').text('40%').attr('alignment-baseline', 'middle').attr('y',-57).attr('x',2*0.4*width+30).attr('font-size', '10px').attr('font-weight', 5)
 
    
          svg
@@ -149,7 +149,7 @@ svg
          .attr("y",-65)
          .attr("height", 15)
          .attr("x", 0.4*width+65)
-         .attr("width",41/100*0.4*width)
+         .attr("width",40/100*0.4*width)
          .attr('fill', 'red')
          .attr('rx',10)
          .attr('ry',10)
@@ -323,8 +323,8 @@ svg
 
         svg.select('.bar_2_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
         svg.select('.bar_2_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
-        svg.select('.bar_2_state').attr("x", 0.4*newWidth+60).attr('width', (41/100)*0.4*newWidth)
-        svg.select('.bar_2').attr("x", 0.4*newWidth+60).attr('width', (62/100)*0.4*newWidth)
+        svg.select('.bar_2_state').attr("x", 0.4*newWidth+60).attr('width', (40/100)*0.4*newWidth)
+        svg.select('.bar_2').attr("x", 0.4*newWidth+60).attr('width', (61/100)*0.4*newWidth)
 
         svg.selectAll('.n_homes').attr('cx', d => xPositionScale(d['Absentee_Received_Dems']))
         svg.selectAll('.y_lines').attr('x1', newWidth) // x position of the first end of the line
