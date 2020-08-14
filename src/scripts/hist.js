@@ -3,7 +3,7 @@ import d3Tip from 'd3-tip'
 import { exportDefaultSpecifier } from '@babel/types'
 d3.tip = d3Tip
 
-var margin = { top: 100, left: 100, right: 50, bottom: 50 }
+var margin = { top: 120, left: 100, right: 50, bottom: 50 }
 const height = 500 - margin.top - margin.bottom
 const width = 700 - margin.left - margin.right
 
@@ -30,6 +30,12 @@ const svg = d3
 
     function ready(datapoints)
 {
+
+    svg.append('text').attr('class', 'town_name').text('96 percent of inmates have a rating of 3 or less').attr('alignment-baseline', 'middle').attr('y',-100).attr('font-size', '20px').attr('font-weight', 5)
+    svg.append('text').attr('class', 'label_1').text('White inmates are more likely than average to have ratings of').attr('x', width/35).attr('y',-65).attr('font-weight', 5)
+    svg.append('text').attr('class', 'label_1').text('3 or higher, while the opposite is true of Black inmates').attr('x', width/35).attr('y',-45).attr('font-weight', 5)
+    svg.append('text').attr('class', 'label_1').text('with mental health needs.').attr('x', width/35).attr('y',-25).attr('font-weight', 5)
+
     svg
     .selectAll('rect')
     .data(datapoints)
@@ -49,6 +55,7 @@ const svg = d3
     })
     .attr('fill', 'lightgrey')
     .attr('opacity',1)
+    // .on('click', lower())
 
     svg
     .selectAll('rect_race')
@@ -60,7 +67,8 @@ const svg = d3
     .attr('x', d => {
         return xPositionScale(d['Classification'])
       })
-   
+
+
     
     d3.select('#toggle').on('click', () => {
       
@@ -144,7 +152,7 @@ const svg = d3
     svg.append('text').text('3').attr('id', 'three').attr('y', height+10).attr('x',xPositionScale(3)+xPositionScale.bandwidth()/2).attr('font-weight', 5).attr('font-size', 10)
     svg.append('text').text('4').attr('id', 'four').attr('y', height+10).attr('x',xPositionScale(4)+xPositionScale.bandwidth()/2).attr('font-weight', 5).attr('font-size', 10)
     svg.append('text').text('5').attr('id', 'five').attr('y', height+10).attr('x',xPositionScale(5)+xPositionScale.bandwidth()/2).attr('font-weight', 5).attr('font-size', 10)
-    svg.append('text').text('Mental Health Rating').attr('id','label').attr('y', height+40).attr('x',width/2).attr('font-weight', 5).attr('font-size', 10)
+    svg.append('text').text('Mental Health Need Scores').attr('id','label').attr('y', height+40).attr('x',width/2).attr('font-weight', 5).attr('font-size', 10)
 
     svg.append('text').text('% Inmates').attr('y', height/2).attr('x',-70).attr('font-weight', 5).attr('font-size', 10)
 
@@ -292,7 +300,7 @@ const svg = d3
         d3.select('#three').attr('x',xPositionScale(3)+xPositionScale.bandwidth()/2).attr('font-weight', 5).attr('font-size', 10)
         d3.select('#four').attr('x',xPositionScale(4)+xPositionScale.bandwidth()/2).attr('font-weight', 5).attr('font-size', 10)
         d3.select('#five').attr('x',xPositionScale(5)+xPositionScale.bandwidth()/2).attr('font-weight', 5).attr('font-size', 10)
-        d3.select('#label').attr('x', newWidth/2-20)
+        d3.select('#label').attr('x', newWidth/2-40)
       }
     
       // When the window resizes, run the function

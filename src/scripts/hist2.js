@@ -3,7 +3,7 @@ import d3Tip from 'd3-tip'
 import { exportDefaultSpecifier } from '@babel/types'
 d3.tip = d3Tip
 
-var margin = { top: 100, left: 100, right: 50, bottom: 50 }
+var margin = { top: 120, left: 100, right: 50, bottom: 50 }
 const height = 500 - margin.top - margin.bottom
 const width = 700 - margin.left - margin.right
 
@@ -31,6 +31,10 @@ const svg = d3
 
     function ready(datapoints)
 {
+
+    svg.append('text').attr('class', 'town_name').text('Ocasio’s bond was among the lowest among pre-trail detainees').attr('alignment-baseline', 'middle').attr('y',-100).attr('font-size', '20px').attr('font-weight', 5)
+
+
     svg
     .selectAll('rect')
     .data(datapoints)
