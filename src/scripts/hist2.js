@@ -17,13 +17,13 @@ const svg = d3
 
 
   var xPositionScale = d3.scaleBand()
-  .domain(['Less than $20K','$20K to < $50K','$50K to <$100K','$100K or higher','Persons w/bonds','Over $1M'])
+  .domain(['Less than $20K','$20K to < $50K','$50K to <$100K','$100K or higher'])
   .range([0,width])
     .padding(0)
 
     const yPositionScale = d3
     .scaleLinear()
-    .domain([0,3000])
+    .domain([0,2000])
     .range([height, 0])
 
     d3.csv(require('/data/hist_data_2.csv')).then(ready)
@@ -70,9 +70,7 @@ const svg = d3
     svg.append('text').text('20k-50k').attr('id', 'two').attr('y', height+10).attr('x',xPositionScale(['$20K to < $50K'])+xPositionScale.bandwidth()/2).attr('font-weight', 5).attr('font-size', 10)
     svg.append('text').text('50k-100k').attr('id', 'three').attr('y', height+10).attr('x',xPositionScale('$50K to <$100K')+xPositionScale.bandwidth()/2).attr('font-weight', 5).attr('font-size', 10)
     svg.append('text').text('>100k').attr('id', 'four').attr('y', height+10).attr('x',xPositionScale('$100K or higher')+xPositionScale.bandwidth()/2).attr('font-weight', 5).attr('font-size', 10)
-    svg.append('text').text('W/o bonds').attr('id', 'five').attr('y', height+10).attr('x',xPositionScale('Persons w/bonds')+xPositionScale.bandwidth()/2).attr('font-weight', 5).attr('font-size', 10)
-    svg.append('text').text('>1M').attr('id', 'six').attr('y', height+10).attr('x',xPositionScale('Over $1M')+xPositionScale.bandwidth()/2).attr('font-weight', 5).attr('font-size', 10)
-
+    
     
     svg.append('text').text('Bond amounts').attr('id','label').attr('y', height+40).attr('x',width/2).attr('font-weight', 5).attr('font-size', 10)
 
@@ -135,9 +133,7 @@ const svg = d3
         d3.select('#two').attr('x',xPositionScale(['$20K to < $50K'])+xPositionScale.bandwidth()/2).attr('font-weight', 5).attr('font-size', 10)
         d3.select('#three').attr('x',xPositionScale('$50K to <$100K')+xPositionScale.bandwidth()/2).attr('font-weight', 5).attr('font-size', 10)
         d3.select('#four').attr('x',xPositionScale('$100K or higher')+xPositionScale.bandwidth()/2).attr('font-weight', 5).attr('font-size', 10)
-        d3.select('#five').attr('x',xPositionScale('Persons w/bonds')+xPositionScale.bandwidth()/2).attr('font-weight', 5).attr('font-size', 10)
-      d3.select('#six').attr('x',xPositionScale('Over $1M')+xPositionScale.bandwidth()/2).attr('font-weight', 5).attr('font-size', 10)
-
+       
         d3.select('#label').attr('x', newWidth/2-20)
       }
     
