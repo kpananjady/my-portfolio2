@@ -31,7 +31,7 @@ const svg = d3
     function ready(datapoints)
 {
 
-    svg.append('text').attr('class', 'town_name').text('96 percent of inmates have a rating of 3 or less').attr('alignment-baseline', 'middle').attr('y',-100).attr('font-size', '20px').attr('font-weight', 5)
+    svg.append('text').attr('class', 'town_name').text('96% of inmates have a rating of 3 or less').attr('alignment-baseline', 'middle').attr('y',-100).attr('font-size', '20px').attr('font-weight', 5)
     svg.append('text').attr('class', 'label_1').text('White inmates are more likely than average to have ratings of').attr('x', width/35).attr('y',-65).attr('font-weight', 5)
     svg.append('text').attr('class', 'label_1').text('3 or higher, while the opposite is true of Black inmates').attr('x', width/35).attr('y',-45).attr('font-weight', 5)
     svg.append('text').attr('class', 'label_1').text('with mental health needs.').attr('x', width/35).attr('y',-25).attr('font-weight', 5)

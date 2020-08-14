@@ -32,7 +32,7 @@ const svg = d3
     function ready(datapoints)
 {
 
-    svg.append('text').attr('class', 'town_name').text('Ocasio’s bond was among the lowest among pre-trail detainees').attr('alignment-baseline', 'middle').attr('y',-100).attr('font-size', '20px').attr('font-weight', 5)
+    svg.append('text').attr('class', 'town_name').text('Ocasio’s bond was one of the lowest among pre-trial detainees').attr('alignment-baseline', 'middle').attr('y',-100).attr('font-size', '20px').attr('font-weight', 5)
 
 
     svg
