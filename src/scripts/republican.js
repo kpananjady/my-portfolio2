@@ -66,18 +66,18 @@ svg.append('text').attr('class', 'sub').text('Absentee Ballots').attr('alignment
 svg.append('text').attr('class', 'sub').text("Turnout '20 v '16").attr('alignment-baseline', 'middle').attr('y',-135).attr('x',0).attr('font-size', '15px').attr('font-weight', 5)
 
 
-svg.append('text').attr('class', 'graph_name').text('2020: 25%').attr('alignment-baseline', 'center').attr('y',-100).attr('x',-50).attr('font-size', '10px').attr('font-weight', 5)
-svg.append('text').attr('class', 'graph_name').text('2020:19%').attr('alignment-baseline', 'left').attr('y',-60).attr('x',-50).attr('font-size', '10px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_name').text('2020: 28.53%').attr('alignment-baseline', 'center').attr('y',-100).attr('x',-50).attr('font-size', '10px').attr('font-weight', 5)
+svg.append('text').attr('class', 'graph_name').text('2020:20.09%').attr('alignment-baseline', 'left').attr('y',-60).attr('x',-50).attr('font-size', '10px').attr('font-weight', 5)
 
 svg.append('circle').attr('id', 'dot_plot1').attr('r', 6).attr('cy',-100).attr('cx', xPositionScale2(43.1)).attr('fill', 'lightgrey')
-svg.append('circle').attr('id', 'dot_plot2').attr('r', 6).attr('cy',-100).attr('cx', xPositionScale2(25)).attr('fill', 'black')
+svg.append('circle').attr('id', 'dot_plot2').attr('r', 6).attr('cy',-100).attr('cx', xPositionScale2(28.53)).attr('fill', 'black')
 svg.append('text').attr('id', 'dot_plot1_text').text('43.1%').attr('y',-100).attr('x', xPositionScale2(43.1)+7).attr('font-size', '10px').attr('font-weight', 5)
 
 svg
 .append("line")
 .attr('id', 'my_line1')
   .attr("x2",   function(d) { return xPositionScale2(43.1)} )
-  .attr("x1", function(d) { return xPositionScale2(25) })
+  .attr("x1", function(d) { return xPositionScale2(28.53) })
   .attr("y1", function(d) { return -100 })
   .attr("y2", function(d) { return -100 })
   .attr("stroke", 'darkblue')
@@ -86,14 +86,14 @@ svg
 
 
 svg.append('circle').attr('id', 'dot_plot3').attr('r', 6).attr('cy',-60).attr('cx', xPositionScale2(47.2)).attr('fill', 'lightgrey')
-svg.append('circle').attr('id', 'dot_plot4').attr('r', 6).attr('cy',-60).attr('cx', xPositionScale2(19)).attr('fill', 'black')
+svg.append('circle').attr('id', 'dot_plot4').attr('r', 6).attr('cy',-60).attr('cx', xPositionScale2(20.09)).attr('fill', 'black')
 svg.append('text').attr('id', 'dot_plot2_text').text('47.2%').attr('y',-60).attr('x', xPositionScale2(47.2)+7).attr('font-size', '10px').attr('font-weight', 5)
 
 svg
 .append("line")
 .attr('id', 'my_line2')
   .attr("x2",   function(d) { return xPositionScale2(47.2)} )
-  .attr("x1", function(d) { return xPositionScale2(19) })
+  .attr("x1", function(d) { return xPositionScale2(20.09) })
   .attr("y1", function(d) { return -60 })
   .attr("y2", function(d) { return -60 })
   .attr("stroke", 'red')
@@ -120,14 +120,14 @@ svg
          )
          .attr("height", 15)
          .attr("x",0.4*width+65)
-         .attr("width",56/100*0.4*width)
+         .attr("width",62/100*0.4*width)
          .attr('fill', 'darkblue')
          .attr('rx',10)
          .attr('ry',10)
          .attr('opacity', 0.25)
 
-         svg.append('text').attr('class', 'label').text('56%').attr('alignment-baseline', 'middle').attr('y',-97).attr('x',2*0.4*width+30).attr('font-size', '10px').attr('font-weight', 5)
-         svg.append('text').attr('class', 'label').text('35%').attr('alignment-baseline', 'middle').attr('y',-57).attr('x',2*0.4*width+30).attr('font-size', '10px').attr('font-weight', 5)
+         svg.append('text').attr('class', 'label').text('62%').attr('alignment-baseline', 'middle').attr('y',-97).attr('x',2*0.4*width+30).attr('font-size', '10px').attr('font-weight', 5)
+         svg.append('text').attr('class', 'label').text('41%').attr('alignment-baseline', 'middle').attr('y',-57).attr('x',2*0.4*width+30).attr('font-size', '10px').attr('font-weight', 5)
 
    
          svg
@@ -149,7 +149,7 @@ svg
          .attr("y",-65)
          .attr("height", 15)
          .attr("x", 0.4*width+65)
-         .attr("width",35/100*0.4*width)
+         .attr("width",41/100*0.4*width)
          .attr('fill', 'red')
          .attr('rx',10)
          .attr('ry',10)
@@ -225,6 +225,7 @@ svg
         .attr('cx', d => xPositionScale(d['Absentee_Received_Dems']))
         .attr('cy', d => yPositionScale( d['Turnout_Dems']))
         .attr('fill', 'darkblue')
+        .style("display", function(d) { return d['Turnout_Dems'] == 0 ? "none" : null; })
 
     })
 
@@ -301,17 +302,17 @@ svg
 
       svg.select('#my_line1')
         .attr("x2",   function(d) { return xPositionScale2(43.1)} )
-        .attr("x1", function(d) { return xPositionScale2(25) })
+        .attr("x1", function(d) { return xPositionScale2(28.53) })
 
 
       svg.select('#my_line2')
       .attr("x2",   function(d) { return xPositionScale2(47.2)} )
-      .attr("x1", function(d) { return xPositionScale2(19) })
+      .attr("x1", function(d) { return xPositionScale2(20.09) })
 
         svg.select('#dot_plot1').attr('cx', xPositionScale2(43.1))
-        svg.select('#dot_plot2').attr('cx', xPositionScale2(25))
+        svg.select('#dot_plot2').attr('cx', xPositionScale2(28.53))
         svg.select('#dot_plot3').attr('cx', xPositionScale2(47.2))
-        svg.select('#dot_plot4').attr('cy',-60).attr('cx', xPositionScale2(19))
+        svg.select('#dot_plot4').attr('cy',-60).attr('cx', xPositionScale2(20.09))
 
         svg.select('#dot_plot2_text').attr('x', xPositionScale2(47.2)+7).attr('font-size', '10px').attr('font-weight', 5)
         svg.select('#dot_plot1_text').attr('x', xPositionScale2(43.1)+7).attr('font-size', '10px').attr('font-weight', 5)
@@ -322,8 +323,8 @@ svg
 
         svg.select('.bar_2_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
         svg.select('.bar_2_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
-        svg.select('.bar_2_state').attr("x", 0.4*newWidth+60).attr('width', (35/100)*0.4*newWidth)
-        svg.select('.bar_2').attr("x", 0.4*newWidth+60).attr('width', (56/100)*0.4*newWidth)
+        svg.select('.bar_2_state').attr("x", 0.4*newWidth+60).attr('width', (41/100)*0.4*newWidth)
+        svg.select('.bar_2').attr("x", 0.4*newWidth+60).attr('width', (62/100)*0.4*newWidth)
 
         svg.selectAll('.n_homes').attr('cx', d => xPositionScale(d['Absentee_Received_Dems']))
         svg.selectAll('.y_lines').attr('x1', newWidth) // x position of the first end of the line
