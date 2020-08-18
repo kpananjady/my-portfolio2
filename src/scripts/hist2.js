@@ -95,6 +95,7 @@ const svg = d3
         const newWidth = svgWidth - margin.left - margin.right
         // const newHeight = svgHeight - margin.top - margin.bottom
     
+        svg.select('.town_name').attr('font-size', '15px').attr('font-weight', 5).attr('x',-70)
         // Update our scale
         xPositionScale.range([0, newWidth])
         // yPositionScale.range([newHeight, 0])
