@@ -12,7 +12,7 @@ var cellSize = calcCellSize(width, height, 13, 8);
 // console.log(cellSize, 'cellsize')
 var gridData = gridData(13, 8, cellSize);
 // console.log(gridData, 'gridData')
-const colorScale = d3.scaleSequential(d3.interpolateOranges).domain([0, 100])
+const colorScale = d3.scaleSequential(d3.interpolateOranges).domain([0, 20])
 
 const svg = d3
   .select('#chart-1')
@@ -93,7 +93,7 @@ function calcCellSize(w, h, ncol, nrow) {
 .attr('class', 'd3-tip')
 .offset([-20, 0])
 .html(function(d) {
-  return `${(d['SHARE OF COVID‑19 DEATHS'])}`
+  return `${(d['positivity_rate'])}`
 })
 
 svg.call(tip)
@@ -101,14 +101,14 @@ svg.call(tip)
 
   function ready([states_data,datapoints]) {
     svg.append('rect').attr('id', 'box00').attr('width', 25).attr('height', 5).attr('x',width-200).attr('y', height+50).attr('fill', colorScale(0)).attr('opacity',1)
-    svg.append('rect').attr('id', 'box0').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', height+50).attr('fill', colorScale(25)).attr('opacity',1)
-    svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height+50).attr('fill', colorScale(50)).attr('opacity',1)
-    svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height+50).attr('fill', colorScale(75)).attr('opacity',1)
-    svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height+50).attr('fill', colorScale(100)).attr('opacity',1)
+    svg.append('rect').attr('id', 'box0').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', height+50).attr('fill', colorScale(5)).attr('opacity',1)
+    svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height+50).attr('fill', colorScale(10)).attr('opacity',1)
+    svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height+50).attr('fill', colorScale(15)).attr('opacity',1)
+    svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height+50).attr('fill', colorScale(20)).attr('opacity',1)
 
     svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-200).attr('y', height+45).attr('font-size', 10)
 
-    svg.append('text').attr('id', 'box4-text').text('100').attr('x',width-95).attr('y', height+45).attr('font-size', 10)
+    svg.append('text').attr('id', 'box4-text').text('20').attr('x',width-95).attr('y', height+45).attr('font-size', 10)
 
      var states = gridMap.selectAll(".state")
       .data(states_data, function(d) { return d.code })
@@ -133,11 +133,11 @@ svg.call(tip)
 
         
             // console.log()
-            datapoints.forEach(function(r){if (r.geo===d.state){
+            datapoints.forEach(function(r){if (r.State===d.state){
           // console.log(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
-                // console.log(r)
-            d['SHARE OF COVID‑19 DEATHS'] = +r['SHARE OF COVID‑19 DEATHS']
-            colorVar = colorScale(+r['SHARE OF COVID‑19 DEATHS'])
+             console.log(r)
+            d['positivity_rate'] = +r['positivity_rate']
+            colorVar = colorScale(+r['positivity_rate'])
             console.log(colorVar)
         }
       })  
@@ -284,13 +284,13 @@ states.enter()
 
   
       // console.log()
-      datapoints.forEach(function(r){if (r.geo===d.state){
+      datapoints.forEach(function(r){if (r.State===d.state){
 
     // console.log(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
           // console.log(r)
-      d['SHARE OF COVID‑19 DEATHS'] = +r['SHARE OF COVID‑19 DEATHS']
-      colorVar = colorScale(+r['SHARE OF COVID‑19 DEATHS'])
-      console.log(colorVar, 'colorVar')
+      d['positivity_rate'] = +r['positivity_rate']
+      colorVar = colorScale(+r['positivity_rate'])
+      console.log(colorVar, 'positivity_rate')
   }
 })  
 

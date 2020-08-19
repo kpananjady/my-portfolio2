@@ -5,7 +5,7 @@ d3.tip = d3Tip
 
 let margin = { top: 100, left: 50, right: 50, bottom: 0 }
 
-let height = 650 - margin.top - margin.bottom
+let height = 600 - margin.top - margin.bottom
 
 let width = 1000 - margin.left - margin.right
 
@@ -23,7 +23,7 @@ let svg = d3
   .append('g')
   .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
   const projection = d3.geoMercator()
-  .scale(width*17)
+  .scale(width*20)
             .center([-72.68, 41.8])
             .translate([(width) / 2, (height)/2]);
 const path = d3.geoPath().projection(projection)
@@ -198,7 +198,7 @@ Promise.all([
 
             console.log(newWidth, 'newWidth 1')
             projection
-            .scale(newWidth*17)
+            .scale(newWidth*20)
             .center([-72.68, 41])
             .translate([(newWidth) / 2, (newHeight)/2]);
 
@@ -229,7 +229,7 @@ Promise.all([
             console.log(newWidth, 'newWidth 2')
   
             projection
-          .scale(newWidth*0)
+          .scale(newWidth*25)
           .center([-72.68, 41])
   
           .translate([(newWidth) / 2, (newHeight)/2]);
