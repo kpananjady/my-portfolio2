@@ -34,7 +34,7 @@ const tip = d3
 .style('pointer-events', 'none')
 .offset([-10, 0])
 .html(function(d) {
-  return `${d.NAME}: Not Trump = ${Math.round(+d['Rocky_%'] + +d['Uncommitted_%'])}%`
+  return `${d.NAME}: ${Math.round(d['Property_value'])}%`
 })
 
 
@@ -71,6 +71,10 @@ Promise.all([
       .attr("class", "bubble bubble-biden")
       .attr("r", function(d){
         console.log(+d['Rocky_%'] + +d['Uncommitted_%'])
+
+        d['Property'] = 'Not Trump ='
+        d['Property_value'] = +d['Rocky_%'] + +d['Uncommitted_%']
+
         return radiusScale(+d['Rocky_%'] + +d['Uncommitted_%'])})
       .attr('fill', 'black')
       // using the map data
@@ -97,7 +101,11 @@ Promise.all([
       d3.select('#toggle').on('click', () => {
 
         svg.selectAll(".bubble")
-         .attr("r", d=> radiusScale(+d['Rocky_%'] + +d['Uncommitted_%']))
+         .attr("r", function(d){
+          d['Property'] = 'RdlF ='
+          d['Property_value'] = +d['Rocky_%']
+         return radiusScale(+d['Rocky_%'] + +d['Uncommitted_%'])
+        })
       .attr('fill', 'black')
       // using the map data
       // position a circle for matches in cd array
@@ -127,6 +135,10 @@ Promise.all([
         svg.selectAll(".bubble")
       .attr("r", function(d){
       console.log(radiusScale(+d['Rocky_%']))
+
+      d['Property'] = 'RdlF ='
+      d['Property_value'] = +d['Rocky_%']
+
       return radiusScale(+d['Rocky_%'])
       })
       .attr('fill', 'red')
@@ -156,6 +168,9 @@ Promise.all([
 
         svg.selectAll(".bubble")
       .attr("r", function(d){ 
+        d['Property'] = 'Uncommitted ='
+        d['Property_value'] = +d['Uncommitted_%']
+
         return radiusScale(+d['Uncommitted_%'])})
       .attr('fill', 'grey')
       // using the map data
@@ -229,7 +244,7 @@ Promise.all([
             console.log(newWidth, 'newWidth 2')
   
             projection
-          .scale(newWidth*25)
+          .scale(newWidth*26)
           .center([-72.68, 41])
   
           .translate([(newWidth) / 2, (newHeight)/2]);
