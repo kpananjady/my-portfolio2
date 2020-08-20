@@ -21,7 +21,7 @@ Kansas,12,yes
 Minnesota,7,yes
 South Carolina,10,yes
 Missouri,11,yes
-Wyoming,10
+Wyoming,10,no
 Kentucky,7,yes
 Wisconsin,7,yes
 Montana,6,yes
@@ -49,5 +49,6 @@ Maine,1,no
 Vermont,1,no
 Connecticut,1,no
 New York,1,no
-Puerto Rico,,yes
+Puerto Rico,undefined,yes
 Virgin Islands,yes
+Washington,undefined,no

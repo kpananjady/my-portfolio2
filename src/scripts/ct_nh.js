@@ -13,6 +13,7 @@ var cellSize = calcCellSize(width, height, 13, 8);
 var gridData = gridData(13, 8, cellSize);
 // console.log(gridData, 'gridData')
 const colorScale = d3.scaleSequential(d3.interpolateOranges).domain([0, 20])
+const colorScale2 = d3.scaleOrdinal().domain(['yes', 'no']).range(['#9400D3','#32CD32'])
 
 const svg = d3
   .select('#chart-1')
@@ -139,6 +140,11 @@ svg.call(tip)
             d['positivity_rate'] = +r['positivity_rate']
             colorVar = colorScale(+r['positivity_rate'])
             console.log(colorVar)
+
+            if (r['positivity_rate']==='undefined'){
+              colorVar = 'lightgrey'
+      
+            }
         }
       })  
 
@@ -181,7 +187,97 @@ svg.call(tip)
 
 
 
+          d3.select('#toggle').on('click', () => {
 
+            svg.selectAll(".state_boxes")
+            .attr('fill', 'lightgrey')
+
+            .attr('fill', function(d){
+
+
+              var colorVar = 'lightgrey';
+  
+     
+  
+          
+              // console.log()
+              datapoints.forEach(function(r){if (r.State===d.state){
+            // console.log(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
+               console.log(r)
+              d['positivity_rate'] = +r['positivity_rate']
+              colorVar = colorScale(+r['positivity_rate'])
+              console.log(colorVar)
+
+              if (r['positivity_rate']==='undefined'){
+                colorVar = 'lightgrey'
+        
+              }
+          }
+        })  
+  
+    
+          return colorVar
+  
+            })
+            .on('mouseover', tip.show)
+            .on('click', tip.show)
+            .on('mouseout', tip.hide)
+  
+   svg.select('#box1-text').text('0')
+svg.select('#box4-text').text('20')
+
+svg.select('#box00').attr('fill', colorScale(0))
+svg.select('#box0').attr('fill', colorScale(5))
+svg.select('#box1').attr('fill', colorScale(10))
+svg.select('#box2').attr('fill', colorScale(15))
+svg.select('#box3').attr('fill', colorScale(20))
+    
+          })
+
+
+          d3.select('#toggle2').on('click', () => {
+
+            svg.selectAll(".state_boxes")
+            .attr('fill', 'lightgrey')
+
+            .attr('fill', function(d){
+
+
+              var colorVar = 'lightgrey';
+  
+     
+  
+          
+              // console.log()
+              datapoints.forEach(function(r){if (r.State===d.state){
+            // console.log(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
+               console.log(colorScale2(r['isolate']))
+              colorVar = colorScale2(r['isolate'])
+              console.log(colorVar)
+
+
+          }
+        })  
+  
+    
+          return colorVar
+  
+            })
+            .on('mouseover', tip.show)
+            .on('click', tip.show)
+            .on('mouseout', tip.hide)
+  
+            svg.select('#box1-text').text('Quarantine')
+            svg.select('#box4-text').text('No')
+      
+            svg.select('#box00').attr('fill', colorScale2('yes'))
+            svg.select('#box0').attr('fill', colorScale2('yes'))
+            svg.select('#box1').attr('fill', colorScale(0))
+            svg.select('#box2').attr('fill', colorScale2('no'))
+            svg.select('#box3').attr('fill', colorScale2('no'))
+         
+    
+          })
 
 
 
@@ -291,6 +387,11 @@ states.enter()
       d['positivity_rate'] = +r['positivity_rate']
       colorVar = colorScale(+r['positivity_rate'])
       console.log(colorVar, 'positivity_rate')
+
+      if (r['positivity_rate']==='undefined'){
+        colorVar = 'lightgrey'
+
+      }
   }
 })  
 

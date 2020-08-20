@@ -23,10 +23,10 @@ let svg = d3
 
   function ready(dummydata) {
 
-    svg.append('text').attr('class', 'title').text("CT's ").attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
-    svg.append('text').attr('class', 'sub-title').text('Nationally, over 40 percent of COVID-19 cases have been in hursing').attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
-    svg.append('text').attr('class', 'sub-title').text('homes, suggesting the CT facilities have been disproportionately.').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
-    svg.append('text').attr('class', 'sub-title').text('affected.').attr('alignment-baseline', 'middle').attr('y',115).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'title').text("CT's positivity rate among lowest in the nation").attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text("In addition, the governor's travel advisory requires").attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text('that travelers from states with posiivity rates >10 for').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text('over 7 days quarantine for 14 days.').attr('alignment-baseline', 'middle').attr('y',115).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
     // svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', 100).attr('font-size', 10)
     // svg.append('text').attr('id', 'box4-text').text('>800').attr('x',width-95).attr('y', 100).attr('font-size', 10)
