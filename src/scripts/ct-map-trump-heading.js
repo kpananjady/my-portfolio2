@@ -24,9 +24,10 @@ let svg = d3
   function ready(dummydata) {
 
     svg.append('text').attr('class', 'title').text("21.6% of the state's GOP voters passed on Trump").attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
-    svg.append('text').attr('class', 'sub-title').text('Lower Fairfield County, Hartford area show highest concentrations').attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text('Lower Fairfield County, Hartford area show the highest concentrations').attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
     svg.append('text').attr('class', 'sub-title').text('of anti-Trump sentiment. Voters who shunned Trump primarily').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
-    svg.append('text').attr('class', 'sub-title').text('identified themselves as uncommitted.').attr('alignment-baseline', 'middle').attr('y',115).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text('identified themselves as uncommitted, but the President won over 50%').attr('alignment-baseline', 'middle').attr('y',115).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text("of the GOP vote in every one of the state's 169 towns.").attr('alignment-baseline', 'middle').attr('y',135).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
     // svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', 100).attr('font-size', 10)
     // svg.append('text').attr('id', 'box4-text').text('>800').attr('x',width-95).attr('y', 100).attr('font-size', 10)

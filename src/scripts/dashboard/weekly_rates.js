@@ -12,11 +12,11 @@ let width = 1000 - margin.left - margin.right
 
 const radiusScale = d3
   .scaleSqrt()
-  .domain([0, 50])
+  .domain([0, 30])
   .range([2, 10])
 
 let svg = d3
-  .select('#chart-1')
+  .select('#chart-4')
   .append('svg')
   .attr('height', height + margin.top + margin.bottom)
   .attr('width', width + margin.left + margin.right)
@@ -28,21 +28,21 @@ let svg = d3
             .translate([(width) / 2, (height)/2]);
 const path = d3.geoPath().projection(projection)
 
-const tip = d3
-.tip()
-.attr('class', 'd3-tip d3-tip-scrolly')
-.style('pointer-events', 'none')
-.offset([-10, 0])
-.html(function(d) {
-  return `${d.NAME}: ${Math.round(d['Property_value'])}%`
-})
+// const tip = d3
+// .tip()
+// .attr('class', 'd3-tip d3-tip-scrolly')
+// .style('pointer-events', 'none')
+// .offset([-10, 0])
+// .html(function(d) {
+//   return `${d.NAME}: ${Math.round(d['Property_value'])}%`
+// })
 
 
-svg.call(tip)
+// svg.call(tip)
 
 Promise.all([
     d3.json(require('/data/ct_towns_simplified.topojson')),
-    d3.csv(require('/data/GOP_results.csv'))
+    d3.csv(require('/data/COVID-19_cases_in_community_settings_by_town_with_specimen_collection_or_onset_date_in_the_last_7_days.csv'))
   ]).then(ready)
   .catch(err => console.log('Failed on', err))
 
@@ -70,20 +70,18 @@ Promise.all([
       .append("circle")
       .attr("class", "bubble bubble-biden")
       .attr("r", function(d){
-        console.log(+d['Rocky_%'] + +d['Uncommitted_%'])
 
-        d['Property'] = 'Not Trump ='
-        d['Property_value'] = +d['Rocky_%'] + +d['Uncommitted_%']
-
-        return radiusScale(+d['Rocky_%'] + +d['Uncommitted_%'])})
+        // console.log(radiusd['Weekly rate'])
+        return radiusScale(+d['Weekly rate'])})
       .attr('fill', 'black')
       // using the map data
       // position a circle for matches in cd array
       .attr("cx", function(d) {
         for (var i = 0; i < towns2.data().length; i++){
            var p = towns2.data()[i];
-          if (p.properties.NAME10 === d["NAME"]){
+          if (p.properties.NAME10 === d["Town"]){
               var t = path.centroid(p);
+              console.log(t,'t')
               d.x = t[0];
               d.y = t[1];
               return d.x;
@@ -94,108 +92,106 @@ Promise.all([
         return d.y;
       })
       .attr('opacity', 0.5)
-      .on('mouseover', tip.show)
-      .on('click', tip.show)
+    //   .on('mouseover', tip.show)
+    //   .on('click', tip.show)
 
 
-      d3.select('#toggle').on('click', () => {
+    //   d3.select('#toggle').on('click', () => {
 
-        svg.selectAll(".bubble")
-         .attr("r", function(d){
-          
-        d['Property'] = 'Not Trump ='
-        d['Property_value'] = +d['Rocky_%'] + +d['Uncommitted_%']
+    //     svg.selectAll(".bubble")
+    //      .attr("r", function(d){
+    //       d['Property'] = 'RdlF ='
+    //       d['Property_value'] = +d['Rocky_%']
+    //      return radiusScale(+d['Rocky_%'] + +d['Uncommitted_%'])
+    //     })
+    //   .attr('fill', 'black')
+    //   // using the map data
+    //   // position a circle for matches in cd array
+    //   .attr("cx", function(d) {
+    //     for (var i = 0; i < towns2.data().length; i++){
+    //        var p = towns2.data()[i];
+    //       if (p.properties.NAME10 === d["NAME"]){
+    //           var t = path.centroid(p);
+    //           d.x = t[0];
+    //           d.y = t[1];
+    //           return d.x;
+    //       } 
+    //     }
+    //   })
+    //   .attr("cy", function(d){
+    //     return d.y;
+    //   })
+    //   .attr('opacity', 0.5)
+    //   .on('mouseover', tip.show)
+    //   .on('click', tip.show)
 
-         return radiusScale(+d['Rocky_%'] + +d['Uncommitted_%'])
-        })
-      .attr('fill', 'black')
-      // using the map data
-      // position a circle for matches in cd array
-      .attr("cx", function(d) {
-        for (var i = 0; i < towns2.data().length; i++){
-           var p = towns2.data()[i];
-          if (p.properties.NAME10 === d["NAME"]){
-              var t = path.centroid(p);
-              d.x = t[0];
-              d.y = t[1];
-              return d.x;
-          } 
-        }
-      })
-      .attr("cy", function(d){
-        return d.y;
-      })
-      .attr('opacity', 0.5)
-      .on('mouseover', tip.show)
-      .on('click', tip.show)
-
-      })
+    //   })
 
 
-      d3.select('#toggle2').on('click', () => {
+    //   d3.select('#toggle2').on('click', () => {
 
-        svg.selectAll(".bubble")
-      .attr("r", function(d){
-      console.log(radiusScale(+d['Rocky_%']))
+    //     svg.selectAll(".bubble")
+    //   .attr("r", function(d){
+    //   console.log(radiusScale(+d['Rocky_%']))
 
-      d['Property'] = 'RdlF ='
-      d['Property_value'] = +d['Rocky_%']
+    //   d['Property'] = 'RdlF ='
+    //   d['Property_value'] = +d['Rocky_%']
 
-      return radiusScale(+d['Rocky_%'])
-      })
-      .attr('fill', 'red')
-      // using the map data
-      // position a circle for matches in cd array
-      .attr("cx", function(d) {
-        for (var i = 0; i < towns2.data().length; i++){
-           var p = towns2.data()[i];
-          if (p.properties.NAME10 === d["NAME"]){
-              var t = path.centroid(p);
-              d.x = t[0];
-              d.y = t[1];
-              return d.x;
-          } 
-        }
-      })
-      .attr("cy", function(d){
-        return d.y;
-      })
-      .attr('opacity', 0.5)
-      .on('mouseover', tip.show)
-      .on('click', tip.show)
+    //   return radiusScale(+d['Rocky_%'])
+    //   })
+    //   .attr('fill', 'red')
+    //   // using the map data
+    //   // position a circle for matches in cd array
+    //   .attr("cx", function(d) {
+    //     for (var i = 0; i < towns2.data().length; i++){
+    //        var p = towns2.data()[i];
+    //       if (p.properties.NAME10 === d["NAME"]){
+    //           var t = path.centroid(p);
+    //           d.x = t[0];
+    //           d.y = t[1];
+    //           return d.x;
+    //       } 
+    //     }
+    //   })
+    //   .attr("cy", function(d){
+    //     return d.y;
+    //   })
+    //   .attr('opacity', 0.5)
+    //   .on('mouseover', tip.show)
+    //   .on('click', tip.show)
 
-      })
+    //   })
 
-      d3.select('#toggle3').on('click', () => {
+    //   d3.select('#toggle3').on('click', () => {
 
-        svg.selectAll(".bubble")
-      .attr("r", function(d){ 
-        d['Property'] = 'Uncommitted ='
-        d['Property_value'] = +d['Uncommitted_%']
+    //     svg.selectAll(".bubble")
+    //   .attr("r", function(d){ 
+    //     d['Property'] = 'Uncommitted ='
+    //     d['Property_value'] = +d['Uncommitted_%']
 
-        return radiusScale(+d['Uncommitted_%'])})
-      .attr('fill', 'purple')
-      // using the map data
-      // position a circle for matches in cd array
-      .attr("cx", function(d) {
-        for (var i = 0; i < towns2.data().length; i++){
-           var p = towns2.data()[i];
-          if (p.properties.NAME10 === d["NAME"]){
-              var t = path.centroid(p);
-              d.x = t[0];
-              d.y = t[1];
-              return d.x;
-          } 
-        }
-      })
-      .attr("cy", function(d){
-        return d.y;
-      })
-      .attr('opacity', 0.5)
-      .on('mouseover', tip.show)
-      .on('click', tip.show)
+    //     return radiusScale(+d['Uncommitted_%'])})
+    //   .attr('fill', 'grey')
+    //   // using the map data
+    //   // position a circle for matches in cd array
+    //   .attr("cx", function(d) {
+    //     for (var i = 0; i < towns2.data().length; i++){
+    //        var p = towns2.data()[i];
+    //       if (p.properties.NAME10 === d["NAME"]){
+    //           var t = path.centroid(p);
+    //           d.x = t[0];
+    //           d.y = t[1];
+    //           return d.x;
+    //       } 
+    //     }
+    //   })
+    //   .attr("cy", function(d){
+    //     return d.y;
+    //   })
+    //   .attr('opacity', 0.5)
+    //   .on('mouseover', tip.show)
+    //   .on('click', tip.show)
 
-      })
+    //   })
 
       function render() {
         const svgContainer = svg.node().closest('div')
@@ -226,7 +222,7 @@ Promise.all([
         svg.selectAll('.bubble').attr("cx", function(d) {
         for (var i = 0; i < towns2.data().length; i++){
            var p = towns2.data()[i];
-          if (p.properties.NAME10 === d["NAME"]){
+          if (p.properties.NAME10 === d["Town"]){
               var t = path.centroid(p);
               d.x = t[0];
               d.y = t[1];
@@ -257,7 +253,7 @@ Promise.all([
         svg.selectAll('.bubble').attr("cx", function(d) {
             for (var i = 0; i < towns2.data().length; i++){
                var p = towns2.data()[i];
-              if (p.properties.NAME10 === d["NAME"]){
+              if (p.properties.NAME10 === d["Town"]){
                   var t = path.centroid(p);
                   d.x = t[0];
                   d.y = t[1];
@@ -285,7 +281,7 @@ Promise.all([
         svg.selectAll('.bubble').attr("cx", function(d) {
             for (var i = 0; i < towns2.data().length; i++){
                var p = towns2.data()[i];
-              if (p.properties.NAME10 === d["NAME"]){
+              if (p.properties.NAME10 === d["Town"]){
                   var t = path.centroid(p);
                   d.x = t[0];
                   d.y = t[1];
@@ -316,7 +312,7 @@ Promise.all([
         svg.selectAll('.bubble').attr("cx", function(d) {
             for (var i = 0; i < towns2.data().length; i++){
                var p = towns2.data()[i];
-              if (p.properties.NAME10 === d["NAME"]){
+              if (p.properties.NAME10 === d["Town"]){
                   var t = path.centroid(p);
                   d.x = t[0];
                   d.y = t[1];
