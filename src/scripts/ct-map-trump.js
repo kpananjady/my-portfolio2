@@ -239,7 +239,7 @@ Promise.all([
       })
         
   
-          } else if (newWidth > 550){
+          } else if (newWidth > 487){
   
             svg.select('.label_1').text('% Single Family')
             svg.select('.label_3').text('% Govt Subsidized')
