@@ -12,7 +12,7 @@ let width = 1000 - margin.left - margin.right
 
 const radiusScale = d3
   .scaleSqrt()
-  .domain([0, 50])
+  .domain([5, 40])
   .range([2, 8])
 
 let svg = d3
