@@ -239,7 +239,7 @@ Promise.all([
       })
         
   
-          } else if (newWidth > 450){
+          } else if (newWidth > 550){
   
             svg.select('.label_1').text('% Single Family')
             svg.select('.label_3').text('% Govt Subsidized')
@@ -253,6 +253,32 @@ Promise.all([
 
           svg.selectAll('.towns')
         .attr('d', path)
+
+        svg.selectAll('.bubble').attr("cx", function(d) {
+            for (var i = 0; i < towns2.data().length; i++){
+               var p = towns2.data()[i];
+              if (p.properties.NAME10 === d["NAME"]){
+                  var t = path.centroid(p);
+                  d.x = t[0];
+                  d.y = t[1];
+                  return d.x;
+              } 
+            }
+          })
+          .attr("cy", function(d){
+            return d.y;
+          })
+          } else if (newWidth >370) {
+
+            console.log(newWidth, 'newWidth 3')
+            projection
+            .center([-72.68, 41])
+            .scale(newWidth*30)
+            .translate([(newWidth) / 2, (newHeight)/2]);
+
+            svg.selectAll('.towns')
+        .attr('d', path)
+
 
         svg.selectAll('.bubble').attr("cx", function(d) {
             for (var i = 0; i < towns2.data().length; i++){
