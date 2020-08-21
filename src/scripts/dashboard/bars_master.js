@@ -40,9 +40,14 @@ const colorScale = d3
 
 const parseTime = d3.timeParse('%m/%d/%Y')
 
-d3.csv(require('/data/COVID-19_Cases_by_Date_of_First_Positive_Specimen.csv')).then(ready)
+Promise.all([
+    d3.csv(require('/data/COVID-19_Cases_by_Date_of_First_Positive_Specimen.csv')),
+    d3.csv(require('/data/30_days.csv'))
+  ]).then(ready)
+  .catch(err => console.log('Failed on', err))
 
-function ready(datapoints) {
+
+function ready([datapoints, datapoints_30]) {
   // Sort the countries from low to high
 
   datapoints.forEach(d => {
@@ -222,6 +227,7 @@ function movingAverage(values, N) {
     .data(datapoints)
     .enter()
     .append('rect')
+    .attr('class', 'rect_all')
     .attr('width', 3)
     .attr('height', d => {
       return height - yPositionScale(d.Total)
@@ -261,7 +267,7 @@ function movingAverage(values, N) {
 const xAxis = d3
     .axisBottom(xPositionScale)
     .tickSize(height)
-    .tickFormat('%d-%m')
+    .tickFormat(d3.timeFormat('%b %d'))
     .ticks(5)
 
     svg
@@ -289,6 +295,119 @@ const xAxis = d3
 
     d3.select('.x-axis .domain').remove()
 
+    d3.select('#toggle').on('click', () => {
+
+        svg.selectAll('.rect_30').remove()
+
+        xPositionScale.domain(d3.extent(dates))
+        yPositionScale.domain(d3.extent(cases))
+
+
+      svg.append("path")
+      .attr("class", "average")
+      .attr("d", movingAverageLine(datapoints))
+      .attr('fill', 'none')
+      .attr('stroke', 'black')
+      .raise()
+
+        svg
+        .selectAll('rect')
+        .data(datapoints)
+        .enter()
+        .append('rect')
+        .attr('class', 'rect_all')
+        .attr('width', 3)
+        .attr('height', d => {
+          return height - yPositionScale(d.Total)
+        })
+        .attr('x', d => {
+          return xPositionScale(d.datetime)
+        })
+        .attr('y', d => {
+          return yPositionScale(d.Total)
+        })
+        .attr('fill', 'lightgrey')
+        .attr('id', d=> d.Date)
+        .lower()
+
+        svg.select('.x-axis').transition().duration(1000).call(xAxis)
+
+            svg
+              .select('.y-axis')
+              .transition()
+              .duration(1000)
+              .call(yAxis)
+
+              d3.select('.y-axis .domain').remove()
+
+              d3.select('.x-axis .domain').remove()
+
+    
+      })
+
+    d3.select('#toggle2').on('click', () => {
+
+        svg.selectAll('.average').remove()
+        svg.selectAll('.rect_all').remove()
+
+        datapoints_30.forEach(d => {
+    
+            console.log(parseTime(d.Date))
+            d.datetime = parseTime(d.Date)
+          })
+        const dates2 = datapoints_30.map(d => d.datetime)
+        const cases2 = datapoints_30.map(d => +d.Total)
+
+        
+        xPositionScale.domain(d3.extent(dates2))
+        yPositionScale.domain(d3.extent(cases2))
+
+        console.log(dates2)
+        console.log(cases2)
+        console.log(yPositionScale(7))
+
+      svg.append("path")
+      .attr("class", "average")
+      .attr("d", movingAverageLine(datapoints_30))
+      .attr('fill', 'none')
+      .attr('stroke', 'black')
+      .raise()
+
+
+
+        svg
+        .selectAll('rect')
+        .data(datapoints_30)
+        .enter()
+        .append('rect')
+        .attr('class', 'rect_30')
+        .attr('width', 3)
+        .attr('height', d => {
+          return height - yPositionScale(+d.Total)
+        })
+        .attr('x', d => {
+          return xPositionScale(d.datetime)
+        })
+        .attr('y', d => {
+          return yPositionScale(+d.Total)
+        })
+        .attr('fill', 'lightgrey')
+        .lower()
+
+        svg.select('.x-axis').transition().duration(1000).call(xAxis)
+
+            svg
+              .select('.y-axis')
+              .transition()
+              .duration(1000)
+              .call(yAxis)
+
+              d3.select('.y-axis .domain').remove()
+
+              d3.select('.x-axis .domain').remove()
+
+    
+      })
 //   function render() {
 //     const svgContainer = svg.node().closest('div')
 //     const svgWidth = svgContainer.offsetWidth

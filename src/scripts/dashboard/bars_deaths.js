@@ -4,7 +4,7 @@ const margin = {
   top: 30,
   right: 20,
   bottom: 30,
-  left: 50
+  left: 120
 }
 
 const width = 700 - margin.left - margin.right
@@ -39,9 +39,14 @@ const colorScale = d3
 
 const parseTime = d3.timeParse('%Y-%m-%d')
 
-d3.csv(require('/data/hosp_and_deaths.csv')).then(ready)
+Promise.all([
+    d3.csv(require('/data/hosp_and_deaths.csv')),
+    d3.csv(require('/data/30_days_deaths_hosp.csv'))
+  ]).then(ready)
+  .catch(err => console.log('Failed on', err))
 
-function ready(datapoints) {
+
+function ready([datapoints, datapoints_30]) {
   // Sort the countries from low to high
 
   datapoints.forEach(d => {
@@ -221,6 +226,7 @@ yPositionScale.domain(d3.extent(deaths))
     .data(datapoints)
     .enter()
     .append('rect')
+    .attr('class','rect_all')
     .attr('width', 3)
     .attr('height', d => {
       return height - yPositionScale(d['Deaths_per_day'])
@@ -260,6 +266,7 @@ yPositionScale.domain(d3.extent(deaths))
 const xAxis = d3
     .axisBottom(xPositionScale)
     .tickSize(height)
+    .tickFormat(d3.timeFormat('%b %d'))
     .ticks(5)
 
     svg
@@ -287,6 +294,122 @@ const xAxis = d3
     d3.select('.y-axis .domain').remove()
 
     d3.select('.x-axis .domain').remove()
+
+    d3.select('#toggle5').on('click', () => {
+
+        svg.selectAll('.average').remove()
+        svg.selectAll('.rect_30').remove()
+
+        
+
+        
+        xPositionScale.domain(d3.extent(dates))
+        yPositionScale.domain(d3.extent(deaths))
+
+
+      svg.append("path")
+      .attr("class", "average")
+      .attr("d", movingAverageLine(datapoints_30))
+      .attr('fill', 'none')
+      .attr('stroke', 'black')
+      .raise()
+
+
+
+        svg
+        .selectAll('rect')
+        .data(datapoints)
+        .enter()
+        .append('rect')
+        .attr('class', 'rect_all')
+        .attr('width', 3)
+        .attr('height', d => {
+          return height - yPositionScale(d['Deaths_per_day'])
+        })
+        .attr('x', d => {
+          return xPositionScale(d.datetime)
+        })
+        .attr('y', d => {
+          return yPositionScale(d['Deaths_per_day'])
+        })
+        .attr('fill', 'lightgrey')
+        .lower()
+
+        svg.select('.x-axis').transition().duration(1000).call(xAxis)
+
+            svg
+              .select('.y-axis')
+              .transition()
+              .duration(1000)
+              .call(yAxis)
+
+              d3.select('.y-axis .domain').remove()
+
+              d3.select('.x-axis .domain').remove()
+
+    
+      })
+
+    d3.select('#toggle6').on('click', () => {
+
+        svg.selectAll('.average').remove()
+        svg.selectAll('.rect_all').remove()
+
+        datapoints_30.forEach(d => {
+    
+            console.log(parseTime(d.Date))
+            d.datetime = parseTime(d.Date)
+          })
+        const dates2 = datapoints_30.map(d => d.datetime)
+        const deaths2 = datapoints_30.map(d => +d['Deaths_per_day'])
+
+        
+        xPositionScale.domain(d3.extent(dates2))
+        yPositionScale.domain(d3.extent(deaths2))
+
+
+      svg.append("path")
+      .attr("class", "average")
+      .attr("d", movingAverageLine(datapoints_30))
+      .attr('fill', 'none')
+      .attr('stroke', 'black')
+      .raise()
+
+
+
+        svg
+        .selectAll('rect')
+        .data(datapoints_30)
+        .enter()
+        .append('rect')
+        .attr('class', 'rect_30')
+        .attr('width', 20)
+        .attr('height', d => {
+          return height - yPositionScale(d['Deaths_per_day'])
+        })
+        .attr('x', d => {
+          return xPositionScale(d.datetime)
+        })
+        .attr('y', d => {
+          return yPositionScale(d['Deaths_per_day'])
+        })
+        .attr('fill', 'lightgrey')
+        .lower()
+
+        svg.select('.x-axis').transition().duration(1000).call(xAxis)
+
+            svg
+              .select('.y-axis')
+              .transition()
+              .duration(1000)
+              .call(yAxis)
+
+              d3.select('.y-axis .domain').remove()
+
+              d3.select('.x-axis .domain').remove()
+
+    
+      })
 
 //   function render() {
 //     const svgContainer = svg.node().closest('div')
