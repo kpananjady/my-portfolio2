@@ -18,15 +18,15 @@ const svg = d3
 
   d3.csv(require('../data/commuter.csv')).then(ready)
 
-  // const tip = d3
-  // .tip()
-  // .attr('class', 'd3-tip')
-  // .offset([-20, 0])
-  // .html(function(d) {
-  //   return `${d['Difference']}k`
-  // })
+  const tip = d3
+  .tip()
+  .attr('class', 'd3-tip')
+  .offset([-20, 0])
+  .html(function(d) {
+    return `${d['Difference']}k`
+  })
 
-  // svg.call(tip)
+  svg.call(tip)
 
   function ready(datapoints) {
 
@@ -339,11 +339,11 @@ svg.selectAll("mycircle1")
       .attr("y1", function(d) { return yPositionScale(d['Month/Year'])+yPositionScale.bandwidth()/2; })
       .attr("y2", function(d) { return yPositionScale(d['Month/Year'])+yPositionScale.bandwidth()/2; })
 
-      svg.select('#tick1')  .attr('x', xPositionScale(1.650))
-      svg.select('#tick2')  .attr('x', xPositionScale(1.700))
-      svg.select('#tick3')  .attr('x', xPositionScale(1.750))
-      svg.select('#tick4')  .attr('x', xPositionScale(1.800))
-      svg.select('#tick5')  .attr('x', xPositionScale(1.850))
+      svg.select('#tick1')  .attr('x', xPositionScale(1.650)).text('1.650')
+      svg.select('#tick2')  .attr('x', xPositionScale(1.700)).text('1.700')
+      svg.select('#tick3')  .attr('x', xPositionScale(1.750)).text('1.750')
+      svg.select('#tick4')  .attr('x', xPositionScale(1.800)).text('1.800')
+      svg.select('#tick5')  .attr('x', xPositionScale(1.850)).text('1.850')
 
 //   if (newWidth>450){
 //     svg.select('.graph_name').text('Vaccinations rise in June after pandemic plummet')
@@ -360,6 +360,12 @@ svg.selectAll("mycircle1")
 
   if (newWidth<250){
 
+
+    svg.select('#tick1')  .attr('x', xPositionScale(1.650)).text('1.65')
+    svg.select('#tick2')  .attr('x', xPositionScale(1.700)).text('1.70')
+    svg.select('#tick3')  .attr('x', xPositionScale(1.750)).text('1.75')
+    svg.select('#tick4')  .attr('x', xPositionScale(1.800)).text('1.80')
+    svg.select('#tick5')  .attr('x', xPositionScale(1.850)).text('1.85')
 
     svg.selectAll('.graph_name').attr('alignment-baseline', 'middle').attr('font-size', '17px').attr('font-weight', 5)
     
