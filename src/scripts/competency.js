@@ -37,7 +37,7 @@ const svg = d3
 {
 
     svg.append('text').attr('class', 'town_name').text('Competency evaluations increase as new cases decrease').attr('alignment-baseline', 'middle').attr('y',-100).attr('font-size', '20px').attr('font-weight', 5)
-    svg.append('text').attr('class', 'label_1').text('Cases added increased by 10% between 2015 and 2019 while ').attr('x', width/35).attr('y',-65).attr('font-weight', 5)
+    svg.append('text').attr('class', 'label_1').text('Cases added decreased by 10% between 2015 and 2019 while ').attr('x', width/35).attr('y',-65).attr('font-weight', 5)
     svg.append('text').attr('class', 'label_1').text('the number of competency evaluations increased by 20%').attr('x', width/35).attr('y',-45).attr('font-weight', 5)
     svg.append('text').attr('class', 'label_1').text('in the same period.').attr('x', width/35).attr('y',-25).attr('font-weight', 5)
 
@@ -89,9 +89,7 @@ const svg = d3
     d3.select('#toggle').on('click', () => {
         yPositionScale.domain([0,3000])
 
-        svg.select('#label-20').remove()
-    svg.append('text').attr('id','label-10').attr('x', xPositionScale(2019)).attr('y', yPositionScale(2700)).text('—10%').attr('font-weight', 5).attr('font-size', 10).attr('fill', 'white')
-
+       
 
         svg.select('#y-label').text('Cases')
 
@@ -114,6 +112,29 @@ const svg = d3
     .attr('fill', '#E9967A')
     .attr('opacity',1)
     .lower()
+
+    svg.select('#label-20').remove()
+    svg.append('text').attr('id','label-10').attr('x', xPositionScale(2019)+8).attr('y', yPositionScale(2700)).text('  —10% ').attr('font-weight', 5).attr('font-size', 10).attr('fill', 'white').attr('alignment-baseline', 'middle')
+
+    // svg
+    // .append('rect')
+    // .attr('class', 'mask')
+    // .attr('width', xPositionScale.bandwidth())
+    // .attr('height', d => {
+        
+    //   return height - yPositionScale(2607)
+    // })
+    // .attr('x', d => {
+    //   return xPositionScale(2015)
+    // })
+    // .attr('y', d => {
+    //   return yPositionScale(2607)
+    // })
+    // .attr('fill', 'grey')
+    // .attr('opacity',1)
+
+    // svg.select('#label-20').remove()
+    // svg.append('text').attr('id','label-10').attr('x', xPositionScale(2015)+8).attr('y', yPositionScale(2700)).text('  —10% ').attr('font-weight', 5).attr('font-size', 10).attr('fill', 'white').attr('alignment-baseline', 'middle')
         
         svg
         .selectAll('.rect_grey')
@@ -144,9 +165,9 @@ const svg = d3
       d3.select('#toggle2').on('click', () => {
         yPositionScale.domain([0,1500])
 
-
+        svg.select('.mask').remove()
         svg.select('#label-10').remove()
-        svg.append('text').attr('id','label-20').attr('x', xPositionScale(2015)+2).attr('y', yPositionScale(1100)).text('+20%').attr('font-weight', 5).attr('font-size', 10).attr('fill', 'white')
+        svg.append('text').attr('id','label-20').attr('x', xPositionScale(2015)+8).attr('y', yPositionScale(1100)).text('+20%').attr('font-weight', 5).attr('font-size', 10).attr('fill', 'white')
 
 
         svg.select('#y-label').text('Evals')
