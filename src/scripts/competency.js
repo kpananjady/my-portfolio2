@@ -114,7 +114,7 @@ const svg = d3
     .lower()
 
     svg.select('#label-20').remove()
-    svg.append('text').attr('id','label-10').attr('x', xPositionScale(2019)+8).attr('y', yPositionScale(2700)).text('  —10% ').attr('font-weight', 5).attr('font-size', 10).attr('fill', 'white').attr('alignment-baseline', 'middle')
+    svg.append('text').attr('id','label-10').attr('x', xPositionScale(2019)+7).attr('y', yPositionScale(2700)).text('—9.8% ').attr('font-weight', 5).attr('font-size', 10).attr('fill', 'white').attr('alignment-baseline', 'middle')
 
     // svg
     // .append('rect')
@@ -167,7 +167,7 @@ const svg = d3
 
         svg.select('.mask').remove()
         svg.select('#label-10').remove()
-        svg.append('text').attr('id','label-20').attr('x', xPositionScale(2015)+8).attr('y', yPositionScale(1100)).text('+20%').attr('font-weight', 5).attr('font-size', 10).attr('fill', 'white')
+        svg.append('text').attr('id','label-20').attr('x', xPositionScale(2015)+7).attr('y', yPositionScale(1100)).text('+19.2%').attr('font-weight', 5).attr('font-size', 10).attr('fill', 'white')
 
 
         svg.select('#y-label').text('Evals')
