@@ -36,10 +36,10 @@ const svg = d3
     function ready(datapoints)
 {
 
-    svg.append('text').attr('class', 'town_name').text('Competency evaluations increase as new cases decrease').attr('alignment-baseline', 'middle').attr('y',-100).attr('font-size', '20px').attr('font-weight', 5)
-    svg.append('text').attr('class', 'label_1').text('Cases added decreased by 10% between 2015 and 2019 while ').attr('x', width/35).attr('y',-65).attr('font-weight', 5)
-    svg.append('text').attr('class', 'label_1').text('the number of competency evaluations increased by 20%').attr('x', width/35).attr('y',-45).attr('font-weight', 5)
-    svg.append('text').attr('class', 'label_1').text('in the same period.').attr('x', width/35).attr('y',-25).attr('font-weight', 5)
+    svg.append('text').attr('class', 'town_name').text('Competency evaluations increase as new cases decrease').attr('alignment-baseline', 'middle').attr('y',-100).attr('font-size', '20px').attr('font-weight', 5).attr('x', -100)
+    svg.append('text').attr('class', 'label_1').text('Cases added decreased by about 10% between FY 2015 and FY 2019').attr('x', width/35).attr('y',-65).attr('font-weight', 5)
+    svg.append('text').attr('class', 'label_1').text('while the number of competency evaluations increased by just under').attr('x', width/35).attr('y',-45).attr('font-weight', 5)
+    svg.append('text').attr('class', 'label_1').text('20% in the same period.').attr('x', width/35).attr('y',-25).attr('font-weight', 5)
 
 
 
@@ -290,7 +290,7 @@ const svg = d3
     
         const newWidth = svgWidth - margin.left - margin.right
 
-        svg.select('.town_name').attr('font-size', '20px').attr('font-weight', 5).attr('x',-70)
+        svg.select('.town_name').attr('font-size', '20px').attr('font-weight', 5).attr('x',-70).attr('x', -100)
         svg.selectAll('.label_1').attr('font-size', '15px').attr('font-weight', 5).attr('x',-70)
 
     //     // const newHeight = svgHeight - margin.top - margin.bottom
