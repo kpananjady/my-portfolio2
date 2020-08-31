@@ -331,6 +331,7 @@ const svg = d3
             return xPositionScale(+d['year'])
           })
      
+          console.log(newWidth)
     if (newWidth > 450){
 
         svg.selectAll('.town_name').attr('font-size', '20px').attr('font-weight', 5)
@@ -339,8 +340,8 @@ const svg = d3
         svg.selectAll('.town_name').attr('font-size', '16px').attr('font-weight', 5)
         svg.selectAll('.label_1').attr('font-size', '10px').attr('font-weight', 5)
     } else {
-        svg.selectAll('.town_name').attr('font-size', '14px').attr('font-weight', 5)
-        svg.selectAll('.label_1').attr('font-size', '11px').attr('font-weight', 5)
+        svg.selectAll('.town_name').attr('font-size', '12px').attr('font-weight', 5)
+        svg.selectAll('.label_1').attr('font-size', '9px').attr('font-weight', 5)
     }
          
     //       d3.select('#toggle').on('click', () => {
