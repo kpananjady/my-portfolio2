@@ -290,8 +290,8 @@ const svg = d3
     
         const newWidth = svgWidth - margin.left - margin.right
 
-        svg.select('.town_name').attr('font-size', '20px').attr('font-weight', 5).attr('x',-70).attr('x', -100)
-        svg.selectAll('.label_1').attr('font-size', '15px').attr('font-weight', 5).attr('x',-70)
+        svg.selectAll('.town_name').attr('font-size', '20px').attr('font-weight', 5).attr('x', -100)
+        svg.selectAll('.label_1').attr('font-size', '15px').attr('font-weight', 5).attr('x', -100)
 
     //     // const newHeight = svgHeight - margin.top - margin.bottom
     
@@ -317,15 +317,8 @@ const svg = d3
     svg
     .select('.pchange')
     .attr('width', xPositionScale.bandwidth())
-    .attr('height', d => {
-        
-      return height - yPositionScale(2891)
-    })
     .attr('x', d => {
       return xPositionScale(2019)
-    })
-    .attr('y', d => {
-      return yPositionScale(2891)
     })
     .attr('fill', '#E9967A')
     .attr('opacity',1)
@@ -334,18 +327,21 @@ const svg = d3
         svg
           .selectAll('.rect_grey')
           .attr('width', xPositionScale.bandwidth())
-          .attr('height', d => {
-        
-            return height - yPositionScale(+d['cases_total_added'])
-          })
           .attr('x', d => {
             return xPositionScale(+d['year'])
           })
-          .attr('y', d => {
-              console.log(d['cases_total_added'], d['year'])
-            return yPositionScale(+d['cases_total_added'])
-          })
      
+    if (newWidth > 450){
+
+        svg.selectAll('.town_name').attr('font-size', '20px').attr('font-weight', 5)
+        svg.selectAll('.label_1').attr('font-size', '15px').attr('font-weight', 5)
+    } else if (newWidth > 250){
+        svg.selectAll('.town_name').attr('font-size', '16px').attr('font-weight', 5)
+        svg.selectAll('.label_1').attr('font-size', '10px').attr('font-weight', 5)
+    } else {
+        svg.selectAll('.town_name').attr('font-size', '14px').attr('font-weight', 5)
+        svg.selectAll('.label_1').attr('font-size', '11px').attr('font-weight', 5)
+    }
          
     //       d3.select('#toggle').on('click', () => {
       
