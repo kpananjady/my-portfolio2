@@ -28,17 +28,17 @@ let svg = d3
             .translate([(width) / 2, (height)/2]);
 const path = d3.geoPath().projection(projection)
 
-// const tip = d3
-// .tip()
-// .attr('class', 'd3-tip d3-tip-scrolly')
-// .style('pointer-events', 'none')
-// .offset([-10, 0])
-// .html(function(d) {
-//   return `${d.NAME}: ${Math.round(d['Property_value'])}%`
-// })
+const tip = d3
+.tip()
+.attr('class', 'd3-tip d3-tip-scrolly')
+.style('pointer-events', 'none')
+.offset([-10, 0])
+.html(function(d) {
+  return `${d['Town']} : ${d['Weekly rate']}`
+})
 
 
-// svg.call(tip)
+svg.call(tip)
 
 Promise.all([
     d3.json(require('/data/ct_towns_simplified.topojson')),
@@ -92,8 +92,8 @@ Promise.all([
         return d.y;
       })
       .attr('opacity', 0.5)
-    //   .on('mouseover', tip.show)
-    //   .on('click', tip.show)
+      .on('mouseover', tip.show)
+      .on('click', tip.show)
 
 
     //   d3.select('#toggle').on('click', () => {

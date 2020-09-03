@@ -49,6 +49,8 @@ Promise.all([
 function ready([datapoints, datapoints_30]) {
   // Sort the countries from low to high
 
+  console.log(datapoints_30)
+  
   datapoints.forEach(d => {
 
     console.log(parseTime(d.Date))

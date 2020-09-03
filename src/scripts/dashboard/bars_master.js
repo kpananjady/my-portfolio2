@@ -87,47 +87,102 @@ function movingAverage(values, N) {
 //   var pppPrevVal = 0;
 //   var ppPrevVal = 0;
 
-  var prevPrevVal = 0;
-      var prevVal = 0;
+     
+
+
       var curVal = 0
+      var valOne = 0
+      var valTwo = 0
+      var valThree = 0
+      var valFour = 0
+      var valFive = 0
+      var valSix = 0
+      var valSeven = 0
       var movingAverageLine = d3.line()
       .x(function(d,i) { return xPositionScale(d.key); })
       .y(function(d,i) {
           if (i == 0) {
-            // pppppPrevVal = yPositionScale(d.value)
-            // ppppPrevVal = yPositionScale(d.value)
-            // pppPrevVal = yPositionScale(d.value)
-            // ppPrevVal = yPositionScale(d.value)
+            console.log('hre')
+              valOne  = yPositionScale(d.value);
+              valTwo  = yPositionScale(d.value);
+              valThree  = yPositionScale(d.value);
+              valFour  = yPositionScale(d.value);
+              valFive  = yPositionScale(d.value);
+              valSix  = yPositionScale(d.value);
+              valSeven = yPositionScale(d.value);
 
-              prevPrevVal  = yPositionScale(d.value);
-              prevVal = yPositionScale(d.value);
-              curVal =  yPositionScale(d.value);
+              curVal =  yPositionScale(0);
           } else if (i == 1) {
-              prevPrevVal = prevVal;
-              prevVal = curVal;
-              curVal = (prevVal + yPositionScale(d.value)) / 2.0;
-        //   } else if (i == 1) {
-        //       prevPrevVal = prevVal;
-        //       prevVal = curVal;
-        //       curVal = (prevPrevVal + prevVal + yPositionScale(d.value)) / 3.0;
-        //   }  else if (i == 1) {
-        //     prevPrevVal = prevVal;
-        //     prevVal = curVal;
-        //     curVal = (prevPrevVal + prevVal + yPositionScale(d.value)) / 3.0;
-        // }  else if (i == 1) {
-        //     prevPrevVal = prevVal;
-        //     prevVal = curVal;
-        //     curVal = (prevPrevVal + prevVal + yPositionScale(d.value)) / 3.0;
-        // } else if (i == 1) {
-        //     prevPrevVal = prevVal;
-        //     prevVal = curVal;
-        //     curVal = (prevPrevVal + prevVal + yPositionScale(d.value)) / 3.0;
-        // } 
+            // console.log(d.value)
+
+              valOne = valTwo;
+              valTwo  = yPositionScale(d.value);
+              valThree  = yPositionScale(d.value);
+              valFour  = yPositionScale(d.value);
+              valFive  = yPositionScale(d.value);
+              valSix  = yPositionScale(d.value);
+              valSeven = yPositionScale(d.value);
+
+              curVal =  yPositionScale(0);
+          } else if (i == 2) {
+
+            valOne = valTwo;
+            valTwo  = valThree;
+            valThree  = yPositionScale(d.value);
+            valFour  = yPositionScale(d.value);
+            valFive  = yPositionScale(d.value);
+            valSix  = yPositionScale(d.value);
+            valSeven = yPositionScale(d.value);
+
+             
+            curVal =  yPositionScale(0);
+          }  else if (i == 3) {
+           
+            valOne = valTwo;
+            valTwo  = valThree;
+            valThree  = valFour;
+            valFour  = yPositionScale(d.value);
+            valFive  = yPositionScale(d.value);
+            valSix  = yPositionScale(d.value);
+            valSeven = yPositionScale(d.value);
+
+            curVal =  yPositionScale(0);
+
+
+        }  else if (i == 4) {
+          valOne = valTwo;
+          valTwo  = valThree;
+          valThree  = valFour;
+          valFour  = valFive;
+          valFive  = yPositionScale(d.value);
+          valSix  = yPositionScale(d.value);
+          valSeven = yPositionScale(d.value);
+
+          curVal =  yPositionScale(0);
+
+        } else if (i == 5) {
+          valOne = valTwo;
+          valTwo  = valThree;
+          valThree  = valFour;
+          valFour  = valFive;
+          valFive  = valSix;
+          valSix  = yPositionScale(d.value);
+          valSeven = yPositionScale(d.value);
+
+          curVal =  yPositionScale(0);
+        
           } else {
-            prevPrevVal = prevVal;
-            prevVal = curVal;
-            curVal = (prevPrevVal + prevVal + yPositionScale(d.value)) / 3.0;
-        } 
+            valOne = valTwo;
+          valTwo  = valThree;
+          valThree  = valFour;
+          valFour  = valFive;
+          valFive  = valSix;
+          valSix  = valSeven;
+          valSeven = yPositionScale(d.value);
+
+          curVal = (valOne + valTwo + valThree + valFour + valFive +valSix + valSeven)/7
+          } 
+          console.log(curVal,'MEAN')
           return curVal;
       })
 
@@ -366,22 +421,13 @@ const xAxis = d3
         console.log(cases2)
         console.log(yPositionScale(7))
 
-      svg.append("path")
-      .attr("class", "average")
-      .attr("d", movingAverageLine(datapoints_30))
-      .attr('fill', 'none')
-      .attr('stroke', 'black')
-      .raise()
-
-
-
         svg
         .selectAll('rect')
         .data(datapoints_30)
         .enter()
         .append('rect')
         .attr('class', 'rect_30')
-        .attr('width', 3)
+        .attr('width', 20)
         .attr('height', d => {
           return height - yPositionScale(+d.Total)
         })
@@ -393,6 +439,15 @@ const xAxis = d3
         })
         .attr('fill', 'lightgrey')
         .lower()
+
+
+        svg.append("path")
+        .attr("class", "average")
+        .attr("d", movingAverageLine(datapoints_30))
+        .attr('fill', 'none')
+        .attr('stroke', 'black')
+        .raise()
+
 
         svg.select('.x-axis').transition().duration(1000).call(xAxis)
 
