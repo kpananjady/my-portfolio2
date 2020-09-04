@@ -3,7 +3,7 @@ import d3Tip from 'd3-tip'
 import { exportDefaultSpecifier } from '@babel/types'
 d3.tip = d3Tip
 
-var margin = { top: 130, left: 100, right: 150, bottom: 50 }
+var margin = { top: 130, left: 100, right: 150, bottom: 100 }
 const height = 650 - margin.top - margin.bottom
 const width = 700 - margin.left - margin.right
 
@@ -42,7 +42,23 @@ svg.append('text').text("If you want to appeal the decision, you appear before t
 svg.append('text').text("Appealing to the Board of Review").attr('alignment-baseline', 'middle').attr('y',height-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45)
 svg.append('text').text("Otherwise, you appear before the Board of Appeals.").attr('alignment-baseline', 'middle').attr('y',height-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45)
 
+// key
+
+svg.append('text').text('160 applications').attr('alignment-baseline', 'middle').attr('y',height+50).attr('font-size', '10px').attr('font-weight', 5).attr('x', -75)
+svg.append('text').text('Unknown').attr('alignment-baseline', 'middle').attr('y',height+60).attr('font-size', '10px').attr('font-weight', 5).attr('x', -75)
+svg.append('text').text('Your application').attr('alignment-baseline', 'middle').attr('y',height+70).attr('font-size', '10px').attr('font-weight', 5).attr('x', -75)
+svg.append('text').text('300 applications').attr('alignment-baseline', 'middle').attr('y',height+80).attr('font-size', '10px').attr('font-weight', 5).attr('x', -75)
+
+svg.append('circle').attr('cy',height+50).attr('font-weight', 5).attr('cx', -85).attr('r', 5).attr('opacity', 0.5)
+svg.append('circle').attr('cy',height+60).attr('font-weight', 5).attr('cx', -85).attr('r', 5).attr('opacity', 0.5).attr('fill', 'white').attr('stroke', 'grey')
+svg.append('circle').attr('cy',height+70).attr('font-weight', 5).attr('cx', -85).attr('r', 5).attr('opacity', 0.5).attr('fill','blue')
+svg.append('circle').attr('cy',height+80).attr('cx', -85).attr('r', 2).attr('opacity', 0.5)
+
+
+
 function draw(width_var, radius_1, radius_2){
+
+  console.log(width_var)/(0.5+radius_1*2)
 var i;
 for (i = 0; i < (width_var)/(0.5+radius_1*2); i++) {
     svg
