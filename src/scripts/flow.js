@@ -3,7 +3,7 @@ import d3Tip from 'd3-tip'
 import { exportDefaultSpecifier } from '@babel/types'
 d3.tip = d3Tip
 
-var margin = { top: 130, left: 100, right: 100, bottom: 50 }
+var margin = { top: 130, left: 100, right: 150, bottom: 50 }
 const height = 650 - margin.top - margin.bottom
 const width = 700 - margin.left - margin.right
 
@@ -20,7 +20,7 @@ const svg = d3
 svg.append('text').text('835,000 people have applied for unemployment benefits').attr('alignment-baseline', 'middle').attr('y',-105).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 svg.append('text').text('since the start of the pandemic.').attr('alignment-baseline', 'middle').attr('y',-85).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
-svg.append('text').text("If you were one of them on August 15, here's the backlog you'd have to look forward to.").attr('alignment-baseline', 'middle').attr('y',-55).attr('font-size', '15px').attr('font-weight', 5).attr('x', 0)
+svg.append('text').text("If you were one of them on August 15, here's the backlog you'd face.").attr('alignment-baseline', 'middle').attr('y',-55).attr('font-size', '15px').attr('font-weight', 5).attr('x', 0)
 
 svg.append('text').text('0').attr('alignment-baseline', 'middle').attr('y',-35).attr('font-size', '20px').attr('font-weight', 5).attr('x', -85).attr('class', 'wait').attr('fill', 'blue').attr('opacity', 0.5)
 svg.append('text').text('Weeks').attr('alignment-baseline', 'middle').attr('y',-15).attr('font-size', '20px').attr('font-weight', 5).attr('x', -90).attr('class', 'wait2')
@@ -136,7 +136,7 @@ if (balls_needed < width_var/(radius_2*2)){
 //tier three
 
 var balls_needed = 100;
-
+console.log(width_var/(radius_2*2))
 var rows = balls_needed/(width_var/(radius_2*2));
 
 var i;
@@ -158,6 +158,19 @@ for (i = 0; i < width_var/(radius_2*2); i++) {
     .append('circle')
     .attr('class', 'bubble')
     .attr('cy', 2*height/5+10)
+    .attr('cx', 50+radius_2*2*i)
+    .attr('r', radius_2)
+    .attr('opacity', '0.5')
+
+
+}
+
+var i;
+for (i = 0; i < 10; i++) {
+    svg
+    .append('circle')
+    .attr('class', 'bubble')
+    .attr('cy', 2*height/5+20)
     .attr('cx', 50+radius_2*2*i)
     .attr('r', radius_2)
     .attr('opacity', '0.5')
