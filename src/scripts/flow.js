@@ -44,15 +44,15 @@ svg.append('text').text("Otherwise, you appear before the Board of Appeals.").at
 
 // key
 
-svg.append('text').text('160 applications').attr('alignment-baseline', 'middle').attr('y',height+50).attr('font-size', '10px').attr('font-weight', 5).attr('x', -75)
-svg.append('text').text('Unknown').attr('alignment-baseline', 'middle').attr('y',height+60).attr('font-size', '10px').attr('font-weight', 5).attr('x', -75)
-svg.append('text').text('Your application').attr('alignment-baseline', 'middle').attr('y',height+70).attr('font-size', '10px').attr('font-weight', 5).attr('x', -75)
-svg.append('text').text('300 applications').attr('alignment-baseline', 'middle').attr('y',height+80).attr('font-size', '10px').attr('font-weight', 5).attr('x', -75)
+svg.append('text').text('160 applications').attr('alignment-baseline', 'middle').attr('y',height+30).attr('font-size', '10px').attr('font-weight', 5).attr('x', -75)
+svg.append('text').text('Unknown').attr('alignment-baseline', 'middle').attr('y',height+40).attr('font-size', '10px').attr('font-weight', 5).attr('x', -75)
+svg.append('text').text('Your application').attr('alignment-baseline', 'middle').attr('y',height+50).attr('font-size', '10px').attr('font-weight', 5).attr('x', -75)
+svg.append('text').text('300 applications').attr('alignment-baseline', 'middle').attr('y',height+60).attr('font-size', '10px').attr('font-weight', 5).attr('x', -75)
 
-svg.append('circle').attr('cy',height+50).attr('font-weight', 5).attr('cx', -85).attr('r', 5).attr('opacity', 0.5)
-svg.append('circle').attr('cy',height+60).attr('font-weight', 5).attr('cx', -85).attr('r', 5).attr('opacity', 0.5).attr('fill', 'white').attr('stroke', 'grey')
-svg.append('circle').attr('cy',height+70).attr('font-weight', 5).attr('cx', -85).attr('r', 5).attr('opacity', 0.5).attr('fill','blue')
-svg.append('circle').attr('cy',height+80).attr('cx', -85).attr('r', 2).attr('opacity', 0.5)
+svg.append('circle').attr('cy',height+30).attr('font-weight', 5).attr('cx', -85).attr('r', 5).attr('opacity', 0.5)
+svg.append('circle').attr('cy',height+40).attr('font-weight', 5).attr('cx', -85).attr('r', 5).attr('opacity', 0.5).attr('fill', 'white').attr('stroke', 'grey')
+svg.append('circle').attr('cy',height+50).attr('font-weight', 5).attr('cx', -85).attr('r', 5).attr('opacity', 0.5).attr('fill','blue')
+svg.append('circle').attr('cy',height+60).attr('cx', -85).attr('r', 2).attr('opacity', 0.5)
 
 
 
