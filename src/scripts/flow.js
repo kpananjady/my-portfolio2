@@ -43,7 +43,7 @@ svg.append('text').text("Appealing: Part 2").attr('alignment-baseline', 'middle'
 svg.append('text').text("The Referee Section's decisions can be overturned by the Board of Review.").attr('alignment-baseline', 'middle').attr('y',4*height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_4_sub')
 
 svg.append('text').text("You receive your final decision.").attr('alignment-baseline', 'middle').attr('y',height-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps step_name').attr('id','step_5')
-svg.append('text').text("If you have a hearing and go through the entire appeal process, you're looking at 27 weeks.").attr('alignment-baseline', 'middle').attr('y',height-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_5_sub')
+svg.append('text').text("If you have a hearing and go through the entire appeal process, it takes over 6 months.").attr('alignment-baseline', 'middle').attr('y',height-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_5_sub')
 
 // key
 
