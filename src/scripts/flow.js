@@ -30,21 +30,20 @@ svg.append('text').text('0').attr('alignment-baseline', 'middle').attr('y',0).at
 svg.append('text').text('Weeks').attr('alignment-baseline', 'middle').attr('y',20).attr('font-size', '20px').attr('font-weight', 5).attr('x', -80).attr('class', 'wait2')
 
 
-svg.append('text').text("The Dept of Labor processes your claim.").attr('alignment-baseline', 'middle').attr('y',height/5-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45).attr('class','steps')
-svg.append('text').text("After your employer is given 5-7 days to respond, the agency looks at your application.").attr('alignment-baseline', 'middle').attr('y',height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps')
+svg.append('text').text("The Dept of Labor processes your claim.").attr('alignment-baseline', 'middle').attr('y',height/5-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45).attr('class','steps step_name').attr('id','step_1')
+svg.append('text').text("After your employer is given 5-7 days to respond, the agency looks at your application.").attr('alignment-baseline', 'middle').attr('y',height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_1_sub')
 
-svg.append('text').text("If they need more info, you'll need to wait for a hearing date.").attr('alignment-baseline', 'middle').attr('y',2*height/5-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps')
-svg.append('text').text("1 in 50 people who applied are stuck on the adjudication step of the process.").attr('alignment-baseline', 'middle').attr('y',2*height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps')
+svg.append('text').text("If they need more info, you'll need to wait for a hearing date.").attr('alignment-baseline', 'middle').attr('y',2*height/5-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps step_name').attr('id','step_2')
+svg.append('text').text("1 in 50 people who applied are stuck on the adjudication step of the process.").attr('alignment-baseline', 'middle').attr('y',2*height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_2_sub')
 
-svg.append('text').text("Appealing: Part 1").attr('alignment-baseline', 'middle').attr('y',3*height/5-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps')
-svg.append('text').text("The Appeals Division has two parts; the lower one is called the Referee Section").attr('alignment-baseline', 'middle').attr('y',3*height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps')
+svg.append('text').text("Appealing: Part 1").attr('alignment-baseline', 'middle').attr('y',3*height/5-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps step_name').attr('id','step_3')
+svg.append('text').text("The Appeals Division has two parts; the lower one is called the Referee Section").attr('alignment-baseline', 'middle').attr('y',3*height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_3_sub')
 
+svg.append('text').text("Appealing: Part 2").attr('alignment-baseline', 'middle').attr('y',4*height/5-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps step_name').attr('id','step_4')
+svg.append('text').text("The Referee Section's decisions can be overturned by the Board of Review.").attr('alignment-baseline', 'middle').attr('y',4*height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_4_sub')
 
-svg.append('text').text("Appealing: Part 2").attr('alignment-baseline', 'middle').attr('y',4*height/5-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps')
-svg.append('text').text("The Referee Section's decisions can be overturned by the Board of Review.").attr('alignment-baseline', 'middle').attr('y',4*height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps')
-
-svg.append('text').text("You receive your final decision.").attr('alignment-baseline', 'middle').attr('y',height-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps')
-svg.append('text').text("If you have a hearing and go through the entire appeal process, you're looking at 27 weeks.").attr('alignment-baseline', 'middle').attr('y',height-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps')
+svg.append('text').text("You receive your final decision.").attr('alignment-baseline', 'middle').attr('y',height-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps step_name').attr('id','step_5')
+svg.append('text').text("If you have a hearing and go through the entire appeal process, you're looking at 27 weeks.").attr('alignment-baseline', 'middle').attr('y',height-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_5_sub')
 
 // key
 
@@ -63,88 +62,20 @@ svg.append('circle').attr('cy',height+50).attr('font-weight', 5).attr('cx', -85)
 
 function draw(width_var, radius_2, margin_var){
 
-//   console.log(width_var)/(0.5+radius_1*2)
-// var i;
-// for (i = 0; i < (width_var)/(0.5+radius_1*2); i++) {
-//     svg
-//     .append('circle')
-//     .attr('class', 'bubble')
-//     .attr('cy', -30)
-//     .attr('cx', space_var*i)
-//     .attr('r', radius_1)
-//     .attr('opacity', '0.5')
-
-// }
-
-// var i;
-// for (i = 0; i < (width_var)/(0.5+radius_1*2); i++) {
-//     svg
-//     .append('circle')
-//     .attr('class', 'bubble')
-//     .attr('cy', -20)
-//     .attr('cx', space_var*i)
-//     .attr('r', radius_1)
-//     .attr('opacity', '0.5')
-
-// }
-
-// var i;
-// for (i = 0; i < (width_var)/(0.5+radius_1*2); i++) {
-//     svg
-//     .append('circle')
-//     .attr('class', 'bubble')
-//     .attr('cy', -10)
-//     .attr('cx', space_var*i)
-//     .attr('r', radius_1)
-//     .attr('opacity', '0.5')
-
-// }
-
-//   var i;
-//     for (i = 0; i < (width_var)/(0.5+radius_1*2); i++) {
-//         svg
-//         .append('circle')
-//         .attr('class', 'bubble')
-//         .attr('cy', 0)
-//         .attr('cx', space_var*i)
-//         .attr('r', radius_1)
-//         .attr('opacity', '0.5')
-
-// }
-
-// var i;
-// for (i = 0; i < (width_var)/(0.5+radius_1*2); i++) {
-//     svg
-//     .append('circle')
-//     .attr('class', 'bubble')
-//     .attr('cy', 10)
-//     .attr('cx', space_var*i)
-//     .attr('r', radius_1)
-//     .attr('opacity', '0.5')
-//     .attr('fill', 'grey')
-
-// }
-
-// var i;
-// for (i = 0; i < (width_var)/(0.5+radius_1*2); i++) {
-//     svg
-//     .append('circle')
-//     .attr('class', 'bubble')
-//     .attr('cy', 20)
-//     .attr('cx', space_var*i)
-//     .attr('r', 2)
-//     .attr('opacity', '0.5')
-
-// }
-
 
 //tier two
 
-var balls_needed= 42;
+var balls_needed= 41 ;
 
-if (balls_needed < width_var/(radius_2*2)){
+var capacity = width_var/(radius_2*2);
+
+var rows = Math.ceil(balls_needed / capacity);
+var row_last = balls_needed - (rows-1)*capacity
+
+
+if (rows===1){
     var i;
-    for (i = 0; i < 42; i++) {
+    for (i = 0; i < balls_needed; i++) {
     svg
     .append('circle')
     .attr('class', 'bubble')
@@ -153,17 +84,55 @@ if (balls_needed < width_var/(radius_2*2)){
     .attr('r', radius_2)
     .attr('opacity', '0.5')
     .attr('fill', '#c24e00')
-
     }
-}
+ } else {
+
+    var counter;
+    for (counter = 0; counter < rows-1; counter++) {
+
+        var i;
+        for (i = 0; i < capacity; i++) {
+        svg
+        .append('circle')
+        .attr('class', 'bubble')
+        .attr('cy', height/5+(10*(counter)))
+        .attr('cx', margin_var+radius_2*2*i)
+        .attr('r', radius_2)
+        .attr('opacity', '0.5')
+        .attr('fill', '#c24e00')
+        }
+    }
+
+    var i;
+    for (i = 0; i < row_last; i++) {
+    svg
+    .append('circle')
+    .attr('class', 'bubble')
+    .attr('cy', height/5+(10*(counter)))
+    .attr('cx', margin_var+radius_2*2*i)
+    .attr('r', radius_2)
+    .attr('opacity', '0.5')
+    .attr('fill', '#c24e00')
+    }
+    
+ }
 //tier three
 
-var balls_needed = 100;
+var balls_needed= 100 ;
+
+var capacity = width_var/(radius_2*2);
+
+var rows = Math.ceil(balls_needed / capacity);
+var row_last = balls_needed - (rows-1)*capacity
+
+
+console.log(rows, capacity, balls_needed, row_last)
 // console.log(width_var/(radius_2*2))
 var rows = balls_needed/(width_var/(radius_2*2));
 
-var i;
-for (i = 0; i < width_var/(radius_2*2); i++) {
+if (rows===1){
+    var i;
+    for (i = 0; i < balls_needed; i++) {
     svg
     .append('circle')
     .attr('class', 'bubble')
@@ -172,37 +141,38 @@ for (i = 0; i < width_var/(radius_2*2); i++) {
     .attr('r', radius_2)
     .attr('opacity', '0.5')
     .attr('fill', '#c24e00')
+    }
+ } else {
 
+    var counter;
+    for (counter = 0; counter < rows-1; counter++) {
 
-}
+        var i;
+        for (i = 0; i < capacity; i++) {
+        svg
+        .append('circle')
+        .attr('class', 'bubble')
+        .attr('cy', 2*height/5+(10*(counter)))
+        .attr('cx', margin_var+radius_2*2*i)
+        .attr('r', radius_2)
+        .attr('opacity', '0.5')
+        .attr('fill', '#c24e00')
+        }
+    }
 
-var i;
-for (i = 0; i < width_var/(radius_2*2); i++) {
+    var i;
+    for (i = 0; i < row_last; i++) {
     svg
     .append('circle')
     .attr('class', 'bubble')
-    .attr('cy', 2*height/5+10)
+    .attr('cy', 2*height/5+(10*(counter)))
     .attr('cx', margin_var+radius_2*2*i)
     .attr('r', radius_2)
     .attr('opacity', '0.5')
     .attr('fill', '#c24e00')
-
-
-}
-
-var i;
-for (i = 0; i < 10; i++) {
-    svg
-    .append('circle')
-    .attr('class', 'bubble')
-    .attr('cy', 2*height/5+20)
-    .attr('cx', margin_var+radius_2*2*i)
-    .attr('r', radius_2)
-    .attr('opacity', '0.5')
-    .attr('fill', '#c24e00')
-
-
-}
+    }
+    
+ }
 
 //tier four
 var i;
@@ -252,6 +222,8 @@ for (i = 0; i < 2; i++) {
 
 draw(width, 5,50)
 
+var radius = 5;
+
   d3.select('#toggle').on('click', () => {
 
     svg.select('.fall_ball').remove()
@@ -266,7 +238,7 @@ draw(width, 5,50)
     .transition()
     .duration(1000)
     .ease(d3.easeElastic)
-    .attr('r', 5)
+    .attr('r', radius)
     .attr('cy', height/5)
     .attr('cx', 0)
     .attr('stroke', '#072F5F')
@@ -274,14 +246,14 @@ draw(width, 5,50)
     .transition()
     .duration(3000)
     .ease(d3.easeBounce)
-    .attr('r', 5)
+    .attr('r', radius)
     .attr('cy', 2*height/5)
     .attr('cx', 0)
     .attr('stroke', '#072F5F')
  .transition()
     .duration(12000)
     .ease(d3.easeBounce)
-    .attr('r', 5)
+    .attr('r', radius)
     .attr('cy', 3*height/5)
     .attr('cx', 0)
     .attr('stroke', '#072F5F')
@@ -357,6 +329,8 @@ draw(width, 5,50)
         const newWidth = svgWidth - margin.left - margin.right
         const newHeight = svgHeight - margin.top - margin.bottom
 
+        const width_purp = newWidth+ margin.right -50
+
         svg.selectAll('circle').remove()
         console.log(newWidth)
 
@@ -377,7 +351,8 @@ draw(width, 5,50)
   
           } else if (newWidth > 300){
   
-            draw(width, 5,30)
+            draw(width_purp, 5,30)
+
             svg.selectAll('.steps').attr('x', 30)
             svg.selectAll('.title').attr('x', 0)
             svg.selectAll('#hed').attr('font-size', '17px')
@@ -386,19 +361,57 @@ draw(width, 5,50)
           }
           
           else if (newWidth > 250) {
-            draw(width, 5,20)
+            draw(width_purp, 5,20)
+
+            svg.selectAll('.steps').attr('x', 20)
+            svg.selectAll('.title').attr('x', -50)
+
+
+            svg.selectAll('#hed').attr('font-size', '15px')
+            svg.selectAll('#subhed').attr('font-size', '10px')
+            svg.selectAll('.step_name').attr('font-size', '10px')
+
+        
+          }  else if (newWidth > 200) {
+            draw(width_purp, 4,20)
+
             svg.selectAll('.steps').attr('x', 20)
             svg.selectAll('.title').attr('x', -50)
             svg.selectAll('#hed').attr('font-size', '15px')
             svg.selectAll('#subhed').attr('font-size', '10px')
 
+            //
+
         
-          } else {
-            draw(width, 5,20)
+          }
+          
+          
+          else {
+            draw(width_purp, 3,20)
+
             svg.selectAll('.steps').attr('x', 20)
             svg.selectAll('.title').attr('x', -100)
             svg.selectAll('#hed').attr('font-size', '15px')
             svg.selectAll('#subhed').attr('font-size', '10px')
+
+            svg.selectAll('#hed').attr('font-size', '12px')
+            svg.selectAll('#subhed').attr('font-size', '9px')
+
+
+            svg.select('#step_1').attr('font-size', '10px')
+            svg.select('#step_2').attr('font-size', '10px').text('Getting a hearing if they need more info.')
+            svg.select('#step_3').attr('font-size', '10px')
+            svg.select('#step_4').attr('font-size', '10px')
+            svg.select('#step_5').attr('font-size', '10px')
+
+
+            svg.select('#step_1_sub').remove()
+            svg.select('#step_2_sub').remove()
+            svg.select('#step_3_sub').remove()
+            svg.select('#step_4_sub').remove()
+            svg.select('#step_5_sub').remove()
+
+            radius = 3;
 
           }
           
