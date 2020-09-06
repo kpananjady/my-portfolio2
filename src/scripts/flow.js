@@ -357,6 +357,7 @@ svg.append('text').text("If you have a hearing and go through the entire appeal 
             draw(width, 5,50)
             svg.selectAll('#hed').attr('font-size', '20px')
             svg.selectAll('#subhed').attr('font-size', '15px')
+            radius = 5;
 
   
           } else if (newWidth > 300){
