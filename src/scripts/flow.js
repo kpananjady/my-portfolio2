@@ -37,7 +37,7 @@ svg.append('text').text("If they need more info, you'll need to wait for a heari
 svg.append('text').text("1 in 50 people who applied are stuck on the adjudication step of the process.").attr('alignment-baseline', 'middle').attr('y',2*height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_2_sub')
 
 svg.append('text').text("Appealing: Part 1").attr('alignment-baseline', 'middle').attr('y',3*height/5-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps step_name').attr('id','step_3')
-svg.append('text').text("The Appeals Division has two parts; the lower one is called the Referee Section").attr('alignment-baseline', 'middle').attr('y',3*height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_3_sub')
+svg.append('text').text("The Appeals Division has two parts; the lower one is called the Referee Section.").attr('alignment-baseline', 'middle').attr('y',3*height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_3_sub')
 
 svg.append('text').text("Appealing: Part 2").attr('alignment-baseline', 'middle').attr('y',4*height/5-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps step_name').attr('id','step_4')
 svg.append('text').text("The Referee Section's decisions can be overturned by the Board of Review.").attr('alignment-baseline', 'middle').attr('y',4*height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_4_sub')
@@ -382,10 +382,10 @@ var radius = 5;
 
             //
 
-            svg.select('#step_1_sub').remove()
-            svg.select('#step_2_sub').remove()
-            svg.select('#step_3_sub').remove()
-            svg.select('#step_4_sub').remove()
+            svg.select('#step_1_sub').attr('font-size', '9px').text('This is after your employer is given 5-7 days to respond.')
+            svg.select('#step_2_sub').attr('font-size', '9px')
+            svg.select('#step_3_sub').attr('font-size', '9px')
+            svg.select('#step_4_sub').attr('font-size', '9px')
             svg.select('#step_5_sub').remove()
 
         
@@ -410,7 +410,11 @@ var radius = 5;
             svg.select('#step_4').attr('font-size', '10px')
             svg.select('#step_5').attr('font-size', '10px')
 
-
+            svg.select('#step_1_sub').remove()
+            svg.select('#step_2_sub').remove()
+            svg.select('#step_3_sub').remove()
+            svg.select('#step_4_sub').remove()
+            svg.select('#step_5_sub').remove()
 
             radius = 3;
 
