@@ -20,8 +20,8 @@ const svg = d3
 svg.append('text').text('835,000 people have applied for unemployment benefits').attr('alignment-baseline', 'middle').attr('y',-105).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0).attr('class', 'title').attr('id', 'hed')
 svg.append('text').text('since the start of the pandemic.').attr('alignment-baseline', 'middle').attr('y',-85).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0).attr('class', 'title').attr('id', 'hed')
 
-svg.append('text').text("We don't know how many have been approved. But some 26,000 were waiting").attr('alignment-baseline', 'middle').attr('y',-45).attr('font-size', '15px').attr('font-weight', 5).attr('x', 0).attr('class', 'title').attr('id', 'subhed')
-svg.append('text').text("in various steps of the process in August.").attr('alignment-baseline', 'middle').attr('y',-25).attr('font-size', '15px').attr('font-weight', 5).attr('x', 0).attr('class', 'title').attr('id', 'subhed')
+svg.append('text').text("We don't know how many have been approved. But some 26,000 were ").attr('alignment-baseline', 'middle').attr('y',-45).attr('font-size', '15px').attr('font-weight', 5).attr('x', 0).attr('class', 'title').attr('id', 'subhed')
+svg.append('text').text("waiting in various steps of the process in mid-August.").attr('alignment-baseline', 'middle').attr('y',-25).attr('font-size', '15px').attr('font-weight', 5).attr('x', 0).attr('class', 'title').attr('id', 'subhed')
 
 
 svg.append('text').text("If you applied last month, here's the backlog you'd face.").attr('alignment-baseline', 'middle').attr('y',10).attr('font-size', '15px').attr('font-weight', 5).attr('x', 0).attr('id', 'subhed')
