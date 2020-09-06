@@ -31,19 +31,14 @@ svg.append('text').text('Weeks').attr('alignment-baseline', 'middle').attr('y',2
 
 
 svg.append('text').text("The Dept of Labor processes your claim.").attr('alignment-baseline', 'middle').attr('y',height/5-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45).attr('class','steps step_name').attr('id','step_1')
-svg.append('text').text("After your employer is given 5-7 days to respond, the agency looks at your application.").attr('alignment-baseline', 'middle').attr('y',height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_1_sub')
 
 svg.append('text').text("If they need more info, you'll need to wait for a hearing date.").attr('alignment-baseline', 'middle').attr('y',2*height/5-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps step_name').attr('id','step_2')
-svg.append('text').text("1 in 50 people who applied are stuck on the adjudication step of the process.").attr('alignment-baseline', 'middle').attr('y',2*height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_2_sub')
 
 svg.append('text').text("Appealing: Part 1").attr('alignment-baseline', 'middle').attr('y',3*height/5-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps step_name').attr('id','step_3')
-svg.append('text').text("The Appeals Division has two parts; the lower one is called the Referee Section.").attr('alignment-baseline', 'middle').attr('y',3*height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_3_sub')
 
 svg.append('text').text("Appealing: Part 2").attr('alignment-baseline', 'middle').attr('y',4*height/5-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps step_name').attr('id','step_4')
-svg.append('text').text("The Referee Section's decisions can be overturned by the Board of Review.").attr('alignment-baseline', 'middle').attr('y',4*height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_4_sub')
 
 svg.append('text').text("You receive your final decision.").attr('alignment-baseline', 'middle').attr('y',height-30).attr('font-size', '12px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps step_name').attr('id','step_5')
-svg.append('text').text("If you have a hearing and go through the entire appeal process, it takes over 6 months.").attr('alignment-baseline', 'middle').attr('y',height-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_5_sub')
 
 // key
 
@@ -333,6 +328,21 @@ var radius = 5;
 
         svg.selectAll('circle').remove()
         console.log(newWidth)
+        svg.select('#step_1_sub').remove()
+        svg.select('#step_2_sub').remove()
+        svg.select('#step_3_sub').remove()
+        svg.select('#step_4_sub').remove()
+        svg.select('#step_5_sub').remove()
+
+svg.append('text').text("After your employer is given 5-7 days to respond, the agency looks at your application.").attr('alignment-baseline', 'middle').attr('y',height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_1_sub')
+
+svg.append('text').text("1 in 50 people who applied are stuck on the adjudication step of the process.").attr('alignment-baseline', 'middle').attr('y',2*height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_2_sub')
+
+svg.append('text').text("The Appeals Division has two parts; the lower one is called the Referee Section.").attr('alignment-baseline', 'middle').attr('y',3*height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_3_sub')
+
+svg.append('text').text("The Referee Section's decisions can be overturned by the Board of Review.").attr('alignment-baseline', 'middle').attr('y',4*height/5-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_4_sub')
+
+svg.append('text').text("If you have a hearing and go through the entire appeal process, it takes over 6 months.").attr('alignment-baseline', 'middle').attr('y',height-15).attr('font-size', '10px').attr('font-weight', 5).attr('x', 45).attr('x', 45).attr('class','steps').attr('id','step_5_sub')
 
         
         svg.append('circle').attr('cy',height+30).attr('font-weight', 5).attr('cx', -85).attr('r', 5).attr('opacity', 0.5)    .attr('fill', '#c24e00')
@@ -357,7 +367,8 @@ var radius = 5;
             svg.selectAll('.title').attr('x', 0)
             svg.selectAll('#hed').attr('font-size', '17px')
             svg.selectAll('#subhed').attr('font-size', '12px')
-  
+            radius = 5;
+
           }
           
           else if (newWidth > 250) {
@@ -370,6 +381,8 @@ var radius = 5;
             svg.selectAll('#hed').attr('font-size', '15px')
             svg.selectAll('#subhed').attr('font-size', '10px')
             svg.selectAll('.step_name').attr('font-size', '10px')
+            radius = 5;
+
 
         
           }  else if (newWidth > 200) {
@@ -387,6 +400,7 @@ var radius = 5;
             svg.select('#step_3_sub').attr('font-size', '9px')
             svg.select('#step_4_sub').attr('font-size', '9px')
             svg.select('#step_5_sub').remove()
+            radius = 4;
 
         
           }
