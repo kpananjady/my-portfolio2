@@ -382,6 +382,12 @@ var radius = 5;
 
             //
 
+            svg.select('#step_1_sub').remove()
+            svg.select('#step_2_sub').remove()
+            svg.select('#step_3_sub').remove()
+            svg.select('#step_4_sub').remove()
+            svg.select('#step_5_sub').remove()
+
         
           }
           
@@ -405,11 +411,6 @@ var radius = 5;
             svg.select('#step_5').attr('font-size', '10px')
 
 
-            svg.select('#step_1_sub').remove()
-            svg.select('#step_2_sub').remove()
-            svg.select('#step_3_sub').remove()
-            svg.select('#step_4_sub').remove()
-            svg.select('#step_5_sub').remove()
 
             radius = 3;
 
