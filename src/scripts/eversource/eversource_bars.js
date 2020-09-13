@@ -94,7 +94,8 @@ svg
     .attr('fill', '#ffb347')
 
 
-
+svg.append('text').text('Contacts').attr('y',height/2-30).attr('font-size', '10px').attr('font-weight', 5).attr('x', -50)
+svg.append('text').text('(1000s)').attr('y',height/2-20).attr('font-size', '10px').attr('font-weight', 5).attr('x', -50)
 
     
 
