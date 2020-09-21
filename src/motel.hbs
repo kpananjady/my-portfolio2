@@ -1,0 +1,89 @@
+---
+
+---
+{{!< new}}
+<!-- 
+  
+  This line means, use default.hbs layout from src/html/layouts/
+-->
+{{> story/children_motels }}
+
+<style>
+  .sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+  }
+
+  #chart-1 .axis line {
+    stroke: #999;
+    stroke-width: 0.5;
+    stroke-dasharray: 3 2;
+  }
+
+  p small {
+    background: #fff880;
+  }
+
+  .colored-text {
+    padding: 1px 7px;
+    display: inline-block;
+  }
+
+
+    #nav-container {
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+      position:relative;
+ 
+    }
+
+    #toggle {
+      background: #ddd;
+      padding: 10px 10px;
+      justify-content: center;
+      border-radius:20px;
+      border:0;
+      font-size:15px;
+      outline-color:grey;
+      outline-radius:20px;
+    }
+
+    #toggle2 {
+      background: #ddd;
+      padding: 10px 10px;
+      justify-content: center;
+      border-radius:20px;
+      border:0;
+      font-size:15px;
+      outline-color:grey;
+
+
+    }
+
+         
+            
+            text    {
+                fill: white;
+                text-anchor:left;
+                font-size:12px;
+                font-family:sans-serif,Helvetica,Arial;
+                font-weight:bold;
+            }
+            
+            .iconPlain  {
+                fill:#a7a59b;   
+            }
+            
+            .iconSelected  {
+                fill:#bb6d82;   
+            }
+            
+            {{!-- rect    {
+                fill:#fff1e0;   
+            } --}}
+</style>
+
+<link rel="stylesheet" href="styles/scrollytelling.css">
+<script src="scripts/scrollytelling.js"></script>
