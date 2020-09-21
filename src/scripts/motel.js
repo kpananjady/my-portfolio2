@@ -4,8 +4,8 @@ d3.tip = d3Tip
 
 
 
-var margin = { top: 0, left: 0, right: 0, bottom: 0 }
-const height = 600 - margin.top - margin.bottom
+var margin = { top: 0, left: 20, right: 0, bottom: 0 }
+const height = 500 - margin.top - margin.bottom
 const width = 700 - margin.left - margin.right
 
 
@@ -19,7 +19,7 @@ const svg = d3
 
  
                 
-                svg.append("rect").attr("width",350).attr("height",500).attr("x",0).attr("y",100).attr('fill', '#fff1e0')
+                svg.append("rect").attr("width",315).attr("height",500).attr("x",0).attr("y",90).attr('fill', '#fff1e0')
             
 
                 svg.append("defs")
@@ -32,7 +32,7 @@ const svg = d3
 
                 
             //specify the number of columns and rows for pictogram layout
-            var numCols = 10;
+            var numCols = 9;
             var numRows = 6;
             
             //padding for the grid
@@ -49,13 +49,13 @@ const svg = d3
             const xPositionScale = d3
             .scaleLinear()
             .domain([0, 300])
-            .range([0, width])
+            .range([-10, width])
           
           const yPositionScale = d3
             .scaleLinear()
             .domain([0, 120])
             .range([height, 0])
-            var trianglePoints = xPositionScale(0) + ' ' + yPositionScale(100) +' ' + xPositionScale(150) + ' ' + yPositionScale(100) + ' ' + xPositionScale(75) + ' ' + yPositionScale(120) + ' ' + xPositionScale(0) + ' ' + yPositionScale(100);
+            var trianglePoints = xPositionScale(0) + ' ' + yPositionScale(100) +' ' + xPositionScale(145) + ' ' + yPositionScale(100) + ' ' + xPositionScale(70) + ' ' + yPositionScale(120) + ' ' + xPositionScale(0) + ' ' + yPositionScale(100);
 
             console.log(trianglePoints);
 
@@ -86,18 +86,34 @@ svg.append('polyline')
                       .attr("y",function(d) {
                         
                         var whole=Math.floor(d/numCols)//calculates the y position (row number)
-                        return yPadding+(whole*hBuffer)-160;//apply the buffer and return the value
+                        return yPadding+(whole*hBuffer)-180;//apply the buffer and return the value
                     })
                     .classed("iconPlain",true);
 
 
                     d3.select('#toggle').on('click', () => {
 
+                        svg.select('#txtValue').remove()
                         svg.append("text")
                         .attr("id","txtValue")
-                        .attr("x",160)
-                        .attr("y",90)
-                        .text("Year")
+                        .attr("x",140)
+                        .attr("y",70)
+                        .attr('font-size', '15px').attr('font-weight', 5)
+                        .transition()
+                        .duration(1000)
+                        .ease(d3.easeElastic)
+                        .text('283')
+                        .transition()
+                        .duration(1000)
+                        .ease(d3.easeElastic)
+                        .text('568');
+
+
+                        svg.append("text")
+                        .attr("id","txtValue2")
+                        .attr("x",130)
+                        .attr("y",50)
+                        .attr('font-size', '20px').attr('font-weight', 5)
                         .transition()
                         .duration(1000)
                         .ease(d3.easeElastic)
@@ -111,16 +127,16 @@ svg.append('polyline')
                         .transition().duration(1000)
                         .ease(d3.easeElastic)
                         .attr("class",function(d,i){
-                            if (d<23)  {
+                            if (d<17)  {
                                 return "iconSelected";
                             }    else    {
                                 return "iconPlain";
                             }
                         })
                         .transition().duration(1000)
-                        .ease(d3.easeElastic)
+                        .ease(d3.easeBounce)
                         .attr("class",function(d,i){
-                            if (d<61)  {
+                            if (d<40)  {
                                 return "iconSelected";
                             }    else    {
                                 return "iconPlain";
@@ -130,5 +146,643 @@ svg.append('polyline')
                     })
  
                      
-            //create a jquery slider to control the pictogram         
-            
+svg.append('rect').attr('x', 350).attr('y', 100).attr('height', (height-100)/2-10).attr('width', width/2).attr('fill', 'lightgrey')
+
+svg.append('rect').attr('x', 350).attr('y', (height-100)/2+120).attr('height', (height-100)/2-10)
+
+
+
+
+// var sankey = Sankey()
+
+const sankey = function() {
+  const sankey = {}
+  let nodeWidth = 24
+  let nodePadding = 8
+  let size = [1, 1]
+  let nodes = []
+  let links = []
+
+  sankey.nodeWidth = function(_) {
+    if (!arguments.length) return nodeWidth
+    nodeWidth = +_
+    return sankey
+  }
+
+  sankey.nodePadding = function(_) {
+    if (!arguments.length) return nodePadding
+    nodePadding = +_
+    return sankey
+  }
+
+  sankey.nodes = function(_) {
+    if (!arguments.length) return nodes
+    nodes = _
+    return sankey
+  }
+
+  sankey.links = function(_) {
+    if (!arguments.length) return links
+    links = _
+    return sankey
+  }
+
+  sankey.size = function(_) {
+    if (!arguments.length) return size
+    size = _
+    return sankey
+  }
+
+  sankey.layout = function(iterations) {
+    computeNodeLinks()
+    computeNodeValues()
+    computeNodeBreadths()
+    computeNodeDepths(iterations)
+    computeLinkDepths()
+    return sankey
+  }
+
+  sankey.relayout = function() {
+    computeLinkDepths()
+    return sankey
+  }
+
+  sankey.link = function() {
+    let curvature = 0.5
+
+    function link(d) {
+      const x0 = d.source.x + d.source.dx
+      const x1 = d.target.x
+      const xi = d3.interpolateNumber(x0, x1)
+      const x2 = xi(curvature)
+      const x3 = xi(1 - curvature)
+      const y0 = d.source.y + d.sy + d.dy / 2
+      const y1 = d.target.y + d.ty + d.dy / 2
+      return (
+        'M' +
+        x0 +
+        ',' +
+        y0 +
+        'C' +
+        x2 +
+        ',' +
+        y0 +
+        ' ' +
+        x3 +
+        ',' +
+        y1 +
+        ' ' +
+        x1 +
+        ',' +
+        y1
+      )
+    }
+
+    link.curvature = function(_) {
+      if (!arguments.length) return curvature
+      curvature = +_
+      return link
+    }
+
+    return link
+  }
+
+  // Populate the sourceLinks and targetLinks for each node.
+  // Also, if the source and target are not objects, assume they are indices.
+  function computeNodeLinks() {
+    nodes.forEach(function(node) {
+      node.sourceLinks = []
+      node.targetLinks = []
+    })
+    links.forEach(function(link) {
+      let source = link.source
+      let target = link.target
+      if (typeof source === 'number') source = link.source = nodes[link.source]
+      if (typeof target === 'number') target = link.target = nodes[link.target]
+      source.sourceLinks.push(link)
+      target.targetLinks.push(link)
+    })
+  }
+
+  // Compute the value (size) of each node by summing the associated links.
+  function computeNodeValues() {
+    nodes.forEach(function(node) {
+      node.value = Math.max(
+        d3.sum(node.sourceLinks, value),
+        d3.sum(node.targetLinks, value)
+      )
+    })
+  }
+
+  // Iteratively assign the breadth (x-position) for each node.
+  // Nodes are assigned the maximum breadth of incoming neighbors plus one;
+  // nodes with no incoming links are assigned breadth zero, while
+  // nodes with no outgoing links are assigned the maximum breadth.
+  function computeNodeBreadths() {
+    let remainingNodes = nodes
+    let nextNodes
+    let x = 0
+
+    while (remainingNodes.length) {
+      nextNodes = []
+      remainingNodes.forEach(function(node) {
+        node.x = x
+        node.dx = nodeWidth
+        node.sourceLinks.forEach(function(link) {
+          if (nextNodes.indexOf(link.target) < 0) {
+            nextNodes.push(link.target)
+          }
+        })
+      })
+      remainingNodes = nextNodes
+      ++x
+    }
+
+    //
+    moveSinksRight(x)
+    scaleNodeBreadths((size[0] - nodeWidth) / (x - 1))
+  }
+
+  function moveSourcesRight() {
+    nodes.forEach(function(node) {
+      if (!node.targetLinks.length) {
+        node.x =
+          d3.min(node.sourceLinks, function(d) {
+            return d.target.x
+          }) - 1
+      }
+    })
+  }
+
+  function moveSinksRight(x) {
+    nodes.forEach(function(node) {
+      if (!node.sourceLinks.length) {
+        node.x = x - 1
+      }
+    })
+  }
+
+  function scaleNodeBreadths(kx) {
+    nodes.forEach(function(node) {
+      node.x *= kx
+    })
+  }
+
+  function computeNodeDepths(iterations) {
+    const nodesByBreadth = d3
+      .nest()
+      .key(function(d) {
+        return d.x
+      })
+      .sortKeys(d3.ascending)
+      .entries(nodes)
+      .map(function(d) {
+        return d.values
+      })
+
+    //
+    initializeNodeDepth()
+    resolveCollisions()
+    for (let alpha = 1; iterations > 0; --iterations) {
+      relaxRightToLeft((alpha *= 0.99))
+      resolveCollisions()
+      relaxLeftToRight(alpha)
+      resolveCollisions()
+    }
+
+    function initializeNodeDepth() {
+      const ky = d3.min(nodesByBreadth, function(nodes) {
+        return (
+          (size[1] - (nodes.length - 1) * nodePadding) / d3.sum(nodes, value)
+        )
+      })
+
+      nodesByBreadth.forEach(function(nodes) {
+        nodes.forEach(function(node, i) {
+          console.log(node, i, 'values')
+          node.y = i
+          node.dy = node.value * ky
+        })
+      })
+
+      links.forEach(function(link) {
+        link.dy = link.value * ky
+      })
+    }
+
+    function relaxLeftToRight(alpha) {
+      nodesByBreadth.forEach(function(nodes, breadth) {
+        nodes.forEach(function(node) {
+          if (node.targetLinks.length) {
+            const y =
+              d3.sum(node.targetLinks, weightedSource) /
+              d3.sum(node.targetLinks, value)
+            node.y += (y - center(node)) * alpha
+          }
+        })
+      })
+
+      function weightedSource(link) {
+        return center(link.source) * link.value
+      }
+    }
+
+    function relaxRightToLeft(alpha) {
+      nodesByBreadth
+        .slice()
+        .reverse()
+        .forEach(function(nodes) {
+          nodes.forEach(function(node) {
+            if (node.sourceLinks.length) {
+              const y =
+                d3.sum(node.sourceLinks, weightedTarget) /
+                d3.sum(node.sourceLinks, value)
+              node.y += (y - center(node)) * alpha
+            }
+          })
+        })
+
+      function weightedTarget(link) {
+        return center(link.target) * link.value
+      }
+    }
+
+    function resolveCollisions() {
+      nodesByBreadth.forEach(function(nodes) {
+        let node
+        let dy
+        let y0 = 0
+        const n = nodes.length
+        let i
+
+        // Push any overlapping nodes down.
+        nodes.sort(ascendingDepth)
+        for (i = 0; i < n; ++i) {
+          node = nodes[i]
+          dy = y0 - node.y
+          if (dy > 0) node.y += dy
+          y0 = node.y + node.dy + nodePadding
+        }
+
+        // If the bottommost node goes outside the bounds, push it back up.
+        dy = y0 - nodePadding - size[1]
+        if (dy > 0) {
+          y0 = node.y -= dy
+
+          // Push any overlapping nodes back up.
+          for (i = n - 2; i >= 0; --i) {
+            node = nodes[i]
+            dy = node.y + node.dy + nodePadding - y0
+            if (dy > 0) node.y -= dy
+            y0 = node.y
+          }
+        }
+      })
+    }
+
+    function ascendingDepth(a, b) {
+      return a.y - b.y
+    }
+  }
+
+  function computeLinkDepths() {
+    nodes.forEach(function(node) {
+      node.sourceLinks.sort(ascendingTargetDepth)
+      node.targetLinks.sort(ascendingSourceDepth)
+    })
+    nodes.forEach(function(node) {
+      let sy = 0
+      let ty = 0
+      node.sourceLinks.forEach(function(link) {
+        link.sy = sy
+        sy += link.dy
+      })
+      node.targetLinks.forEach(function(link) {
+        link.ty = ty
+        ty += link.dy
+      })
+    })
+
+    function ascendingSourceDepth(a, b) {
+      return a.source.y - b.source.y
+    }
+
+    function ascendingTargetDepth(a, b) {
+      return a.target.y - b.target.y
+    }
+  }
+
+  function center(node) {
+    return node.y + node.dy / 2
+  }
+
+  function value(link) {
+    return link.value
+  }
+
+  return sankey
+}
+
+
+const sankey1 = sankey()
+  .nodeWidth(36)
+  .nodePadding(20)
+  .size([width/2-120, (height-100)/2 -20])
+
+console.log(sankey1)
+console.log(sankey1.nodePadding())
+
+Promise.all([
+    d3.json(require('/data/dummydata.json')),
+    d3.json(require('/data/dummydata3.json')),
+    d3.csv(require('/data/race_by_town_ct.csv'))
+  ])
+  .then(ready)
+  .catch(err => console.log('Failed on', err))
+
+  
+function ready([datapoints, datapoints2, datappints3]) {
+  sankey1
+    .nodes(datapoints.nodes)
+    .links(datapoints.links)
+    .layout(1)
+
+  console.log(sankey1)
+  console.log(sankey1.links(), 'links')
+
+  const link = svg
+    .append('g')
+    .attr('transform', 'translate(' + 360+ ',' +320 + ')')
+
+    .selectAll('.link')
+    .data(datapoints.links)
+    .enter()
+    .append('path')
+    .attr('class', 'link')
+    .attr('d', sankey1.link())
+    .style('stroke-width', function(d) {
+      return Math.max(1, d.dy)
+    })
+    .sort(function(a, b) {
+      return b.dy - a.dy
+    })
+
+
+    // function updateData() {
+// link
+// .data(datapoints2.links)
+//     .attr('d', sankey1.link())
+//     .style('stroke-width', function(d) {
+//       return Math.max(1, d.dy)
+//     })
+//     .sort(function(a, b) {
+//       return b.dy - a.dy
+//     })
+    // }
+
+  const node = svg
+    .append('g')
+    .attr('transform', 'translate(' + 360+ ',' +320 + ')')
+
+    .selectAll('.node')
+    .data(datapoints.nodes)
+    .enter()
+    .append('g')
+    .attr('class', 'node')
+    .attr('transform', function(d) {
+      return 'translate(' + d.x + ',' + d.y + ')'
+    })
+    .call(
+      d3
+        .drag()
+        .subject(function(d) {
+          return d
+        })
+        .on('start', function() {
+          this.parentNode.appendChild(this)
+        })
+        .on('drag', dragmove)
+    )
+
+  node
+    // .selectAll('rect')
+    // .data(datapoints.nodes)
+    .append('rect')
+    .attr('height', function(d) {
+      // return d.dy
+      return d.dy
+    })
+    .attr('width', sankey1.nodeWidth())
+    .style('fill', function(d) {
+      return d.color;
+    })
+    // Add hover text
+    .append('title')
+    .text(function(d) {
+      return d.name + '\n' + 'There is ' + d.value + ' stuff in this node'
+    })
+    .attr('opacity', 0.2)
+
+  // add in the title for the nodes
+  node
+    .append('text')
+    .attr('x', -6)
+    .attr('y', function(d) {
+      return d.dy / 2
+    })
+    .attr('dy', '.35em')
+    .attr('class','textCat')
+    .attr('text-anchor', 'end')
+    .attr('transform', null)
+    .text(function(d) {
+      return d.name
+    })
+    .filter(function(d) {
+      return d.x < width / 2
+    })
+    .attr('x', 6 + sankey1.nodeWidth())
+    .attr('text-anchor', 'start')
+    .attr('fill', 'black')
+
+  function dragmove(d) {
+    d3.select(this).attr(
+      'transform',
+      'translate(' +
+        // (d.x = Math.max(0, Math.min(width - d.dy, d3.event.y))) +
+        d.x +
+        ',' +
+        (d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))) +
+        ')'
+    )
+    sankey1.relayout()
+    link.attr('d', sankey1.link())
+  }
+
+
+  d3.select('#toggle').on('click', () => {
+
+    svg.transition().duration(1000).selectAll('.link').remove()
+    svg.transition().duration(1000).selectAll('.node').remove()
+
+    sankey1
+.nodes(datapoints2.nodes)
+.links(datapoints2.links)
+.layout(1)
+
+console.log(sankey1)
+console.log(sankey1.links(), 'links')
+
+const link = svg
+.append('g')
+.attr('transform', 'translate(' + 360+ ',' +320 + ')')
+.selectAll('.link')
+.data(datapoints2.links)
+.enter()
+.append('path')
+.attr('class', 'link')
+.attr('d', sankey1.link())
+.style('stroke-width', function(d) {
+  return Math.max(1, d.dy)
+})
+.sort(function(a, b) {
+  return b.dy - a.dy
+})
+
+const node = svg
+.append('g')
+.attr('transform', 'translate(' + 360+ ',' +320 + ')')
+.selectAll('.node')
+.data(datapoints2.nodes)
+.enter()
+.append('g')
+.attr('class', 'node')
+.attr('transform', function(d) {
+  return 'translate(' + d.x + ',' + d.y + ')'
+})
+.call(
+  d3
+    .drag()
+    .subject(function(d) {
+      return d
+    })
+    .on('start', function() {
+      this.parentNode.appendChild(this)
+    })
+    .on('drag', dragmove)
+)
+
+node
+// .selectAll('rect')
+// .data(datapoints.nodes)
+.append('rect')
+.attr('height', function(d) {
+  // return d.dy
+  return d.dy
+})
+.attr('width', sankey1.nodeWidth())
+.style('fill', function(d) {
+  return d.color;
+})
+// Add hover text
+.append('title')
+.text(function(d) {
+  return d.name + '\n' + 'There is ' + d.value + ' stuff in this node'
+})
+.attr('opacity', 0.2)
+
+// add in the title for the nodes
+node
+.append('text')
+.attr('x', -6)
+.attr('y', function(d) {
+  return d.dy / 2
+})
+.attr('dy', '.35em')
+.attr('class','textCat')
+.attr('text-anchor', 'end')
+.attr('transform', null)
+.text(function(d) {
+  return d.name
+})
+.filter(function(d) {
+  return d.x < width / 2
+})
+.attr('x', 6 + sankey1.nodeWidth())
+.attr('text-anchor', 'start')
+.attr('fill', 'black')
+
+function dragmove(d) {
+d3.select(this).attr(
+  'transform',
+  'translate(' +
+    // (d.x = Math.max(0, Math.min(width - d.dy, d3.event.y))) +
+    d.x +
+    ',' +
+    (d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))) +
+    ')'
+)
+sankey1.relayout()
+link.attr('d', sankey1.link())
+}
+
+
+    svg.select('#txtValue').remove()
+                    svg.append("text")
+                    .attr("id","txtValue")
+                    .attr("x",140)
+                    .attr("y",70)
+                    .attr('font-size', '15px').attr('font-weight', 5)
+                    .transition()
+                    .duration(1000)
+                    .ease(d3.easeElastic)
+                    .text('283')
+                    .transition()
+                    .duration(1000)
+                    .ease(d3.easeElastic)
+                    .text('568');
+
+
+                    svg.append("text")
+                    .attr("id","txtValue2")
+                    .attr("x",130)
+                    .attr("y",50)
+                    .attr('font-size', '20px').attr('font-weight', 5)
+                    .transition()
+                    .duration(1000)
+                    .ease(d3.easeElastic)
+                    .text('2011')
+                    .transition()
+                    .duration(1000)
+                    .ease(d3.easeElastic)
+                    .text('2020');
+
+                    d3.selectAll("use")
+                    .transition().duration(1000)
+                    .ease(d3.easeElastic)
+                    .attr("class",function(d,i){
+                        if (d<17)  {
+                            return "iconSelected";
+                        }    else    {
+                            return "iconPlain";
+                        }
+                    })
+                    .transition().duration(1000)
+                    .ease(d3.easeBounce)
+                    .attr("class",function(d,i){
+                        if (d<40)  {
+                            return "iconSelected";
+                        }    else    {
+                            return "iconPlain";
+                        }
+                    });
+})
+
+
+var chart = svg
+    .append('g')
+    .attr('transform', 'translate(' + 350+ ',' +100 + ')')
+    .append('rect').attr('x', 0).attr('y', 0).attr('height', (height-100)/2-10).attr('width', width/2).attr('fill', 'red').attr('id', 'where')
+
+
+    console.log(chart.node().getBBox().x )
+}
