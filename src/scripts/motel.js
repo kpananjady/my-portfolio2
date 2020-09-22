@@ -106,10 +106,10 @@ svg.append('polyline')
 
                     svg.append("text")
                     .attr("id","txtValue2")
-                    .attr("x",120)
+                    .attr("x",110)
                     .attr("y",50)
-                    .attr('font-size', '20px').attr('font-weight', 5)
-                    .text('Motels')
+                    .attr('font-size', '15px').attr('font-weight', 5)
+                    .text('Hotels/Motels')
                      
 
 svg.append('rect').attr('x', 350).attr('y', (height-100)/2+120).attr('height', (height-100)/2-10)
@@ -639,7 +639,7 @@ node
 // Add hover text
 .append('title')
 .text(function(d) {
-  return d.name + '\n' + 'There is ' + d.value + ' stuff in this node'
+  return d.name + '\n' + '' + d.value + '%'
 })
 .attr('opacity', 0.2)
 
@@ -691,7 +691,8 @@ link.attr('d', sankey1.link())
     .transition()
     .duration(1000)
     .ease(d3.easeElastic)
-    .text('Motels');
+    .text('Hotels/Motels')
+     
 
     d3.selectAll("use")
     .transition().duration(1000)
@@ -768,7 +769,7 @@ const yPositionScale = d3
 
 
 
-  const yAxis = d3.axisLeft(yPositionScale).ticks(4)      .tickSize(-width/2)
+  const yAxis = d3.axisLeft(yPositionScale).ticks(4)      .tickSize(-chart.node().getBBox().width+50)
   svg
     .append('g')
     .attr('class', 'axis y-axis')
