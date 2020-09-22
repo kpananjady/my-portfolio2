@@ -531,7 +531,7 @@ function ready([datapoints, datapoints2, datapoints3]) {
     // Add hover text
     .append('title')
     .text(function(d) {
-      return d.name + '\n' + 'There is ' + d.value + ' stuff in this node'
+      return d.name + '\n' + '' + d.value + '%'
     })
     .attr('opacity', 0.2)
 
@@ -703,38 +703,9 @@ link.attr('d', sankey1.link())
             return "iconPlain";
         }
     });
-})
 
 
-var chart = svg
-    .append('g')
-    .attr('transform', 'translate(' + 330+ ',' +100 + ')')
-    .append('rect').attr('x', 0).attr('y', 0).attr('height', (height-100)/2-10).attr('width', width/2-60).attr('fill', 'white').attr('id', 'where')
-
-
-    console.log(chart.node().getBBox().x )
-
-const xPositionScale = d3
-  .scaleLinear()
-  .range([370, width-80])
-
-const yPositionScale = d3
-  .scaleLinear()  .range([height/2,110])
-
-  const line = d3
-  .line()
-  .x(function(d) {
-    return xPositionScale(d['Year'])
-  })
-  .y(function(d) {
-    return yPositionScale(d['Pop'])
-  })
-
-  xPositionScale.domain(d3.extent(datapoints3, function(d) { return d['Year'] }));
-  yPositionScale.domain([0,6000])
-
-
-  svg.append('path')
+    svg.append('path')
   .datum(datapoints3)
   .attr('class', 'path_next')
   .attr('d', function(d) {
@@ -752,11 +723,50 @@ svg
   .data(datapoints3)
   .enter()
   .append('circle')
-  .attr('class', 'revenue')
+  .attr('class', 'circle-points')
   .attr('r', 5)
   .attr('cx', d => xPositionScale(d['Year']))
   .attr('cy', d => yPositionScale( d['Pop']))
   .style('fill', '#8B0000')  .attr('opacity', 0.55)
+})
+
+
+var chart = svg
+    .append('g')
+    .attr('transform', 'translate(' + 330+ ',' +100 + ')')
+    .append('rect').attr('x', 0).attr('y', 0).attr('height', (height-100)/2-10).attr('width', width/2-60).attr('fill', 'white').attr('id', 'where')
+
+
+    console.log(chart.node().getBBox().x )
+
+const xPositionScale = d3
+  .scaleLinear()
+  .range([370, width-100])
+
+const yPositionScale = d3
+  .scaleLinear()  .range([height/2,110])
+
+  const line = d3
+  .line()
+  .x(function(d) {
+    return xPositionScale(d['Year'])
+  })
+  .y(function(d) {
+    return yPositionScale(d['Pop'])
+  })
+
+  xPositionScale.domain(d3.extent(datapoints3, function(d) { return d['Year'] }));
+  yPositionScale.domain([0,6000])
+
+
+  svg.append('circle') .attr('class', 'circle-points')
+  .attr('r', 5)
+  .attr('cx', d => xPositionScale(2011))
+  .attr('cy', d => yPositionScale(2804))
+  .style('fill', '#8B0000')  .attr('opacity', 0.55)
+
+
+
 
   const yAxis = d3.axisLeft(yPositionScale).ticks(4)      .tickSize(-width/2)
   svg
@@ -786,4 +796,10 @@ svg
 
                 d3.select('.y-axis .domain').remove()
   
-                d3.select('.x-axis .domain').remove()}
+                d3.select('.x-axis .domain').remove()
+            
+                svg.append('text').attr('x', 330).attr('y', 90).text("CT's child homeless population").attr('font-size', '12px').attr('font-weight', 5)
+            
+            
+            
+            }
