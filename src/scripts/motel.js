@@ -88,65 +88,29 @@ svg.append('polyline')
                         var whole=Math.floor(d/numCols)//calculates the y position (row number)
                         return yPadding+(whole*hBuffer)-180;//apply the buffer and return the value
                     })
-                    .classed("iconPlain",true);
-
-
-                    d3.select('#toggle').on('click', () => {
-
-                        svg.select('#txtValue').remove()
-                        svg.append("text")
-                        .attr("id","txtValue")
-                        .attr("x",140)
-                        .attr("y",70)
-                        .attr('font-size', '15px').attr('font-weight', 5)
-                        .transition()
-                        .duration(1000)
-                        .ease(d3.easeElastic)
-                        .text('283')
-                        .transition()
-                        .duration(1000)
-                        .ease(d3.easeElastic)
-                        .text('568');
-
-
-                        svg.append("text")
-                        .attr("id","txtValue2")
-                        .attr("x",130)
-                        .attr("y",50)
-                        .attr('font-size', '20px').attr('font-weight', 5)
-                        .transition()
-                        .duration(1000)
-                        .ease(d3.easeElastic)
-                        .text('2011')
-                        .transition()
-                        .duration(1000)
-                        .ease(d3.easeElastic)
-                        .text('2020');
-
-                        d3.selectAll("use")
-                        .transition().duration(1000)
-                        .ease(d3.easeElastic)
-                        .attr("class",function(d,i){
-                            if (d<17)  {
-                                return "iconSelected";
-                            }    else    {
-                                return "iconPlain";
-                            }
-                        })
-                        .transition().duration(1000)
-                        .ease(d3.easeBounce)
-                        .attr("class",function(d,i){
-                            if (d<40)  {
-                                return "iconSelected";
-                            }    else    {
-                                return "iconPlain";
-                            }
-                        });
-
+                    .classed("iconPlain",true)
+                    .attr("class",function(d,i){
+                        if (d<17)  {
+                            return "iconSelected";
+                        }    else    {
+                            return "iconPlain";
+                        }
                     })
- 
+
+                    svg.append("text")
+                    .attr("id","txtValue")
+                    .attr("x",140)
+                    .attr("y",70)
+                    .attr('font-size', '15px').attr('font-weight', 5)
+                    .text('234')
+
+                    svg.append("text")
+                    .attr("id","txtValue2")
+                    .attr("x",120)
+                    .attr("y",50)
+                    .attr('font-size', '20px').attr('font-weight', 5)
+                    .text('Motels')
                      
-svg.append('rect').attr('x', 350).attr('y', 100).attr('height', (height-100)/2-10).attr('width', width/2).attr('fill', 'lightgrey')
 
 svg.append('rect').attr('x', 350).attr('y', (height-100)/2+120).attr('height', (height-100)/2-10)
 
@@ -487,7 +451,7 @@ const sankey = function() {
 const sankey1 = sankey()
   .nodeWidth(36)
   .nodePadding(20)
-  .size([width/2-120, (height-100)/2 -20])
+  .size([width/2-150, (height-100)/2 -50])
 
 console.log(sankey1)
 console.log(sankey1.nodePadding())
@@ -495,13 +459,13 @@ console.log(sankey1.nodePadding())
 Promise.all([
     d3.json(require('/data/dummydata.json')),
     d3.json(require('/data/dummydata3.json')),
-    d3.csv(require('/data/race_by_town_ct.csv'))
+    d3.csv(require('/data/homeless.csv'))
   ])
   .then(ready)
   .catch(err => console.log('Failed on', err))
 
   
-function ready([datapoints, datapoints2, datappints3]) {
+function ready([datapoints, datapoints2, datapoints3]) {
   sankey1
     .nodes(datapoints.nodes)
     .links(datapoints.links)
@@ -512,7 +476,7 @@ function ready([datapoints, datapoints2, datappints3]) {
 
   const link = svg
     .append('g')
-    .attr('transform', 'translate(' + 360+ ',' +320 + ')')
+    .attr('transform', 'translate(' + 330+ ',' +320 + ')')
 
     .selectAll('.link')
     .data(datapoints.links)
@@ -528,21 +492,9 @@ function ready([datapoints, datapoints2, datappints3]) {
     })
 
 
-    // function updateData() {
-// link
-// .data(datapoints2.links)
-//     .attr('d', sankey1.link())
-//     .style('stroke-width', function(d) {
-//       return Math.max(1, d.dy)
-//     })
-//     .sort(function(a, b) {
-//       return b.dy - a.dy
-//     })
-    // }
-
   const node = svg
     .append('g')
-    .attr('transform', 'translate(' + 360+ ',' +320 + ')')
+    .attr('transform', 'translate(' + 330+ ',' +320 + ')')
 
     .selectAll('.node')
     .data(datapoints.nodes)
@@ -603,6 +555,7 @@ function ready([datapoints, datapoints2, datappints3]) {
     .attr('x', 6 + sankey1.nodeWidth())
     .attr('text-anchor', 'start')
     .attr('fill', 'black')
+    .attr('font-size', '12px').attr('font-weight', 5)
 
   function dragmove(d) {
     d3.select(this).attr(
@@ -621,8 +574,8 @@ function ready([datapoints, datapoints2, datappints3]) {
 
   d3.select('#toggle').on('click', () => {
 
-    svg.transition().duration(1000).selectAll('.link').remove()
-    svg.transition().duration(1000).selectAll('.node').remove()
+    svg.transition().duration(0).selectAll('.link').remove()
+    svg.transition().duration(0).selectAll('.node').remove()
 
     sankey1
 .nodes(datapoints2.nodes)
@@ -634,7 +587,7 @@ console.log(sankey1.links(), 'links')
 
 const link = svg
 .append('g')
-.attr('transform', 'translate(' + 360+ ',' +320 + ')')
+.attr('transform', 'translate(' + 330+ ',' +320 + ')')
 .selectAll('.link')
 .data(datapoints2.links)
 .enter()
@@ -650,7 +603,7 @@ const link = svg
 
 const node = svg
 .append('g')
-.attr('transform', 'translate(' + 360+ ',' +320 + ')')
+.attr('transform', 'translate(' + 330+ ',' +320 + ')')
 .selectAll('.node')
 .data(datapoints2.nodes)
 .enter()
@@ -699,7 +652,7 @@ node
 })
 .attr('dy', '.35em')
 .attr('class','textCat')
-.attr('text-anchor', 'end')
+.attr('text-anchor', 'start')
 .attr('transform', null)
 .text(function(d) {
   return d.name
@@ -710,6 +663,7 @@ node
 .attr('x', 6 + sankey1.nodeWidth())
 .attr('text-anchor', 'start')
 .attr('fill', 'black')
+.attr('font-size', '12px').attr('font-weight', 5)
 
 function dragmove(d) {
 d3.select(this).attr(
@@ -726,63 +680,110 @@ link.attr('d', sankey1.link())
 }
 
 
-    svg.select('#txtValue').remove()
-                    svg.append("text")
-                    .attr("id","txtValue")
-                    .attr("x",140)
-                    .attr("y",70)
-                    .attr('font-size', '15px').attr('font-weight', 5)
-                    .transition()
-                    .duration(1000)
-                    .ease(d3.easeElastic)
-                    .text('283')
-                    .transition()
-                    .duration(1000)
-                    .ease(d3.easeElastic)
-                    .text('568');
+    svg.select("#txtValue")
+    .transition()
+    .duration(1000)
+    .ease(d3.easeElastic)
+    .text('568');
 
 
-                    svg.append("text")
-                    .attr("id","txtValue2")
-                    .attr("x",130)
-                    .attr("y",50)
-                    .attr('font-size', '20px').attr('font-weight', 5)
-                    .transition()
-                    .duration(1000)
-                    .ease(d3.easeElastic)
-                    .text('2011')
-                    .transition()
-                    .duration(1000)
-                    .ease(d3.easeElastic)
-                    .text('2020');
+    svg.select("#txtValue2")
+    .transition()
+    .duration(1000)
+    .ease(d3.easeElastic)
+    .text('Motels');
 
-                    d3.selectAll("use")
-                    .transition().duration(1000)
-                    .ease(d3.easeElastic)
-                    .attr("class",function(d,i){
-                        if (d<17)  {
-                            return "iconSelected";
-                        }    else    {
-                            return "iconPlain";
-                        }
-                    })
-                    .transition().duration(1000)
-                    .ease(d3.easeBounce)
-                    .attr("class",function(d,i){
-                        if (d<40)  {
-                            return "iconSelected";
-                        }    else    {
-                            return "iconPlain";
-                        }
-                    });
+    d3.selectAll("use")
+    .transition().duration(1000)
+    .ease(d3.easeBounce)
+    .attr("class",function(d,i){
+        if (d<40)  {
+            return "iconSelected";
+        }    else    {
+            return "iconPlain";
+        }
+    });
 })
 
 
 var chart = svg
     .append('g')
-    .attr('transform', 'translate(' + 350+ ',' +100 + ')')
-    .append('rect').attr('x', 0).attr('y', 0).attr('height', (height-100)/2-10).attr('width', width/2).attr('fill', 'red').attr('id', 'where')
+    .attr('transform', 'translate(' + 330+ ',' +100 + ')')
+    .append('rect').attr('x', 0).attr('y', 0).attr('height', (height-100)/2-10).attr('width', width/2-60).attr('fill', 'white').attr('id', 'where')
 
 
     console.log(chart.node().getBBox().x )
-}
+
+const xPositionScale = d3
+  .scaleLinear()
+  .range([370, width-80])
+
+const yPositionScale = d3
+  .scaleLinear()  .range([height/2,110])
+
+  const line = d3
+  .line()
+  .x(function(d) {
+    return xPositionScale(d['Year'])
+  })
+  .y(function(d) {
+    return yPositionScale(d['Pop'])
+  })
+
+  xPositionScale.domain(d3.extent(datapoints3, function(d) { return d['Year'] }));
+  yPositionScale.domain([0,6000])
+
+
+  svg.append('path')
+  .datum(datapoints3)
+  .attr('class', 'path_next')
+  .attr('d', function(d) {
+      return line(d)
+  })
+  .attr('stroke', '#ffc17b')
+  .attr('stroke-width', 2)
+  .attr('fill', 'none')
+  .attr('opacity',0.5)
+ 
+
+
+svg
+  .selectAll('circle-points')
+  .data(datapoints3)
+  .enter()
+  .append('circle')
+  .attr('class', 'revenue')
+  .attr('r', 5)
+  .attr('cx', d => xPositionScale(d['Year']))
+  .attr('cy', d => yPositionScale( d['Pop']))
+  .style('fill', '#8B0000')  .attr('opacity', 0.55)
+
+  const yAxis = d3.axisLeft(yPositionScale).ticks(4)      .tickSize(-width/2)
+  svg
+    .append('g')
+    .attr('class', 'axis y-axis')
+    .attr('transform', 'translate(' + 360+ ',' +0 + ')')
+
+    .attr('color', 'grey')
+
+    .call(yAxis)
+
+  var xAxis = d3.axisBottom(xPositionScale).ticks(9).tickFormat(d3.format("d"))
+  svg
+    .append('g')
+    .attr('class', 'axis x-axis')
+    .attr('transform', 'translate(' + 0+ ',' + (height/2) + ')')
+    .attr('color', 'grey')
+		.call(xAxis)
+		.selectAll("text")	
+		.style("text-anchor", "end")
+		.attr("dx", "-.8em")
+		.attr("dy", ".15em")
+		.attr("transform", function(d) {
+				return "rotate(-35)" 
+                });
+                
+
+                d3.select('.y-axis .domain').remove()
+  
+                d3.select('.x-axis .domain').remove()}
