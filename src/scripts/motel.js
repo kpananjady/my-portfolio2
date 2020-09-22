@@ -572,166 +572,6 @@ function ready([datapoints, datapoints2, datapoints3]) {
   }
 
 
-  d3.select('#toggle').on('click', () => {
-
-    svg.transition().duration(0).selectAll('.link').remove()
-    svg.transition().duration(0).selectAll('.node').remove()
-
-    sankey1
-.nodes(datapoints2.nodes)
-.links(datapoints2.links)
-.layout(1)
-
-console.log(sankey1)
-console.log(sankey1.links(), 'links')
-
-const link = svg
-.append('g')
-.attr('transform', 'translate(' + 330+ ',' +320 + ')')
-.selectAll('.link')
-.data(datapoints2.links)
-.enter()
-.append('path')
-.attr('class', 'link')
-.attr('d', sankey1.link())
-.style('stroke-width', function(d) {
-  return Math.max(1, d.dy)
-})
-.sort(function(a, b) {
-  return b.dy - a.dy
-})
-
-const node = svg
-.append('g')
-.attr('transform', 'translate(' + 330+ ',' +320 + ')')
-.selectAll('.node')
-.data(datapoints2.nodes)
-.enter()
-.append('g')
-.attr('class', 'node')
-.attr('transform', function(d) {
-  return 'translate(' + d.x + ',' + d.y + ')'
-})
-.call(
-  d3
-    .drag()
-    .subject(function(d) {
-      return d
-    })
-    .on('start', function() {
-      this.parentNode.appendChild(this)
-    })
-    .on('drag', dragmove)
-)
-
-node
-// .selectAll('rect')
-// .data(datapoints.nodes)
-.append('rect')
-.attr('height', function(d) {
-  // return d.dy
-  return d.dy
-})
-.attr('width', sankey1.nodeWidth())
-.style('fill', function(d) {
-  return d.color;
-})
-// Add hover text
-.append('title')
-.text(function(d) {
-  return d.name + '\n' + '' + d.value + '%'
-})
-.attr('opacity', 0.2)
-
-// add in the title for the nodes
-node
-.append('text')
-.attr('x', -6)
-.attr('y', function(d) {
-  return d.dy / 2
-})
-.attr('dy', '.35em')
-.attr('class','textCat')
-.attr('text-anchor', 'start')
-.attr('transform', null)
-.text(function(d) {
-  return d.name
-})
-.filter(function(d) {
-  return d.x < width / 2
-})
-.attr('x', 6 + sankey1.nodeWidth())
-.attr('text-anchor', 'start')
-.attr('fill', 'black')
-.attr('font-size', '12px').attr('font-weight', 5)
-
-function dragmove(d) {
-d3.select(this).attr(
-  'transform',
-  'translate(' +
-    // (d.x = Math.max(0, Math.min(width - d.dy, d3.event.y))) +
-    d.x +
-    ',' +
-    (d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))) +
-    ')'
-)
-sankey1.relayout()
-link.attr('d', sankey1.link())
-}
-
-
-    svg.select("#txtValue")
-    .transition()
-    .duration(1000)
-    .ease(d3.easeElastic)
-    .text('568');
-
-
-    svg.select("#txtValue2")
-    .transition()
-    .duration(1000)
-    .ease(d3.easeElastic)
-    .text('Hotels/Motels')
-     
-
-    d3.selectAll("use")
-    .transition().duration(1000)
-    .ease(d3.easeBounce)
-    .attr("class",function(d,i){
-        if (d<40)  {
-            return "iconSelected";
-        }    else    {
-            return "iconPlain";
-        }
-    });
-
-
-    svg.append('path')
-  .datum(datapoints3)
-  .attr('class', 'path_next')
-  .attr('d', function(d) {
-      return line(d)
-  })
-  .attr('stroke', '#ffc17b')
-  .attr('stroke-width', 2)
-  .attr('fill', 'none')
-  .attr('opacity',0.5)
- 
-
-
-svg
-  .selectAll('circle-points')
-  .data(datapoints3)
-  .enter()
-  .append('circle')
-  .attr('class', 'circle-points')
-  .attr('r', 5)
-  .attr('cx', d => xPositionScale(d['Year']))
-  .attr('cy', d => yPositionScale( d['Pop']))
-  .style('fill', '#8B0000')  .attr('opacity', 0.55)
-})
-
-
 var chart = svg
     .append('g')
     .attr('transform', 'translate(' + 330+ ',' +100 + ')')
@@ -799,8 +639,201 @@ const yPositionScale = d3
   
                 d3.select('.x-axis .domain').remove()
             
-                svg.append('text').attr('x', 330).attr('y', 90).text("CT's child homeless population").attr('font-size', '12px').attr('font-weight', 5)
+                svg.append('text').attr('x', 330).attr('y', 90).text("CT's child homeless population").attr('font-size', '12px').attr('font-weight', 5).attr('id', 'label')
             
+                function render() {
+                    const svgContainer = svg.node().closest('div')
+                    const svgWidth = svgContainer.offsetWidth
+                    // Do you want it to be full height? Pick one of the two below
+                    // margin = { top: 100, left: 100, right: 50, bottom: 50 }
             
+                    const svgHeight = height + margin.top + margin.bottom
+                    // const svgHeight = window.innerHeight
+                
+                    const actualSvg = d3.select(svg.node().closest('svg'))
+                    actualSvg.attr('width', svgWidth).attr('height', svgHeight)
+                
+                    const newWidth = svgWidth - margin.left - margin.right
+                    const newHeight = svgHeight - margin.top - margin.bottom
             
+                    d3.select('#toggle').on('click', () => {
+
+                        svg.transition().duration(0).selectAll('.link').remove()
+                        svg.transition().duration(0).selectAll('.node').remove()
+                    
+                        sankey1
+                    .nodes(datapoints2.nodes)
+                    .links(datapoints2.links)
+                    .layout(1)
+                    
+                    console.log(sankey1)
+                    console.log(sankey1.links(), 'links')
+                    
+                    const link = svg
+                    .append('g')
+                    .attr('transform', 'translate(' + 330+ ',' +320 + ')')
+                    .selectAll('.link')
+                    .data(datapoints2.links)
+                    .enter()
+                    .append('path')
+                    .attr('class', 'link')
+                    .attr('d', sankey1.link())
+                    .style('stroke-width', function(d) {
+                      return Math.max(1, d.dy)
+                    })
+                    .sort(function(a, b) {
+                      return b.dy - a.dy
+                    })
+                    
+                    const node = svg
+                    .append('g')
+                    .attr('transform', 'translate(' + 330+ ',' +320 + ')')
+                    .selectAll('.node')
+                    .data(datapoints2.nodes)
+                    .enter()
+                    .append('g')
+                    .attr('class', 'node')
+                    .attr('transform', function(d) {
+                      return 'translate(' + d.x + ',' + d.y + ')'
+                    })
+                    .call(
+                      d3
+                        .drag()
+                        .subject(function(d) {
+                          return d
+                        })
+                        .on('start', function() {
+                          this.parentNode.appendChild(this)
+                        })
+                        .on('drag', dragmove)
+                    )
+                    
+                    node
+                    // .selectAll('rect')
+                    // .data(datapoints.nodes)
+                    .append('rect')
+                    .attr('height', function(d) {
+                      // return d.dy
+                      return d.dy
+                    })
+                    .attr('width', sankey1.nodeWidth())
+                    .style('fill', function(d) {
+                      return d.color;
+                    })
+                    // Add hover text
+                    .append('title')
+                    .text(function(d) {
+                      return d.name + '\n' + '' + d.value + '%'
+                    })
+                    .attr('opacity', 0.2)
+                    
+                    // add in the title for the nodes
+                    node
+                    .append('text')
+                    .attr('x', -6)
+                    .attr('y', function(d) {
+                      return d.dy / 2
+                    })
+                    .attr('dy', '.35em')
+                    .attr('class','textCat')
+                    .attr('text-anchor', 'start')
+                    .attr('transform', null)
+                    .text(function(d) {
+                      return d.name
+                    })
+                    .filter(function(d) {
+                      return d.x < width / 2
+                    })
+                    .attr('x', 6 + sankey1.nodeWidth())
+                    .attr('text-anchor', 'start')
+                    .attr('fill', 'black')
+                    .attr('font-size', '12px').attr('font-weight', 5)
+                    
+                    function dragmove(d) {
+                    d3.select(this).attr(
+                      'transform',
+                      'translate(' +
+                        // (d.x = Math.max(0, Math.min(width - d.dy, d3.event.y))) +
+                        d.x +
+                        ',' +
+                        (d.y = Math.max(0, Math.min(height - d.dy, d3.event.y))) +
+                        ')'
+                    )
+                    sankey1.relayout()
+                    link.attr('d', sankey1.link())
+                    }
+                    
+                    
+                        svg.select("#txtValue")
+                        .transition()
+                        .duration(1000)
+                        .ease(d3.easeElastic)
+                        .text('568');
+                    
+                    
+                        svg.select("#txtValue2")
+                        .transition()
+                        .duration(1000)
+                        .ease(d3.easeElastic)
+                        .text('Hotels/Motels')
+                         
+                    
+                        d3.selectAll("use")
+                        .transition().duration(1000)
+                        .ease(d3.easeBounce)
+                        .attr("class",function(d,i){
+                            if (d<40)  {
+                                return "iconSelected";
+                            }    else    {
+                                return "iconPlain";
+                            }
+                        });
+                    
+                    
+                        svg.append('path')
+                      .datum(datapoints3)
+                      .attr('class', 'path_next')
+                      .attr('d', function(d) {
+                          return line(d)
+                      })
+                      .attr('stroke', '#ffc17b')
+                      .attr('stroke-width', 2)
+                      .attr('fill', 'none')
+                      .attr('opacity',0.5)
+                     
+                    
+                    
+                    svg
+                      .selectAll('circle-points')
+                      .data(datapoints3)
+                      .enter()
+                      .append('circle')
+                      .attr('class', 'circle-points')
+                      .attr('r', 5)
+                      .attr('cx', d => xPositionScale(d['Year']))
+                      .attr('cy', d => yPositionScale( d['Pop']))
+                      .style('fill', '#8B0000')  .attr('opacity', 0.55)
+                    })
+                    
+                    console.log(newWidth)
+                    if (newWidth < 600){
+                        console.log('here')
+                        svg.transition().duration(0).selectAll('.link').remove()
+                        svg.transition().duration(0).selectAll('.node').remove()
+
+                        svg.selectAll('.circle-points').remove()
+                        svg.select('.path_next').remove()
+                        svg.select('.x-axis').remove()
+                        svg.select('.y-axis').remove()
+                        svg.select('#label').remove()
+
+
+
+                    }
+                }
+                window.addEventListener('resize', render)
+            
+                // And now that the page has loaded, let's just try
+                // to do it once before the page has resized
+                render()
             }
