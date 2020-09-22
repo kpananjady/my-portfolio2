@@ -99,10 +99,10 @@ svg.append('polyline')
 
                     svg.append("text")
                     .attr("id","txtValue")
-                    .attr("x",140)
+                    .attr("x",90)
                     .attr("y",70)
                     .attr('font-size', '15px').attr('font-weight', 5)
-                    .text('234')
+                    .text('234 kids in 2011-12')
 
                     svg.append("text")
                     .attr("id","txtValue2")
@@ -451,7 +451,7 @@ const sankey = function() {
 const sankey1 = sankey()
   .nodeWidth(36)
   .nodePadding(20)
-  .size([width/2-150, (height-100)/2 -50])
+  .size([width/2-170, (height-100)/2 -50])
 
 console.log(sankey1)
 console.log(sankey1.nodePadding())
@@ -555,7 +555,7 @@ function ready([datapoints, datapoints2, datapoints3]) {
     .attr('x', 6 + sankey1.nodeWidth())
     .attr('text-anchor', 'start')
     .attr('fill', 'black')
-    .attr('font-size', '12px').attr('font-weight', 5)
+    .attr('font-size', '10px').attr('font-weight', 5)
 
   function dragmove(d) {
     d3.select(this).attr(
@@ -747,7 +747,7 @@ const yPositionScale = d3
                     .attr('x', 6 + sankey1.nodeWidth())
                     .attr('text-anchor', 'start')
                     .attr('fill', 'black')
-                    .attr('font-size', '12px').attr('font-weight', 5)
+                    .attr('font-size', '10px').attr('font-weight', 5)
                     
                     function dragmove(d) {
                     d3.select(this).attr(
@@ -768,7 +768,7 @@ const yPositionScale = d3
                         .transition()
                         .duration(1000)
                         .ease(d3.easeElastic)
-                        .text('568');
+                        .text('568 kids in 2019-20');
                     
                     
                         svg.select("#txtValue2")
@@ -814,7 +814,7 @@ const yPositionScale = d3
                       .attr('cy', d => yPositionScale( d['Pop']))
                       .style('fill', '#8B0000')  .attr('opacity', 0.55)
                     })
-                    
+
                     console.log(newWidth)
                     if (newWidth < 600){
                         console.log('here')
