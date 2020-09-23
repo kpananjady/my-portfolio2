@@ -816,7 +816,7 @@ const yPositionScale = d3
                     })
 
                     console.log(newWidth)
-                    if (newWidth < 600){
+                    if (newWidth < 590){
                         console.log('here')
                         svg.transition().duration(0).selectAll('.link').remove()
                         svg.transition().duration(0).selectAll('.node').remove()
