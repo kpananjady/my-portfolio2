@@ -22,10 +22,11 @@ let svg = d3
   d3.csv(require('../data/NH.csv')).then(ready)
 
   function ready(dummydata) {
+    svg.append('text').attr('class', 'title').text('Connecticut is one of 11 states using Squint').attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
 
-    svg.append('text').attr('class', 'title').text('CT ranks 19th among states, territories in COVID lawsuits').attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
-    svg.append('text').attr('class', 'sub-title').text('With 50 lawsuits filed to date, the state lags far behind its Northeast neighbors').attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
-    svg.append('text').attr('class', 'sub-title').text('New York and New Jersey.').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text("The tools helps local election officials flag and analyze online").attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+
+    svg.append('text').attr('class', 'sub-title').text('misinformation and disinformation about the election process.').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
     // svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', 100).attr('font-size', 10)
     // svg.append('text').attr('id', 'box4-text').text('>800').attr('x',width-95).attr('y', 100).attr('font-size', 10)
