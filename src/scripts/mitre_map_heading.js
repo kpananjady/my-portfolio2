@@ -24,7 +24,7 @@ let svg = d3
   function ready(dummydata) {
     svg.append('text').attr('class', 'title').text('Connecticut is one of 11 states using Squint').attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
 
-    svg.append('text').attr('class', 'sub-title').text("The tools helps local election officials flag and analyze online").attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text("The tool helps local election officials flag and analyze online").attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
     svg.append('text').attr('class', 'sub-title').text('misinformation and disinformation about the election process.').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
