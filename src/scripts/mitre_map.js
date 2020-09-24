@@ -12,7 +12,7 @@ var cellSize = calcCellSize(width, height, 13, 8);
 // console.log(cellSize, 'cellsize')
 var gridData = gridData(13, 8, cellSize);
 // console.log(gridData, 'gridData')
-const colorScale = d3.scaleSequential(d3.interpolateOranges).domain([0, 800])
+const colorScale = d3.scaleSequential(d3.interpolateOranges).domain([0, 1])
 
 const svg = d3
   .select('#chart-1')
@@ -83,32 +83,32 @@ function calcCellSize(w, h, ncol, nrow) {
 
   Promise.all([
     d3.csv(require('/data/square_states.csv')),
-    d3.csv(require('/data/Covid_complaints.csv'))
+    d3.csv(require('/data/squint.csv'))
   ]).then(ready)
   .catch(err => console.log('Failed on', err))
 
 
-  const tip = d3
-.tip()
-.attr('class', 'd3-tip')
-.offset([-20, 0])
-.html(function(d) {
-  return `${(d['Total Complaints'])}`
-})
+//   const tip = d3
+// .tip()
+// .attr('class', 'd3-tip')
+// .offset([-20, 0])
+// .html(function(d) {
+//   return `${(d['Squint'])}`
+// })
 
-svg.call(tip)
+// svg.call(tip)
 
 
   function ready([states_data,datapoints]) {
-    svg.append('rect').attr('id', 'box00').attr('width', 25).attr('height', 5).attr('x',width-200).attr('y', height+50).attr('fill', colorScale(0)).attr('opacity',1)
-    svg.append('rect').attr('id', 'box0').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', height+50).attr('fill', colorScale(200)).attr('opacity',1)
-    svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height+50).attr('fill', colorScale(400)).attr('opacity',1)
-    svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height+50).attr('fill', colorScale(600)).attr('opacity',1)
-    svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height+50).attr('fill', colorScale(800)).attr('opacity',1)
+    // svg.append('rect').attr('id', 'box00').attr('width', 25).attr('height', 5).attr('x',width-200).attr('y', height+50).attr('fill', colorScale(0)).attr('opacity',1)
+    // svg.append('rect').attr('id', 'box0').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', height+50).attr('fill', colorScale(200)).attr('opacity',1)
+    // svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height+50).attr('fill', colorScale(400)).attr('opacity',1)
+    // svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height+50).attr('fill', colorScale(600)).attr('opacity',1)
+    // svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height+50).attr('fill', colorScale(800)).attr('opacity',1)
 
-    svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-200).attr('y', height+45).attr('font-size', 10)
+    // svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-200).attr('y', height+45).attr('font-size', 10)
 
-    svg.append('text').attr('id', 'box4-text').text('800+').attr('x',width-95).attr('y', height+45).attr('font-size', 10)
+    // svg.append('text').attr('id', 'box4-text').text('800+').attr('x',width-95).attr('y', height+45).attr('font-size', 10)
 
      var states = gridMap.selectAll(".state")
       .data(states_data, function(d) { return d.code })
@@ -130,7 +130,7 @@ svg.call(tip)
             var colorVar = 'lightgrey';
 
             datapoints.forEach(function(r){if (r.State==="Minnesota"){
-                console.log(r['Total Complaints'], 'r')
+                console.log(r['Squint'], 'r')
             }
         }) 
 
@@ -140,8 +140,8 @@ svg.call(tip)
  
           // console.log(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
                 // console.log(r)
-            d['Total Complaints'] = +r['Total Complaints']
-            colorVar = colorScale(r['Total Complaints'])
+            d['Squint'] = +r['Squint']
+            colorVar = colorScale(r['Squint'])
         }
       })  
 
@@ -150,9 +150,7 @@ svg.call(tip)
 
           })
           .attr('stroke', 'white')
-          .on('mouseover', tip.show)
-          .on('click', tip.show)
-          .on('mouseout', tip.hide)
+    
 
 
 
@@ -173,7 +171,7 @@ svg.call(tip)
           .text(function(d) { return d.code; })
           .style("text-anchor", "middle").attr('font-size', '15px').attr('font-weight', 5)
           .attr('fill', function(d){
-              if (d.code ==='NY'){
+              if (d['Squint'] ===1){
                   return "white"
               } else {
                   return 'black'
@@ -285,7 +283,7 @@ states.enter()
       var colorVar = 'lightgrey';
 
       datapoints.forEach(function(r){if (r.State==="Minnesota"){
-          console.log(r['Total Complaints'], 'r')
+          console.log(r['Squint'], 'r')
       }
   }) 
 
@@ -295,8 +293,8 @@ states.enter()
 
     // console.log(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
           // console.log(r)
-      d['Total Complaints'] = +r['Total Complaints']
-      colorVar = colorScale(r['Total Complaints'])
+      d['Squint'] = +r['Squint']
+      colorVar = colorScale(r['Squint'])
   }
 })  
 
@@ -305,9 +303,7 @@ states.enter()
 
     })
     .attr('stroke', 'white')
-    .on('mouseover', tip.show)
-    .on('click', tip.show)
-    .on('mouseout', tip.hide)
+ 
 
     labels.enter()
     .append("text")
@@ -328,7 +324,7 @@ states.enter()
           }
       }).attr('font-weight', 5)
       .attr('fill', function(d){
-        if (d.code ==='NY'){
+        if (d['Squint'] ===1){
             return "white"
         } else {
             return 'black'
@@ -336,14 +332,17 @@ states.enter()
     })
 
 
-      svg.select('#box1-text').attr('x',newWidth-200)
-      svg.select('#box4-text').attr('x',newWidth-95)
 
-      svg.select('#box00').attr('x', newWidth-200).attr('y', height+50)
-      svg.select('#box0').attr('x', newWidth-175)
-      svg.select('#box1').attr('x', newWidth-150)
-      svg.select('#box2').attr('x', newWidth-125)
-      svg.select('#box3').attr('x', newWidth-100)
+
+
+    //   svg.select('#box1-text').attr('x',newWidth-200)
+    //   svg.select('#box4-text').attr('x',newWidth-95)
+
+    //   svg.select('#box00').attr('x', newWidth-200).attr('y', height+50)
+    //   svg.select('#box0').attr('x', newWidth-175)
+    //   svg.select('#box1').attr('x', newWidth-150)
+    //   svg.select('#box2').attr('x', newWidth-125)
+    //   svg.select('#box3').attr('x', newWidth-100)
         }
         window.addEventListener('resize', render)
     
