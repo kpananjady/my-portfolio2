@@ -1,0 +1,67 @@
+---
+
+---
+{{!< new}}
+<!-- 
+  
+  This line means, use default.hbs layout from src/html/layouts/
+-->
+{{> story/comm_coll }}
+
+<style>
+  .sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+  }
+
+  #chart-1 .axis line {
+    stroke: #999;
+    stroke-width: 0.5;
+    stroke-dasharray: 3 2;
+  }
+
+  p small {
+    background: #fff880;
+  }
+
+  .colored-text {
+    padding: 1px 7px;
+    display: inline-block;
+  }
+
+
+    #nav-container {
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+      position:relative;
+ 
+    }
+
+    #toggle {
+      background: #ddd;
+      padding: 10px 10px;
+      justify-content: center;
+      border-radius:20px;
+      border:0;
+      font-size:15px;
+      outline-color:grey;
+      outline-radius:20px;
+    }
+
+    #toggle2 {
+      background: #ddd;
+      padding: 10px 10px;
+      justify-content: center;
+      border-radius:20px;
+      border:0;
+      font-size:15px;
+      outline-color:grey;
+
+
+    }
+</style>
+
+<link rel="stylesheet" href="styles/scrollytelling.css">
+<script src="scripts/scrollytelling.js"></script>
