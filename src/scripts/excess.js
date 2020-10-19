@@ -4,7 +4,7 @@ d3.tip = d3Tip
 
 const margin = { top: 50, left:50, right: 0, bottom: 70 }
 
-const height = 400 - margin.top - margin.bottom
+const height = 600 - margin.top - margin.bottom
 const width = 600 - margin.left - margin.right
 
 const svg = d3
