@@ -50,7 +50,7 @@ Promise.all([
       .attr("x2", function(d){return(x(d.month))})
       .attr("y1", function(d){return(y(d.min))})
       .attr("y2", function(d){return(y(d.max))})
-      .attr("stroke", "#69b3a2")
+      .attr("stroke", "#F5793A")
       .style("width", 40)
 
       var boxWidth = 20
@@ -65,8 +65,8 @@ Promise.all([
             .attr("y", function(d){return(y(d.q3))})
             .attr("height", function(d){return(y(d.q1)-y(d.q3))})
             .attr("width", boxWidth )
-            .attr("stroke", "#69b3a2")
-            .style("fill", "#69b3a2")
+            .attr("stroke", "#F5793A")
+            .style("fill", "#F5793A")
 
             svg
     .selectAll("medianLines")
@@ -106,7 +106,7 @@ Promise.all([
       .attr('r', 5)
       .attr('cx', d => x(d['month']))
       .attr('cy', d => y( d['total_deaths']))
-      .style('fill', '#8B0000')  
+      .style('fill', '#03254c')  
       .attr('opacity', 0.55)
  
 
@@ -118,7 +118,7 @@ Promise.all([
         .ease(d3.easeElastic)
         .attr('cx', d => x(d['month']))
       .attr('cy', d => y( d['total_deaths']))
-      .style('fill', '#8B0000')  
+      .style('fill', '#03254c')  
       .attr('opacity', 0.55)
       
 
@@ -132,7 +132,7 @@ Promise.all([
         .ease(d3.easeElastic)
         .attr('cx', d => x(d['month']))
       .attr('cy', d => y( d['not_covid']))
-      .style('fill', '#8B0000')  
+      .style('fill', '#03254c')  
       .attr('opacity', 0.55)
       
       
@@ -203,7 +203,7 @@ Promise.all([
         .ease(d3.easeElastic)
         .attr('cx', d => x(d['month']))
       .attr('cy', d => y( d['total_deaths']))
-      .style('fill', '#8B0000')  
+      .style('fill', '#03254c')  
       .attr('opacity', 0.55)
       
 
@@ -217,7 +217,7 @@ Promise.all([
         .ease(d3.easeElastic)
         .attr('cx', d => x(d['month']))
       .attr('cy', d => y( d['not_covid']))
-      .style('fill', '#8B0000')  
+      .style('fill', '#03254c')  
       .attr('opacity', 0.55)
       
    
