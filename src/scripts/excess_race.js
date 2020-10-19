@@ -2,7 +2,7 @@ import * as d3 from 'd3'
 import d3Tip from 'd3-tip'
 d3.tip = d3Tip
 
-const margin = { top: 20, left: 50, right: 0, bottom: 70 }
+const margin = { top: 50, left: 50, right: 0, bottom: 70 }
 
 const height = 400 - margin.top - margin.bottom
 const width = 600 - margin.left - margin.right
@@ -39,6 +39,8 @@ Promise.all([
 
 
   function ready([datapoints, datapoints2, datapoints3, datapoints4]) {
+
+    svg.append('text').attr('class','label_this').attr('x', -20).attr('y', -20).text('% of all deaths comprising people who were:').attr('font-size', '15px').attr('font-weight', 5)
 
 
     svg
@@ -125,6 +127,8 @@ Promise.all([
 
       d3.select('#toggle').on('click', () => {
 
+        svg.selectAll('.label_this').text('% of all deaths comprising people who were:')
+
         svg.selectAll('.circle-points').remove()
 
 
@@ -145,6 +149,10 @@ Promise.all([
       })
 
       d3.select('#toggle2').on('click', () => {
+
+        svg.selectAll('.label_this').text('% of COVID comprising people who were:')
+
+
         svg.selectAll('.circle-points').remove()
 
         svg.selectAll('circle')
@@ -165,6 +173,10 @@ Promise.all([
 
 
       d3.select('#toggle3').on('click', () => {
+
+        svg.selectAll('.label_this').text('% of non-COVID deaths comprising people who were:')
+
+
         svg.selectAll('.circle-points').remove()
 
         svg.selectAll('circle')
@@ -239,6 +251,9 @@ Promise.all([
 
       d3.select('#toggle').on('click', () => {
 
+        svg.selectAll('.label_this').text('% of all deaths comprising people who were:')
+
+
         svg.selectAll('.circle-points').remove()
 
 
@@ -259,6 +274,9 @@ Promise.all([
       })
 
       d3.select('#toggle2').on('click', () => {
+
+        svg.selectAll('.label_this').text('% of COVID deaths comprising people who were:')
+
         svg.selectAll('.circle-points').remove()
 
         svg.selectAll('circle')
@@ -279,6 +297,10 @@ Promise.all([
 
 
       d3.select('#toggle3').on('click', () => {
+
+        svg.selectAll('.label_this').text('% of non-COVID deaths comprising people who were:')
+
+
         svg.selectAll('.circle-points').remove()
 
         svg.selectAll('circle')

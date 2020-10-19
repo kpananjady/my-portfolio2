@@ -2,7 +2,7 @@ import * as d3 from 'd3'
 import d3Tip from 'd3-tip'
 d3.tip = d3Tip
 
-const margin = { top: 20, left:50, right: 0, bottom: 70 }
+const margin = { top: 50, left:50, right: 0, bottom: 70 }
 
 const height = 400 - margin.top - margin.bottom
 const width = 600 - margin.left - margin.right
@@ -38,7 +38,8 @@ Promise.all([
 
   function ready([datapoints, datapoints2]) {
 
-
+    svg.append('text').attr('class','label_this').attr('x', -20).attr('y', -20).text('All Deaths').attr('font-size', '15px').attr('font-weight', 5)
+    
     svg
     .selectAll("vertLines")
     .data(datapoints)
@@ -112,6 +113,8 @@ Promise.all([
 
 
       d3.select('#toggle').on('click', () => {
+
+
         svg.selectAll('.circle-points')
         .transition( )
         .duration(1000)
@@ -121,11 +124,14 @@ Promise.all([
       .style('fill', '#03254c')  
       .attr('opacity', 0.55)
       
+      svg.selectAll('.label_this').text('All Deaths')
 
 
       })
 
       d3.select('#toggle3').on('click', () => {
+
+
         svg.selectAll('.circle-points')
         .transition( )
         .duration(1500)
@@ -136,6 +142,7 @@ Promise.all([
       .attr('opacity', 0.55)
       
       
+      svg.select('.label_this').text('Non-COVID deaths')
 
 
       })
@@ -197,6 +204,9 @@ Promise.all([
       d3.select('.x-axis .domain').remove()
 
       d3.select('#toggle').on('click', () => {
+        svg.select('.label_this').text('All deaths')
+
+
         svg.selectAll('.circle-points')
         .transition( )
         .duration(1000)
@@ -211,6 +221,9 @@ Promise.all([
       })
 
       d3.select('#toggle3').on('click', () => {
+        svg.select('.label_this').text('Non-COVID deaths')
+
+
         svg.selectAll('.circle-points')
         .transition( )
         .duration(1500)
