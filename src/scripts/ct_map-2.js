@@ -348,7 +348,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
       .on('mouseover', function(d) {
 
         colorCurr = d3.select(this).style('fill')
-        d3.select(this).attr('fill', 'lightgrey').attr('opacity','0.5')
+        d3.select(this).attr('fill', 'black').attr('opacity','0.5')
 
           svg.select('.town_name').text(d.properties.NAME10)
           race.forEach(function(r){if (r.Name_to_join===d.properties.NAME10){
@@ -484,6 +484,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
 
       svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', height-150).attr('font-size', 10)
       svg.append('text').attr('id', 'box4-text').text('100').attr('x',width-95).attr('y', height-150).attr('font-size', 10)
+      svg.append('text').attr('id', 'under-box-text').text('% Black & Hispanic').attr('x',width-195).attr('y', height-130).attr('font-size', 10)
 
 
       svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-150).attr('fill', colorScale(0))
@@ -498,6 +499,9 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
       //     }
       // }) 
       d3.select('#toggle').on('click', () => {
+        svg.select('#under-box-text').text('% Affordable Housing')
+       
+
         svg.selectAll('.towns').attr('fill', function(d){
           var colorVar=0 
             housing.forEach(function(r){if (r.Town===d.properties.NAME10){
@@ -509,6 +513,10 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
       })
 
       d3.select('#toggle2').on('click', () => {
+
+        svg.select('#under-box-text').text('% Affordable Housing')
+        svg.select('#under-box-text').text('% Black and Hispanic')
+        
         svg.selectAll('.towns').attr('fill', function(d){
           var colorVar=0 
           race.forEach(function(r){if (r.Name_to_join===d.properties.NAME10){
@@ -611,6 +619,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
         
         svg.select('#box1-text').text('0').attr('x',newWidth-150).attr('y', height-150).attr('font-size', 10)
         svg.select('#box4-text').text('100').attr('x',newWidth-65).attr('y', height-150).attr('font-size', 10)
+        svg.select('#under-box-text').text('% Black and Hispanic').attr('x',newWidth-150).attr('y', height-130).attr('font-size', 10)
 
         svg.select('#box1').attr('x', newWidth-150)
         svg.select('#box2').attr('x', newWidth-125)
@@ -733,6 +742,8 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
         svg.select('#box2').attr('x', newWidth-25).attr('fill', colorScale(25))
         svg.select('#box3').attr('x', newWidth).attr('fill', colorScale(75))
         svg.select('#box4').attr('x', newWidth+25).attr('fill', colorScale(100))
+
+        svg.select('#under-box-text').text('% B and H').attr('x',newWidth-100).attr('y', height-130).attr('font-size', 10)
 
         svg.select('#box1-text').text('0').attr('x',newWidth-50).attr('y', height-150).attr('font-size', 10)
         svg.select('#box4-text').text('100').attr('x',newWidth+25).attr('y', height-150).attr('font-size', 10)
