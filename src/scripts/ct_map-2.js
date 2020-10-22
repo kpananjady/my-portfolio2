@@ -81,17 +81,18 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
     console.log(towns, 'towns')
 
 // towns
-         svg.append('text').attr('class', 'town_name').text('Hover on the towns below!').attr('alignment-baseline', 'middle').attr('y',-130).attr('font-size', '30px').attr('font-weight', 5)
+         svg.append('text').attr('class', 'town_name').text('Hover on the towns below!').attr('alignment-baseline', 'middle').attr('y',-130).attr('font-size', '18px').attr('font-weight', 5).attr('x', -40)
        
          svg.append('text').attr('class', 'housing_stock').text('POVERTY AND VOUCHERS: TOWN vs STATE').attr('x', width/35).attr('y',-30).attr('font-weight', 5)
          svg.append('text').attr('class', 'demo').text('DEMOGRAPHICS: TOWN vs STATE AVERAGES').attr('x', width/35).attr('y',125).attr('font-weight', 5)
 
+         svg.append('text').attr('class', 'label_3_1').text('% of Households').attr('x', width/35).attr('y',-30).attr('font-weight', 5).attr('font-size', '15px')
+         svg.append('text').attr('class', 'label_3').text('Below Poverty').attr('x', width/35).attr('y',-10).attr('font-weight', 5).attr('font-size', '15px')
+         svg.append('text').attr('class', 'label_5').text('% Black').attr('x', width/35).attr('y',155).attr('font-weight', 5).attr('font-size', '15px')
 
-         svg.append('text').attr('class', 'label_3').text('% Below Poverty').attr('x', width/35).attr('y',-10).attr('font-weight', 5)
-         svg.append('text').attr('class', 'label_5').text('% Black').attr('x', width/35).attr('y',155).attr('font-weight', 5)
-
-         svg.append('text').attr('class', 'label_4').text('% Section 8 etc').attr('x', 0.4*width+35).attr('y',-10).attr('font-weight', 5)
-         svg.append('text').attr('class', 'label_6').text('% Hispanic').attr('x', 0.4*width+35).attr('y',155).attr('font-weight', 5)
+         svg.append('text').attr('class', 'label_4_1').text('% of Housing').attr('x', 0.4*width+35).attr('y',-30).attr('font-weight', 5).attr('font-size', '15px')
+         svg.append('text').attr('class', 'label_4').text('Receiving Vouchers').attr('x', 0.4*width+35).attr('y',-10).attr('font-weight', 5).attr('font-size', '15px')
+         svg.append('text').attr('class', 'label_6').text('% Hispanic').attr('x', 0.4*width+35).attr('y',155).attr('font-weight', 5).attr('font-size', '15px')
 
 
         //  svg.append('circle').attr('r', 6).attr('fill', colorScale('Exempt')).attr('cx', 3*width/4).attr('cy',height-100)
@@ -350,7 +351,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
         colorCurr = d3.select(this).style('fill')
         d3.select(this).attr('fill', 'black').attr('opacity','0.5')
 
-          svg.select('.town_name').text(d.properties.NAME10)
+          svg.select('.town_name').text(d.properties.NAME10).attr('font-size', '30px')
           race.forEach(function(r){if (r.Name_to_join===d.properties.NAME10){
 
             svg.select('.label_5').text('% Black' + " " + r['Black alone'])
@@ -393,7 +394,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
 
         housing.forEach(function(r){if (r.Town===d.properties.NAME10){
 
-          svg.select('.label_4').text('% Vouchers' + " " + Math.round(100*parseFloat(r['Tenant Rental Assistance'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
+          svg.select('.label_4').text('With Vouchers' + " " + Math.round(100*parseFloat(r['Tenant Rental Assistance'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
           svg.select('.bar_4')
           .transition()
           .duration(700)
@@ -404,7 +405,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
       })
 
       poverty.forEach(function(r){if (r.Town===d.properties.NAME10){
-        svg.select('.label_3').text('% Below Poverty' + " " + r['Poverty Status'] + "+/-" + r['Margins of Error'])
+        svg.select('.label_3').text('Below Poverty' + " " + r['Poverty Status'])
        
         svg.select('.bar_3')
         .transition()
@@ -470,7 +471,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
         .duration(700)
         .ease(d3.easeElastic).attr('width', yPositionScale2(100*parseFloat(r['Government Assisted'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
 
-        svg.select('.label_4').text('% Housing Vouchers' + " " + Math.round(100*parseFloat(r['Tenant Rental Assistance'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
+        svg.select('.label_4').text('With Vouchers' + " " + Math.round(100*parseFloat(r['Tenant Rental Assistance'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
         svg.select('.bar_4')
         .transition()
         .duration(700)
@@ -516,7 +517,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
 
         svg.select('#under-box-text').text('% Affordable Housing')
         svg.select('#under-box-text').text('% Black and Hispanic')
-        
+
         svg.selectAll('.towns').attr('fill', function(d){
           var colorVar=0 
           race.forEach(function(r){if (r.Name_to_join===d.properties.NAME10){
@@ -554,7 +555,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
 
         // labels
 
-        svg.select('.town_name').text('Hover on the map!')
+        svg.select('.town_name').text('Hover over the map to see where housing vouchers cluster').attr('font-size', 15)
        
          svg.select('.housing_stock').text('POVERTY AND VOUCHERS: TOWN vs STATE').attr('x', svgWidth/35).attr('y',-70).attr('font-weight', 5)
          svg.select('.demo').text('DEMOGRAPHICS: TOWN vs STATE').attr('x', width/35).attr('y',105).attr('font-weight', 5)
@@ -567,11 +568,14 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
 
 
       svg.select('.label_1').attr('x', newWidth/35).text('% Single Family')
-        svg.select('.label_3').attr('x', newWidth/35).text('% Below Poverty')
+        svg.select('.label_3').attr('x', newWidth/35).text('Below Poverty')
+        svg.select('.label_3_1').attr('x', newWidth/35)
+
       svg.select('.label_5').attr('x', newWidth/35).text('% Black')
 
       svg.select('.label_2').attr('x', 0.4*newWidth+60).text('Median Sale Price')
-        svg.select('.label_4').attr('x', 0.4*newWidth+60).text('% Housing Vouchers')
+      svg.select('.label_4_1').attr('x', 0.4*newWidth+60)
+        svg.select('.label_4').attr('x', 0.4*newWidth+60).text('With Vouchers')
         svg.select('.label_6').attr('x', 0.4*newWidth+60).text('% Hispanic')
      
      // bar_1  
@@ -680,10 +684,13 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
 
 
           svg.select('.label_1').attr('x', -svgWidth/4).text('% Single Family')
+          svg.select('.label_3_1').attr('x', -svgWidth/4).text('% Subsidized')
           svg.select('.label_3').attr('x', -svgWidth/4).text('% Subsidized')
         svg.select('.label_5').attr('x', -svgWidth/4)
   
         svg.select('.label_2').attr('x', 0.2*svgWidth)
+        svg.select('.label_4_1').attr('x', 0.2*svgWidth)
+
           svg.select('.label_4').attr('x', 0.2*svgWidth)
           svg.select('.label_6').attr('x', 0.2*svgWidth)
        
