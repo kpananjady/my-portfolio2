@@ -684,8 +684,8 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
 
 
           svg.select('.label_1').attr('x', -svgWidth/4).text('% Single Family')
-          svg.select('.label_3_1').attr('x', -svgWidth/4).text('% Subsidized')
-          svg.select('.label_3').attr('x', -svgWidth/4).text('% Subsidized')
+          svg.select('.label_3_1').attr('x', -svgWidth/4)
+          svg.select('.label_3').attr('x', -svgWidth/4)
         svg.select('.label_5').attr('x', -svgWidth/4)
   
         svg.select('.label_2').attr('x', 0.2*svgWidth)

@@ -86,7 +86,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
   
   svg.append('text').attr('font-weight', 5).attr('font-size',13).text('In ths town, X% of people whose ballots were processed on ').attr('x', 70).attr(
     'y', 220
-  )
+  ).attr('id', 'changing_percentage')
   svg.append('text').attr('font-weight', 5).attr('font-size',13).text('have successfully returned their ballots.').attr('x', 70).attr(
     'y', 235
   )
@@ -617,13 +617,18 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
     .enter()
     .append('option')
     .text(function (d) { return d.date; }) // text showed in the menu
-    .attr("value", function (d) { return d; })
+    .attr("value", function (d) { return d.date; })
 
 
 
     function update(selectedGroup) {
       console.log(data_moused_over)
 
+      data_moused_over.forEach()
+      
+      if (selectedGroup === '10-3'){
+        svg.select("#changing_percentage").text(selectedGroup + '')
+      }
       // Create new data with the selection?
       // var dataFilter = data.map(function(d){return {time: d.time, value:d[selectedGroup]} })
 
@@ -639,10 +644,16 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
       //     .attr("stroke", function(d){ return myColor(selectedGroup) })
     }
 
+
+    function getText( obj ) {
+      return obj.textContent ? obj.textContent : obj.innerText;
+  }
+
     d3.select("#selectButton").on("change", function(d) {
       // recover the option that has been chosen
       var selectedOption = d3.select(this).property("value")
       // run the updateChart function with this selected option
+
       update(selectedOption)
   })
 
