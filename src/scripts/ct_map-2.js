@@ -678,7 +678,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
 
 
           svg.select('.town_name').attr('x', -svgWidth/4)
-          svg.select('.housing_stock').attr('x', -svgWidth/4)
+          svg.select('.housing_stock').attr('x', -svgWidth/4).text('POVERTY AND VOUCHERS')
 
           svg.select('.demo').attr('x', -svgWidth/4)
 
