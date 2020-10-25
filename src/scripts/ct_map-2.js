@@ -555,7 +555,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
 
         // labels
 
-        svg.select('.town_name').text('Hover over the map to see where housing vouchers cluster').attr('font-size', 15)
+        svg.select('.town_name').text('Hover over the map to see where housing vouchers cluster').attr('font-size', 15).attr('x', -20)
        
          svg.select('.housing_stock').text('POVERTY AND VOUCHERS: TOWN vs STATE').attr('x', svgWidth/35).attr('y',-70).attr('font-weight', 5)
          svg.select('.demo').text('DEMOGRAPHICS: TOWN vs STATE').attr('x', width/35).attr('y',105).attr('font-weight', 5)

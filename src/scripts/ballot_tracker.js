@@ -36,6 +36,7 @@ var yPositionScale = d3.scaleLinear()
             .scaleLinear()
             .domain([1,5])
             .range([50, width/2])
+
             var yPositionScale2 = d3.scaleLinear()
             .range([0, 0.4*width])
             .domain([0, 25]);
@@ -74,7 +75,8 @@ Promise.all([
     d3.csv(require('/data/Median_Sales_Prices_by_Year_and_Municipality.csv')),
     d3.csv(require('/data/for_viz_regvoters.csv')),
     d3.csv(require('/data/dummydata_percentage.csv')),
-    d3.json(require('/data/dummydata_percentage.json'))
+    d3.json(require('/data/dummydata_percentage.json')),
+    d3.csv(require('/data/for_toggle.csv'))
 
   ]).then(ready)
   .catch(err => console.log('Failed on', err))
@@ -82,13 +84,13 @@ Promise.all([
 
 
 
-function ready([json, json2, race, housing, single_family, single_family_sales, voters, datapoints3, datapoints4]) {
+function ready([json, json2, race, housing, single_family, single_family_sales, voters, datapoints3, datapoints4, toggle]) {
   
-  svg.append('text').attr('font-weight', 5).attr('font-size',13).text('In ths town, X% of people whose ballots were processed on ').attr('x', 70).attr(
-    'y', 220
+  svg.append('text').attr('font-weight', 5).attr('font-size',13).text('In this town, X% of people whose ballot applications were processed on ').attr('x', -70).attr(
+    'y', 208
   ).attr('id', 'changing_percentage')
-  svg.append('text').attr('font-weight', 5).attr('font-size',13).text('have successfully returned their ballots.').attr('x', 70).attr(
-    'y', 235
+  svg.append('text').attr('font-weight', 5).attr('font-size',13).text('have successfully returned their ballots.').attr('x', -70).attr(
+    'y', 223
   )
   // bar_1
 
@@ -137,12 +139,12 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
   .attr("y",-25)
   .attr("height", 20)
   .attr("x", width/35)
-  .attr("width",yPositionScale(64.4))
+  .attr("width",yPositionScale(28))
   .attr('fill', 'grey')
   .attr('rx',10)
   .attr('ry',10)
 
- svg.append('text').attr('id', 'median-sf').text('64.4').attr('y',-11).attr('x', yPositionScale(80)).attr('font-weight', 5).attr('font-size',13)
+ svg.append('text').attr('id', 'median-sf').text('28').attr('y',-11).attr('x', yPositionScale(80)).attr('font-weight', 5).attr('font-size',13)
 
 //bar_2
 
@@ -190,12 +192,12 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
   .attr("y",-25)
   .attr("height", 20)
   .attr("x", 0.4*width+35)
-  .attr("width",yPriceScale(253241))
+  .attr("width",yPositionScale(20))
   .attr('fill', 'grey')
   .attr('rx',10)
   .attr('ry',10)
 
-  svg.append('text').attr('id', 'median-price').text('253K').attr('y',-11).attr('x', yPositionScale(80)+(0.4*width)+35).attr('font-weight', 5).attr('font-size',13)
+  svg.append('text').attr('id', 'median-price').text('20').attr('y',-11).attr('x', yPositionScale(80)+(0.4*width)+35).attr('font-weight', 5).attr('font-size',13)
 
 //bar_4         
   svg
@@ -243,12 +245,12 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
   .attr("y",70)
   .attr("height", 20)
   .attr("x", 0.4*width+35)
-  .attr("width",yPositionScale2(0.21))
+  .attr("width",yPositionScale(28))
   .attr('fill', 'grey')
   .attr('rx',10)
   .attr('ry',10)
 
-  svg.append('text').attr('id', 'median-voucher').text('0.21').attr('y',85).attr('x', yPositionScale2(20)+(0.4*width)+35).attr('font-weight', 5).attr('font-size',13)
+  svg.append('text').attr('id', 'median-voucher').text('28').attr('y',85).attr('x', yPositionScale2(20)+(0.4*width)+35).attr('font-weight', 5).attr('font-size',13)
 
  
 //bar_3
@@ -299,13 +301,13 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
   )
   .attr("height", 20)
   .attr("x",width/35)
-  .attr("width",yPositionScale2(2.2))
+  .attr("width",yPositionScale(38))
   .attr('fill', 'grey')
   .attr('rx',10)
   .attr('ry',10)
 
 
-  svg.append('text').attr('id', 'median-sub').text('2.2').attr('y',85).attr('x', yPositionScale2(20)).attr('font-weight', 5).attr('font-size',13)
+  svg.append('text').attr('id', 'median-sub').text('38').attr('y',85).attr('x', yPositionScale2(20)).attr('font-weight', 5).attr('font-size',13)
 
 
 //bar_5
@@ -353,12 +355,12 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
   )
   .attr("height", 20)
   .attr("x",width/35)
-  .attr("width",yPositionScale(10))
+  .attr("width",yPositionScale(22))
   .attr('fill', 'grey')
   .attr('rx',10)
   .attr('ry',10)
 
-  svg.append('text').attr('id', 'median-black').text('10').attr('y',175).attr('x', yPositionScale(80)).attr('font-weight', 5).attr('font-size',13)
+  svg.append('text').attr('id', 'median-black').text('22').attr('y',175).attr('x', yPositionScale(80)).attr('font-weight', 5).attr('font-size',13)
 
 
 //bar_6   
@@ -415,12 +417,12 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
   .attr("y",160)
   .attr("height", 20)
   .attr("x", 0.4*width+35)
-  .attr("width",yPositionScale(16))
+  .attr("width",yPositionScale(14))
   .attr('fill', 'grey')
   .attr('rx',10)
   .attr('ry',10)
 
-  svg.append('text').attr('id', 'median-hisp').text('16').attr('y',175).attr('x', yPositionScale(80)+35).attr('font-weight', 5).attr('font-size',13)
+  svg.append('text').attr('id', 'median-hisp').text('14').attr('y',175).attr('x', yPositionScale(80)+35).attr('font-weight', 5).attr('font-size',13)
 
 
 //   var index = 0; 
@@ -481,7 +483,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
 
         
 
-        voters.forEach(function(r){
+        toggle.forEach(function(r){
             if (r.Town===d.properties.NAME10){
           // console.log(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
           colorVar = colorScale(parseFloat(r['Reg_Voters'])/1000)
@@ -503,70 +505,45 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
       })
       .on('click', function(d) {
 
-      
+        svg.select("#changing_percentage").text('In this town, X% of people whose ballot applications were processed on')
+
         svg.select('.town_name').text(d.properties.NAME10)
 
-
-
-
-        race.forEach(function(r){if (r.Name_to_join===d.properties.NAME10){
-
-          svg.select('.label_5').text('R: % Applied' + " " + r['Black alone'])
+        voters.forEach(function(r){if (r.Town===d.properties.NAME10){
+        
+          svg.select('.label_5').text('R: % Applied' + " " + Math.round(r['%_R_Applied']))
           svg.select('.bar_5') .transition()
-          .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(r['Black alone']))
+          .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(r['%_R_Applied']))
 
-// hispanic
-          svg.select('.label_6').text('R: % Voted' + " " + r['Hispanic'])
 
+          svg.select('.label_6').text('R: % Voted' + " " + Math.round(100*r['%_R_Voted']))
           svg.select('.bar_6') .transition()
-          .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(r['Hispanic']))
+          .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(100*r['%_R_Voted']))
+
+
+          svg.select('.label_1').text('% Applied' + " " + Math.round(r['%_Applied']))
+          svg.select('.bar_1') .transition()
+          .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(r['%_Applied']))
+          
+          svg.select('.label_2').text('% Voted:' + " " + Math.round(r['%_Voted']))
+          svg.select('.bar_2') .transition()
+          .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(r['%_Voted']))
+  
+
+          svg.select('.label_3').text("D: % Applied" + " " + Math.round(r['%_D_Applied']))
+          svg.select('.bar_3')
+          .transition()
+          .duration(700)
+          .ease(d3.easeElastic).attr('width',yPositionScale(r['%_D_Applied']) )
+
+          svg.select('.label_4').text("D: % Voted" + " " + Math.round(r['%_D_Voted']))
+          svg.select('.bar_4')
+          .transition()
+          .duration(700)
+          .ease(d3.easeElastic).attr('width', yPositionScale(r['%_D_Voted']))
 
           }
-
-      })
-
-      single_family.forEach(function(r){if (r.NAME===d.properties.NAME10){
-
-        var totalUnits = parseFloat(r['DP04_0007E'].replace( new RegExp(',','g'),'')) + parseFloat(r['DP04_0008E'].replace( new RegExp(',','g'),''))
-        var percentage = 100*totalUnits/parseFloat(r['DP04_0006E'].replace( new RegExp(',','g'),''))
-
-        svg.select('.label_1').text('% Applied' + " " + Math.round(percentage))
-
-        svg.select('.bar_1') .transition()
-          .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(Math.round(percentage)))
-
-          }
-
-    })
-
-      single_family_sales.forEach(function(r){if (r.Municipality===d.properties.NAME10){
-        svg.select('.label_2').text('% Voted:' + " $" + r['2019'])
-
-        svg.select('.bar_2') .transition()
-        .duration(700).ease(d3.easeElastic).attr('width', yPriceScale(r['2019'].replace('$','').replace( new RegExp(',','g'),'')))
-
-
-      }
-    })
-
-      housing.forEach(function(r){if (r.Town===d.properties.NAME10){
-
-
-        svg.select('.label_3').text("D: % Applied" + " " + Math.round(100*parseFloat(r['Government Assisted'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
-        svg.select('.bar_3')
-        .transition()
-        .duration(700)
-        .ease(d3.easeElastic).attr('width', yPositionScale2(100*parseFloat(r['Government Assisted'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
-
-        svg.select('.label_4').text("D: % Voted" + " " + Math.round(100*parseFloat(r['Tenant Rental Assistance'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
-        svg.select('.bar_4')
-        .transition()
-        .duration(700)
-        .ease(d3.easeElastic).attr('width', yPositionScale2(100*parseFloat(r['Tenant Rental Assistance'].replace( new RegExp(',','g'),''))/parseFloat(r['Total Housing Units 2010 Census'].replace( new RegExp(',','g'),''))))
-
-      }
-    })
-        // svg.select('.town_name').text(d.properties.NAME10)
+        })
 
 
    
@@ -590,7 +567,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
                   var colorVar=0 
 
 
-                  voters.forEach(function(r){
+                  toggle.forEach(function(r){
                     if (r.Town===d.properties.NAME10){
                   // console.log(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
 
@@ -624,11 +601,16 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
     function update(selectedGroup) {
       console.log(data_moused_over)
 
-      data_moused_over.forEach()
-      
-      if (selectedGroup === '10-3'){
-        svg.select("#changing_percentage").text(selectedGroup + '')
+      data_moused_over.forEach(function(r){
+        console.log(selectedGroup)
+        console.log(r['DT MAILED '])
+        if (selectedGroup===r['DT MAILED ']){
+          console.log('matched')
+          svg.select("#changing_percentage").text('In this town, ' + Math.round(r['percentage'])+'% of people whose ballot applications were processed on')
       }
+    })
+      
+  
       // Create new data with the selection?
       // var dataFilter = data.map(function(d){return {time: d.time, value:d[selectedGroup]} })
 
@@ -662,10 +644,10 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
         var colorVar=0 
 
 
-        voters.forEach(function(r){
+        toggle.forEach(function(r){
           if (r.Town===d.properties.NAME10){
         // console.log(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
-        colorVar = colorScale2(100*parseFloat(r['Total ABs Processed'])/parseFloat(r['Reg_Voters']))
+        colorVar = colorScale2(r['%_Applied'])
 
       }
 })
@@ -674,6 +656,24 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
     })  
 
     })
+
+    d3.select('#toggle3').on('click', () => {
+      svg.selectAll('.towns').attr('fill', function(d){
+      var colorVar=0 
+
+
+      toggle.forEach(function(r){
+        if (r.Town===d.properties.NAME10){
+      // console.log(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
+      colorVar = colorScale2(r['%_Voted'])
+
+    }
+})
+
+    return colorVar
+  })  
+
+  })
 
 
 
@@ -722,14 +722,14 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
    // bar_1  
    svg.select('.bar_1_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
    svg.select('.bar_1_state_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
-   svg.select('.bar_1_state').attr("x", newWidth/35).attr('width', yPositionScale(64.4))
+   svg.select('.bar_1_state').attr("x", newWidth/35).attr('width', yPositionScale(28))
    svg.select('.bar_1').attr("x", newWidth/35).attr('width', 0)
    
    // bar_2    
 
    svg.select('.bar_2_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
    svg.select('.bar_2_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
-   svg.select('.bar_2_state').attr("x", 0.4*newWidth+60).attr('width', yPriceScale(253241))
+   svg.select('.bar_2_state').attr("x", 0.4*newWidth+60).attr('width', yPositionScale(20))
    svg.select('.bar_2').attr("x", 0.4*newWidth+60).attr('width', 0)
 
    // bar_3  
@@ -738,14 +738,14 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
    svg.select('.bar_3_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
    svg.select('.bar_3_state_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
    svg.select('.bar_3').attr("x", newWidth/35).attr('width', 0)
-   svg.select('.bar_3_state').attr("x", newWidth/35).attr('width', yPositionScale2(2.2))
+   svg.select('.bar_3_state').attr("x", newWidth/35).attr('width', yPositionScale(38))
 
    // bar_4    
 
 
    svg.select('.bar_4_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
    svg.select('.bar_4_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
-   svg.select('.bar_4_state').attr("x", 0.4*newWidth+60).attr('width', yPositionScale2(0.21))
+   svg.select('.bar_4_state').attr("x", 0.4*newWidth+60).attr('width', yPositionScale(28))
    svg.select('.bar_4').attr("x", 0.4*newWidth+60).attr('width', 0)
 
    // bar_5    
@@ -753,13 +753,13 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
    svg.select('.bar_5_town_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
    svg.select('.bar_5_state_100').attr('width', 0.4*newWidth).attr("x", newWidth/35)
    svg.select('.bar_5').attr("x", newWidth/35).attr('width', 0)
-   svg.select('.bar_5_state').attr("x", newWidth/35).attr('width', yPositionScale(10))
+   svg.select('.bar_5_state').attr("x", newWidth/35).attr('width', yPositionScale(22))
 
    // bar_6    
 
       svg.select('.bar_6_town_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
       svg.select('.bar_6_state_100').attr("x",0.4*newWidth+60).attr('width', 0.4*newWidth)
-      svg.select('.bar_6_state').attr("x", 0.4*newWidth+60).attr('width', yPositionScale(16))
+      svg.select('.bar_6_state').attr("x", 0.4*newWidth+60).attr('width', yPositionScale(14))
       svg.select('.bar_6').attr("x", 0.4*newWidth+60).attr('width', 0)
       
       svg.select('#box1-text').text('0').attr('x',newWidth-150).attr('y', height-150).attr('font-size', 10)
@@ -770,9 +770,147 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
       svg.select('#box3').attr('x', newWidth-100)
       svg.select('#box4').attr('x', newWidth-75)
 
+  
+
+    if (newWidth > 500) {
+
+      console.log(newWidth, 'newWidth 1')
+    projection
+    .scale(newWidth*16)
+    .center([-72.68, 41.8])
+    .translate([(newWidth) / 2, (newHeight)/2]);
+
+    } else if (newWidth > 450){
+
+      svg.select('.label_1')
+      svg.select('.label_3')
+      console.log(newWidth, 'newWidth 2')
+
+      projection
+    .scale(newWidth*18)
+    .center([-72.68, 41.7])
+
+    .translate([(newWidth) / 2, (newHeight)/2]);
     }
+    
+    else if (newWidth > 250) {
+
+      console.log(newWidth, 'newWidth 3')
+      projection
+      .center([-72.68, 41.7])
+      .scale(newWidth*25)
+      .translate([(newWidth) / 2, (newHeight)/2]);
+    }
+    
+    
+    else {
+      console.log(newWidth, 'newWidth 4')
+
+      yPositionScale.range([0,0.3*svgWidth])
+      yPositionScale2.range([0,0.3*svgWidth])
+      yPriceScale.range([0,0.3*svgWidth])
+
+      
+      projection
+      .scale(svgWidth*25)
+      .center([-72, 41.5])
+      .translate([(svgWidth) / 2, (svgHeight)/2]);
 
 
+      svg.select('.town_name').attr('x', -svgWidth/4)
+      svg.select('.housing_stock').attr('x', -svgWidth/4)
+
+      svg.select('.demo').attr('x', -svgWidth/4)
+
+
+      svg.select('.label_1').attr('x', -svgWidth/4)
+      svg.select('.label_3_1').attr('x', -svgWidth/4)
+      svg.select('.label_3').attr('x', -svgWidth/4)
+    svg.select('.label_5').attr('x', -svgWidth/4)
+
+    svg.select('.label_2').attr('x', 0.2*svgWidth)
+    svg.select('.label_4_1').attr('x', 0.2*svgWidth)
+
+      svg.select('.label_4').attr('x', 0.2*svgWidth)
+      svg.select('.label_6').attr('x', 0.2*svgWidth)
+   
+      svg.select('#median-sf').attr('x', -10)
+      svg.select('#median-sub').attr('x', -10)
+      svg.select('#median-black').attr('x', -10)
+
+      svg.select('#median-price').attr('x', yPositionScale(80)+svgWidth/6)
+    svg.select('#median-voucher').attr('x', yPositionScale(80)+svgWidth/6)
+    svg.select('#median-hisp').attr('x', yPositionScale(80)+svgWidth/6)
+
+   // bar_1  
+   svg.select('.bar_1_town_100').attr('width', 0.3*svgWidth).attr("x", -svgWidth/4)
+   svg.select('.bar_1_state_100').attr('width', 0.3*svgWidth).attr("x", -svgWidth/4)
+   svg.select('.bar_1_state').attr("x", -svgWidth/4).attr('width', yPositionScale(28))
+   svg.select('.bar_1').attr("x", -svgWidth/4).attr('width', 0)
+   
+   // bar_2    
+
+   svg.select('.bar_2_state_100').attr("x",0.2*svgWidth).attr('width', 0.3*svgWidth)
+   svg.select('.bar_2_town_100').attr("x", 0.2*svgWidth).attr('width', 0.3*svgWidth)
+   svg.select('.bar_2_state').attr("x", 0.2*svgWidth).attr('width', yPositionScale(20))
+   svg.select('.bar_2').attr("x", 0.2*svgWidth).attr('width', 0)
+
+   // bar_3  
+   
+   
+   svg.select('.bar_3_town_100').attr('width', 0.3*svgWidth).attr("x", -svgWidth/4)
+   svg.select('.bar_3_state_100').attr('width', 0.3*svgWidth).attr("x", -svgWidth/4)
+   svg.select('.bar_3').attr("x", -svgWidth/4).attr('width', 0)
+   svg.select('.bar_3_state').attr("x", -svgWidth/4).attr('width', yPositionScale(38))
+
+   // bar_4    
+
+
+   svg.select('.bar_4_town_100').attr("x", 0.2*svgWidth).attr('width', 0.3*svgWidth)
+   svg.select('.bar_4_state_100').attr("x", 0.2*svgWidth).attr('width', 0.3*svgWidth)
+   svg.select('.bar_4_state').attr("x", 0.2*svgWidth).attr('width', yPositionScale(28))
+   svg.select('.bar_4').attr("x", 0.2*svgWidth).attr('width', 0)
+
+   // bar_5    
+
+   svg.select('.bar_5_town_100').attr('width', 0.3*svgWidth).attr("x", -svgWidth/4)
+   svg.select('.bar_5_state_100').attr('width', 0.3*svgWidth).attr("x", -svgWidth/4)
+   svg.select('.bar_5').attr("x", -svgWidth/4).attr('width', 0)
+   svg.select('.bar_5_state').attr("x", -svgWidth/4).attr('width', yPositionScale(22))
+
+   // bar_6    
+
+      svg.select('.bar_6_town_100').attr("x", 0.2*svgWidth).attr('width', 0.3*svgWidth)
+      svg.select('.bar_6_state_100').attr("x", 0.2*svgWidth).attr('width', 0.3*svgWidth)
+      svg.select('.bar_6_state').attr("x", 0.2*svgWidth).attr('width', yPositionScale(14))
+      svg.select('.bar_6').attr("x", 0.2*svgWidth).attr('width', 0)
+
+      svg.select('#box1').attr('x', newWidth-50).attr('fill', colorScale(0))
+    svg.select('#box2').attr('x', newWidth-25).attr('fill', colorScale(25))
+    svg.select('#box3').attr('x', newWidth).attr('fill', colorScale(75))
+    svg.select('#box4').attr('x', newWidth+25).attr('fill', colorScale(100))
+
+    svg.select('#under-box-text').text('% B and H').attr('x',newWidth-100).attr('y', height-130).attr('font-size', 10)
+
+    svg.select('#box1-text').text('0').attr('x',newWidth-50).attr('y', height-150).attr('font-size', 10)
+    svg.select('#box4-text').text('100').attr('x',newWidth+25).attr('y', height-150).attr('font-size', 10)
+    }
+    
+    svg.selectAll('.towns')
+    .attr('d', path)
+
+
+
+    svg.select('#box1').attr('x', newWidth-50).attr('fill', colorScale(0))
+    svg.select('#box2').attr('x', newWidth-25).attr('fill', colorScale(25))
+    svg.select('#box3').attr('x', newWidth).attr('fill', colorScale(75))
+    svg.select('#box4').attr('x', newWidth+25).attr('fill', colorScale(100))
+
+    svg.select('#under-box-text').text('% B and H').attr('x',newWidth-100).attr('y', height-130).attr('font-size', 10)
+
+    svg.select('#box1-text').text('0').attr('x',newWidth-50).attr('y', height-150).attr('font-size', 10)
+    svg.select('#box4-text').text('100').attr('x',newWidth+25).attr('y', height-150).attr('font-size', 10)
+  }
     window.addEventListener('resize', render)
 
     // And now that the page has loaded, let's just try
