@@ -91,7 +91,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
   ).attr('id', 'changing_percentage')
   svg.append('text').attr('font-weight', 5).attr('font-size',13).text('have successfully returned their ballots.').attr('x', -70).attr(
     'y', 223
-  )
+  ).attr('id', 'changing_percentage_2')
   // bar_1
 
   svg
@@ -562,6 +562,8 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
       })
 
       d3.select('#toggle').on('click', () => {
+        svg.select('#under-box-text').text('Registered Voters')
+        svg.select('#box4-text').text('100k')
         svg.selectAll('.towns').attr('fill', function(d){
 
                   var colorVar=0 
@@ -600,14 +602,14 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
 
     function update(selectedGroup) {
       console.log(data_moused_over)
-
-      data_moused_over.forEach(function(r){
+      svg.select("#changing_percentage").text('In this town, an unknown percentage of people whose ballot applications were processed/mailed on')
+      data_moused_over.forEach(function(r){  
         console.log(selectedGroup)
         console.log(r['DT MAILED '])
         if (selectedGroup===r['DT MAILED ']){
           console.log('matched')
           svg.select("#changing_percentage").text('In this town, ' + Math.round(r['percentage'])+'% of people whose ballot applications were processed on')
-      }
+      } 
     })
       
   
@@ -642,12 +644,13 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
       d3.select('#toggle2').on('click', () => {
         svg.selectAll('.towns').attr('fill', function(d){
         var colorVar=0 
-
-
+        svg.select('#under-box-text').text('% Applied')
+        svg.select('#box4-text').text('100%')
         toggle.forEach(function(r){
           if (r.Town===d.properties.NAME10){
         // console.log(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
         colorVar = colorScale2(r['%_Applied'])
+        
 
       }
 })
@@ -661,10 +664,12 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
       svg.selectAll('.towns').attr('fill', function(d){
       var colorVar=0 
 
-
+      svg.select('#under-box-text').text('% Voted')
+      svg.select('#box4-text').text('100%')
       toggle.forEach(function(r){
         if (r.Town===d.properties.NAME10){
       // console.log(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
+      console.log(r['%_Voted'])
       colorVar = colorScale2(r['%_Voted'])
 
     }
@@ -675,6 +680,15 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
 
   })
 
+  svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', height-150).attr('font-size', 10)
+  svg.append('text').attr('id', 'box4-text').text('100k').attr('x',width-95).attr('y', height-150).attr('font-size', 10)
+  svg.append('text').attr('id', 'under-box-text').text('Registered Voters').attr('x',width-195).attr('y', height-130).attr('font-size', 10)
+
+
+  svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-150).attr('fill', colorScale(0))
+  svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-150).attr('fill', colorScale(25))
+  svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-150).attr('fill', colorScale(75))
+  svg.append('rect').attr('id', 'box4').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-150).attr('fill', colorScale(100))
 
 
     function render() {
@@ -763,13 +777,13 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
       svg.select('.bar_6').attr("x", 0.4*newWidth+60).attr('width', 0)
       
       svg.select('#box1-text').text('0').attr('x',newWidth-150).attr('y', height-150).attr('font-size', 10)
-      svg.select('#box4-text').text('100').attr('x',newWidth-65).attr('y', height-150).attr('font-size', 10)
+      svg.select('#box4-text').text('100k').attr('x',newWidth-65).attr('y', height-150).attr('font-size', 10)
+      svg.select('#under-box-text').text('Registered Voters').attr('x',newWidth-150).attr('y', height-130).attr('font-size', 10)
 
       svg.select('#box1').attr('x', newWidth-150)
       svg.select('#box2').attr('x', newWidth-125)
       svg.select('#box3').attr('x', newWidth-100)
       svg.select('#box4').attr('x', newWidth-75)
-
   
 
     if (newWidth > 500) {
@@ -805,6 +819,11 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
     
     else {
       console.log(newWidth, 'newWidth 4')
+
+
+      svg.select("#changing_percentage").attr('x', -120).attr('font-size', '10px')
+      svg.select("#changing_percentage_2").attr('x', -120).attr('font-size', '10px')
+
 
       yPositionScale.range([0,0.3*svgWidth])
       yPositionScale2.range([0,0.3*svgWidth])
@@ -893,7 +912,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
     svg.select('#under-box-text').text('% B and H').attr('x',newWidth-100).attr('y', height-130).attr('font-size', 10)
 
     svg.select('#box1-text').text('0').attr('x',newWidth-50).attr('y', height-150).attr('font-size', 10)
-    svg.select('#box4-text').text('100').attr('x',newWidth+25).attr('y', height-150).attr('font-size', 10)
+    svg.select('#box4-text').text('100k').attr('x',newWidth+25).attr('y', height-150).attr('font-size', 10)
     }
     
     svg.selectAll('.towns')
@@ -901,15 +920,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
 
 
 
-    svg.select('#box1').attr('x', newWidth-50).attr('fill', colorScale(0))
-    svg.select('#box2').attr('x', newWidth-25).attr('fill', colorScale(25))
-    svg.select('#box3').attr('x', newWidth).attr('fill', colorScale(75))
-    svg.select('#box4').attr('x', newWidth+25).attr('fill', colorScale(100))
-
-    svg.select('#under-box-text').text('% B and H').attr('x',newWidth-100).attr('y', height-130).attr('font-size', 10)
-
-    svg.select('#box1-text').text('0').attr('x',newWidth-50).attr('y', height-150).attr('font-size', 10)
-    svg.select('#box4-text').text('100').attr('x',newWidth+25).attr('y', height-150).attr('font-size', 10)
+  
   }
     window.addEventListener('resize', render)
 
