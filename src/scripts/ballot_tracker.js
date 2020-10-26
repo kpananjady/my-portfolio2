@@ -611,6 +611,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
       } 
     })
       
+
   
       // Create new data with the selection?
       // var dataFilter = data.map(function(d){return {time: d.time, value:d[selectedGroup]} })
@@ -712,7 +713,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
 
       // labels
 
-      svg.select('.town_name').text('Click on the map!')
+      svg.select('.town_name').text('How much of your town is voting absentee?').attr('font-size', '20px')
      
        svg.select('.housing_stock').text('ABSENTEE BALLOTS: TOWN VS STATE').attr('x', svgWidth/35).attr('y',-90).attr('font-weight', 5)
        svg.select('.demo').text('DEMOGRAPHICS: TOWN vs STATE').attr('x', width/35).attr('y',125).attr('font-weight', 5)
@@ -722,6 +723,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
       svg.select('#median-voucher').attr('x', yPositionScale(80)+0.4*newWidth+35)
       svg.select('#median-black').attr('x', yPositionScale(80))
       svg.select('#median-hisp').attr('x', yPositionScale(80)+0.4*newWidth+35)
+
 
 
     svg.select('.label_1').attr('x', newWidth/35).text('% AB App Received')
@@ -923,6 +925,9 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
   }
     window.addEventListener('resize', render)
 
+
+    svg.append('text').text('Town').attr('x', -70).attr('y',-40).attr('font-weight', 5)
+    svg.append('text').text('State').attr('x', -70).attr('y',-10).attr('font-weight', 5)
     // And now that the page has loaded, let's just try
     // to do it once before the page has resized
     render()
