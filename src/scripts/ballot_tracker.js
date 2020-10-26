@@ -48,6 +48,7 @@ var yPriceScale = d3.scaleLinear()
 
 const colorScale = d3.scaleSequential(d3.interpolateGreens).domain([0, 100])
 const colorScale2 = d3.scaleSequential(d3.interpolateGreens).domain([0, 70])
+const colorScale3 = d3.scaleSequential(d3.interpolateGreens).domain([0, 30])
 
 
 const tip = d3
@@ -515,9 +516,9 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
           .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(r['%_R_Applied']))
 
 
-          svg.select('.label_6').text('R: % Voted' + " " + Math.round(100*r['%_R_Voted']))
+          svg.select('.label_6').text('R: % Voted' + " " + Math.round(r['%_R_Voted']))
           svg.select('.bar_6') .transition()
-          .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(100*r['%_R_Voted']))
+          .duration(700).ease(d3.easeElastic).attr('width', yPositionScale(r['%_R_Voted']))
 
 
           svg.select('.label_1').text('% Applied' + " " + Math.round(r['%_Applied']))
@@ -679,6 +680,27 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
   })  
 
   })
+
+
+  d3.select('#toggle4').on('click', () => {
+    svg.selectAll('.towns').attr('fill', function(d){
+    var colorVar=0 
+
+    svg.select('#under-box-text').text('% point diff.')
+    svg.select('#box4-text').text('30')
+    voters.forEach(function(r){
+      if (r.Town===d.properties.NAME10){
+    // console.log(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
+    console.log(r['PP_Difference_Voting'])
+    colorVar = colorScale3(r['PP_Difference_Voting'])
+
+  }
+})
+
+  return colorVar
+})  
+
+})
 
   svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', height-150).attr('font-size', 10)
   svg.append('text').attr('id', 'box4-text').text('100k').attr('x',width-95).attr('y', height-150).attr('font-size', 10)
