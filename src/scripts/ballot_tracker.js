@@ -86,12 +86,12 @@ Promise.all([
 
 function ready([json, json2, race, housing, single_family, single_family_sales, voters, datapoints3, datapoints4, toggle]) {
   
-  svg.append('text').attr('font-weight', 5).attr('font-size',13).text('In this town, X% of people whose ballot applications were processed on ').attr('x', -70).attr(
+  svg.append('text').attr('font-weight', 5).attr('font-size',13).text('Pick the day your application was mailed or processed. ').attr('x', 50).attr(
     'y', 208
-  ).attr('id', 'changing_percentage')
-  svg.append('text').attr('font-weight', 5).attr('font-size',13).text('have successfully returned their ballots.').attr('x', -70).attr(
+  ).attr('id', 'changing_percentage').attr('font-size', 12)
+  svg.append('text').attr('font-weight', 5).attr('font-size',13).text('In your town, X% of people like you returned their ballots.').attr('x', 50).attr(
     'y', 223
-  ).attr('id', 'changing_percentage_2')
+  ).attr('id', 'changing_percentage_2').attr('font-size', 12)
   // bar_1
 
   svg
@@ -505,7 +505,6 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
       })
       .on('click', function(d) {
 
-        svg.select("#changing_percentage").text('In this town, X% of people whose ballot applications were processed on')
 
         svg.select('.town_name').text(d.properties.NAME10)
 
@@ -602,13 +601,13 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
 
     function update(selectedGroup) {
       console.log(data_moused_over)
-      svg.select("#changing_percentage").text('In this town, an unknown percentage of people whose ballot applications were processed/mailed on')
+      svg.select("#changing_percentage_2").text('In this town, X% of people like you returned their ballots.')
       data_moused_over.forEach(function(r){  
         console.log(selectedGroup)
         console.log(r['DT MAILED '])
         if (selectedGroup===r['DT MAILED ']){
           console.log('matched')
-          svg.select("#changing_percentage").text('In this town, ' + Math.round(r['percentage'])+'% of people whose ballot applications were processed on')
+          svg.select("#changing_percentage_2").text('In this town, ' + Math.round(r['percentage'])+'% of people like you returned their ballots.')
       } 
     })
       
@@ -645,7 +644,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
         svg.selectAll('.towns').attr('fill', function(d){
         var colorVar=0 
         svg.select('#under-box-text').text('% Applied')
-        svg.select('#box4-text').text('100%')
+        svg.select('#box4-text').text('70%')
         toggle.forEach(function(r){
           if (r.Town===d.properties.NAME10){
         // console.log(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
@@ -665,7 +664,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
       var colorVar=0 
 
       svg.select('#under-box-text').text('% Voted')
-      svg.select('#box4-text').text('100%')
+      svg.select('#box4-text').text('70%')
       toggle.forEach(function(r){
         if (r.Town===d.properties.NAME10){
       // console.log(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
@@ -821,8 +820,8 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
       console.log(newWidth, 'newWidth 4')
 
 
-      svg.select("#changing_percentage").attr('x', -120).attr('font-size', '10px')
-      svg.select("#changing_percentage_2").attr('x', -120).attr('font-size', '10px')
+      svg.select("#changing_percentage").attr('x', 50).attr('font-size', '10px')
+      svg.select("#changing_percentage_2").attr('x', 50).attr('font-size', '10px')
 
 
       yPositionScale.range([0,0.3*svgWidth])
@@ -909,7 +908,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
     svg.select('#box3').attr('x', newWidth).attr('fill', colorScale(75))
     svg.select('#box4').attr('x', newWidth+25).attr('fill', colorScale(100))
 
-    svg.select('#under-box-text').text('% B and H').attr('x',newWidth-100).attr('y', height-130).attr('font-size', 10)
+    svg.select('#under-box-text').text('Reg Voters').attr('x',newWidth-100).attr('y', height-130).attr('font-size', 10)
 
     svg.select('#box1-text').text('0').attr('x',newWidth-50).attr('y', height-150).attr('font-size', 10)
     svg.select('#box4-text').text('100k').attr('x',newWidth+25).attr('y', height-150).attr('font-size', 10)
