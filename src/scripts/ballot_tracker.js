@@ -507,7 +507,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
       .on('click', function(d) {
 
 
-        svg.select('.town_name').text(d.properties.NAME10)
+        svg.select('.town_name').text(d.properties.NAME10).attr('font-size', '20px')
 
         voters.forEach(function(r){if (r.Town===d.properties.NAME10){
         
@@ -735,7 +735,7 @@ function ready([json, json2, race, housing, single_family, single_family_sales, 
 
       // labels
 
-      svg.select('.town_name').text('How much of your town is voting absentee?').attr('font-size', '20px')
+      svg.select('.town_name').text('How much of your town is voting absentee? Click on it to find out').attr('font-size', '12px')
      
        svg.select('.housing_stock').text('ABSENTEE BALLOTS: TOWN VS STATE').attr('x', svgWidth/35).attr('y',-90).attr('font-weight', 5)
        svg.select('.demo').text('DEMOGRAPHICS: TOWN vs STATE').attr('x', width/35).attr('y',125).attr('font-weight', 5)
