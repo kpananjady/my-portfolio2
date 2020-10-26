@@ -87,7 +87,7 @@ Promise.all([
 
 function ready([json, json2, race, housing, single_family, single_family_sales, voters, datapoints3, datapoints4, toggle]) {
   
-  svg.append('text').attr('font-weight', 5).attr('font-size',13).text('Pick the day your application was mailed or processed. ').attr('x', 50).attr(
+  svg.append('text').attr('font-weight', 5).attr('font-size',13).text('Pick the day your application was mailed. ').attr('x', 50).attr(
     'y', 208
   ).attr('id', 'changing_percentage').attr('font-size', 12)
   svg.append('text').attr('font-weight', 5).attr('font-size',13).text('In your town, X% of people like you returned their ballots.').attr('x', 50).attr(
