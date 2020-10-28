@@ -5,7 +5,7 @@ d3.tip = d3Tip
 
 let margin = { top: 100, left: 50, right: 50, bottom: 0 }
 
-let height = 400 - margin.top - margin.bottom
+let height = 600 - margin.top - margin.bottom
 
 let width = 1000 - margin.left - margin.right
 
@@ -33,9 +33,11 @@ const tip = d3
 })
 
 
-// const colorScale = d3.scaleSequential(d3.interpolate("#B22222","#708090", "#0000e6")).domain([-45,0, 45])
+// const colorScale = d3.scaleSequential(d3.interpolate("#B22222","#708090", "#0000e6")).domain([-40,0, 80])
 
-const colorScale = d3.scaleSequential(d3.interpolate("#B22222","#708090", "#00009a","#00009a")).domain([-40,0, 80])
+// const colorScale = d3.scaleQuantile().range([d3.interpolate("#B22222","#708090", "#0000e6")]).domain([-40,0, 80])
+
+const colorScale = d3.scaleSequential(d3.interpolateRdBu).domain([-40, 40])
 
 svg.call(tip)
 
@@ -78,7 +80,7 @@ Promise.all([
       .attr('stroke', 'white')  
       .on('mouseover', function(d){
         tip.show.call(this, d)
-
+        // d3.select(this).attr('stroke', 'black').attr('opacity','0.5')
     })
 
     svg.append('text').attr('id', 'box1-text').text('-40').attr('x',width-220).attr('y', height-150).attr('font-size', 10)
@@ -93,7 +95,6 @@ Promise.all([
   svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-150).attr('fill', colorScale(0))
   svg.append('rect').attr('id', 'box4').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-150).attr('fill', colorScale(20))
   svg.append('rect').attr('id', 'box5').attr('width', 25).attr('height', 5).attr('x',width-55).attr('y', height-150).attr('fill', colorScale(40))
-  svg.append('rect').attr('id', 'box6').attr('width', 25).attr('height', 5).attr('x',width-25).attr('y', height-150).attr('fill', colorScale(80))
 
 
      
