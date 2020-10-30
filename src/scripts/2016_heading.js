@@ -27,7 +27,7 @@ let svg = d3
     svg.append('text').attr('class', 'title').text('Trump won 52% of towns in Connecticut in 2016').attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
 
     svg.append('text').attr('class', 'sub-title').text('Clinton and Kaine won by more decisive margins in 2016, giving them a 14 percentage').attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
-    svg.append('text').attr('class', 'sub-title').text('point lead in the state overall. Margins of victory or loss for Trump represented below.').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text('point lead in the state overall. Margins of victory or loss for Trump represented below. ').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
 
 
