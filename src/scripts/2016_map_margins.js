@@ -130,7 +130,7 @@ Promise.all([
 
             console.log(newWidth, 'newWidth 1')
             projection
-            .scale(newWidth*22)
+            .scale(newWidth*20)
             .center([-72.68, 40.9])
             .translate([(newWidth) / 2, (newHeight)/2]);
 
