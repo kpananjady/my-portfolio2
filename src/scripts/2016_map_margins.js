@@ -1,3 +1,4 @@
+
 import * as d3 from 'd3'
 import * as topojson from 'topojson'
 import d3Tip from 'd3-tip'
@@ -29,7 +30,7 @@ const tip = d3
 .style('pointer-events', 'none')
 .offset([-10, 0])
 .html(function(d) {
-  return `${d.properties.NAME10}: ${Math.round(d['difference'])} percentage points`
+  return `${d.properties.NAME10}: ${-1*Math.round(d['difference'])} percentage points`
 })
 
 
@@ -83,18 +84,18 @@ Promise.all([
         // d3.select(this).attr('stroke', 'black').attr('opacity','0.5')
     })
 
-    svg.append('text').attr('id', 'box1-text').text('-40').attr('x',width-220).attr('y', height-150).attr('font-size', 10)
-    svg.append('text').attr('id', 'box4-text').text('40').attr('x',width-55).attr('y', height-150).attr('font-size', 10)
+    svg.append('text').attr('id', 'box1-text').text('40').attr('x',width-220).attr('y', height-200).attr('font-size', 10)
+    svg.append('text').attr('id', 'box4-text').text('-40').attr('x',width-55).attr('y', height-200).attr('font-size', 10)
 
-  svg.append('text').attr('id', 'box4-text').text('80').attr('x',width-55).attr('y', height-150).attr('font-size', 10)
-  svg.append('text').attr('id', 'under-box-text').text('Registered Voters').attr('x',width-195).attr('y', height-130).attr('font-size', 10)
+  svg.append('text').attr('id', 'box4-text').text('80').attr('x',width-55).attr('y', height-200).attr('font-size', 10)
+  svg.append('text').attr('id', 'under-box-text').attr('x',width-200).attr('y', height-180).attr('font-size', 10)
 
 
-  svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-150).attr('fill', colorScale(-40))
-  svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-150).attr('fill', colorScale(-20))
-  svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-150).attr('fill', colorScale(0))
-  svg.append('rect').attr('id', 'box4').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-150).attr('fill', colorScale(20))
-  svg.append('rect').attr('id', 'box5').attr('width', 25).attr('height', 5).attr('x',width-55).attr('y', height-150).attr('fill', colorScale(40))
+  svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-200).attr('fill', colorScale(-40))
+  svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-200).attr('fill', colorScale(-20))
+  svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-200).attr('fill', colorScale(0))
+  svg.append('rect').attr('id', 'box4').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-200).attr('fill', colorScale(20))
+  svg.append('rect').attr('id', 'box5').attr('width', 25).attr('height', 5).attr('x',width-55).attr('y', height-200).attr('fill', colorScale(40))
 
 
      
@@ -113,9 +114,9 @@ Promise.all([
         const newHeight = svgHeight - margin.top - margin.bottom
 
 
-      svg.select('#box1-text').attr('x',newWidth-150).attr('y', height-150).attr('font-size', 10)
-      svg.select('#box4-text').attr('x',newWidth-40).attr('y', height-150).attr('font-size', 10)
-      svg.select('#under-box-text').text('Clinton V/L: Percentage Points').attr('x',newWidth-150).attr('y', height-130).attr('font-size', 10)
+      svg.select('#box1-text').attr('x',newWidth-150).attr('font-size', 10)
+      svg.select('#box4-text').attr('x',newWidth-40).attr('font-size', 10)
+      svg.select('#under-box-text').text('Trump V/L: Percentage Points').attr('x',newWidth-150).attr('font-size', 10)
 
       svg.select('#box1').attr('x', newWidth-150)
       svg.select('#box2').attr('x', newWidth-125)
@@ -129,8 +130,8 @@ Promise.all([
 
             console.log(newWidth, 'newWidth 1')
             projection
-            .scale(newWidth*20)
-            .center([-72.68, 41.2])
+            .scale(newWidth*22)
+            .center([-72.68, 40.9])
             .translate([(newWidth) / 2, (newHeight)/2]);
 
             svg.selectAll('.towns')
