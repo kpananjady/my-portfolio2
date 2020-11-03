@@ -71,12 +71,15 @@ Promise.all([
     d3.csv(require('/data/datapoints_options.csv')),
     d3.csv(require('/data/election_2020/us_house.csv')),
     d3.csv(require('/data/election_2020/ct_state_senate.csv')),
-    d3.csv(require('/data/election_2020/ct_state_house.csv'))
+    d3.csv(require('/data/election_2020/ct_state_house.csv')),
+    d3.csv(require('/data/election_2020/presidential.csv')),
+    d3.csv(require('/data/election_2020/pres_turnout.csv'))
+
 
   ]).then(ready)
   .catch(err => console.log('Failed on', err))
 
-  function ready([json2, datapoints, d2, d_house, d_senate, datapoints3, us_house_data, ct_state_senate, ct_state_house]) {
+  function ready([json2, datapoints, d2, d_house, d_senate, datapoints3, us_house_data, ct_state_senate, ct_state_house, presidential, turnout]) {
 
     const towns = topojson.feature(json2, json2.objects.townct_37800_0000_2010_s100_census_1_shp_wgs84)
 
@@ -90,9 +93,29 @@ Promise.all([
     .attr('fill', 'grey')  
     .attr('stroke', 'white')  
     .on('mouseover', function(d){
-      d.properties.name = d.properties.NAME10
+      var counter = 0
 
+      presidential.forEach( function(r) {if (r['Town Name']===d.properties.NAME10){
+        counter = counter +1 
+        // console.log(r['variable'], Math.round(100*r['value']/r['Vote Totals']))
+  
+        d.properties[counter] = r['variable']
+        d.properties[`${counter}_pct`]=(100*r['value']/r['Vote Totals']).toFixed(2)
+        console.log(d.properties[`${counter}_pct`])
+        // d.properties.fid[counter] = r['value']
+        // console.log(d.properties[counter] )
+        // console.log(d.properties[1])
+       }
+      })
+      d.properties[0] = counter
+
+      turnout.forEach(function(r) {if (r['Town']===d.properties.NAME10){
+        d.properties.newName = d.properties.NAME10 + ': ' + r['Reported'] + ' of ' + r['Total Precincts'] + ' reporting'
+
+      }
+      })
       tip.show.call(this, d)
+  
       // d3.select(this).attr('stroke', 'white').attr('opacity','0.5')
   })
 
@@ -133,8 +156,29 @@ Promise.all([
     .attr('fill', 'grey')  
     .attr('stroke', 'white')  
     .on('mouseover', function(d){
-      d.properties.name = d.properties.NAME10
+      var counter = 0
+
+      presidential.forEach( function(r) {if (r['Town Name']===d.properties.NAME10){
+        counter = counter +1 
+        // console.log(r['variable'], Math.round(100*r['value']/r['Vote Totals']))
+  
+        d.properties[counter] = r['variable']
+        d.properties[`${counter}_pct`]=(100*r['value']/r['Vote Totals']).toFixed(2)
+        console.log(d.properties[`${counter}_pct`])
+        // d.properties.fid[counter] = r['value']
+        // console.log(d.properties[counter] )
+        // console.log(d.properties[1])
+       }
+      })
+      d.properties[0] = counter
+
+      turnout.forEach(function(r) {if (r['Town']===d.properties.NAME10){
+        d.properties.newName = d.properties.NAME10 + ': ' + r['Reported'] + ' of ' + r['Total Precincts'] + ' reporting'
+
+      }
+      })
       tip.show.call(this, d)
+  
       // d3.select(this).attr('stroke', 'white').attr('opacity','0.5')
   })
 
