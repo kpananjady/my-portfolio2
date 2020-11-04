@@ -28,32 +28,32 @@ percentage,Town,Reported,Total Precincts
 0.00%,Clinton,,
 0.00%,Colchester,,
 0.00%,Colebrook,,
-0.00%,Columbia,,
+87.45%,Columbia,1,1
 90.22%,Cornwall,1,1
 0.00%,Coventry,,
 0.00%,Cromwell,,
-0.00%,Danbury,,
+70.62%,Danbury,19,19
 0.00%,Darien,,
 0.00%,Deep River,,
 0.00%,Derby,,
 0.00%,Durham,,
 0.00%,Eastford,,
-0.00%,East Granby,,
+84.79%,East Granby,,
 83.04%,East Haddam,,
 0.00%,East Hampton,,
 0.00%,East Hartford,,
 0.00%,East Haven,,
-0.00%,East Lyme,,
+47.51%,East Lyme,,
 0.00%,Easton,,
 0.00%,East Windsor,,
-0.00%,Ellington,,
+54.61%,Ellington,2,2
 0.00%,Enfield,,
 0.00%,Essex,,
 0.00%,Fairfield,,
 0.00%,Farmington,,
 89.51%,Franklin,1,1
 0.00%,Glastonbury,,
-0.00%,Goshen,,
+88.85%,Goshen,2,2
 0.00%,Granby,,
 0.00%,Greenwich,,
 0.00%,Griswold,,
@@ -80,7 +80,7 @@ percentage,Town,Reported,Total Precincts
 85.91%,Marlborough,1,1
 0.00%,Meriden,,
 0.00%,Middlebury,,
-0.00%,Middlefield,,
+83.74%,Middlefield,1,1
 47.93%,Middletown,14,14
 0.00%,Milford,,
 0.00%,Monroe,,
@@ -104,7 +104,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Norwalk,,
 0.00%,Norwich,,
 0.00%,Old Lyme,,
-0.00%,Old Saybrook,,
+80.82%,Old Saybrook,,
 0.00%,Orange,,
 0.00%,Oxford,,
 81.73%,Plainfield,5,5
@@ -124,17 +124,17 @@ percentage,Town,Reported,Total Precincts
 79.63%,Scotland,1,1
 0.00%,Seymour,,
 0.00%,Sharon,,
-0.00%,Shelton,,
+81.28%,Shelton,5,5
 0.00%,Sherman,,
 0.00%,Simsbury,4,4
 0.00%,Somers,,
 0.00%,Southbury,,
 0.00%,Southington,,
 0.00%,South Windsor,,
-0.00%,Sprague,,
+79.40%,Sprague,1,1
 0.00%,Stafford,,
 0.00%,Stamford,,
-0.00%,Sterling,,
+71.30%,Sterling,1,1
 0.00%,Stonington,5,5
 0.00%,Stratford,19,19
 0.00%,Suffield,,
@@ -151,7 +151,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Washington,,
 0.00%,Waterbury,,
 0.00%,Waterford,,
-0.00%,Watertown,,
+22.84%,Watertown,4,4
 0.00%,Westbrook,,
 0.00%,West Hartford,,
 0.00%,West Haven,,
@@ -163,9 +163,9 @@ percentage,Town,Reported,Total Precincts
 80.10%,Winchester,1,1
 0.00%,Windham,,
 0.00%,Windsor,,
-0.00%,Windsor Locks,,
+79.44%,Windsor Locks,,
 78.89%,Wolcott,3,3
 0.00%,Woodbridge,,
 0.00%,Woodbury,,
 0.00%,Woodstock,,
-52.84%,Total,,
+58.20%,Total,,
