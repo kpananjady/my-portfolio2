@@ -14,7 +14,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Bozrah,,
 0.00%,Branford,,
 0.00%,Bridgeport,,
-0.00%,Bridgewater,,
+87.20%,Bridgewater,1,1
 0.00%,Bristol,,
 0.00%,Brookfield,,
 0.00%,Brooklyn,,
@@ -147,7 +147,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Vernon,,
 0.00%,Voluntown,,
 0.00%,Wallingford,,
-0.00%,Warren,,
+84.00%,Warren,1,1
 0.00%,Washington,,
 0.00%,Waterbury,,
 0.00%,Waterford,,
@@ -168,4 +168,4 @@ percentage,Town,Reported,Total Precincts
 0.00%,Woodbridge,,
 0.00%,Woodbury,,
 0.00%,Woodstock,,
-87.96%,Total,,
+86.70%,Total,,
