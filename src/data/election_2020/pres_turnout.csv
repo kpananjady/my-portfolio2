@@ -52,7 +52,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Fairfield,,
 44.24%,Farmington,7,7
 89.51%,Franklin,1,1
-0.00%,Glastonbury,,
+49.91%,Glastonbury,7,7
 88.85%,Goshen,2,2
 0.00%,Granby,,
 0.00%,Greenwich,,
@@ -106,7 +106,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Old Lyme,,
 80.82%,Old Saybrook,,
 88.26%,Orange,3,3
-0.00%,Oxford,,
+87.37%,Oxford,1,1
 81.73%,Plainfield,5,5
 83.16%,Plainville,4,4
 0.00%,Plymouth,,
@@ -120,9 +120,9 @@ percentage,Town,Reported,Total Precincts
 83.65%,Rocky Hill,,
 87.96%,Roxbury,1,1
 88.81%,Salem,1,1
-0.00%,Salisbury,,
+85.60%,Salisbury,1,1
 79.63%,Scotland,1,1
-0.00%,Seymour,,
+81.08%,Seymour,3,3
 0.00%,Sharon,,
 81.28%,Shelton,5,5
 0.00%,Sherman,,
@@ -130,7 +130,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Somers,,
 0.00%,Southbury,,
 0.00%,Southington,,
-0.00%,South Windsor,,
+81.77%,South Windsor,,
 79.40%,Sprague,1,1
 0.00%,Stafford,,
 0.00%,Stamford,,
@@ -149,7 +149,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Wallingford,,
 84.00%,Warren,1,1
 0.00%,Washington,,
-0.00%,Waterbury,,
+63.26%,Waterbury,21,21
 0.00%,Waterford,,
 84.63%,Watertown,4,4
 0.00%,Westbrook,,
@@ -168,4 +168,4 @@ percentage,Town,Reported,Total Precincts
 0.00%,Woodbridge,,
 0.00%,Woodbury,,
 0.00%,Woodstock,,
-61.49%,Total,,
+62.54%,Total,,
