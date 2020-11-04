@@ -27,7 +27,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Chester,,
 0.00%,Clinton,,
 55.85%,Colchester,4,4
-0.00%,Colebrook,,
+89.97%,Colebrook,1,1
 87.45%,Columbia,1,1
 90.22%,Cornwall,1,1
 0.00%,Coventry,,
@@ -50,7 +50,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Enfield,,
 0.00%,Essex,,
 0.00%,Fairfield,,
-0.00%,Farmington,,
+44.24%,Farmington,7,7
 89.51%,Franklin,1,1
 0.00%,Glastonbury,,
 88.85%,Goshen,2,2
@@ -61,7 +61,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Guilford,5,5
 0.00%,Haddam,,
 56.05%,Hamden,13,13
-0.00%,Hampton,,
+86.02%,Hampton,1,1
 0.00%,Hartford,,
 0.00%,Hartland,,
 86.77%,Harwinton,2,2
@@ -114,7 +114,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Portland,,
 0.00%,Preston,,
 0.00%,Prospect,,
-0.00%,Putnam,,
+69.90%,Putnam,2,2
 0.00%,Redding,,
 0.00%,Ridgefield,,
 83.65%,Rocky Hill,,
@@ -168,4 +168,4 @@ percentage,Town,Reported,Total Precincts
 0.00%,Woodbridge,,
 0.00%,Woodbury,,
 0.00%,Woodstock,,
-61.93%,Total,,
+61.49%,Total,,

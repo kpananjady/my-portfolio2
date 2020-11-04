@@ -10,10 +10,10 @@ State Representative 17,14824,"Eleni Kavros DeGraw, Democratic Party",7417
 State Representative 17,14824,"Eleni Kavros DeGraw, Working Families Party",250
 State Representative 17,14824,"Leslee Hill, Independent Party",302
 State Representative 17,14824,"Leslee Hill, Republican Party",6855
-State Representative 19,2072,"Tammy Exum, Democratic Party",2072
-State Representative 62,2385,"Audrey Lampert, Democratic Party",971
-State Representative 62,2385,"Mark W. Anderson, Independent Party",73
-State Representative 62,2385,"Mark W. Anderson, Republican Party",1341
+State Representative 19,2351,"Tammy Exum, Democratic Party",2351
+State Representative 62,6796,"Audrey Lampert, Democratic Party",2764
+State Representative 62,6796,"Mark W. Anderson, Independent Party",176
+State Representative 62,6796,"Mark W. Anderson, Republican Party",3856
 State Representative 105,4343,"Christopher E.  Bowen, Democratic Party",1430
 State Representative 105,4343,"Nicole Klarides-Ditria, Republican Party",2913
 State Representative 89,3659,"E.J. Maher, Democratic Party",1598
@@ -62,6 +62,9 @@ State Representative 48,8661,"Brian Smith, Democratic Party",4300
 State Representative 48,8661,"Brian Smith, Working Families Party",194
 State Representative 48,8661,"Julie Shilosky, Independent Party",242
 State Representative 48,8661,"Julie Shilosky, Republican Party",3925
+State Representative 63,11488,"Jay Case, Republican Party",7931
+State Representative 63,11488,"Noel Rodriquez, Democratic Party",3265
+State Representative 63,11488,"Noel Rodriquez, Independent Party",292
 State Representative 08,4312,"Brenda Falusi, Democratic Party",1817
 State Representative 08,4312,"Timothy Ackert, Republican Party",2495
 State Representative 32,6500,"Christie M. Carpino, Independent Party",1358
@@ -126,9 +129,10 @@ State Representative 57,9281,"David E. Stavens, Republican Party",4647
 State Representative 57,9281,"Jaime Foster, Democratic Party",4213
 State Representative 57,9281,"Jaime Foster, Independent Party",238
 State Representative 57,9281,"Jaime Foster, Working Families Party",183
-State Representative 63,10559,"Jay Case, Republican Party",7237
-State Representative 63,10559,"Noel Rodriquez, Democratic Party",3052
-State Representative 63,10559,"Noel Rodriquez, Independent Party",270
+State Representative 21,8278,"David Paul Kramer, Independent Party",131
+State Representative 21,8278,"John W. Brockelman, Republican Party",3937
+State Representative 21,8278,"Mike Demicco, Democratic Party",3959
+State Representative 21,8278,"Mike Demicco, Working Families Party",251
 State Representative 45,10245,"Brian Lanoue, Republican Party",5710
 State Representative 45,10245,"Daniel Reale, Independent Party",274
 State Representative 45,10245,"Mark DePonte, Democratic Party",4261
@@ -187,7 +191,7 @@ State Representative 42,4939,"Robert W. Lawrence, Petitioning Candidate",23
 State Representative 38,2250,"Baird Welch-Collins, Democratic Party",1058
 State Representative 38,2250,"Kathleen M. McCarty, Independent Party",69
 State Representative 38,2250,"Kathleen M. McCarty, Republican Party",1123
-State Representative 131,8807,"David K. Labriola, Republican Party",8807
+State Representative 131,10295,"David K. Labriola, Republican Party",10295
 State Representative 70,10930,"Rosa C. Rebimbas, Republican Party",6546
 State Representative 70,10930,"Stephen Samela, Democratic Party",4384
 State Representative 25,5536,"Jerrell Hargraves, Republican Party",1471
@@ -195,10 +199,10 @@ State Representative 25,5536,"Robert ""Bobby"" Sanchez, Democratic Party",3831
 State Representative 25,5536,"Robert ""Bobby"" Sanchez, Working Families Party",234
 State Representative 22,8695,"William A. Petit Jr., Independent Party",1763
 State Representative 22,8695,"William A. Petit Jr., Republican Party",6932
-State Representative 24,7087,"Alden Russell, Independent Party",80
-State Representative 24,7087,"Alden Russell, Republican Party",2238
-State Representative 24,7087,"Emmanuel ""Manny"" Sanchez, Democratic Party",4504
-State Representative 24,7087,"Emmanuel ""Manny"" Sanchez, Working Families Party",265
+State Representative 24,8346,"Alden Russell, Independent Party",108
+State Representative 24,8346,"Alden Russell, Republican Party",2889
+State Representative 24,8346,"Emmanuel ""Manny"" Sanchez, Democratic Party",5058
+State Representative 24,8346,"Emmanuel ""Manny"" Sanchez, Working Families Party",291
 State Representative 26,7439,"Jonathan Milon Johnson, Libertarian Party",286
 State Representative 26,7439,"Peter Tercyak, Democratic Party",4542
 State Representative 26,7439,"Peter Tercyak, Working Families Party",241
@@ -208,15 +212,25 @@ State Representative 142,1202,"Fred Wilms, Independent Party",22
 State Representative 142,1202,"Fred Wilms, Republican Party",734
 State Representative 142,1202,"Lucy Dathan, Democratic Party",433
 State Representative 142,1202,"Lucy Dathan, Working Families Party",13
+State Representative 27,8787,"Gary Turco, Democratic Party",4264
+State Representative 27,8787,"Gary Turco, Working Families Party",276
+State Representative 27,8787,"Michael Camillo, Independent Party",139
+State Representative 27,8787,"Michael Camillo, Republican Party",4108
+State Representative 29,11404,"Henry Vasel, Independent Party",208
+State Representative 29,11404,"Henry Vasel, Republican Party",4750
+State Representative 29,11404,"Kerry Szeps Wood, Democratic Party",6446
+State Representative 39,6590,"Anthony Nolan, Democratic Party",4711
+State Representative 39,6590,"Anthony Nolan, Working Families Party",361
+State Representative 39,6590,"Erycka Ortiz, Green Party",238
+State Representative 39,6590,"Kat Goulart, Republican Party",1280
+State Representative 41,1626,"Joe de la Cruz, Democratic Party",1475
+State Representative 41,1626,"Joe de la Cruz, Working Families Party",151
 State Representative 50,5346,"Pat Boyd, Democratic Party",5346
 State Representative 51,9248,"Larry Groh Jr., Democratic Party",4086
 State Representative 51,9248,"Rick L. Hayes, Independent Party",344
 State Representative 51,9248,"Rick L. Hayes, Republican Party",4818
-State Representative 29,10594,"Henry Vasel, Independent Party",198
-State Representative 29,10594,"Henry Vasel, Republican Party",4311
-State Representative 29,10594,"Kerry Szeps Wood, Democratic Party",6085
-State Representative 69,3750,"Cindy Harrison, Republican Party",1627
-State Representative 69,3750,"Michele Zommer, Democratic Party",2123
+State Representative 69,15274,"Cindy Harrison, Republican Party",8374
+State Representative 69,15274,"Michele Zommer, Democratic Party",6900
 State Representative 113,12007,"Elaine Matto, Democratic Party",4298
 State Representative 113,12007,"Jason Perillo, Republican Party",7709
 State Representative 122,13055,"Ben McGorty, Republican Party",7780
