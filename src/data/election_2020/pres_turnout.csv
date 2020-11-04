@@ -37,7 +37,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Deep River,,
 0.00%,Derby,,
 0.00%,Durham,,
-0.00%,Eastford,,
+84.49%,Eastford,1,1
 84.79%,East Granby,,
 83.04%,East Haddam,,
 0.00%,East Hampton,,
@@ -45,7 +45,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,East Haven,,
 47.51%,East Lyme,,
 0.00%,Easton,,
-0.00%,East Windsor,,
+64.49%,East Windsor,,
 54.61%,Ellington,2,2
 0.00%,Enfield,,
 0.00%,Essex,,
@@ -62,8 +62,8 @@ percentage,Town,Reported,Total Precincts
 0.00%,Haddam,,
 56.05%,Hamden,13,13
 86.02%,Hampton,1,1
-0.00%,Hartford,,
-0.00%,Hartland,,
+47.99%,Hartford,24,24
+86.55%,Hartland,1,1
 86.77%,Harwinton,2,2
 0.00%,Hebron,,
 0.00%,Kent,,
@@ -83,7 +83,7 @@ percentage,Town,Reported,Total Precincts
 83.74%,Middlefield,1,1
 47.93%,Middletown,14,14
 0.00%,Milford,,
-0.00%,Monroe,,
+86.07%,Monroe,4,4
 79.68%,Montville,6,6
 0.00%,Morris,,
 72.93%,Naugatuck,9,9
@@ -125,9 +125,9 @@ percentage,Town,Reported,Total Precincts
 81.08%,Seymour,3,3
 0.00%,Sharon,,
 81.28%,Shelton,5,5
-0.00%,Sherman,,
+82.63%,Sherman,1,1
 0.00%,Simsbury,4,4
-0.00%,Somers,,
+87.94%,Somers,1,1
 0.00%,Southbury,,
 82.20%,Southington,11,11
 81.77%,South Windsor,,
@@ -154,7 +154,7 @@ percentage,Town,Reported,Total Precincts
 84.63%,Watertown,4,4
 0.00%,Westbrook,,
 0.00%,West Hartford,,
-0.00%,West Haven,,
+76.02%,West Haven,,
 86.71%,Weston,2,2
 0.00%,Westport,,
 0.00%,Wethersfield,,
@@ -168,4 +168,4 @@ percentage,Town,Reported,Total Precincts
 0.00%,Woodbridge,,
 0.00%,Woodbury,,
 0.00%,Woodstock,,
-66.68%,Total,,
+66.32%,Total,,

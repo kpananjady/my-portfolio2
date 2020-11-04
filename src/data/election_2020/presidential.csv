@@ -36,6 +36,8 @@ East Hampton,7988,Biden and Harris,4051
 East Hartford,20185,Biden and Harris,14460
 East Haven,14175,Biden and Harris,6554
 East Lyme,11704,Biden and Harris,7258
+East Windsor,6900,Biden and Harris,3891
+Eastford,870,Biden and Harris,320
 Easton,5020,Biden and Harris,2777
 Ellington,9491,Biden and Harris,4787
 Enfield,18625,Biden and Harris,9625
@@ -47,10 +49,13 @@ Goshen,2098,Biden and Harris,900
 Granby,7212,Biden and Harris,3944
 Greenwich,34913,Biden and Harris,21441
 Griswold,5981,Biden and Harris,2565
+Groton,17389,Biden and Harris,10699
 Guilford,12824,Biden and Harris,8403
 Haddam,3934,Biden and Harris,1528
 Hamden,21489,Biden and Harris,14615
 Hampton,1466,Biden and Harris,824
+Hartford,30657,Biden and Harris,26597
+Hartland,1292,Biden and Harris,457
 Harwinton,3724,Biden and Harris,1401
 Hebron,6266,Biden and Harris,3388
 Killingly,5903,Biden and Harris,2465
@@ -60,6 +65,7 @@ Ledyard,8321,Biden and Harris,4471
 Lisbon,2490,Biden and Harris,1099
 Litchfield,5342,Biden and Harris,2673
 Lyme,1772,Biden and Harris,1165
+Madison,12434,Biden and Harris,7625
 Manchester,26521,Biden and Harris,18038
 Mansfield,7485,Biden and Harris,5608
 Marlborough,4003,Biden and Harris,2090
@@ -68,11 +74,13 @@ Middlebury,5043,Biden and Harris,2229
 Middlefield,2853,Biden and Harris,1442
 Middletown,14500,Biden and Harris,8256
 Milford,30659,Biden and Harris,17107
+Monroe,12002,Biden and Harris,5838
 Montville,8871,Biden and Harris,4406
 Morris,1549,Biden and Harris,646
 Naugatuck,14904,Biden and Harris,6923
 New Britain,23524,Biden and Harris,15657
-New Canaan,7233,Biden and Harris,3531
+New Canaan,11637,Biden and Harris,6828
+New Fairfield,5662,Biden and Harris,2062
 New Hartford,4540,Biden and Harris,2071
 New London,9059,Biden and Harris,6853
 Newington,11146,Biden and Harris,5321
@@ -103,7 +111,9 @@ Scotland,970,Biden and Harris,406
 Seymour,9296,Biden and Harris,3959
 Sharon,1555,Biden and Harris,1019
 Shelton,23008,Biden and Harris,10360
+Sherman,2336,Biden and Harris,1234
 Simsbury,15630,Biden and Harris,9933
+Somers,5727,Biden and Harris,2445
 South Windsor,14734,Biden and Harris,9003
 Southbury,12990,Biden and Harris,6570
 Southington,25745,Biden and Harris,12313
@@ -126,6 +136,7 @@ Waterbury,35434,Biden and Harris,21091
 Waterford,12316,Biden and Harris,6917
 Watertown,12726,Biden and Harris,4587
 West Hartford,32623,Biden and Harris,24375
+West Haven,18646,Biden and Harris,11569
 Weston,6527,Biden and Harris,4733
 Westport,17206,Biden and Harris,12775
 Wethersfield,15968,Biden and Harris,9415
@@ -175,6 +186,8 @@ East Hampton,7988,Trump and Pence,3746
 East Hartford,20185,Trump and Pence,5434
 East Haven,14175,Trump and Pence,7464
 East Lyme,11704,Trump and Pence,4266
+East Windsor,6900,Trump and Pence,2889
+Eastford,870,Trump and Pence,516
 Easton,5020,Trump and Pence,2178
 Ellington,9491,Trump and Pence,4515
 Enfield,18625,Trump and Pence,8684
@@ -186,10 +199,13 @@ Goshen,2098,Trump and Pence,1161
 Granby,7212,Trump and Pence,3107
 Greenwich,34913,Trump and Pence,13044
 Griswold,5981,Trump and Pence,3257
+Groton,17389,Trump and Pence,6272
 Guilford,12824,Trump and Pence,4262
 Haddam,3934,Trump and Pence,2335
 Hamden,21489,Trump and Pence,6626
 Hampton,1466,Trump and Pence,625
+Hartford,30657,Trump and Pence,3813
+Hartland,1292,Trump and Pence,818
 Harwinton,3724,Trump and Pence,2247
 Hebron,6266,Trump and Pence,2731
 Killingly,5903,Trump and Pence,3293
@@ -199,6 +215,7 @@ Ledyard,8321,Trump and Pence,3629
 Lisbon,2490,Trump and Pence,1331
 Litchfield,5342,Trump and Pence,2555
 Lyme,1772,Trump and Pence,576
+Madison,12434,Trump and Pence,4638
 Manchester,26521,Trump and Pence,8051
 Mansfield,7485,Trump and Pence,1708
 Marlborough,4003,Trump and Pence,1834
@@ -207,11 +224,13 @@ Middlebury,5043,Trump and Pence,2736
 Middlefield,2853,Trump and Pence,1356
 Middletown,14500,Trump and Pence,5997
 Milford,30659,Trump and Pence,13145
+Monroe,12002,Trump and Pence,5989
 Montville,8871,Trump and Pence,4242
 Morris,1549,Trump and Pence,871
 Naugatuck,14904,Trump and Pence,7740
 New Britain,23524,Trump and Pence,7578
-New Canaan,7233,Trump and Pence,3572
+New Canaan,11637,Trump and Pence,4625
+New Fairfield,5662,Trump and Pence,3530
 New Hartford,4540,Trump and Pence,2366
 New London,9059,Trump and Pence,2041
 Newington,11146,Trump and Pence,5644
@@ -242,7 +261,9 @@ Scotland,970,Trump and Pence,537
 Seymour,9296,Trump and Pence,5204
 Sharon,1555,Trump and Pence,510
 Shelton,23008,Trump and Pence,12362
+Sherman,2336,Trump and Pence,1076
 Simsbury,15630,Trump and Pence,5419
+Somers,5727,Trump and Pence,3204
 South Windsor,14734,Trump and Pence,5453
 Southbury,12990,Trump and Pence,6260
 Southington,25745,Trump and Pence,13064
@@ -265,6 +286,7 @@ Waterbury,35434,Trump and Pence,13990
 Waterford,12316,Trump and Pence,5124
 Watertown,12726,Trump and Pence,7973
 West Hartford,32623,Trump and Pence,7764
+West Haven,18646,Trump and Pence,6894
 Weston,6527,Trump and Pence,1680
 Westport,17206,Trump and Pence,4184
 Wethersfield,15968,Trump and Pence,6311

@@ -8,23 +8,23 @@ State Senator 17,46138,"George Logan, Independent Party",1458
 State Senator 17,46138,"George Logan, Republican Party",21196
 State Senator 17,46138,"Jorge Cabrera, Democratic Party",22308
 State Senator 17,46138,"Jorge Cabrera, Working Families Party",1176
-State Senator 35,56053,"Dan Champagne, Republican Party",28228
-State Senator 35,56053,"Lisa Thomas, Democratic Party",25718
-State Senator 35,56053,"Lisa Thomas, Independent Party",1133
-State Senator 35,56053,"Lisa Thomas, Working Families Party",974
-State Senator 08,55379,"Keith James McConnell, Independent Party",1056
-State Senator 08,55379,"Kevin Witkos, Republican Party",28401
-State Senator 08,55379,"Melissa E. Osborne, Democratic Party",25922
-State Senator 26,62851,"Kim Healy, Independent Party",1310
-State Senator 26,62851,"Kim Healy, Republican Party",24868
-State Senator 26,62851,"Will Haskell, Democratic Party",36673
-State Senator 24,32912,"Julie Kushner, Democratic Party",18187
-State Senator 24,32912,"Julie Kushner, Working Families Party",757
-State Senator 24,32912,"Susan Chapman, Independent Party",651
-State Senator 24,32912,"Susan Chapman, Republican Party",13317
+State Senator 35,57103,"Dan Champagne, Republican Party",28815
+State Senator 35,57103,"Lisa Thomas, Democratic Party",26134
+State Senator 35,57103,"Lisa Thomas, Independent Party",1161
+State Senator 35,57103,"Lisa Thomas, Working Families Party",993
+State Senator 08,56640,"Keith James McConnell, Independent Party",1086
+State Senator 08,56640,"Kevin Witkos, Republican Party",29253
+State Senator 08,56640,"Melissa E. Osborne, Democratic Party",26301
+State Senator 26,64915,"Kim Healy, Independent Party",1346
+State Senator 26,64915,"Kim Healy, Republican Party",25632
+State Senator 26,64915,"Will Haskell, Democratic Party",37937
+State Senator 24,40754,"Julie Kushner, Democratic Party",21444
+State Senator 24,40754,"Julie Kushner, Working Families Party",962
+State Senator 24,40754,"Susan Chapman, Independent Party",750
+State Senator 24,40754,"Susan Chapman, Republican Party",17598
 State Senator 32,55488,"Eric C. Berthel, Republican Party",32415
 State Senator 32,55488,"Jeffrey Desmarais, Democratic Party",23073
-State Senator 02,17040,"Douglas McCrory, Democratic Party",17040
+State Senator 02,29064,"Douglas McCrory, Democratic Party",29064
 State Senator 05,59982,"Derek Slap, Democratic Party",35401
 State Senator 05,59982,"Joelle Nawrocki, Independent Party",2104
 State Senator 05,59982,"Phillip Chabot, Republican Party",22477
@@ -32,10 +32,10 @@ State Senator 20,50675,"Joseph Taraya, Independent Party",586
 State Senator 20,50675,"Martha Marx, Democratic Party",23327
 State Senator 20,50675,"Martha Marx, Working Families Party",1104
 State Senator 20,50675,"Paul M. Formica, Republican Party",25658
-State Senator 12,37179,"Christine Cohen, Democratic Party",21122
-State Senator 12,37179,"Christine Cohen, Independent Party",666
-State Senator 12,37179,"Christine Cohen, Working Families Party",537
-State Senator 12,37179,"Joe LaPorta, Republican Party",14854
+State Senator 12,49473,"Christine Cohen, Democratic Party",27760
+State Senator 12,49473,"Christine Cohen, Independent Party",880
+State Senator 12,49473,"Christine Cohen, Working Families Party",677
+State Senator 12,49473,"Joe LaPorta, Republican Party",20156
 State Senator 30,36125,"Craig Miner, Republican Party",19691
 State Senator 30,36125,"David R. Gronbach, Democratic Party",15209
 State Senator 30,36125,"David R. Gronbach, Working Families Party",632
@@ -76,41 +76,49 @@ State Senator 34,48712,"April Capone, Working Families Party",893
 State Senator 34,48712,"David Bedell, Write In",0
 State Senator 34,48712,"Paul Cicarella, Independent Party",1175
 State Senator 34,48712,"Paul Cicarella, Republican Party",25813
-State Senator 03,30605,"Saud Anwar, Democratic Party",27524
-State Senator 03,30605,"Saud Anwar, Working Families Party",3081
+State Senator 03,35254,"Saud Anwar, Democratic Party",31870
+State Senator 03,35254,"Saud Anwar, Working Families Party",3384
 State Senator 28,9694,"Christopher ""Chris"" DeMatteo, Write In",0
 State Senator 28,9694,"Michelle McCabe, Democratic Party",4771
 State Senator 28,9694,"Michelle McCabe, Working Families Party",118
 State Senator 28,9694,"Tony Hwang, Independent Party",288
 State Senator 28,9694,"Tony Hwang, Republican Party",4517
-State Senator 07,41308,"Frederick A. Moffa, Democratic Party",18278
-State Senator 07,41308,"Frederick A. Moffa, Working Families Party",1005
-State Senator 07,41308,"John A. Kissel, Independent Party",1363
-State Senator 07,41308,"John A. Kissel, Republican Party",20662
+State Senator 07,46847,"Frederick A. Moffa, Democratic Party",20098
+State Senator 07,46847,"Frederick A. Moffa, Working Families Party",1091
+State Senator 07,46847,"John A. Kissel, Independent Party",1526
+State Senator 07,46847,"John A. Kissel, Republican Party",24132
 State Senator 06,23144,"Gennaro Bizzarro, Republican Party",8459
 State Senator 06,23144,"Rick Lopes, Democratic Party",13906
 State Senator 06,23144,"Rick Lopes, Working Families Party",779
-State Senator 36,38306,"Alex Kasser, Democratic Party",18474
-State Senator 36,38306,"Ryan Fazio, Republican Party",19832
-State Senator 18,30323,"Bob Statchen, Democratic Party",13160
-State Senator 18,30323,"Bob Statchen, Independent Party",580
-State Senator 18,30323,"Bob Statchen, Working Families Party",416
-State Senator 18,30323,"Heather Somers, Republican Party",16167
+State Senator 36,40628,"Alex Kasser, Democratic Party",19861
+State Senator 36,40628,"Ryan Fazio, Republican Party",20767
+State Senator 18,47133,"Bob Statchen, Democratic Party",21827
+State Senator 18,47133,"Bob Statchen, Independent Party",858
+State Senator 18,47133,"Bob Statchen, Working Families Party",656
+State Senator 18,47133,"Heather Somers, Republican Party",23792
 State Senator 11,11252,"Alexander Taubes, Petitioning Candidate",136
 State Senator 11,11252,"Jameson White, Republican Party",4374
 State Senator 11,11252,"Martin M. Looney, Democratic Party",6742
+State Senator 01,57901,"Barbara Ruhe, Republican Party",14191
+State Senator 01,57901,"John W. Fonfara, Democratic Party",41823
+State Senator 01,57901,"Mary L. Sanders, Green Party",1887
 State Senator 31,15917,"Henri Martin, Independent Party",590
 State Senator 31,15917,"Henri Martin, Republican Party",9480
 State Senator 31,15917,"Mary B. Fortier, Democratic Party",5847
 State Senator 15,24406,"Joan V. Hartley, Democratic Party",19972
 State Senator 15,24406,"Joan V. Hartley, Independent Party",4434
-State Senator 14,40011,"James Maroney, Democratic Party",21153
-State Senator 14,40011,"James Maroney, Independent Party",1164
-State Senator 14,40011,"James Maroney, Working Families Party",594
-State Senator 14,40011,"Michael Southworth, Republican Party",17100
-State Senator 21,30521,"Kevin C. Kelly, Republican Party",30521
+State Senator 14,50313,"James Maroney, Democratic Party",26449
+State Senator 14,50313,"James Maroney, Independent Party",1347
+State Senator 14,50313,"James Maroney, Working Families Party",781
+State Senator 14,50313,"Michael Southworth, Republican Party",21736
+State Senator 21,36183,"Kevin C. Kelly, Republican Party",36183
+State Senator 22,3842,"Devon Brown, Write In",0
+State Senator 22,3842,"Marilyn Moore, Democratic Party",1673
+State Senator 22,3842,"Stephen Dincher, Independent Party",107
+State Senator 22,3842,"Steven S. Choi, Republican Party",2062
 State Senator 23,2980,"Dennis Bradley, Democratic Party",2409
 State Senator 23,2980,"Josiah Israel, Republican Party",571
-State Senator 01,24916,"Barbara Ruhe, Republican Party",9508
-State Senator 01,24916,"John W. Fonfara, Democratic Party",14682
-State Senator 01,24916,"Mary L. Sanders, Green Party",726
+State Senator 10,7206,"Carlos M. Alvarado, Republican Party",1764
+State Senator 10,7206,"Gary Winfield, Democratic Party",4986
+State Senator 10,7206,"Gary Winfield, Working Families Party",213
+State Senator 10,7206,"Jason W. Bartlett, Petitioning Candidate",243
