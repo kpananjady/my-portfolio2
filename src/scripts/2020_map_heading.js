@@ -23,9 +23,9 @@ let svg = d3
 
   function ready(dummydata) {
 
-    svg.append('text').attr('class', 'title').text('Results for the 2016 election are below').attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
-    svg.append('text').attr('class', 'sub-title').text("Here's some chatter about the number of precincts reporting and the voter turnout").attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
-    svg.append('text').attr('class', 'sub-title').text('thus far. Results are unofficial and last updated at this time. ').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'title').text('Results for the 2020 election are below').attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text("Choose your race and click on a district to see candidate vote totals").attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text('thus far. Results are unofficial and were last updated at this time. ').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
 
 
