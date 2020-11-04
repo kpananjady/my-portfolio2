@@ -1,7 +1,7 @@
 percentage,Town,Reported,Total Precincts
 45.01%,Andover,1,1
 0.00%,Ansonia,,
-86.18%,Ashford,1,1
+85.92%,Ashford,1,1
 0.00%,Avon,,
 82.43%,Barkhamsted,1,1
 0.00%,Beacon Falls,,
@@ -31,7 +31,7 @@ percentage,Town,Reported,Total Precincts
 87.45%,Columbia,1,1
 90.22%,Cornwall,1,1
 84.54%,Coventry,2,2
-0.00%,Cromwell,,
+80.88%,Cromwell,1,1
 70.62%,Danbury,19,19
 0.00%,Darien,7,7
 0.00%,Deep River,,
@@ -46,9 +46,9 @@ percentage,Town,Reported,Total Precincts
 87.06%,East Lyme,,
 0.00%,Easton,,
 64.49%,East Windsor,,
-54.61%,Ellington,2,2
+86.83%,Ellington,2,2
 0.00%,Enfield,,
-0.00%,Essex,,
+84.84%,Essex,1,1
 0.00%,Fairfield,,
 79.89%,Farmington,7,7
 89.51%,Franklin,1,1
@@ -168,4 +168,4 @@ percentage,Town,Reported,Total Precincts
 0.00%,Woodbridge,,
 0.00%,Woodbury,,
 0.00%,Woodstock,,
-70.17%,Total,,
+70.60%,Total,,
