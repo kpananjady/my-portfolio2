@@ -5,7 +5,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Avon,,
 82.43%,Barkhamsted,1,1
 0.00%,Beacon Falls,,
-0.00%,Berlin,,
+82.71%,Berlin,5,5
 88.16%,Bethany,1,1
 0.00%,Bethel,5,5
 82.61%,Bethlehem,1,1
@@ -66,7 +66,7 @@ percentage,Town,Reported,Total Precincts
 86.55%,Hartland,1,1
 86.77%,Harwinton,2,2
 0.00%,Hebron,,
-0.00%,Kent,,
+89.98%,Kent,1,1
 72.58%,Killingly,5,5
 0.00%,Killingworth,,
 0.00%,Lebanon,,
@@ -91,13 +91,13 @@ percentage,Town,Reported,Total Precincts
 0.00%,New Canaan,,
 0.00%,New Fairfield,,
 0.00%,New Hartford,,
-0.00%,New Haven,,
+56.26%,New Haven,,
 0.00%,Newington,,
 0.00%,New London,,
 0.00%,New Milford,,
 0.00%,Newtown,,
 88.22%,Norfolk,1,1
-0.00%,North Branford,,
+84.37%,North Branford,,
 0.00%,North Canaan,,
 83.65%,North Haven,,
 0.00%,North Stonington,,
@@ -152,7 +152,7 @@ percentage,Town,Reported,Total Precincts
 63.26%,Waterbury,21,21
 86.77%,Waterford,4,4
 84.63%,Watertown,4,4
-0.00%,Westbrook,,
+87.41%,Westbrook,2,2
 0.00%,West Hartford,,
 76.02%,West Haven,,
 86.71%,Weston,2,2
@@ -168,4 +168,4 @@ percentage,Town,Reported,Total Precincts
 0.00%,Woodbridge,,
 0.00%,Woodbury,,
 0.00%,Woodstock,,
-67.00%,Total,,
+66.90%,Total,,
