@@ -11,13 +11,13 @@ Bethel,11090,Biden and Harris,6208
 Bethlehem,2367,Biden and Harris,937
 Bloomfield,6704,Biden and Harris,5518
 Bolton,3284,Biden and Harris,1723
-Bozrah,1545,Biden and Harris,703
+Bozrah,1548,Biden and Harris,703
 Branford,17311,Biden and Harris,10173
 Bridgeport,27012,Biden and Harris,20577
 Brookfield,10827,Biden and Harris,5426
 Brooklyn,4247,Biden and Harris,1874
 Burlington,6213,Biden and Harris,3084
-Canaan,0,Biden and Harris,0
+Canaan,655,Biden and Harris,437
 Canterbury,3012,Biden and Harris,1182
 Canton,6571,Biden and Harris,3825
 Chaplin,1290,Biden and Harris,598
@@ -28,7 +28,7 @@ Colchester,9691,Biden and Harris,5216
 Colebrook,994,Biden and Harris,401
 Columbia,3541,Biden and Harris,1869
 Cornwall,1032,Biden and Harris,760
-Coventry,7764,Biden and Harris,4011
+Coventry,7766,Biden and Harris,4011
 Cromwell,8783,Biden and Harris,4872
 Danbury,30957,Biden and Harris,18174
 Darien,12358,Biden and Harris,7471
@@ -59,7 +59,7 @@ Hamden,21489,Biden and Harris,14615
 Hampton,1466,Biden and Harris,824
 Hartford,30657,Biden and Harris,26597
 Hartland,1292,Biden and Harris,457
-Harwinton,3724,Biden and Harris,1401
+Harwinton,3701,Biden and Harris,1397
 Hebron,6266,Biden and Harris,3388
 Kent,1837,Biden and Harris,1249
 Killingly,5903,Biden and Harris,2465
@@ -94,14 +94,14 @@ North Branford,8631,Biden and Harris,3718
 North Canaan,1657,Biden and Harris,842
 North Haven,15167,Biden and Harris,7227
 North Stonington,3375,Biden and Harris,1601
-Norwalk,55492,Biden and Harris,30595
+Norwalk,41955,Biden and Harris,28477
 Norwich,15053,Biden and Harris,9157
 Old Lyme,5408,Biden and Harris,3225
 Old Saybrook,7334,Biden and Harris,4253
 Orange,9253,Biden and Harris,4816
 Oxford,8511,Biden and Harris,3269
 Plainfield,7086,Biden and Harris,2849
-Plainville,9530,Biden and Harris,4625
+Plainville,9647,Biden and Harris,4670
 Plymouth,6593,Biden and Harris,2477
 Pomfret,2537,Biden and Harris,1357
 Portland,5887,Biden and Harris,3155
@@ -128,7 +128,7 @@ Sprague,1557,Biden and Harris,641
 Stafford,6342,Biden and Harris,2761
 Stamford,49119,Biden and Harris,32477
 Sterling,1908,Biden and Harris,639
-Stonington,11764,Biden and Harris,7355
+Stonington,11889,Biden and Harris,7453
 Stratford,26507,Biden and Harris,16210
 Suffield,8686,Biden and Harris,4363
 Thomaston,4363,Biden and Harris,1526
@@ -173,13 +173,13 @@ Bethel,11090,Trump and Pence,4717
 Bethlehem,2367,Trump and Pence,1393
 Bloomfield,6704,Trump and Pence,1114
 Bolton,3284,Trump and Pence,1482
-Bozrah,1545,Trump and Pence,814
+Bozrah,1548,Trump and Pence,817
 Branford,17311,Trump and Pence,6896
 Bridgeport,27012,Trump and Pence,6201
 Brookfield,10827,Trump and Pence,5246
 Brooklyn,4247,Trump and Pence,2296
 Burlington,6213,Trump and Pence,3029
-Canaan,0,Trump and Pence,0
+Canaan,655,Trump and Pence,209
 Canterbury,3012,Trump and Pence,1755
 Canton,6571,Trump and Pence,2627
 Chaplin,1290,Trump and Pence,662
@@ -190,7 +190,7 @@ Colchester,9691,Trump and Pence,4243
 Colebrook,994,Trump and Pence,571
 Columbia,3541,Trump and Pence,1593
 Cornwall,1032,Trump and Pence,250
-Coventry,7764,Trump and Pence,3545
+Coventry,7766,Trump and Pence,3545
 Cromwell,8783,Trump and Pence,3749
 Danbury,30957,Trump and Pence,12449
 Darien,12358,Trump and Pence,4689
@@ -221,7 +221,7 @@ Hamden,21489,Trump and Pence,6626
 Hampton,1466,Trump and Pence,625
 Hartford,30657,Trump and Pence,3813
 Hartland,1292,Trump and Pence,818
-Harwinton,3724,Trump and Pence,2247
+Harwinton,3701,Trump and Pence,2229
 Hebron,6266,Trump and Pence,2731
 Kent,1837,Trump and Pence,568
 Killingly,5903,Trump and Pence,3293
@@ -256,14 +256,14 @@ North Branford,8631,Trump and Pence,4786
 North Canaan,1657,Trump and Pence,786
 North Haven,15167,Trump and Pence,7769
 North Stonington,3375,Trump and Pence,1710
-Norwalk,55492,Trump and Pence,24384
+Norwalk,41955,Trump and Pence,12974
 Norwich,15053,Trump and Pence,5566
 Old Lyme,5408,Trump and Pence,2095
 Old Saybrook,7334,Trump and Pence,2986
 Orange,9253,Trump and Pence,4317
 Oxford,8511,Trump and Pence,5118
 Plainfield,7086,Trump and Pence,4080
-Plainville,9530,Trump and Pence,4742
+Plainville,9647,Trump and Pence,4811
 Plymouth,6593,Trump and Pence,3984
 Pomfret,2537,Trump and Pence,1126
 Portland,5887,Trump and Pence,2641
@@ -290,7 +290,7 @@ Sprague,1557,Trump and Pence,882
 Stafford,6342,Trump and Pence,3431
 Stamford,49119,Trump and Pence,16074
 Sterling,1908,Trump and Pence,1229
-Stonington,11764,Trump and Pence,4218
+Stonington,11889,Trump and Pence,4240
 Stratford,26507,Trump and Pence,10004
 Suffield,8686,Trump and Pence,4155
 Thomaston,4363,Trump and Pence,2759
