@@ -18,16 +18,16 @@ percentage,Town,Reported,Total Precincts
 0.00%,Bristol,,
 67.31%,Brookfield,2,2
 57.84%,Brooklyn,1,1
-0.00%,Burlington,,
+91.85%,Burlington,1,1
 87.95%,Canaan,1,1
 81.50%,Canterbury,1,1
-0.00%,Canton,,
+85.40%,Canton,1,1
 82.64%,Chaplin,1,1
 0.00%,Cheshire,,
 0.00%,Chester,,
 0.00%,Clinton,,
-55.85%,Colchester,4,4
-89.97%,Colebrook,1,1
+89.35%,Colchester,4,4
+89.64%,Colebrook,1,1
 87.45%,Columbia,1,1
 90.22%,Cornwall,1,1
 84.54%,Coventry,2,2
@@ -43,7 +43,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,East Hampton,,
 0.00%,East Hartford,,
 0.00%,East Haven,,
-47.51%,East Lyme,,
+87.06%,East Lyme,,
 0.00%,Easton,,
 64.49%,East Windsor,,
 54.61%,Ellington,2,2
@@ -68,12 +68,12 @@ percentage,Town,Reported,Total Precincts
 0.00%,Hebron,,
 89.98%,Kent,1,1
 72.58%,Killingly,5,5
-0.00%,Killingworth,,
+87.63%,Killingworth,1,1
 0.00%,Lebanon,,
 0.00%,Ledyard,,
 87.45%,Lisbon,2,2
 86.62%,Litchfield,4,4
-0.00%,Lyme,,
+88.17%,Lyme,1,1
 0.00%,Madison,,
 0.00%,Manchester,,
 73.50%,Mansfield,4,4
@@ -90,19 +90,19 @@ percentage,Town,Reported,Total Precincts
 0.00%,New Britain,,
 0.00%,New Canaan,,
 0.00%,New Fairfield,,
-0.00%,New Hartford,,
+87.73%,New Hartford,,
 56.26%,New Haven,,
 0.00%,Newington,,
 0.00%,New London,,
-0.00%,New Milford,,
-0.00%,Newtown,,
+81.78%,New Milford,,
+89.99%,Newtown,6,6
 88.22%,Norfolk,1,1
 84.37%,North Branford,,
-0.00%,North Canaan,,
+69.68%,North Canaan,,
 83.65%,North Haven,,
-0.00%,North Stonington,,
+75.79%,North Stonington,,
 0.00%,Norwalk,,
-0.00%,Norwich,6,6
+76.69%,Norwich,6,6
 0.00%,Old Lyme,,
 80.82%,Old Saybrook,,
 88.26%,Orange,3,3
@@ -110,12 +110,12 @@ percentage,Town,Reported,Total Precincts
 81.73%,Plainfield,5,5
 84.10%,Plainville,4,4
 0.00%,Plymouth,,
-85.66%,Pomfret,1,1
+85.98%,Pomfret,1,1
 0.00%,Portland,,
 0.00%,Preston,,
-0.00%,Prospect,,
+88.89%,Prospect,2,2
 69.90%,Putnam,2,2
-0.00%,Redding,,
+84.84%,Redding,4,4
 83.69%,Ridgefield,4,4
 83.65%,Rocky Hill,,
 87.96%,Roxbury,1,1
@@ -132,7 +132,7 @@ percentage,Town,Reported,Total Precincts
 82.20%,Southington,11,11
 81.77%,South Windsor,,
 79.40%,Sprague,1,1
-0.00%,Stafford,,
+85.72%,Stafford,3,3
 0.00%,Stamford,,
 71.30%,Sterling,1,1
 83.35%,Stonington,5,5
@@ -168,4 +168,4 @@ percentage,Town,Reported,Total Precincts
 0.00%,Woodbridge,,
 0.00%,Woodbury,,
 0.00%,Woodstock,,
-68.05%,Total,,
+70.17%,Total,,
