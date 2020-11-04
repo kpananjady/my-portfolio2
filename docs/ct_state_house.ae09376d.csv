@@ -1,8 +1,8 @@
 Office Name,Vote Totals,variable,value
-State Representative 17,8380,"Eleni Kavros DeGraw, Democratic Party",4392
-State Representative 17,8380,"Eleni Kavros DeGraw, Working Families Party",128
-State Representative 17,8380,"Leslee Hill, Independent Party",117
-State Representative 17,8380,"Leslee Hill, Republican Party",3743
+State Representative 17,14824,"Eleni Kavros DeGraw, Democratic Party",7417
+State Representative 17,14824,"Eleni Kavros DeGraw, Working Families Party",250
+State Representative 17,14824,"Leslee Hill, Independent Party",302
+State Representative 17,14824,"Leslee Hill, Republican Party",6855
 State Representative 19,2072,"Tammy Exum, Democratic Party",2072
 State Representative 89,3659,"E.J. Maher, Democratic Party",1598
 State Representative 89,3659,"Lezlye W. Zupkus, Independent Party",136
@@ -41,6 +41,9 @@ State Representative 99,11344,"Dave Yaccarino, Democratic Party",4445
 State Representative 99,11344,"Dave Yaccarino, Working Families Party",235
 State Representative 99,11344,"Joe Zullo, Independent Party",397
 State Representative 99,11344,"Joe Zullo, Republican Party",6267
+State Representative 135,8818,"Anne Hughes, Democratic Party",4738
+State Representative 135,8818,"John Shaban, Independent Party",206
+State Representative 135,8818,"John Shaban, Republican Party",3874
 State Representative 36,8468,"Christine Palm, Democratic Party",4038
 State Representative 36,8468,"Christine Palm, Working Families Party",147
 State Representative 36,8468,"Robert Siegrist, Independent Party",174
@@ -82,9 +85,6 @@ State Representative 26,7439,"Jonathan Milon Johnson, Libertarian Party",286
 State Representative 26,7439,"Peter Tercyak, Democratic Party",4542
 State Representative 26,7439,"Peter Tercyak, Working Families Party",241
 State Representative 26,7439,"Piotr S. Ceglarz, Republican Party",2370
-State Representative 135,3879,"Anne Hughes, Democratic Party",2282
-State Representative 135,3879,"John Shaban, Independent Party",101
-State Representative 135,3879,"John Shaban, Republican Party",1496
 State Representative 02,2042,"Dan Carter, Independent Party",58
 State Representative 02,2042,"Dan Carter, Republican Party",807
 State Representative 02,2042,"Raghib Allie-Brennan, Democratic Party",1137
@@ -96,6 +96,9 @@ State Representative 47,949,"Doug Dubitsky, Republican Party",541
 State Representative 47,949,"Kate Donnelly, Democratic Party",365
 State Representative 47,949,"Kate Donnelly, Working Families Party",20
 State Representative 16,11348,"John K. Hampton, Democratic Party",11348
+State Representative 51,4975,"Larry Groh Jr., Democratic Party",2219
+State Representative 51,4975,"Rick L. Hayes, Independent Party",152
+State Representative 51,4975,"Rick L. Hayes, Republican Party",2604
 State Representative 50,353,"Pat Boyd, Democratic Party",353
 State Representative 85,11269,"Mary Mushinsky, Democratic Party",5720
 State Representative 85,11269,"Mary Mushinsky, Working Families Party",198

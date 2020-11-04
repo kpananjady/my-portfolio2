@@ -29,7 +29,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Colchester,,
 0.00%,Colebrook,,
 0.00%,Columbia,,
-0.00%,Cornwall,,
+90.22%,Cornwall,1,1
 0.00%,Coventry,,
 0.00%,Cromwell,,
 0.00%,Danbury,,
@@ -77,7 +77,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Madison,,
 0.00%,Manchester,,
 0.00%,Mansfield,,
-0.00%,Marlborough,,
+85.91%,Marlborough,1,1
 0.00%,Meriden,,
 0.00%,Middlebury,,
 0.00%,Middlefield,,
@@ -96,7 +96,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,New London,,
 0.00%,New Milford,,
 0.00%,Newtown,,
-0.00%,Norfolk,,
+88.22%,Norfolk,1,1
 0.00%,North Branford,,
 0.00%,North Canaan,,
 0.00%,North Haven,,
@@ -139,7 +139,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Stratford,,
 0.00%,Suffield,,
 0.00%,Thomaston,,
-0.00%,Thompson,,
+76.69%,Thompson,4,4
 0.00%,Tolland,,
 0.00%,Torrington,,
 0.00%,Trumbull,,
@@ -168,4 +168,4 @@ percentage,Town,Reported,Total Precincts
 0.00%,Woodbridge,,
 0.00%,Woodbury,,
 0.00%,Woodstock,,
-47.84%,Total,,
+54.72%,Total,,
