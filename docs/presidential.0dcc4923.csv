@@ -12,6 +12,7 @@ Bloomfield,6704,Biden and Harris,5518
 Bolton,3284,Biden and Harris,1723
 Bozrah,1545,Biden and Harris,703
 Branford,17311,Biden and Harris,10173
+Bridgeport,27012,Biden and Harris,20577
 Brookfield,10827,Biden and Harris,5426
 Burlington,6213,Biden and Harris,3084
 Canaan,0,Biden and Harris,0
@@ -42,7 +43,7 @@ Easton,5020,Biden and Harris,2777
 Ellington,9491,Biden and Harris,4787
 Enfield,18625,Biden and Harris,9625
 Essex,4715,Biden and Harris,3011
-Farmington,8981,Biden and Harris,4146
+Farmington,16127,Biden and Harris,9706
 Franklin,1261,Biden and Harris,553
 Glastonbury,21579,Biden and Harris,13476
 Goshen,2098,Biden and Harris,900
@@ -58,6 +59,7 @@ Hartford,30657,Biden and Harris,26597
 Hartland,1292,Biden and Harris,457
 Harwinton,3724,Biden and Harris,1401
 Hebron,6266,Biden and Harris,3388
+Kent,1837,Biden and Harris,1249
 Killingly,5903,Biden and Harris,2465
 Killingworth,4387,Biden and Harris,2343
 Lebanon,4438,Biden and Harris,2052
@@ -137,12 +139,14 @@ Waterford,12316,Biden and Harris,6917
 Watertown,12726,Biden and Harris,4587
 West Hartford,32623,Biden and Harris,24375
 West Haven,18646,Biden and Harris,11569
+Westbrook,4311,Biden and Harris,2288
 Weston,6527,Biden and Harris,4733
 Westport,17206,Biden and Harris,12775
 Wethersfield,15968,Biden and Harris,9415
 Willington,3204,Biden and Harris,1674
 Wilton,10919,Biden and Harris,7113
 Winchester,5050,Biden and Harris,2271
+Windham,5850,Biden and Harris,3665
 Windsor,17512,Biden and Harris,13183
 Windsor Locks,6858,Biden and Harris,3655
 Wolcott,10002,Biden and Harris,3333
@@ -162,6 +166,7 @@ Bloomfield,6704,Trump and Pence,1114
 Bolton,3284,Trump and Pence,1482
 Bozrah,1545,Trump and Pence,814
 Branford,17311,Trump and Pence,6896
+Bridgeport,27012,Trump and Pence,6201
 Brookfield,10827,Trump and Pence,5246
 Burlington,6213,Trump and Pence,3029
 Canaan,0,Trump and Pence,0
@@ -192,7 +197,7 @@ Easton,5020,Trump and Pence,2178
 Ellington,9491,Trump and Pence,4515
 Enfield,18625,Trump and Pence,8684
 Essex,4715,Trump and Pence,1635
-Farmington,8981,Trump and Pence,4683
+Farmington,16127,Trump and Pence,6160
 Franklin,1261,Trump and Pence,674
 Glastonbury,21579,Trump and Pence,7742
 Goshen,2098,Trump and Pence,1161
@@ -208,6 +213,7 @@ Hartford,30657,Trump and Pence,3813
 Hartland,1292,Trump and Pence,818
 Harwinton,3724,Trump and Pence,2247
 Hebron,6266,Trump and Pence,2731
+Kent,1837,Trump and Pence,568
 Killingly,5903,Trump and Pence,3293
 Killingworth,4387,Trump and Pence,1979
 Lebanon,4438,Trump and Pence,2268
@@ -287,12 +293,14 @@ Waterford,12316,Trump and Pence,5124
 Watertown,12726,Trump and Pence,7973
 West Hartford,32623,Trump and Pence,7764
 West Haven,18646,Trump and Pence,6894
+Westbrook,4311,Trump and Pence,1958
 Weston,6527,Trump and Pence,1680
 Westport,17206,Trump and Pence,4184
 Wethersfield,15968,Trump and Pence,6311
 Willington,3204,Trump and Pence,1445
 Wilton,10919,Trump and Pence,3605
 Winchester,5050,Trump and Pence,2752
+Windham,5850,Trump and Pence,2072
 Windsor,17512,Trump and Pence,4090
 Windsor Locks,6858,Trump and Pence,3092
 Wolcott,10002,Trump and Pence,6519
