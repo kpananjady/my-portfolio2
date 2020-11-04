@@ -7,10 +7,10 @@ State Representative 19,2072,"Tammy Exum, Democratic Party",2072
 State Representative 89,3659,"E.J. Maher, Democratic Party",1598
 State Representative 89,3659,"Lezlye W. Zupkus, Independent Party",136
 State Representative 89,3659,"Lezlye W. Zupkus, Republican Party",1925
-State Representative 66,4717,"David T. Wilson, Independent Party",100
-State Representative 66,4717,"David T. Wilson, Republican Party",2831
-State Representative 66,4717,"Matthew D. Dyer, Democratic Party",1711
-State Representative 66,4717,"Matthew D. Dyer, Working Families Party",75
+State Representative 66,10381,"David T. Wilson, Independent Party",189
+State Representative 66,10381,"David T. Wilson, Republican Party",5892
+State Representative 66,10381,"Matthew D. Dyer, Democratic Party",4158
+State Representative 66,10381,"Matthew D. Dyer, Working Families Party",142
 State Representative 64,5499,"Brian M. Ohler, Independent Party",223
 State Representative 64,5499,"Brian M. Ohler, Republican Party",2707
 State Representative 64,5499,"Maria Horn, Democratic Party",2454
@@ -48,6 +48,10 @@ State Representative 99,11344,"Joe Zullo, Republican Party",6267
 State Representative 135,8818,"Anne Hughes, Democratic Party",4738
 State Representative 135,8818,"John Shaban, Independent Party",206
 State Representative 135,8818,"John Shaban, Republican Party",3874
+State Representative 47,2175,"Doug Dubitsky, Independent Party",62
+State Representative 47,2175,"Doug Dubitsky, Republican Party",1234
+State Representative 47,2175,"Kate Donnelly, Democratic Party",836
+State Representative 47,2175,"Kate Donnelly, Working Families Party",43
 State Representative 63,930,"Jay Case, Republican Party",666
 State Representative 63,930,"Noel Rodriquez, Democratic Party",251
 State Representative 63,930,"Noel Rodriquez, Independent Party",13
@@ -94,11 +98,18 @@ State Representative 02,2042,"Raghib Allie-Brennan, Democratic Party",1137
 State Representative 02,2042,"Raghib Allie-Brennan, Working Families Party",40
 State Representative 69,3750,"Cindy Harrison, Republican Party",1627
 State Representative 69,3750,"Michele Zommer, Democratic Party",2123
-State Representative 47,949,"Doug Dubitsky, Independent Party",23
-State Representative 47,949,"Doug Dubitsky, Republican Party",541
-State Representative 47,949,"Kate Donnelly, Democratic Party",365
-State Representative 47,949,"Kate Donnelly, Working Families Party",20
+State Representative 37,2539,"Cate Steel, Democratic Party",1042
+State Representative 37,2539,"Cate Steel, Working Families Party",50
+State Representative 37,2539,"Holly H. Cheeseman, Independent Party",51
+State Representative 37,2539,"Holly H. Cheeseman, Republican Party",1396
 State Representative 16,11348,"John K. Hampton, Democratic Party",11348
+State Representative 120,12576,"Jim Feehan, Independent Party",344
+State Representative 120,12576,"Jim Feehan, Republican Party",5778
+State Representative 120,12576,"Philip L. Young, Democratic Party",6454
+State Representative 122,3110,"Ben McGorty, Republican Party",1578
+State Representative 122,3110,"Jose Goncalves, Democratic Party",1532
+State Representative 121,9856,"Edward J. Scinto, Republican Party",3064
+State Representative 121,9856,"Joseph P. Gresko, Democratic Party",6792
 State Representative 51,4975,"Larry Groh Jr., Democratic Party",2219
 State Representative 51,4975,"Rick L. Hayes, Independent Party",152
 State Representative 51,4975,"Rick L. Hayes, Republican Party",2604
@@ -124,3 +135,6 @@ State Representative 114,5510,"Dan DeBarba, Independent Party",113
 State Representative 114,5510,"Dan DeBarba, Republican Party",2046
 State Representative 114,5510,"Mary Welander, Democratic Party",3228
 State Representative 114,5510,"Mary Welander, Working Families Party",123
+State Representative 68,645,"Joseph Polletta, Independent Party",13
+State Representative 68,645,"Joseph Polletta, Republican Party",372
+State Representative 68,645,"Sean Butterly, Democratic Party",260

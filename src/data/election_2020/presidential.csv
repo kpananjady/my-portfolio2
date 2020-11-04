@@ -2,6 +2,7 @@ Town Name,Vote Totals,variable,value
 Avon,11643,Biden and Harris,7080
 Bethany,3698,Biden and Harris,1912
 Bethlehem,2367,Biden and Harris,937
+Canaan,0,Biden and Harris,0
 Canton,6571,Biden and Harris,3825
 Clinton,7647,Biden and Harris,4267
 Columbia,3541,Biden and Harris,1869
@@ -12,6 +13,8 @@ East Hampton,7988,Biden and Harris,4051
 East Haven,14175,Biden and Harris,6554
 Easton,5020,Biden and Harris,2777
 Essex,4715,Biden and Harris,3011
+Franklin,1261,Biden and Harris,553
+Goshen,2098,Biden and Harris,900
 Guilford,12824,Biden and Harris,8403
 Haddam,3934,Biden and Harris,1528
 Harwinton,3724,Biden and Harris,1401
@@ -26,8 +29,10 @@ North Canaan,1657,Biden and Harris,842
 Plainville,9530,Biden and Harris,4625
 Redding,5975,Biden and Harris,3829
 Roxbury,1622,Biden and Harris,937
+Salem,2614,Biden and Harris,1280
 Scotland,970,Biden and Harris,406
 Simsbury,15630,Biden and Harris,9933
+Stratford,26507,Biden and Harris,16210
 Thomaston,4363,Biden and Harris,1526
 Thompson,5129,Biden and Harris,2036
 Union,571,Biden and Harris,249
@@ -36,9 +41,11 @@ Warren,931,Biden and Harris,461
 Washington,2268,Biden and Harris,1461
 Westport,8136,Biden and Harris,5108
 Woodbridge,5626,Biden and Harris,3773
+Woodbury,6499,Biden and Harris,3138
 Avon,11643,Trump and Pence,4379
 Bethany,3698,Trump and Pence,1718
 Bethlehem,2367,Trump and Pence,1393
+Canaan,0,Trump and Pence,0
 Canton,6571,Trump and Pence,2627
 Clinton,7647,Trump and Pence,3259
 Columbia,3541,Trump and Pence,1593
@@ -49,6 +56,8 @@ East Hampton,7988,Trump and Pence,3746
 East Haven,14175,Trump and Pence,7464
 Easton,5020,Trump and Pence,2178
 Essex,4715,Trump and Pence,1635
+Franklin,1261,Trump and Pence,674
+Goshen,2098,Trump and Pence,1161
 Guilford,12824,Trump and Pence,4262
 Haddam,3934,Trump and Pence,2335
 Harwinton,3724,Trump and Pence,2247
@@ -63,8 +72,10 @@ North Canaan,1657,Trump and Pence,786
 Plainville,9530,Trump and Pence,4742
 Redding,5975,Trump and Pence,2052
 Roxbury,1622,Trump and Pence,660
+Salem,2614,Trump and Pence,1291
 Scotland,970,Trump and Pence,537
 Simsbury,15630,Trump and Pence,5419
+Stratford,26507,Trump and Pence,10004
 Thomaston,4363,Trump and Pence,2759
 Thompson,5129,Trump and Pence,2995
 Union,571,Trump and Pence,307
@@ -73,3 +84,4 @@ Warren,931,Trump and Pence,460
 Washington,2268,Trump and Pence,770
 Westport,8136,Trump and Pence,2902
 Woodbridge,5626,Trump and Pence,1790
+Woodbury,6499,Trump and Pence,3280
