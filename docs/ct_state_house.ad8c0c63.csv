@@ -1,20 +1,20 @@
 Office Name,Vote Totals,variable,value
-State Representative 55,15213,"John Collins, Democratic Party",7099
-State Representative 55,15213,"Robin Green, Republican Party",7466
-State Representative 55,15213,"Salvatore V. Sena Jr., Petitioning Candidate",648
-State Representative 104,9566,"Kara Rochelle, Democratic Party",5085
-State Representative 104,9566,"Kara Rochelle, Independent Party",319
-State Representative 104,9566,"Kara Rochelle, Working Families Party",231
-State Representative 104,9566,"Myra Rivers, Republican Party",3931
-State Representative 53,13860,"Pat Wilson Pheanious, Democratic Party",6395
-State Representative 53,13860,"Pat Wilson Pheanious, Working Families Party",299
-State Representative 53,13860,"Tammy Nuccio, Independent Party",399
-State Representative 53,13860,"Tammy Nuccio, Republican Party",6767
-State Representative 17,14824,"Eleni Kavros DeGraw, Democratic Party",7417
-State Representative 17,14824,"Eleni Kavros DeGraw, Working Families Party",250
-State Representative 17,14824,"Leslee Hill, Independent Party",302
-State Representative 17,14824,"Leslee Hill, Republican Party",6855
-State Representative 19,10528,"Tammy Exum, Democratic Party",10528
+State Representative 55,15271,"John Collins, Democratic Party",7124
+State Representative 55,15271,"Robin Green, Republican Party",7491
+State Representative 55,15271,"Salvatore V. Sena Jr., Petitioning Candidate",656
+State Representative 104,9914,"Kara Rochelle, Democratic Party",5346
+State Representative 104,9914,"Kara Rochelle, Independent Party",329
+State Representative 104,9914,"Kara Rochelle, Working Families Party",235
+State Representative 104,9914,"Myra Rivers, Republican Party",4004
+State Representative 53,13863,"Pat Wilson Pheanious, Democratic Party",6396
+State Representative 53,13863,"Pat Wilson Pheanious, Working Families Party",299
+State Representative 53,13863,"Tammy Nuccio, Independent Party",400
+State Representative 53,13863,"Tammy Nuccio, Republican Party",6768
+State Representative 17,15112,"Eleni Kavros DeGraw, Democratic Party",7575
+State Representative 17,15112,"Eleni Kavros DeGraw, Working Families Party",257
+State Representative 17,15112,"Leslee Hill, Independent Party",309
+State Representative 17,15112,"Leslee Hill, Republican Party",6971
+State Representative 19,10594,"Tammy Exum, Democratic Party",10594
 State Representative 62,15140,"Audrey Lampert, Democratic Party",6626
 State Representative 62,15140,"Mark W. Anderson, Independent Party",409
 State Representative 62,15140,"Mark W. Anderson, Republican Party",8105
@@ -98,10 +98,10 @@ State Representative 90,11077,"Craig Fishbein, Independent Party",170
 State Representative 90,11077,"Craig Fishbein, Republican Party",5160
 State Representative 90,11077,"Jim Jinks, Democratic Party",5570
 State Representative 90,11077,"Jim Jinks, Working Families Party",177
-State Representative 36,13842,"Christine Palm, Democratic Party",7068
-State Representative 36,13842,"Christine Palm, Working Families Party",270
-State Representative 36,13842,"Robert Siegrist, Independent Party",335
-State Representative 36,13842,"Robert Siegrist, Republican Party",6169
+State Representative 36,15378,"Christine Palm, Democratic Party",8104
+State Representative 36,15378,"Christine Palm, Working Families Party",297
+State Representative 36,15378,"Robert Siegrist, Independent Party",368
+State Representative 36,15378,"Robert Siegrist, Republican Party",6609
 State Representative 35,14074,"Christine Goupil, Democratic Party",6572
 State Representative 35,14074,"Christine Goupil, Independent Party",260
 State Representative 35,14074,"Christine Goupil, Working Families Party",152
@@ -118,8 +118,8 @@ State Representative 48,13642,"Julie Shilosky, Republican Party",6037
 State Representative 63,11520,"Jay Case, Republican Party",7931
 State Representative 63,11520,"Noel Rodriquez, Democratic Party",3297
 State Representative 63,11520,"Noel Rodriquez, Independent Party",292
-State Representative 08,14974,"Brenda Falusi, Democratic Party",5856
-State Representative 08,14974,"Timothy Ackert, Republican Party",9118
+State Representative 08,15000,"Brenda Falusi, Democratic Party",5873
+State Representative 08,15000,"Timothy Ackert, Republican Party",9127
 State Representative 32,10999,"Christie M. Carpino, Independent Party",2475
 State Representative 32,10999,"Christie M. Carpino, Republican Party",8524
 State Representative 109,8595,"David Arconti Jr., Democratic Party",4982
@@ -140,10 +140,10 @@ State Representative 141,10488,"Terrie E. Wood, Independent Party",2093
 State Representative 141,10488,"Terrie E. Wood, Republican Party",8395
 State Representative 147,11506,"Dan Maymin, Republican Party",4595
 State Representative 147,11506,"Matt Blumenthal, Democratic Party",6911
-State Representative 114,13875,"Dan DeBarba, Independent Party",277
-State Representative 114,13875,"Dan DeBarba, Republican Party",6286
-State Representative 114,13875,"Mary Welander, Democratic Party",7032
-State Representative 114,13875,"Mary Welander, Working Families Party",280
+State Representative 114,13952,"Dan DeBarba, Independent Party",279
+State Representative 114,13952,"Dan DeBarba, Republican Party",6309
+State Representative 114,13952,"Mary Welander, Democratic Party",7081
+State Representative 114,13952,"Mary Welander, Working Families Party",283
 State Representative 101,14967,"John-Michael Parker, Democratic Party",7682
 State Representative 101,14967,"John-Michael Parker, Independent Party",360
 State Representative 101,14967,"John-Michael Parker, Working Families Party",198
@@ -170,10 +170,10 @@ State Representative 99,11380,"Dave Yaccarino, Democratic Party",4456
 State Representative 99,11380,"Dave Yaccarino, Working Families Party",236
 State Representative 99,11380,"Joe Zullo, Independent Party",400
 State Representative 99,11380,"Joe Zullo, Republican Party",6288
-State Representative 37,14032,"Cate Steel, Democratic Party",6696
-State Representative 37,14032,"Cate Steel, Working Families Party",219
-State Representative 37,14032,"Holly H. Cheeseman, Independent Party",318
-State Representative 37,14032,"Holly H. Cheeseman, Republican Party",6799
+State Representative 37,14036,"Cate Steel, Democratic Party",6699
+State Representative 37,14036,"Cate Steel, Working Families Party",219
+State Representative 37,14036,"Holly H. Cheeseman, Independent Party",318
+State Representative 37,14036,"Holly H. Cheeseman, Republican Party",6800
 State Representative 135,15228,"Anne Hughes, Democratic Party",8661
 State Representative 135,15228,"John Shaban, Independent Party",352
 State Representative 135,15228,"John Shaban, Republican Party",6215
@@ -213,8 +213,8 @@ State Representative 40,8915,"Christine Conley, Democratic Party",5006
 State Representative 40,8915,"Christine Conley, Working Families Party",242
 State Representative 40,8915,"Lauren Gauthier, Independent Party",217
 State Representative 40,8915,"Lauren Gauthier, Republican Party",3450
-State Representative 41,8735,"Joe de la Cruz, Democratic Party",7974
-State Representative 41,8735,"Joe de la Cruz, Working Families Party",761
+State Representative 41,8744,"Joe de la Cruz, Democratic Party",7983
+State Representative 41,8744,"Joe de la Cruz, Working Families Party",761
 State Representative 91,7086,"Michael C. D'Agostino, Democratic Party",6150
 State Representative 91,7086,"Weruche U. George, Petitioning Candidate",936
 State Representative 94,6259,"Robyn Porter, Democratic Party",6259
@@ -238,11 +238,11 @@ State Representative 44,10865,"Anne Dubay Dauphinais, Independent Party",339
 State Representative 44,10865,"Anne Dubay Dauphinais, Republican Party",6206
 State Representative 44,10865,"Christine Rosati Randall, Democratic Party",4012
 State Representative 44,10865,"Christine Rosati Randall, Working Families Party",308
-State Representative 42,11638,"Matt Geren, Democratic Party",5032
-State Representative 42,11638,"Matt Geren, Working Families Party",294
-State Representative 42,11638,"Mike France, Independent Party",307
-State Representative 42,11638,"Mike France, Republican Party",5915
-State Representative 42,11638,"Robert W. Lawrence, Petitioning Candidate",90
+State Representative 42,11642,"Matt Geren, Democratic Party",5032
+State Representative 42,11642,"Matt Geren, Working Families Party",294
+State Representative 42,11642,"Mike France, Independent Party",307
+State Representative 42,11642,"Mike France, Republican Party",5915
+State Representative 42,11642,"Robert W. Lawrence, Petitioning Candidate",94
 State Representative 23,16189,"David A. Rubino, Democratic Party",7063
 State Representative 23,16189,"David A. Rubino, Working Families Party",197
 State Representative 23,16189,"Devin R. Carney, Independent Party",423
@@ -259,7 +259,7 @@ State Representative 82,11618,"Mike Skelps, Republican Party",5193
 State Representative 84,6434,"Hilda E. Santiago, Democratic Party",4108
 State Representative 84,6434,"Hilda E. Santiago, Working Families Party",304
 State Representative 84,6434,"Richard Cordero, Republican Party",2022
-State Representative 71,7436,"Anthony J. D'Amelio, Republican Party",7436
+State Representative 71,7444,"Anthony J. D'Amelio, Republican Party",7444
 State Representative 100,7025,"Quentin Phipps, Democratic Party",3689
 State Representative 100,7025,"Quentin Phipps, Working Families Party",303
 State Representative 100,7025,"Tony Gennaro, Republican Party",3033
@@ -275,10 +275,10 @@ State Representative 119,14018,"Bryan Anderson, Democratic Party",6465
 State Representative 119,14018,"Bryan Anderson, Independent Party",289
 State Representative 119,14018,"Bryan Anderson, Working Families Party",157
 State Representative 119,14018,"Kathy Kennedy, Republican Party",7107
-State Representative 117,13379,"Charles Ferraro, Republican Party",7225
-State Representative 117,13379,"Tony Sutton, Democratic Party",5765
-State Representative 117,13379,"Tony Sutton, Independent Party",210
-State Representative 117,13379,"Tony Sutton, Working Families Party",179
+State Representative 117,13514,"Charles Ferraro, Republican Party",7297
+State Representative 117,13514,"Tony Sutton, Democratic Party",5825
+State Representative 117,13514,"Tony Sutton, Independent Party",211
+State Representative 117,13514,"Tony Sutton, Working Families Party",181
 State Representative 112,10526,"JP Sredzinski, Independent Party",1957
 State Representative 112,10526,"JP Sredzinski, Republican Party",8569
 State Representative 38,14193,"Baird Welch-Collins, Democratic Party",6924
@@ -312,8 +312,8 @@ State Representative 93,3856,"Toni E. Walker, Democratic Party",3856
 State Representative 97,5613,"Alphonse Paolillo Jr., Democratic Party",4076
 State Representative 97,5613,"Erin Reilly, Independent Party",114
 State Representative 97,5613,"Erin Reilly, Republican Party",1423
-State Representative 116,4175,"Michael DiMassa, Democratic Party",3813
-State Representative 116,4175,"Michael DiMassa, Working Families Party",362
+State Representative 116,4297,"Michael DiMassa, Democratic Party",3928
+State Representative 116,4297,"Michael DiMassa, Working Families Party",369
 State Representative 27,8787,"Gary Turco, Democratic Party",4264
 State Representative 27,8787,"Gary Turco, Working Families Party",276
 State Representative 27,8787,"Michael Camillo, Independent Party",139
@@ -321,10 +321,10 @@ State Representative 27,8787,"Michael Camillo, Republican Party",4108
 State Representative 29,12875,"Henry Vasel, Independent Party",238
 State Representative 29,12875,"Henry Vasel, Republican Party",5256
 State Representative 29,12875,"Kerry Szeps Wood, Democratic Party",7381
-State Representative 39,6590,"Anthony Nolan, Democratic Party",4711
-State Representative 39,6590,"Anthony Nolan, Working Families Party",361
-State Representative 39,6590,"Erycka Ortiz, Green Party",238
-State Representative 39,6590,"Kat Goulart, Republican Party",1280
+State Representative 39,6597,"Anthony Nolan, Democratic Party",4718
+State Representative 39,6597,"Anthony Nolan, Working Families Party",361
+State Representative 39,6597,"Erycka Ortiz, Green Party",238
+State Representative 39,6597,"Kat Goulart, Republican Party",1280
 State Representative 67,12871,"Hilary Ram, Democratic Party",4856
 State Representative 67,12871,"Hilary Ram, Working Families Party",205
 State Representative 67,12871,"William J. Buckbee, Independent Party",589
@@ -364,7 +364,7 @@ State Representative 113,12007,"Elaine Matto, Democratic Party",4298
 State Representative 113,12007,"Jason Perillo, Republican Party",7709
 State Representative 122,13760,"Ben McGorty, Republican Party",8231
 State Representative 122,13760,"Jose Goncalves, Democratic Party",5529
-State Representative 16,11348,"John K. Hampton, Democratic Party",11348
+State Representative 16,11730,"John K. Hampton, Democratic Party",11730
 State Representative 52,11777,"Greg Post, Democratic Party",3963
 State Representative 52,11777,"Greg Post, Working Families Party",208
 State Representative 52,11777,"Kurt Vail, Independent Party",401
@@ -430,8 +430,8 @@ State Representative 18,11509,"Jillian Gilchrest, Democratic Party",8412
 State Representative 18,11509,"Rick Bush, Republican Party",3097
 State Representative 20,8122,"Kate Farrar, Democratic Party",7326
 State Representative 20,8122,"Kate Farrar, Working Families Party",796
-State Representative 115,5466,"Dorinda Borer, Democratic Party",4835
-State Representative 115,5466,"Dorinda Borer, Working Families Party",631
+State Representative 115,5599,"Dorinda Borer, Democratic Party",4950
+State Representative 115,5599,"Dorinda Borer, Working Families Party",649
 State Representative 136,15712,"Chip Stephens, Republican Party",5266
 State Representative 136,15712,"Jonathan Steinberg, Democratic Party",10446
 State Representative 28,14316,"Amy Morrin Bello, Democratic Party",7667
