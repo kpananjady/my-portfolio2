@@ -8,7 +8,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Berlin,,
 0.00%,Bethany,,
 0.00%,Bethel,,
-0.00%,Bethlehem,,
+82.61%,Bethlehem,1,1
 0.00%,Bloomfield,,
 0.00%,Bolton,,
 0.00%,Bozrah,,
@@ -58,7 +58,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Greenwich,,
 0.00%,Griswold,,
 0.00%,Groton,,
-0.00%,Guilford,,
+0.00%,Guilford,5,5
 0.00%,Haddam,,
 0.00%,Hamden,,
 0.00%,Hampton,,
@@ -84,7 +84,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Middletown,,
 0.00%,Milford,,
 0.00%,Monroe,,
-0.00%,Montville,,
+79.68%,Montville,6,6
 0.00%,Morris,,
 0.00%,Naugatuck,,
 0.00%,New Britain,,
@@ -126,7 +126,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Sharon,,
 0.00%,Shelton,,
 0.00%,Sherman,,
-0.00%,Simsbury,,
+0.00%,Simsbury,4,4
 0.00%,Somers,,
 0.00%,Southbury,,
 0.00%,Southington,,
@@ -168,4 +168,4 @@ percentage,Town,Reported,Total Precincts
 0.00%,Woodbridge,,
 0.00%,Woodbury,,
 0.00%,Woodstock,,
-85.90%,Total,,
+42.60%,Total,,
