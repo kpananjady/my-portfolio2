@@ -20,7 +20,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Brooklyn,,
 0.00%,Burlington,,
 0.00%,Canaan,,
-0.00%,Canterbury,,
+81.50%,Canterbury,1,1
 0.00%,Canton,,
 82.64%,Chaplin,1,1
 0.00%,Cheshire,,
@@ -81,12 +81,12 @@ percentage,Town,Reported,Total Precincts
 0.00%,Meriden,,
 0.00%,Middlebury,,
 0.00%,Middlefield,,
-0.00%,Middletown,,
+47.93%,Middletown,14,14
 0.00%,Milford,,
 0.00%,Monroe,,
 79.68%,Montville,6,6
 0.00%,Morris,,
-0.00%,Naugatuck,,
+72.93%,Naugatuck,9,9
 0.00%,New Britain,,
 0.00%,New Canaan,,
 0.00%,New Fairfield,,
@@ -110,16 +110,16 @@ percentage,Town,Reported,Total Precincts
 81.73%,Plainfield,5,5
 83.16%,Plainville,4,4
 0.00%,Plymouth,,
-0.00%,Pomfret,,
+85.66%,Pomfret,1,1
 0.00%,Portland,,
 0.00%,Preston,,
 0.00%,Prospect,,
 0.00%,Putnam,,
 0.00%,Redding,,
 0.00%,Ridgefield,,
-0.00%,Rocky Hill,,
+83.65%,Rocky Hill,,
 87.96%,Roxbury,1,1
-0.00%,Salem,,
+88.81%,Salem,1,1
 0.00%,Salisbury,,
 79.63%,Scotland,1,1
 0.00%,Seymour,,
@@ -135,7 +135,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Stafford,,
 0.00%,Stamford,,
 0.00%,Sterling,,
-0.00%,Stonington,,
+0.00%,Stonington,5,5
 0.00%,Stratford,19,19
 0.00%,Suffield,,
 83.57%,Thomaston,1,1
@@ -168,4 +168,4 @@ percentage,Town,Reported,Total Precincts
 0.00%,Woodbridge,,
 0.00%,Woodbury,,
 0.00%,Woodstock,,
-51.52%,Total,,
+52.84%,Total,,
