@@ -7,12 +7,12 @@ percentage,Town,Reported,Total Precincts
 0.00%,Beacon Falls,,
 0.00%,Berlin,,
 88.16%,Bethany,1,1
-0.00%,Bethel,,
+0.00%,Bethel,5,5
 82.61%,Bethlehem,1,1
 0.00%,Bloomfield,5,5
-0.00%,Bolton,,
+89.19%,Bolton,1,1
 80.66%,Bozrah,1,1
-0.00%,Branford,,
+79.32%,Branford,7,7
 0.00%,Bridgeport,,
 87.20%,Bridgewater,1,1
 0.00%,Bristol,,
@@ -56,7 +56,7 @@ percentage,Town,Reported,Total Precincts
 88.85%,Goshen,2,2
 0.00%,Granby,,
 0.00%,Greenwich,,
-0.00%,Griswold,,
+75.02%,Griswold,6,6
 0.00%,Groton,,
 0.00%,Guilford,5,5
 0.00%,Haddam,,
@@ -76,9 +76,9 @@ percentage,Town,Reported,Total Precincts
 0.00%,Lyme,,
 0.00%,Madison,,
 0.00%,Manchester,,
-0.00%,Mansfield,,
+73.50%,Mansfield,4,4
 85.91%,Marlborough,1,1
-0.00%,Meriden,,
+76.32%,Meriden,13,13
 0.00%,Middlebury,,
 83.74%,Middlefield,1,1
 47.93%,Middletown,14,14
@@ -99,10 +99,10 @@ percentage,Town,Reported,Total Precincts
 88.22%,Norfolk,1,1
 0.00%,North Branford,,
 0.00%,North Canaan,,
-0.00%,North Haven,,
+83.65%,North Haven,,
 0.00%,North Stonington,,
 0.00%,Norwalk,,
-0.00%,Norwich,,
+0.00%,Norwich,6,6
 0.00%,Old Lyme,,
 80.82%,Old Saybrook,,
 88.26%,Orange,3,3
@@ -150,22 +150,22 @@ percentage,Town,Reported,Total Precincts
 84.00%,Warren,1,1
 0.00%,Washington,,
 63.26%,Waterbury,21,21
-0.00%,Waterford,,
+86.77%,Waterford,4,4
 84.63%,Watertown,4,4
 0.00%,Westbrook,,
 0.00%,West Hartford,,
 0.00%,West Haven,,
-0.00%,Weston,,
+86.71%,Weston,2,2
 0.00%,Westport,,
 0.00%,Wethersfield,,
-0.00%,Willington,,
+85.98%,Willington,1,1
 84.59%,Wilton,4,4
 80.10%,Winchester,1,1
 0.00%,Windham,,
-0.00%,Windsor,,
+80.79%,Windsor,7,7
 79.44%,Windsor Locks,,
 78.89%,Wolcott,3,3
 0.00%,Woodbridge,,
 0.00%,Woodbury,,
 0.00%,Woodstock,,
-62.54%,Total,,
+65.62%,Total,,

@@ -1,9 +1,9 @@
 Office Name,Vote Totals,variable,value
-State Senator 04,48470,"Harold S. Harris, Independent Party",723
-State Senator 04,48470,"Kelly Elizabeth Green, Reclaim Party",660
-State Senator 04,48470,"Matthew M. Corey, Republican Party",18426
-State Senator 04,48470,"Steve Cassano, Democratic Party",27576
-State Senator 04,48470,"Steve Cassano, Working Families Party",1085
+State Senator 04,51678,"Harold S. Harris, Independent Party",763
+State Senator 04,51678,"Kelly Elizabeth Green, Reclaim Party",769
+State Senator 04,51678,"Matthew M. Corey, Republican Party",20006
+State Senator 04,51678,"Steve Cassano, Democratic Party",28991
+State Senator 04,51678,"Steve Cassano, Working Families Party",1149
 State Senator 35,30265,"Dan Champagne, Republican Party",15608
 State Senator 35,30265,"Lisa Thomas, Democratic Party",13438
 State Senator 35,30265,"Lisa Thomas, Independent Party",668
@@ -28,10 +28,10 @@ State Senator 02,17040,"Douglas McCrory, Democratic Party",17040
 State Senator 05,28204,"Derek Slap, Democratic Party",12578
 State Senator 05,28204,"Joelle Nawrocki, Independent Party",1386
 State Senator 05,28204,"Phillip Chabot, Republican Party",14240
-State Senator 20,38707,"Joseph Taraya, Independent Party",438
-State Senator 20,38707,"Martha Marx, Democratic Party",18092
-State Senator 20,38707,"Martha Marx, Working Families Party",891
-State Senator 20,38707,"Paul M. Formica, Republican Party",19286
+State Senator 20,50675,"Joseph Taraya, Independent Party",586
+State Senator 20,50675,"Martha Marx, Democratic Party",23327
+State Senator 20,50675,"Martha Marx, Working Families Party",1104
+State Senator 20,50675,"Paul M. Formica, Republican Party",25658
 State Senator 12,37179,"Christine Cohen, Democratic Party",21122
 State Senator 12,37179,"Christine Cohen, Independent Party",666
 State Senator 12,37179,"Christine Cohen, Working Families Party",537
@@ -40,21 +40,28 @@ State Senator 30,36125,"Craig Miner, Republican Party",19691
 State Senator 30,36125,"David R. Gronbach, Democratic Party",15209
 State Senator 30,36125,"David R. Gronbach, Working Families Party",632
 State Senator 30,36125,"Joseph A. Bongiorno, Independent Party",593
-State Senator 29,18523,"Jessica Alba, Independent Party",602
-State Senator 29,18523,"Jessica Alba, Republican Party",9940
-State Senator 29,18523,"Mae Flexer, Democratic Party",7475
-State Senator 29,18523,"Mae Flexer, Working Families Party",506
+State Senator 29,25819,"Jessica Alba, Independent Party",766
+State Senator 29,25819,"Jessica Alba, Republican Party",11768
+State Senator 29,25819,"Mae Flexer, Democratic Party",12505
+State Senator 29,25819,"Mae Flexer, Working Families Party",780
 State Senator 33,50266,"Brendan Saunders, Republican Party",22976
 State Senator 33,50266,"Norm Needleman, Democratic Party",25529
 State Senator 33,50266,"Norm Needleman, Independent Party",1761
-State Senator 19,21154,"Catherine A. Osten, Democratic Party",9656
-State Senator 19,21154,"Catherine A. Osten, Working Families Party",490
-State Senator 19,21154,"Steve Weir, Republican Party",10663
-State Senator 19,21154,"William H. Russell, Independent Party",345
+State Senator 19,35617,"Catherine A. Osten, Democratic Party",18202
+State Senator 19,35617,"Catherine A. Osten, Working Families Party",1007
+State Senator 19,35617,"Steve Weir, Republican Party",15741
+State Senator 19,35617,"William H. Russell, Independent Party",667
 State Senator 09,42050,"Matt Lesser, Democratic Party",20907
 State Senator 09,42050,"Matt Lesser, Working Families Party",1153
 State Senator 09,42050,"Richard Ruglio, Independent Party",949
 State Senator 09,42050,"Richard Ruglio, Republican Party",19041
+State Senator 25,52110,"Bob Duff, Democratic Party",30860
+State Senator 25,52110,"Bob Duff, Working Families Party",927
+State Senator 25,52110,"Ellie Kousidis, Independent Party",1356
+State Senator 25,52110,"Ellie Kousidis, Republican Party",18967
+State Senator 27,3851,"Carlo Leone, Democratic Party",1636
+State Senator 27,3851,"Eva A. Maldonado, Independent Party",125
+State Senator 27,3851,"Eva A. Maldonado, Republican Party",2090
 State Senator 34,48712,"April Capone, Democratic Party",20831
 State Senator 34,48712,"April Capone, Working Families Party",893
 State Senator 34,48712,"David Bedell, Write In",0
@@ -80,26 +87,26 @@ State Senator 11,11252,"Martin M. Looney, Democratic Party",6742
 State Senator 31,15917,"Henri Martin, Independent Party",590
 State Senator 31,15917,"Henri Martin, Republican Party",9480
 State Senator 31,15917,"Mary B. Fortier, Democratic Party",5847
+State Senator 13,31547,"Len Suzio, Independent Party",1155
+State Senator 13,31547,"Len Suzio, Republican Party",14064
+State Senator 13,31547,"Mary Daugherty Abrams, Democratic Party",15564
+State Senator 13,31547,"Mary Daugherty Abrams, Working Families Party",764
 State Senator 15,24406,"Joan V. Hartley, Democratic Party",19972
 State Senator 15,24406,"Joan V. Hartley, Independent Party",4434
-State Senator 13,7599,"Len Suzio, Independent Party",230
-State Senator 13,7599,"Len Suzio, Republican Party",3788
-State Senator 13,7599,"Mary Daugherty Abrams, Democratic Party",3380
-State Senator 13,7599,"Mary Daugherty Abrams, Working Families Party",201
 State Senator 14,40011,"James Maroney, Democratic Party",21153
 State Senator 14,40011,"James Maroney, Independent Party",1164
 State Senator 14,40011,"James Maroney, Working Families Party",594
 State Senator 14,40011,"Michael Southworth, Republican Party",17100
 State Senator 36,3817,"Alex Kasser, Democratic Party",1332
 State Senator 36,3817,"Ryan Fazio, Republican Party",2485
+State Senator 16,44936,"Jack Perry, Democratic Party",9016
+State Senator 16,44936,"Jack Perry, Independent Party",544
+State Senator 16,44936,"Jack Perry, Working Families Party",319
+State Senator 16,44936,"Paul J. Small, Write In",0
+State Senator 16,44936,"Rob Sampson, Republican Party",35057
 State Senator 21,30521,"Kevin C. Kelly, Republican Party",30521
 State Senator 23,2980,"Dennis Bradley, Democratic Party",2409
 State Senator 23,2980,"Josiah Israel, Republican Party",571
-State Senator 16,17606,"Jack Perry, Democratic Party",7253
-State Senator 16,17606,"Jack Perry, Independent Party",417
-State Senator 16,17606,"Jack Perry, Working Families Party",266
-State Senator 16,17606,"Paul J. Small, Write In",0
-State Senator 16,17606,"Rob Sampson, Republican Party",9670
 State Senator 01,24916,"Barbara Ruhe, Republican Party",9508
 State Senator 01,24916,"John W. Fonfara, Democratic Party",14682
 State Senator 01,24916,"Mary L. Sanders, Green Party",726
