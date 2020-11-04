@@ -64,7 +64,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Hampton,,
 0.00%,Hartford,,
 0.00%,Hartland,,
-0.00%,Harwinton,,
+86.77%,Harwinton,2,2
 0.00%,Hebron,,
 0.00%,Kent,,
 0.00%,Killingly,,
@@ -121,7 +121,7 @@ percentage,Town,Reported,Total Precincts
 87.96%,Roxbury,1,1
 0.00%,Salem,,
 0.00%,Salisbury,,
-0.00%,Scotland,,
+79.63%,Scotland,1,1
 0.00%,Seymour,,
 0.00%,Sharon,,
 0.00%,Shelton,,
@@ -143,7 +143,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Tolland,,
 0.00%,Torrington,,
 0.00%,Trumbull,,
-0.00%,Union,,
+86.48%,Union,1,1
 0.00%,Vernon,,
 0.00%,Voluntown,,
 0.00%,Wallingford,,
@@ -168,4 +168,4 @@ percentage,Town,Reported,Total Precincts
 0.00%,Woodbridge,,
 0.00%,Woodbury,,
 0.00%,Woodstock,,
-86.70%,Total,,
+85.90%,Total,,

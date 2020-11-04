@@ -46,6 +46,12 @@ const tip = d3
     }else if (d.properties[i].includes('Working')){
       string_return = string_return +`<span style='color:lightgrey'>${d.properties[i]},  <span style='color:lightblue'>${d.properties[`${i}_pct`]}% <br>`
 
+    }else if (d.properties[i].includes('Trump')){
+      string_return = string_return +`<span style='color:lightgrey'>${d.properties[i]},  <span style='color:pink'>${d.properties[`${i}_pct`]}% <br>`
+
+    }else if (d.properties[i].includes('Biden')){
+      string_return = string_return +`<span style='color:lightgrey'>${d.properties[i]},  <span style='color:lightblue'>${d.properties[`${i}_pct`]}% <br>`
+
     }
     else {
     string_return = string_return +`<span style='color:lightgrey'>${d.properties[i]},  <span style='color:#FFE4B5'>${d.properties[`${i}_pct`]}% <br>`

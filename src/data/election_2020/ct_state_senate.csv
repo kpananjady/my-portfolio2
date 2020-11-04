@@ -1,10 +1,20 @@
 Office Name,Vote Totals,variable,value
-State Senator 08,12538,"Keith James McConnell, Independent Party",181
-State Senator 08,12538,"Kevin Witkos, Republican Party",6172
-State Senator 08,12538,"Melissa E. Osborne, Democratic Party",6185
-State Senator 33,9568,"Brendan Saunders, Republican Party",4553
-State Senator 33,9568,"Norm Needleman, Democratic Party",4667
-State Senator 33,9568,"Norm Needleman, Independent Party",348
+State Senator 08,27998,"Keith James McConnell, Independent Party",432
+State Senator 08,27998,"Kevin Witkos, Republican Party",13067
+State Senator 08,27998,"Melissa E. Osborne, Democratic Party",14499
+State Senator 17,3664,"George Logan, Independent Party",124
+State Senator 17,3664,"George Logan, Republican Party",1959
+State Senator 17,3664,"Jorge Cabrera, Democratic Party",1489
+State Senator 17,3664,"Jorge Cabrera, Working Families Party",92
+State Senator 32,3857,"Eric C. Berthel, Republican Party",2139
+State Senator 32,3857,"Jeffrey Desmarais, Democratic Party",1718
+State Senator 33,14230,"Brendan Saunders, Republican Party",6094
+State Senator 33,14230,"Norm Needleman, Democratic Party",7606
+State Senator 33,14230,"Norm Needleman, Independent Party",530
+State Senator 12,6882,"Christine Cohen, Democratic Party",3414
+State Senator 12,6882,"Christine Cohen, Independent Party",160
+State Senator 12,6882,"Christine Cohen, Working Families Party",138
+State Senator 12,6882,"Joe LaPorta, Republican Party",3170
 State Senator 31,2621,"Henri Martin, Independent Party",49
 State Senator 31,2621,"Henri Martin, Republican Party",1721
 State Senator 31,2621,"Mary B. Fortier, Democratic Party",851
@@ -16,8 +26,6 @@ State Senator 30,2445,"Craig Miner, Republican Party",1531
 State Senator 30,2445,"David R. Gronbach, Democratic Party",837
 State Senator 30,2445,"David R. Gronbach, Working Families Party",36
 State Senator 30,2445,"Joseph A. Bongiorno, Independent Party",41
-State Senator 32,1560,"Eric C. Berthel, Republican Party",726
-State Senator 32,1560,"Jeffrey Desmarais, Democratic Party",834
 State Senator 29,936,"Jessica Alba, Independent Party",35
 State Senator 29,936,"Jessica Alba, Republican Party",532
 State Senator 29,936,"Mae Flexer, Democratic Party",357
