@@ -142,8 +142,13 @@ Promise.all([
       d.properties[0] = counter
 
       turnout.forEach(function(r) {if (r['Town']===d.properties.NAME10){
-        d.properties.newName = d.properties.NAME10 + ': ' + r['Reported'] + ' of ' + r['Total Precincts'] + ' reporting'
 
+        if (r['Total Precincts'] != 0){
+        d.properties.newName = d.properties.NAME10 + ': ' + r['Reported'] + ' of ' + r['Total Precincts'] + ' reporting'
+        } else {
+          d.properties.newName = d.properties.NAME10 
+
+        }
       }
       })
       tip.show.call(this, d)

@@ -6,7 +6,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Barkhamsted,,
 0.00%,Beacon Falls,,
 0.00%,Berlin,,
-0.00%,Bethany,,
+88.16%,Bethany,1,1
 0.00%,Bethel,,
 82.61%,Bethlehem,1,1
 0.00%,Bloomfield,,
@@ -136,7 +136,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Stamford,,
 0.00%,Sterling,,
 0.00%,Stonington,,
-0.00%,Stratford,,
+0.00%,Stratford,19,19
 0.00%,Suffield,,
 83.57%,Thomaston,1,1
 76.69%,Thompson,4,4
@@ -164,8 +164,8 @@ percentage,Town,Reported,Total Precincts
 0.00%,Windham,,
 0.00%,Windsor,,
 0.00%,Windsor Locks,,
-0.00%,Wolcott,,
+78.89%,Wolcott,3,3
 0.00%,Woodbridge,,
 0.00%,Woodbury,,
 0.00%,Woodstock,,
-64.98%,Total,,
+51.52%,Total,,
