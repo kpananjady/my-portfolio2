@@ -96,7 +96,33 @@ Promise.all([
     .append('path')
     .attr('class', 'path-town')
     .attr('d', path)
-    .attr('fill', 'grey')  
+    // .attr('fill', 'grey')  
+    .attr('fill', function(d){            
+
+
+      var dem_vote = 0;
+      var rep_vote=0;
+      presidential.forEach( function(r) {if (r['Town Name']===d.properties.NAME10){
+
+
+        if (r['variable'].includes("Biden")){
+          console.log('dems')
+          console.log((100*r['value']/r['Vote Totals']).toFixed(2))
+          dem_vote = dem_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
+        } else if (r['variable'].includes("Trump")){
+          rep_vote = rep_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
+        }
+        // console.log(r['variable'], Math.round(100*r['value']/r['Vote Totals']))
+       }
+
+
+      }) 
+
+      console.log(dem_vote)
+      console.log(parseFloat(dem_vote)-parseFloat(rep_vote))
+      return colorScale(parseFloat(dem_vote)-parseFloat(rep_vote))
+
+    })
     .attr('stroke', 'white')  
     .on('mouseover', function(d){
       var counter = 0
@@ -184,7 +210,34 @@ Promise.all([
     .append('path')
     .attr('class', 'path-town')
     .attr('d', path)
-    .attr('fill', 'grey')  
+    // .attr('fill', 'grey')  
+       .attr('fill', function(d){            
+
+
+      var dem_vote = 0;
+      var rep_vote=0;
+      presidential.forEach( function(r) {if (r['Town Name']===d.properties.NAME10){
+
+
+        if (r['variable'].includes("Biden")){
+          console.log('Biden')
+          console.log('dems')
+          console.log((100*r['value']/r['Vote Totals']).toFixed(2))
+          dem_vote = dem_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
+        } else if (r['variable'].includes("Trump")){
+          rep_vote = rep_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
+        }
+        // console.log(r['variable'], Math.round(100*r['value']/r['Vote Totals']))
+       }
+
+
+      }) 
+
+      console.log(dem_vote)
+      console.log(parseFloat(dem_vote)-parseFloat(rep_vote))
+      return colorScale(parseFloat(dem_vote)-parseFloat(rep_vote), 'colorScale')
+
+    })
     .attr('stroke', 'white')  
     .on('mouseover', function(d){
       var counter = 0

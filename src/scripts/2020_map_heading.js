@@ -29,20 +29,6 @@ let svg = d3
 
 
 
-    // svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', 100).attr('font-size', 10)
-    // svg.append('text').attr('id', 'box4-text').text('>800').attr('x',width-95).attr('y', 100).attr('font-size', 10)
-
-    // svg.append('rect').attr('id', 'box0').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', 100).attr('fill', colorScale(0)).attr('opacity',0.7)
-    // svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', 100).attr('fill', colorScale(1)).attr('opacity',0.7)
-    // svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', 100).attr('fill', colorScale(2)).attr('opacity',0.7)
-    // svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', 100).attr('fill', colorScale(4)).attr('opacity',0.7)
-    // svg.append('rect').attr('id', 'box4').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', 100).attr('fill', colorScale(5)).attr('opacity',0.7)
-
-    // svg.append('rect').attr('id', 'box0-m').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', 100).style('fill', 'white').attr('opacity',0.4)
-    // svg.append('rect').attr('id', 'box1-m').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', 100).style('fill', 'white').attr('opacity',0.4)
-    // svg.append('rect').attr('id', 'box2-m').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', 100).style('fill', 'white').attr('opacity',0.4)
-    // svg.append('rect').attr('id', 'box3-m').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', 100).style('fill', 'white').attr('opacity',0.4)
-    // svg.append('rect').attr('id', 'box4-m').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', 100).style('fill', 'white').attr('opacity',0.4)
 
     function render() {
         const svgContainer = svg.node().closest('div')
