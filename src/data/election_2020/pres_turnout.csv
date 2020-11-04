@@ -22,7 +22,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Canaan,,
 0.00%,Canterbury,,
 0.00%,Canton,,
-0.00%,Chaplin,,
+82.64%,Chaplin,1,1
 0.00%,Cheshire,,
 0.00%,Chester,,
 0.00%,Clinton,,
@@ -51,7 +51,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Essex,,
 0.00%,Fairfield,,
 0.00%,Farmington,,
-0.00%,Franklin,,
+89.51%,Franklin,1,1
 0.00%,Glastonbury,,
 0.00%,Goshen,,
 0.00%,Granby,,
@@ -107,8 +107,8 @@ percentage,Town,Reported,Total Precincts
 0.00%,Old Saybrook,,
 0.00%,Orange,,
 0.00%,Oxford,,
-0.00%,Plainfield,,
-0.00%,Plainville,,
+81.73%,Plainfield,5,5
+83.16%,Plainville,4,4
 0.00%,Plymouth,,
 0.00%,Pomfret,,
 0.00%,Portland,,
@@ -168,4 +168,4 @@ percentage,Town,Reported,Total Precincts
 0.00%,Woodbridge,,
 0.00%,Woodbury,,
 0.00%,Woodstock,,
-59.25%,Total,,
+64.98%,Total,,
