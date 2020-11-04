@@ -30,10 +30,10 @@ percentage,Town,Reported,Total Precincts
 89.97%,Colebrook,1,1
 87.45%,Columbia,1,1
 90.22%,Cornwall,1,1
-0.00%,Coventry,,
+84.54%,Coventry,2,2
 0.00%,Cromwell,,
 70.62%,Danbury,19,19
-0.00%,Darien,,
+0.00%,Darien,7,7
 0.00%,Deep River,,
 0.00%,Derby,,
 0.00%,Durham,,
@@ -57,7 +57,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Granby,,
 0.00%,Greenwich,,
 75.02%,Griswold,6,6
-0.00%,Groton,,
+83.61%,Groton,7,7
 0.00%,Guilford,5,5
 0.00%,Haddam,,
 56.05%,Hamden,13,13
@@ -116,7 +116,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Prospect,,
 69.90%,Putnam,2,2
 0.00%,Redding,,
-0.00%,Ridgefield,,
+83.69%,Ridgefield,4,4
 83.65%,Rocky Hill,,
 87.96%,Roxbury,1,1
 88.81%,Salem,1,1
@@ -129,7 +129,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Simsbury,4,4
 0.00%,Somers,,
 0.00%,Southbury,,
-0.00%,Southington,,
+82.20%,Southington,11,11
 81.77%,South Windsor,,
 79.40%,Sprague,1,1
 0.00%,Stafford,,
@@ -137,14 +137,14 @@ percentage,Town,Reported,Total Precincts
 71.30%,Sterling,1,1
 0.00%,Stonington,5,5
 0.00%,Stratford,19,19
-0.00%,Suffield,,
+88.08%,Suffield,1,1
 83.57%,Thomaston,1,1
 76.69%,Thompson,4,4
 50.54%,Tolland,3,3
 0.00%,Torrington,,
 0.00%,Trumbull,,
 86.48%,Union,1,1
-0.00%,Vernon,,
+83.61%,Vernon,4,4
 85.57%,Voluntown,1,1
 0.00%,Wallingford,,
 84.00%,Warren,1,1
@@ -168,4 +168,4 @@ percentage,Town,Reported,Total Precincts
 0.00%,Woodbridge,,
 0.00%,Woodbury,,
 0.00%,Woodstock,,
-65.62%,Total,,
+66.68%,Total,,
