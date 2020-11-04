@@ -1,23 +1,23 @@
 percentage,Town,Reported,Total Precincts
-0.00%,Andover,,
+45.01%,Andover,1,1
 0.00%,Ansonia,,
-0.00%,Ashford,,
+86.18%,Ashford,1,1
 0.00%,Avon,,
-0.00%,Barkhamsted,,
+82.43%,Barkhamsted,1,1
 0.00%,Beacon Falls,,
 0.00%,Berlin,,
 88.16%,Bethany,1,1
 0.00%,Bethel,,
 82.61%,Bethlehem,1,1
-0.00%,Bloomfield,,
+0.00%,Bloomfield,5,5
 0.00%,Bolton,,
-0.00%,Bozrah,,
+80.66%,Bozrah,1,1
 0.00%,Branford,,
 0.00%,Bridgeport,,
 87.20%,Bridgewater,1,1
 0.00%,Bristol,,
-0.00%,Brookfield,,
-0.00%,Brooklyn,,
+67.31%,Brookfield,2,2
+57.84%,Brooklyn,1,1
 0.00%,Burlington,,
 0.00%,Canaan,,
 81.50%,Canterbury,1,1
@@ -26,7 +26,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Cheshire,,
 0.00%,Chester,,
 0.00%,Clinton,,
-0.00%,Colchester,,
+55.85%,Colchester,4,4
 0.00%,Colebrook,,
 87.45%,Columbia,1,1
 90.22%,Cornwall,1,1
@@ -60,18 +60,18 @@ percentage,Town,Reported,Total Precincts
 0.00%,Groton,,
 0.00%,Guilford,5,5
 0.00%,Haddam,,
-0.00%,Hamden,,
+56.05%,Hamden,13,13
 0.00%,Hampton,,
 0.00%,Hartford,,
 0.00%,Hartland,,
 86.77%,Harwinton,2,2
 0.00%,Hebron,,
 0.00%,Kent,,
-0.00%,Killingly,,
+72.58%,Killingly,5,5
 0.00%,Killingworth,,
 0.00%,Lebanon,,
 0.00%,Ledyard,,
-0.00%,Lisbon,,
+87.45%,Lisbon,2,2
 0.00%,Litchfield,,
 0.00%,Lyme,,
 0.00%,Madison,,
@@ -105,7 +105,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Norwich,,
 0.00%,Old Lyme,,
 80.82%,Old Saybrook,,
-0.00%,Orange,,
+88.26%,Orange,3,3
 0.00%,Oxford,,
 81.73%,Plainfield,5,5
 83.16%,Plainville,4,4
@@ -140,7 +140,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Suffield,,
 83.57%,Thomaston,1,1
 76.69%,Thompson,4,4
-0.00%,Tolland,,
+50.54%,Tolland,3,3
 0.00%,Torrington,,
 0.00%,Trumbull,,
 86.48%,Union,1,1
@@ -151,7 +151,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Washington,,
 0.00%,Waterbury,,
 0.00%,Waterford,,
-22.84%,Watertown,4,4
+84.63%,Watertown,4,4
 0.00%,Westbrook,,
 0.00%,West Hartford,,
 0.00%,West Haven,,
@@ -159,7 +159,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,Westport,,
 0.00%,Wethersfield,,
 0.00%,Willington,,
-0.00%,Wilton,,
+84.59%,Wilton,4,4
 80.10%,Winchester,1,1
 0.00%,Windham,,
 0.00%,Windsor,,
@@ -168,4 +168,4 @@ percentage,Town,Reported,Total Precincts
 0.00%,Woodbridge,,
 0.00%,Woodbury,,
 0.00%,Woodstock,,
-58.20%,Total,,
+61.93%,Total,,
