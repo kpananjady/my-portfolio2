@@ -324,41 +324,39 @@ Promise.all([
       .append('path')
       .attr('class', 'path-town')
       .attr('d', path)
-      .attr('fill','grey')
-    //   .attr('fill', function(d){            
-    //     if (parseFloat(d.properties.name)<10){
-    //       var name_and_number = "State Senator 0" + d.properties.name
-    //       } else {
-    //         var name_and_number = "State Senator " + d.properties.name
-    //         }
+      // .attr('fill','grey')
+      .attr('fill', function(d){            
+        if (parseFloat(d.properties.name)<10){
+          var name_and_number = "State Senator 0" + d.properties.name
+          } else {
+            var name_and_number = "State Senator " + d.properties.name
+            }
   
 
-    //   var dem_vote = 0;
-    //   var rep_vote=0;
-    //   ct_state_senate.forEach( function(r) {if (r['Office Name']===name_and_number){
+      var dem_vote = 0;
+      var rep_vote=0;
+      ct_state_senate.forEach( function(r) {if (r['Office Name']===name_and_number){
 
 
-    //     if (r['variable'].includes("Democratic")){
-    //       console.log('dems')
-    //       console.log((100*r['value']/r['Vote Totals']).toFixed(2))
-    //       dem_vote = dem_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
-    //     } else if (r['variable'].includes("Working")){
-    //       dem_vote = dem_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
-
-    //     } else if (r['variable'].includes("Republican")){
-    //       rep_vote = rep_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
-    //     }
-    //     // console.log(r['variable'], Math.round(100*r['value']/r['Vote Totals']))
-    //    }
+        if (r['variable'].includes("Democratic")){
+          console.log('dems')
+          console.log((100*r['value']/r['Vote Totals']).toFixed(2))
+          dem_vote = dem_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
+        } 
+         else if (r['variable'].includes("Republican")){
+          rep_vote = rep_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
+        }
+        // console.log(r['variable'], Math.round(100*r['value']/r['Vote Totals']))
+       }
 
 
-    //   }) 
+      }) 
 
-    //   console.log(dem_vote)
-    //   console.log(parseFloat(dem_vote)-parseFloat(rep_vote))
-    //   return colorScale(parseFloat(dem_vote)-parseFloat(rep_vote))
+      console.log(dem_vote)
+      console.log(parseFloat(dem_vote)-parseFloat(rep_vote))
+      return colorScale(parseFloat(dem_vote)-parseFloat(rep_vote))
 
-    // })
+    })
     .attr('stroke', 'white')  
     .on('mouseover', function(d){
 
@@ -434,39 +432,36 @@ Promise.all([
             .append('path')
             .attr('class', 'path-town')
             .attr('d', path)
-            .attr('fill','grey')
-          //   .attr('fill', function(d){            
-          //     if (parseFloat(d.properties.name)<10){
-          //       var name_and_number = "State Representative 0" + d.properties.name
-          //       } else {
-          //         var name_and_number = "State Representative " + d.properties.name
-          //         }
+            // .attr('fill','grey')
+            .attr('fill', function(d){            
+              if (parseFloat(d.properties.name)<10){
+                var name_and_number = "State Representative 0" + d.properties.name
+                } else {
+                  var name_and_number = "State Representative " + d.properties.name
+                  }
 
-          //   var dem_vote = 0;
-          //   var rep_vote=0;
-          //   ct_state_house.forEach( function(r) {if (r['Office Name']===name_and_number){
+            var dem_vote = 0;
+            var rep_vote=0;
+            ct_state_house.forEach( function(r) {if (r['Office Name']===name_and_number){
       
       
-          //     if (r['variable'].includes("Democratic")){
-          //       console.log('dems')
-          //       console.log((100*r['value']/r['Vote Totals']).toFixed(2))
-          //       dem_vote = dem_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
-          //     } else if (r['variable'].includes("Working")){
-          //       dem_vote = dem_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
-      
-          //     } else if (r['variable'].includes("Republican")){
-          //       rep_vote = rep_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
-          //     }
-          //     // console.log(r['variable'], Math.round(100*r['value']/r['Vote Totals']))
-          //    }
+              if (r['variable'].includes("Democratic")){
+                console.log('dems')
+                console.log((100*r['value']/r['Vote Totals']).toFixed(2))
+                dem_vote = dem_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
+              } else if (r['variable'].includes("Republican")){
+                rep_vote = rep_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
+              }
+              // console.log(r['variable'], Math.round(100*r['value']/r['Vote Totals']))
+             }
       
       
-          //   })     
+            })     
             
-          //   console.log(dem_vote)
-          //   console.log(parseFloat(dem_vote)-parseFloat(rep_vote))
-          //   return colorScale(parseFloat(dem_vote)-parseFloat(rep_vote))
-          // }) 
+            console.log(dem_vote)
+            console.log(parseFloat(dem_vote)-parseFloat(rep_vote))
+            return colorScale(parseFloat(dem_vote)-parseFloat(rep_vote))
+          }) 
           .attr('stroke', 'white')  
           .on('mouseover', function(d){
 
@@ -598,35 +593,32 @@ Promise.all([
 
       // d3.select(this).attr('stroke', 'white').attr('opacity','0.5')
   })
-  .attr('fill','grey')
-    // .attr('fill', function(d){
-    //   var name_and_number = "Representative in Congress 0" + d.properties.fid
+  // .attr('fill','grey')
+    .attr('fill', function(d){
+      var name_and_number = "Representative in Congress 0" + d.properties.fid
 
-    //   var dem_vote = 0;
-    //   var rep_vote=0;
-    //   us_house_data.forEach( function(r) {if (r['Office Name']===name_and_number){
-
-
-    //     if (r['variable'].includes("Democratic")){
-    //       console.log('dems')
-    //       console.log((100*r['value']/r['Vote Totals']).toFixed(2))
-    //       dem_vote = dem_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
-    //     } else if (r['variable'].includes("Working")){
-    //       dem_vote = dem_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
-
-    //     } else if (r['variable'].includes("Republican")){
-    //       rep_vote = rep_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
-    //     }
-    //     // console.log(r['variable'], Math.round(100*r['value']/r['Vote Totals']))
-    //    }
+      var dem_vote = 0;
+      var rep_vote=0;
+      us_house_data.forEach( function(r) {if (r['Office Name']===name_and_number){
 
 
-    //   })     
+        if (r['variable'].includes("Democratic")){
+          console.log('dems')
+          console.log((100*r['value']/r['Vote Totals']).toFixed(2))
+          dem_vote = dem_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
+        }  else if (r['variable'].includes("Republican")){
+          rep_vote = rep_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
+        }
+        // console.log(r['variable'], Math.round(100*r['value']/r['Vote Totals']))
+       }
+
+
+      })     
       
-    //   console.log(dem_vote)
-    //   console.log(parseFloat(dem_vote)-parseFloat(rep_vote))
-    //   return colorScale(parseFloat(dem_vote)-parseFloat(rep_vote))
-    // }) 
+      console.log(dem_vote)
+      console.log(parseFloat(dem_vote)-parseFloat(rep_vote))
+      return colorScale(parseFloat(dem_vote)-parseFloat(rep_vote))
+    }) 
 
           }
 
