@@ -24,7 +24,7 @@ let svg = d3
   function ready(dummydata) {
 
     svg.append('text').attr('class', 'title').text('Results for the 2020 election are below').attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
-    svg.append('text').attr('class', 'sub-title').text("Choose your race and click on a district to see votes. 98.5% of precincts").attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text("Choose your race and click on a district to see votes. 99.5% of precincts").attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
     svg.append('text').attr('class', 'sub-title').text('are reporting data. Results were last updated at 1:20 a.m.').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
 
