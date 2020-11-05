@@ -24,7 +24,7 @@ percentage,Town,Reported,Total Precincts
 85.40%,Canton,1,1
 82.64%,Chaplin,1,1
 0.00%,Cheshire,,
-88.57%,Chester,1,1
+88.60%,Chester,1,1
 0.00%,Clinton,,
 89.35%,Colchester,4,4
 89.64%,Colebrook,1,1
@@ -38,7 +38,7 @@ percentage,Town,Reported,Total Precincts
 81.86%,Derby,3,3
 0.00%,Durham,,
 82.66%,Eastford,1,1
-84.79%,East Granby,,
+83.92%,East Granby,,
 83.04%,East Haddam,,
 87.54%,East Hampton,,
 0.00%,East Hartford,,
@@ -70,7 +70,7 @@ percentage,Town,Reported,Total Precincts
 72.69%,Killingly,5,5
 87.63%,Killingworth,1,1
 0.00%,Lebanon,,
-0.00%,Ledyard,,
+85.89%,Ledyard,3,3
 87.45%,Lisbon,2,2
 86.62%,Litchfield,4,4
 88.17%,Lyme,1,1
@@ -90,7 +90,7 @@ percentage,Town,Reported,Total Precincts
 0.00%,New Britain,,
 0.00%,New Canaan,,
 0.00%,New Fairfield,,
-87.73%,New Hartford,,
+87.25%,New Hartford,,
 56.26%,New Haven,,
 0.00%,Newington,,
 54.96%,New London,,
@@ -148,7 +148,7 @@ percentage,Town,Reported,Total Precincts
 85.68%,Voluntown,1,1
 0.00%,Wallingford,,
 84.00%,Warren,1,1
-0.00%,Washington,,
+86.90%,Washington,1,1
 63.26%,Waterbury,21,21
 86.77%,Waterford,4,4
 84.63%,Watertown,4,4
@@ -168,4 +168,4 @@ percentage,Town,Reported,Total Precincts
 87.96%,Woodbridge,2,2
 0.00%,Woodbury,,
 0.00%,Woodstock,,
-75.40%,Total,,
+75.49%,Total,,
