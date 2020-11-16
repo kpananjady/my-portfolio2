@@ -11,7 +11,7 @@ const width = 700 - margin.left - margin.right
 const height = 400 - margin.top - margin.bottom
 
 const svg = d3
-  .select('#chart-6')
+  .select('#chart-5')
   .append('svg')
   .attr('width', width + margin.left + margin.right)
   .attr('height', height + margin.top + margin.bottom)
@@ -38,11 +38,11 @@ const colorScale = d3
   ])
 
 
-const parseTime = d3.timeParse('%m/%d/%Y')
+const parseTime = d3.timeParse('%Y-%m-%d')
 
 Promise.all([
-  "https://test-uploading-file.s3.amazonaws.com/nh_by_date.csv",
-  "https://test-uploading-file.s3.amazonaws.com/nh.csv",
+  "https://test-uploading-file.s3.amazonaws.com/df.csv",
+  "https://test-uploading-file.s3.amazonaws.com/df_minus_30.csv",
   ]
   .map(function(url) {
     return fetch(url).then(function(response) {
@@ -58,14 +58,35 @@ function ready([datapoints, datapoints_30]) {
   // Sort the countries from low to high
 
   datapoints.forEach(d => {
-    d.datetime = parseTime(d["Week Ending"])
+
+    d.datetime = parseTime(d["date"])
   })
 const dates = datapoints.map(d => d.datetime)
-const cases = datapoints.map(d => +d["All Cases"])
+const cases = datapoints.map(d => +d["P_Rate"])
 
 xPositionScale.domain(dates)
 yPositionScale.domain(d3.extent(cases))
 
+function movingAverage(values, N) {
+    let i = 0;
+    let sum = 0;
+    const means = new Float64Array(values.length).fill(NaN);
+    for (let n = Math.min(N - 1, values.length); i < n; ++i) {
+      sum += values[i];
+    }
+    for (let n = values.length; i < n; ++i) {
+      sum += values[i];
+      means[i] = sum / N;
+      sum -= values[i - N + 1];
+    }
+    return means;
+  }
+
+
+  datapoints.forEach(function(d) {
+    d.key = parseTime((d["date"]));
+    d.value = +d["P_Rate"];
+  });
 
 //   var pppppPrevVal = 0;
 //   var ppppPrevVal = 0;
@@ -121,7 +142,7 @@ yPositionScale.domain(d3.extent(cases))
 
              
       //       curVal =  yPositionScale(0);
-      //     }  else if (i == 5) {
+      //     }  else if (i == 3) {
            
       //       valOne = valTwo;
       //       valTwo  = valThree;
@@ -181,31 +202,32 @@ yPositionScale.domain(d3.extent(cases))
       // .attr('class', 'circle-points')
       // .attr('r', 5)
       // .attr('cx', d => xPositionScale(parseTime(d["date"])))
-      // .attr('cy', d => yPositionScale( d['Total_Avg']))
+      // .attr('cy', d => yPositionScale( d['P_Rate_Avg']))
       // .style('fill', '#8B0000')  .attr('opacity', 0.35)
 
 
 
-    //   const line = d3
-    //   .line()
-    //   .x(function(d) {
-    //     return xPositionScale(parseTime(d["date"]))
-    //   })
-    //   .y(function(d) {
-    //     return yPositionScale(d["Total_Avg"])
-    //   })
+      const line = d3
+      .line()
+      .x(function(d) {
+        return xPositionScale(parseTime(d["date"]))
+      })
+      .y(function(d) {
+        return yPositionScale(d["P_Rate_Avg"])
+      })
+
 
    
 
-    //   svg.append('path')
-    //   .datum(datapoints)
-    //   .attr('class', 'average')
-    //   .attr('d', function(d) {
-    //       return line(d)
-    //   })
-    //   .attr('stroke', '#FF8C00')
-    //   .attr('stroke-width', 2)
-    //   .attr('fill', 'none')
+      svg.append('path')
+      .datum(datapoints)
+      .attr('class', 'average')
+      .attr('d', function(d) {
+          return line(d)
+      })
+      .attr('stroke', '#FED000')
+      .attr('stroke-width', 2)
+      .attr('fill', 'none')
 
      
   svg
@@ -214,25 +236,25 @@ yPositionScale.domain(d3.extent(cases))
     .enter()
     .append('rect')
     .attr('class', 'rect_all')
-    .attr('width', 5)
+    .attr('width', xPositionScale.bandwidth())
     .attr('height', d => {
-      return height - yPositionScale(d["All Cases"])
+      return height - yPositionScale(d["P_Rate"])
     })
     .attr('x', d => {
       return xPositionScale(d.datetime)
     })
     .attr('y', d => {
-      return yPositionScale(d["All Cases"])
+      return yPositionScale(d["P_Rate"])
     })
-    .attr('fill', '#FFA500').attr('opacity',0.5)
+    .attr('fill', '#FED000').attr('opacity',0.3)
     .lower()
  
 const xAxis = d3
     .axisBottom(xPositionScale)
     .tickSize(height)
     .tickFormat(d3.timeFormat('%b %d'))
-    .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%4)}));
- 
+    .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%20)}));
+
 
     svg
     .append('g')
@@ -258,12 +280,14 @@ const xAxis = d3
 
     d3.select('.x-axis .domain').remove()
 
-    d3.select('#toggle7').on('click', () => {
+    d3.select('#toggle9').on('click', () => {
 
         svg.selectAll('.average').remove() 
+        svg.selectAll('.mean-line').remove() 
+
         svg.selectAll('.rect_30').remove()
 
-        xPositionScale.domain(d3.extent(dates))
+        xPositionScale.domain(dates)
         yPositionScale.domain(d3.extent(cases))
 
 
@@ -273,7 +297,7 @@ const xAxis = d3
         .attr('d', function(d) {
             return line(d)
         })
-        .attr('stroke', '#FF8C00')
+        .attr('stroke', '#FED000')
         .attr('stroke-width', 2)
         .attr('fill', 'none')
         
@@ -284,17 +308,17 @@ const xAxis = d3
         .enter()
         .append('rect')
         .attr('class', 'rect_all')
-        .attr('width', 5)
+        .attr('width', xPositionScale.bandwidth())
         .attr('height', d => {
-          return height - yPositionScale(d["Total"])
+          return height - yPositionScale(d["P_Rate"])
         })
         .attr('x', d => {
           return xPositionScale(d.datetime)
         })
         .attr('y', d => {
-          return yPositionScale(d["Total"])
+          return yPositionScale(d["P_Rate"])
         })
-        .attr('fill', '#FFA500').attr('opacity',0.5)
+        .attr('fill', '#FED000').attr('opacity',0.3)
         .attr('id', d=> d["date"])
         .lower()
 
@@ -313,7 +337,7 @@ const xAxis = d3
     
       })
 
-    d3.select('#toggle8').on('click', () => {
+    d3.select('#toggle10').on('click', () => {
 
         svg.selectAll('.average').remove()
         svg.selectAll('.rect_all').remove()
@@ -323,13 +347,33 @@ const xAxis = d3
             d.datetime = parseTime(d["date"])
           })
         const dates2 = datapoints_30.map(d => d.datetime)
-        const cases2 = datapoints_30.map(d => +d["Total"])
+        const cases2 = datapoints_30.map(d => +d["P_Rate"])
 
         
-        xPositionScale.domain(d3.extent(dates2))
+        xPositionScale.domain(dates2)
         yPositionScale.domain([0,d3.max(cases2)])
 
+        svg.append("line")
+        .attr("class", "mean-line")
+       .attr('x1', xPositionScale(d3.min(dates2)))
+       .attr('y1',yPositionScale(5)) 
+       .attr('x2',xPositionScale(d3.max(dates2)))
+       .attr('y2',yPositionScale(5))
+       .attr('stroke', 'red')
+       .attr('opacity',0.5)
+       .attr('stroke-width', 2)
+
+
      
+        svg.append('path')
+        .datum(datapoints_30)
+        .attr('class', 'average')
+        .attr('d', function(d) {
+            return line(d)
+        })
+        .attr('stroke', '#FED000')
+        .attr('stroke-width', 2)
+        .attr('fill', 'none')
 
         svg
         .selectAll('rect')
@@ -337,28 +381,19 @@ const xAxis = d3
         .enter()
         .append('rect')
         .attr('class', 'rect_30')
-        .attr('width', 20)
+        .attr('width', xPositionScale.bandwidth())
         .attr('height', d => {
-          return height - yPositionScale(+d["Total"])
+          return height - yPositionScale(+d["P_Rate"])
         })
         .attr('x', d => {
           return xPositionScale(d.datetime)
         })
         .attr('y', d => {
-          return yPositionScale(+d["Total"])
+          return yPositionScale(+d["P_Rate"])
         })
-        .attr('fill', '#FFA500').attr('opacity',0.5)
+        .attr('fill', '#FED000').attr('opacity',0.3)
         .lower()
 
-        svg.append('path')
-        .datum(datapoints_30)
-        .attr('class', 'average')
-        .attr('d', function(d) {
-            return line(d)
-        })
-        .attr('stroke', '#FF8C00')
-        .attr('stroke-width', 2)
-        .attr('fill', 'none')
 
         svg.select('.x-axis').transition().duration(1000).call(xAxis)
 
@@ -374,7 +409,69 @@ const xAxis = d3
 
     
       })
-  function render() {
+
+    
+//   function render() {
+//     const svgContainer = svg.node().closest('div')
+//     const svgWidth = svgContainer.offsetWidth
+//     // Do you want it to be full height? Pick one of the two below
+//     const svgHeight = height + margin.top + margin.bottom
+//     // const svgHeight = window.innerHeight
+
+//     const actualSvg = d3.select(svg.node().closest('svg'))
+//     actualSvg.attr('width', svgWidth).attr('height', svgHeight)
+
+//     const newWidth = svgWidth - margin.left - margin.right
+//     // const newHeight = svgHeight - margin.top - margin.bottom
+
+//     // Update our scale
+//     xPositionScale.range([0, newWidth])
+//     // yPositionScale.range([newHeight, 0])
+
+//     // Update things you draw
+
+//     // Update axes
+//     //  svg.select('.x-axis').call(xAxis)
+//     svg
+//       .select('.y-axis')
+//       .transition()
+//       .call(yAxis)
+
+//     svg
+//       .selectAll('rect')
+//       .attr('width', xPositionScale.bandwidth())
+//       .attr('height', d => {
+//         return height - yPositionScale(d.life_expectancy)
+//       })
+//       .attr('x', d => {
+//         return xPositionScale(d.country)
+//       })
+//       .attr('y', d => {
+//         return yPositionScale(d.life_expectancy)
+//       })
+//       .attr('fill', '#FED000').attr('opacity',0.3)
+//       .attr('class', d => {
+//         return d.continent.toLowerCase().replace(/[^a-z]*/g, '')
+//       })
+
+//     svg.select('#label-1').attr('x', newWidth * 0.75)
+//     //  .attr('y', newHeight + 15)
+
+//     svg.select('#label-2').attr('x', newWidth * 0.25)
+//     //   .attr('y', newHeight + 15)
+
+//     d3.select('.y-axis .domain').remove()
+//   }
+
+//   // When the window resizes, run the function
+//   // that redraws everything
+//   window.addEventListener('resize', render)
+
+//   // And now that the page has loaded, let's just try
+//   // to do it once before the page has resized
+//   render()
+
+function render() {
     const svgContainer = svg.node().closest('div')
     const svgWidth = svgContainer.offsetWidth
     // Do you want it to be full height? Pick one of the two below
@@ -397,6 +494,142 @@ const xAxis = d3
      svg.select('.x-axis').call(xAxis)
      d3.select('.x-axis .domain').remove()
 
+     d3.select('#toggle9').on('click', () => {
+
+        svg.selectAll('.average').remove() 
+        svg.selectAll('.mean-line').remove() 
+
+        svg.selectAll('.rect_30').remove()
+
+        xPositionScale.domain(dates)
+        yPositionScale.domain(d3.extent(cases))
+
+
+        svg.append('path')
+        .datum(datapoints)
+        .attr('class', 'average')
+        .attr('d', function(d) {
+            return line(d)
+        })
+        .attr('stroke', '#FED000')
+        .attr('stroke-width', 2)
+        .attr('fill', 'none')
+        
+
+        svg
+        .selectAll('rect')
+        .data(datapoints)
+        .enter()
+        .append('rect')
+        .attr('class', 'rect_all')
+        .attr('width', xPositionScale.bandwidth())
+        .attr('height', d => {
+          return height - yPositionScale(d["P_Rate"])
+        })
+        .attr('x', d => {
+          return xPositionScale(d.datetime)
+        })
+        .attr('y', d => {
+          return yPositionScale(d["P_Rate"])
+        })
+        .attr('fill', '#FED000').attr('opacity',0.3)
+        .attr('id', d=> d["date"])
+        .lower()
+
+        svg.select('.x-axis').transition().duration(1000).call(xAxis)
+
+            svg
+              .select('.y-axis')
+              .transition()
+              .duration(1000)
+              .call(yAxis)
+
+              d3.select('.y-axis .domain').remove()
+
+              d3.select('.x-axis .domain').remove()
+
+    
+      })
+
+    d3.select('#toggle10').on('click', () => {
+
+        svg.selectAll('.average').remove()
+        svg.selectAll('.rect_all').remove()
+
+        datapoints_30.forEach(d => {
+    
+            d.datetime = parseTime(d["date"])
+          })
+        const dates2 = datapoints_30.map(d => d.datetime)
+        const cases2 = datapoints_30.map(d => +d["P_Rate"])
+
+        
+        xPositionScale.domain(dates2)
+        yPositionScale.domain([0,d3.max(cases2)])
+
+        const xAxis = d3
+    .axisBottom(xPositionScale)
+    .tickSize(height)
+    .tickFormat(d3.timeFormat('%b %d'))
+    .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%4)}));
+
+        svg.append("line")
+        .attr("class", "mean-line")
+       .attr('x1', xPositionScale(d3.min(dates2)))
+       .attr('y1',yPositionScale(5)) 
+       .attr('x2',xPositionScale(d3.max(dates2)))
+       .attr('y2',yPositionScale(5))
+       .attr('stroke', 'red')
+       .attr('opacity',0.5)
+       .attr('stroke-width', 2)
+
+
+     
+        svg.append('path')
+        .datum(datapoints_30)
+        .attr('class', 'average')
+        .attr('d', function(d) {
+            return line(d)
+        })
+        .attr('stroke', '#FED000')
+        .attr('stroke-width', 2)
+        .attr('fill', 'none')
+
+        svg
+        .selectAll('rect')
+        .data(datapoints_30)
+        .enter()
+        .append('rect')
+        .attr('class', 'rect_30')
+        .attr('width', xPositionScale.bandwidth())
+        .attr('height', d => {
+          return height - yPositionScale(+d["P_Rate"])
+        })
+        .attr('x', d => {
+          return xPositionScale(d.datetime)
+        })
+        .attr('y', d => {
+          return yPositionScale(+d["P_Rate"])
+        })
+        .attr('fill', '#FED000').attr('opacity',0.3)
+        .lower()
+
+
+        svg.select('.x-axis').transition().duration(1000).call(xAxis)
+
+            svg
+              .select('.y-axis')
+              .transition()
+              .duration(1000)
+              .call(yAxis)
+
+              d3.select('.y-axis .domain').remove()
+
+              d3.select('.x-axis .domain').remove()
+
+    
+      })
+
 //     svg
 //       .select('.y-axis')
 //       .transition()
@@ -407,6 +640,11 @@ const xAxis = d3
       .attr('x', d => {
         return xPositionScale(d.datetime)
       })
+
+      svg.selectAll('.average')   
+      .attr('d', function(d) {
+        return line(d)
+    })
 //       .attr('width', xPositionScale.bandwidth())
 //       .attr('height', d => {
 //         return height - yPositionScale(d.life_expectancy)
@@ -438,4 +676,5 @@ const xAxis = d3
 //   // And now that the page has loaded, let's just try
 //   // to do it once before the page has resized
   render()
+
 }
