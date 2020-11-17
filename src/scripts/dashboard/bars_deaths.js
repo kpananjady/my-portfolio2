@@ -56,17 +56,33 @@ Promise.all([
 function ready([datapoints, datapoints_30]) {
   // Sort the countries from low to high
 
-  console.log(datapoints_30)
-  
+
+
   datapoints.forEach(d => {
-    console.log(d["date"])
+
     d.datetime = parseTime(d["date"])
   })
 const dates = datapoints.map(d => d.datetime)
+
+
+
+
+
+var tomorrow = new Date();
+
+
+console.log(d3.max(dates), tomorrow.setDate(d3.max(dates).getDate()+1), 'these')
+var dates_array = d3.timeDays(d3.min(dates), tomorrow)
+
+console.log(dates_array[dates_array.length-1], 'this')
+
+  
+
+
 const deaths = datapoints.map(d => +d['Deaths_per_day'])
 
-xPositionScale.domain(dates)
-yPositionScale.domain(d3.extent(deaths))
+xPositionScale.domain(dates_array)
+yPositionScale.domain([0,d3.max(deaths)])
 
 
 
@@ -98,7 +114,7 @@ yPositionScale.domain(d3.extent(deaths))
     const line = d3
     .line()
     .x(function(d) {
-      return xPositionScale(parseTime(d["date"]))
+      return xPositionScale(parseTime(d["date"]))+xPositionScale.bandwidth()/2 
     })
     .y(function(d) {
       return yPositionScale(d["Death_Avg"])
@@ -157,12 +173,33 @@ const xAxis = d3
         svg.selectAll('.rect_30').remove()
 
 
+        datapoints.forEach(d => {
 
+          d.datetime = parseTime(d["date"])
+        })
+      const dates = datapoints.map(d => d.datetime)
+      
+      
+      
+      
+      
+      var tomorrow = new Date();
+      
+      
+      console.log(d3.max(dates), tomorrow.setDate(d3.max(dates).getDate()+1), 'these')
+      var dates_array = d3.timeDays(d3.min(dates), tomorrow)
+      
+      console.log(dates_array[dates_array.length-1], 'this')
+      xPositionScale.domain(dates_array)
+      yPositionScale.domain([0,d3.max(cases)])
         
-
+      
+      
+      const deaths = datapoints.map(d => +d['Deaths_per_day'])
+      
+      xPositionScale.domain(dates_array)
+      yPositionScale.domain([0,d3.max(deaths)])
         
-        xPositionScale.domain(dates)
-        yPositionScale.domain(d3.extent(deaths))
 
 
         svg.append('path')
@@ -226,9 +263,23 @@ const xAxis = d3
         const dates2 = datapoints_30.map(d => d.datetime)
         const deaths2 = datapoints_30.map(d => +d['Deaths_per_day'])
 
-        
-        xPositionScale.domain(dates2)
-        yPositionScale.domain([0,d3.max(deaths2)])
+
+      
+      
+      
+      
+      
+      var tomorrow = new Date();
+      
+      
+      console.log(d3.max(dates2), tomorrow.setDate(d3.max(dates2).getDate()+1), 'these')
+      var dates_array = d3.timeDays(d3.min(dates2), tomorrow)
+      
+      console.log(dates_array[dates_array.length-1], 'this')
+    
+      
+      xPositionScale.domain(dates_array)
+      yPositionScale.domain([0,d3.max(deaths2)])
 
  
 
@@ -319,9 +370,32 @@ const xAxis = d3
   
           
   
+          datapoints.forEach(d => {
+
+            d.datetime = parseTime(d["date"])
+          })
+        const dates = datapoints.map(d => d.datetime)
+        
+        
+        
+        
+        
+        var tomorrow = new Date();
+        
+        
+        console.log(d3.max(dates), tomorrow.setDate(d3.max(dates).getDate()+1), 'these')
+        var dates_array = d3.timeDays(d3.min(dates), tomorrow)
+        
+        console.log(dates_array[dates_array.length-1], 'this')
+   
+  
           
-          xPositionScale.domain(dates)
-          yPositionScale.domain(d3.extent(deaths))
+        
+        
+        const deaths = datapoints.map(d => +d['Deaths_per_day'])
+        
+        xPositionScale.domain(dates_array)
+        yPositionScale.domain([0,d3.max(deaths)])
   
   
           svg.append('path')
@@ -376,16 +450,30 @@ const xAxis = d3
           svg.selectAll('.rect_all').remove()
   
           datapoints_30.forEach(d => {
-              console.log(datapoints_30["date"])
-              console.log(parseTime(d.date))
-              d.datetime = parseTime(d.date)
-            })
-          const dates2 = datapoints_30.map(d => d.datetime)
-          const deaths2 = datapoints_30.map(d => +d['Deaths_per_day'])
-  
-          
-          xPositionScale.domain(dates2)
-          yPositionScale.domain([0,d3.max(deaths2)])
+            console.log(datapoints_30["date"])
+            console.log(parseTime(d.date))
+            d.datetime = parseTime(d.date)
+          })
+        const dates2 = datapoints_30.map(d => d.datetime)
+        const deaths2 = datapoints_30.map(d => +d['Deaths_per_day'])
+
+
+      
+      
+      
+      
+      
+      var tomorrow = new Date();
+      
+      
+      console.log(d3.max(dates2), tomorrow.setDate(d3.max(dates2).getDate()+1), 'these')
+      var dates_array = d3.timeDays(d3.min(dates2), tomorrow)
+      
+      console.log(dates_array[dates_array.length-1], 'this')
+    
+      
+      xPositionScale.domain(dates_array)
+      yPositionScale.domain([0,d3.max(deaths2)])
 
           const xAxis = d3
           .axisBottom(xPositionScale)

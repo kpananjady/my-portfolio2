@@ -64,8 +64,17 @@ function ready([datapoints, datapoints_30]) {
 const dates = datapoints.map(d => d.datetime)
 const cases = datapoints.map(d => +d["Total"])
 
-xPositionScale.domain(dates)
-yPositionScale.domain(d3.extent(cases))
+
+var tomorrow = new Date();
+
+
+console.log(d3.max(dates), tomorrow.setDate(d3.max(dates).getDate()+1), 'these')
+var dates_array = d3.timeDays(d3.min(dates), tomorrow)
+
+console.log(dates_array[dates_array.length-1], 'this')
+xPositionScale.domain(dates_array)
+yPositionScale.domain([0,d3.max(cases)])
+
 
 function movingAverage(values, N) {
     let i = 0;
@@ -210,7 +219,7 @@ function movingAverage(values, N) {
       const line = d3
       .line()
       .x(function(d) {
-        return xPositionScale(parseTime(d["date"]))
+        return xPositionScale(parseTime(d["date"]))+xPositionScale.bandwidth()/2
       })
       .y(function(d) {
         return yPositionScale(d["Total_Avg"])
@@ -235,7 +244,7 @@ function movingAverage(values, N) {
     .enter()
     .append('rect')
     .attr('class', 'rect_all')
-    .attr('width', xPositionScale.bandwidth())
+    .attr('width', 3)
     .attr('height', d => {
       return height - yPositionScale(d["Total"])
     })
@@ -309,8 +318,25 @@ const xAxis = d3
           svg.selectAll('.average').remove() 
           svg.selectAll('.rect_30').remove()
   
-          xPositionScale.domain(dates)
-          yPositionScale.domain(d3.extent(cases))
+          
+ 
+          datapoints.forEach(d => {
+
+            d.datetime = parseTime(d["date"])
+          })
+        const dates = datapoints.map(d => d.datetime)
+        const cases = datapoints.map(d => +d["Total"])
+        
+        
+        var tomorrow = new Date();
+        
+        
+        console.log(d3.max(dates), tomorrow.setDate(d3.max(dates).getDate()+1), 'these')
+        var dates_array = d3.timeDays(d3.min(dates), tomorrow)
+        
+        console.log(dates_array[dates_array.length-1], 'this')
+        xPositionScale.domain(dates_array)
+        yPositionScale.domain([0,d3.max(cases)])
   
   
           svg.append('path')
@@ -330,7 +356,7 @@ const xAxis = d3
           .enter()
           .append('rect')
           .attr('class', 'rect_all')
-          .attr('width', xPositionScale.bandwidth())
+          .attr('width', 3)
           .attr('height', d => {
             return height - yPositionScale(d["Total"])
           })
@@ -372,14 +398,28 @@ const xAxis = d3
           const cases2 = datapoints_30.map(d => +d["Total"])
   
           
-          xPositionScale.domain(dates2)
+
+
+
+var tomorrow = new Date();
+
+
+console.log(d3.max(dates2), tomorrow.setDate(d3.max(dates2).getDate()+1), 'these')
+var dates_array = d3.timeDays(d3.min(dates2), tomorrow)
+
+console.log(dates_array[dates_array.length-1], 'this')
+xPositionScale.domain(dates_array)
+
+
+
+
           yPositionScale.domain([0,d3.max(cases2)])
   
           const xAxis = d3
           .axisBottom(xPositionScale)
           .tickSize(height)
           .tickFormat(d3.timeFormat('%b %d'))
-          .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%10)}));
+          .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%4)}));
   
           svg
           .selectAll('rect')

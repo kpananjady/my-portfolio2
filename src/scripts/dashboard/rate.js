@@ -64,8 +64,18 @@ function ready([datapoints, datapoints_30]) {
 const dates = datapoints.map(d => d.datetime)
 const cases = datapoints.map(d => +d["P_Rate"])
 
-xPositionScale.domain(dates)
-yPositionScale.domain(d3.extent(cases))
+
+
+
+var tomorrow = new Date();
+
+
+console.log(d3.max(dates), tomorrow.setDate(d3.max(dates).getDate()+1), 'these')
+var dates_array = d3.timeDays(d3.min(dates), tomorrow)
+
+console.log(dates_array[dates_array.length-1], 'this')
+xPositionScale.domain(dates_array)
+yPositionScale.domain([0,d3.max(cases)])
 
 function movingAverage(values, N) {
     let i = 0;
@@ -210,7 +220,7 @@ function movingAverage(values, N) {
       const line = d3
       .line()
       .x(function(d) {
-        return xPositionScale(parseTime(d["date"]))
+        return xPositionScale(parseTime(d["date"])) + xPositionScale.bandwidth()/2
       })
       .y(function(d) {
         return yPositionScale(d["P_Rate_Avg"])
@@ -282,13 +292,28 @@ const xAxis = d3
 
     d3.select('#toggle9').on('click', () => {
 
+        datapoints.forEach(d => {
+
+            d.datetime = parseTime(d["date"])
+          })
+        const dates = datapoints.map(d => d.datetime)
+        const cases = datapoints.map(d => +d["P_Rate"])
+
         svg.selectAll('.average').remove() 
         svg.selectAll('.mean-line').remove() 
 
         svg.selectAll('.rect_30').remove()
 
-        xPositionScale.domain(dates)
-        yPositionScale.domain(d3.extent(cases))
+       
+    var tomorrow = new Date();
+
+
+    console.log(d3.max(dates), tomorrow.setDate(d3.max(dates).getDate()+1), 'these')
+    var dates_array = d3.timeDays(d3.min(dates), tomorrow)
+
+    console.log(dates_array[dates_array.length-1], 'this')
+    xPositionScale.domain(dates_array)
+    yPositionScale.domain([0,d3.max(cases)])
 
 
         svg.append('path')
@@ -350,14 +375,26 @@ const xAxis = d3
         const cases2 = datapoints_30.map(d => +d["P_Rate"])
 
         
-        xPositionScale.domain(dates2)
+
+    var tomorrow = new Date();
+
+
+    console.log(d3.max(dates2), tomorrow.setDate(d3.max(dates2).getDate()+1), 'these')
+    var dates_array = d3.timeDays(d3.min(dates2), tomorrow)
+
+    console.log(dates_array[dates_array.length-1], 'this')
+    xPositionScale.domain(dates_array)
+    yPositionScale.domain([0,d3.max(cases)])
+
+
+        xPositionScale.domain(dates_array)
         yPositionScale.domain([0,d3.max(cases2)])
 
         svg.append("line")
         .attr("class", "mean-line")
-       .attr('x1', xPositionScale(d3.min(dates2)))
+       .attr('x1', xPositionScale(d3.min(dates2))+ xPositionScale.bandwidth()/2)
        .attr('y1',yPositionScale(5)) 
-       .attr('x2',xPositionScale(d3.max(dates2)))
+       .attr('x2',xPositionScale(d3.max(dates2))+ xPositionScale.bandwidth()/2)
        .attr('y2',yPositionScale(5))
        .attr('stroke', 'red')
        .attr('opacity',0.5)
@@ -496,13 +533,28 @@ function render() {
 
      d3.select('#toggle9').on('click', () => {
 
+        datapoints.forEach(d => {
+
+            d.datetime = parseTime(d["date"])
+          })
+        const dates = datapoints.map(d => d.datetime)
+        const cases = datapoints.map(d => +d["P_Rate"])
+
         svg.selectAll('.average').remove() 
         svg.selectAll('.mean-line').remove() 
 
         svg.selectAll('.rect_30').remove()
 
-        xPositionScale.domain(dates)
-        yPositionScale.domain(d3.extent(cases))
+       
+    var tomorrow = new Date();
+
+
+    console.log(d3.max(dates), tomorrow.setDate(d3.max(dates).getDate()+1), 'these')
+    var dates_array = d3.timeDays(d3.min(dates), tomorrow)
+
+    console.log(dates_array[dates_array.length-1], 'this')
+    xPositionScale.domain(dates_array)
+    yPositionScale.domain([0,d3.max(cases)])
 
 
         svg.append('path')
@@ -564,8 +616,17 @@ function render() {
         const cases2 = datapoints_30.map(d => +d["P_Rate"])
 
         
-        xPositionScale.domain(dates2)
-        yPositionScale.domain([0,d3.max(cases2)])
+
+    var tomorrow = new Date();
+
+
+    console.log(d3.max(dates2), tomorrow.setDate(d3.max(dates2).getDate()+1), 'these')
+    var dates_array = d3.timeDays(d3.min(dates2), tomorrow)
+
+    console.log(dates_array[dates_array.length-1], 'this')
+    xPositionScale.domain(dates_array)
+    yPositionScale.domain([0,d3.max(cases2)])
+
 
         const xAxis = d3
     .axisBottom(xPositionScale)
@@ -575,9 +636,9 @@ function render() {
 
         svg.append("line")
         .attr("class", "mean-line")
-       .attr('x1', xPositionScale(d3.min(dates2)))
-       .attr('y1',yPositionScale(5)) 
-       .attr('x2',xPositionScale(d3.max(dates2)))
+        .attr('x1', xPositionScale(d3.min(dates2))+ xPositionScale.bandwidth()/2)
+        .attr('y1',yPositionScale(5)) 
+        .attr('x2',xPositionScale(d3.max(dates2))+ xPositionScale.bandwidth()/2)
        .attr('y2',yPositionScale(5))
        .attr('stroke', 'red')
        .attr('opacity',0.5)
