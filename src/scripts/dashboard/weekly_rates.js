@@ -154,7 +154,7 @@ var dates_array = d3.timeDays(d3.min(dates), tomorrow)
         return d.y;
       })
       .attr('opacity', 0.7)
-      .on('mouseover', function(d){
+      .on('click', function(d){
 
         const xPositionScale = d3.scaleBand().range([0, 180]).domain(dates_array)
 
@@ -219,7 +219,7 @@ var dates_array = d3.timeDays(d3.min(dates), tomorrow)
         .attr('r', 1)
     
       })
-      .on('mouseout', tip.hide)
+      // .on('mouseout', tip.hide)
 
 
       svg.append('circle').attr('cx', 50).attr('cy', height-50).attr('r', radiusScale(5)).attr('fill','none').attr('stroke', 'grey')
