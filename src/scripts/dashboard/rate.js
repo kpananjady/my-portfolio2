@@ -57,6 +57,9 @@ Promise.all([
 function ready([datapoints, datapoints_30]) {
   // Sort the countries from low to high
 
+  svg.append('text').attr('x',0).attr('y',-5).text('Past 30 days:').attr('font-size', '15px').attr('font-weight', 5).attr('id', 'dynamic_hed')
+
+
   datapoints_30.forEach(d => {
     
     d.datetime = parseTime(d["date"])
@@ -407,6 +410,10 @@ function render() {
 
      d3.select('#toggle9').on('click', () => {
 
+        // svg.append('text').attr('x',0).attr('y',0).text('Past 30 days:').attr('font-size', '15px').attr('font-weight', 5).attr('id', 'dynamic_hed')
+
+        d3.select('#dynamic_hed').text('Since March:')
+
         datapoints.forEach(d => {
 
             d.datetime = parseTime(d["date"])
@@ -484,6 +491,9 @@ function render() {
       })
 
     d3.select('#toggle10').on('click', () => {
+
+        d3.select('#dynamic_hed').text('Past 30 days:')
+
 
         svg.selectAll('.average').remove()
         svg.selectAll('.rect_all').remove()

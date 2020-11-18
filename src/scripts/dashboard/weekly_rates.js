@@ -94,6 +94,8 @@ Promise.all([
       const towns = topojson.feature(json2[0], json2[0].objects.townct_37800_0000_2010_s100_census_1_shp_wgs84)
       console.log(towns, 'towns')
 
+
+
       const cats = datapoints.map(d => d.ratecategory)
       console.log(cats, 'CATS')
       var colorScale = d3.scaleOrdinal().domain(['1. <5 cases per 100,000 or <5 reported cases','2. 5-9 cases per 100,000','3. 10-14 cases per 100,000','4. 15 or more cases per 100,000'])

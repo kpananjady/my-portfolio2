@@ -56,6 +56,8 @@ Promise.all([
 function ready([datapoints, datapoints_30]) {
   // Sort the countries from low to high
 
+  svg.append('text').attr('x',0).attr('y',-5).text('Since March:').attr('font-size', '15px').attr('font-weight', 5).attr('id', 'dynamic_hed')
+
   datapoints.forEach(d => {
 
     console.log(parseTime(d["date"]))
@@ -328,6 +330,9 @@ const xAxis = d3
     
          d3.select('#toggle3').on('click', () => {
 
+          d3.select('#dynamic_hed').text('Since March:')
+
+
           svg.selectAll('.average_2').remove()
           svg.selectAll('.rect_30').remove()
   
@@ -407,6 +412,9 @@ const xAxis = d3
         })
   
       d3.select('#toggle4').on('click', () => {
+
+        d3.select('#dynamic_hed').text('Past 30 days')
+
   
         svg.selectAll('.average_2').remove()
         svg.selectAll('.rect_all').remove()
