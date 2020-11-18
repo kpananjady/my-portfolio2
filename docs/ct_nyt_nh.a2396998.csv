@@ -21,7 +21,7 @@ Kansas,12,yes
 Minnesota,7,yes
 South Carolina,10,yes
 Missouri,11,yes
-Wyoming,10,no
+Wyoming,10,yes
 Kentucky,7,yes
 Wisconsin,7,yes
 Montana,6,yes
@@ -32,21 +32,21 @@ Pennsylvania,5
 Maryland,5,yes
 California,6,yes
 Illinois,4,yes
-Oregon,6,no
+Oregon,6,yes
 Delaware,6,yes
 Colorado,3,no
 Ohio,5,no
-West Virginia,3,no
-Michigan,3,no
+West Virginia,3,yes
+Michigan,3,yes
 Rhode Island,2,no
 DC,2,
-New Hampshire,2,no
-New Mexico,2,no
-Massachusetts,2,no
+New Hampshire,2,yes
+New Mexico,2,yes
+Massachusetts,2,yes
 Alaska,2,yes
 New Jersey,1,no
-Maine,1,no
-Vermont,1,no
+Maine,1,yes
+Vermont,1,yes
 Connecticut,1,no
 New York,1,no
 Puerto Rico,undefined,yes
