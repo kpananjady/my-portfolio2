@@ -57,213 +57,85 @@ Promise.all([
 function ready([datapoints, datapoints_30]) {
   // Sort the countries from low to high
 
-  datapoints.forEach(d => {
-
+  datapoints_30.forEach(d => {
+    
     d.datetime = parseTime(d["date"])
   })
-const dates = datapoints.map(d => d.datetime)
-const cases = datapoints.map(d => +d["P_Rate"])
-
+const dates2 = datapoints_30.map(d => d.datetime)
+const cases2 = datapoints_30.map(d => +d["P_Rate"])
 
 
 
 var tomorrow = new Date();
 
 
-console.log(d3.max(dates), tomorrow.setDate(d3.max(dates).getDate()+1), 'these')
-var dates_array = d3.timeDays(d3.min(dates), tomorrow)
+console.log(d3.max(dates2), tomorrow.setDate(d3.max(dates2).getDate()+1), 'these')
+var dates_array = d3.timeDays(d3.min(dates2), tomorrow)
 
 console.log(dates_array[dates_array.length-1], 'this')
+
+
+
 xPositionScale.domain(dates_array)
-yPositionScale.domain([0,d3.max(cases)])
+yPositionScale.domain([0,d3.max(cases2)])
 
-function movingAverage(values, N) {
-    let i = 0;
-    let sum = 0;
-    const means = new Float64Array(values.length).fill(NaN);
-    for (let n = Math.min(N - 1, values.length); i < n; ++i) {
-      sum += values[i];
-    }
-    for (let n = values.length; i < n; ++i) {
-      sum += values[i];
-      means[i] = sum / N;
-      sum -= values[i - N + 1];
-    }
-    return means;
-  }
+svg.append("line")
+.attr("class", "mean-line")
+.attr('x1', xPositionScale(d3.min(dates2))+ xPositionScale.bandwidth()/2)
+.attr('y1',yPositionScale(5)) 
+.attr('x2',xPositionScale(d3.max(dates2))+ xPositionScale.bandwidth()/2)
+.attr('y2',yPositionScale(5))
+.attr('stroke', 'red')
+.attr('opacity',0.5)
+.attr('stroke-width', 2)
 
-
-  datapoints.forEach(function(d) {
-    d.key = parseTime((d["date"]));
-    d.value = +d["P_Rate"];
-  });
-
-//   var pppppPrevVal = 0;
-//   var ppppPrevVal = 0;
-//   var pppPrevVal = 0;
-//   var ppPrevVal = 0;
-
-     
+const line = d3
+.line()
+.x(function(d) {
+  return xPositionScale(parseTime(d["date"])) + xPositionScale.bandwidth()/2
+})
+.y(function(d) {
+  return yPositionScale(d["P_Rate_Avg"])
+})
 
 
-      // var curVal = 0
-      // var valOne = 0
-      // var valTwo = 0
-      // var valThree = 0
-      // var valFour = 0
-      // var valFive = 0
-      // var valSix = 0
-      // var valSeven = 0
-      // var movingAverageLine = d3.line()
-      // .x(function(d,i) { return xPositionScale(d.key); })
-      // .y(function(d,i) {
-      //     if (i == 0) {
-      //       console.log('hre')
-      //         valOne  = yPositionScale(d.value);
-      //         valTwo  = yPositionScale(d.value);
-      //         valThree  = yPositionScale(d.value);
-      //         valFour  = yPositionScale(d.value);
-      //         valFive  = yPositionScale(d.value);
-      //         valSix  = yPositionScale(d.value);
-      //         valSeven = yPositionScale(d.value);
+svg.append('path')
+.datum(datapoints_30)
+.attr('class', 'average')
+.attr('d', function(d) {
+    return line(d)
+})
+.attr('stroke', '#FED000')
+.attr('stroke-width', 2)
+.attr('fill', 'none')
 
-      //         curVal =  yPositionScale(0);
-      //     } else if (i == 1) {
-      //       // console.log(d.value)
-
-      //         valOne = valTwo;
-      //         valTwo  = yPositionScale(d.value);
-      //         valThree  = yPositionScale(d.value);
-      //         valFour  = yPositionScale(d.value);
-      //         valFive  = yPositionScale(d.value);
-      //         valSix  = yPositionScale(d.value);
-      //         valSeven = yPositionScale(d.value);
-
-      //         curVal =  yPositionScale(0);
-      //     } else if (i == 2) {
-
-      //       valOne = valTwo;
-      //       valTwo  = valThree;
-      //       valThree  = yPositionScale(d.value);
-      //       valFour  = yPositionScale(d.value);
-      //       valFive  = yPositionScale(d.value);
-      //       valSix  = yPositionScale(d.value);
-      //       valSeven = yPositionScale(d.value);
-
-             
-      //       curVal =  yPositionScale(0);
-      //     }  else if (i == 3) {
-           
-      //       valOne = valTwo;
-      //       valTwo  = valThree;
-      //       valThree  = valFour;
-      //       valFour  = yPositionScale(d.value);
-      //       valFive  = yPositionScale(d.value);
-      //       valSix  = yPositionScale(d.value);
-      //       valSeven = yPositionScale(d.value);
-
-      //       curVal =  yPositionScale(0);
-
-
-      //   }  else if (i == 4) {
-      //     valOne = valTwo;
-      //     valTwo  = valThree;
-      //     valThree  = valFour;
-      //     valFour  = valFive;
-      //     valFive  = yPositionScale(d.value);
-      //     valSix  = yPositionScale(d.value);
-      //     valSeven = yPositionScale(d.value);
-
-      //     curVal =  yPositionScale(0);
-
-      //   } else if (i == 5) {
-      //     valOne = valTwo;
-      //     valTwo  = valThree;
-      //     valThree  = valFour;
-      //     valFour  = valFive;
-      //     valFive  = valSix;
-      //     valSix  = yPositionScale(d.value);
-      //     valSeven = yPositionScale(d.value);
-
-      //     curVal =  yPositionScale(0);
-        
-      //     } else {
-      //       valOne = valTwo;
-      //     valTwo  = valThree;
-      //     valThree  = valFour;
-      //     valFour  = valFive;
-      //     valFive  = valSix;
-      //     valSix  = valSeven;
-      //     valSeven = yPositionScale(d.value);
-
-      //     curVal = (valOne + valTwo + valThree + valFour + valFive +valSix + valSeven)/7
-      //     } 
-      //     console.log(curVal,'MEAN')
-      //     return curVal;
-      // })
-
-
-         
-      // svg
-      // .selectAll('circle-points')
-      // .data(datapoints)
-      // .enter()
-      // .append('circle')
-      // .attr('class', 'circle-points')
-      // .attr('r', 5)
-      // .attr('cx', d => xPositionScale(parseTime(d["date"])))
-      // .attr('cy', d => yPositionScale( d['P_Rate_Avg']))
-      // .style('fill', '#8B0000')  .attr('opacity', 0.35)
+svg
+.selectAll('rect')
+.data(datapoints_30)
+.enter()
+.append('rect')
+.attr('class', 'rect_30')
+.attr('width', xPositionScale.bandwidth())
+.attr('height', d => {
+  return height - yPositionScale(+d["P_Rate"])
+})
+.attr('x', d => {
+  return xPositionScale(d.datetime)
+})
+.attr('y', d => {
+  return yPositionScale(+d["P_Rate"])
+})
+.attr('fill', '#FED000').attr('opacity',0.3)
+.lower()
 
 
 
-      const line = d3
-      .line()
-      .x(function(d) {
-        return xPositionScale(parseTime(d["date"])) + xPositionScale.bandwidth()/2
-      })
-      .y(function(d) {
-        return yPositionScale(d["P_Rate_Avg"])
-      })
-
-
-   
-
-      svg.append('path')
-      .datum(datapoints)
-      .attr('class', 'average')
-      .attr('d', function(d) {
-          return line(d)
-      })
-      .attr('stroke', '#FED000')
-      .attr('stroke-width', 2)
-      .attr('fill', 'none')
-
-     
-  svg
-    .selectAll('rect')
-    .data(datapoints)
-    .enter()
-    .append('rect')
-    .attr('class', 'rect_all')
-    .attr('width', xPositionScale.bandwidth())
-    .attr('height', d => {
-      return height - yPositionScale(d["P_Rate"])
-    })
-    .attr('x', d => {
-      return xPositionScale(d.datetime)
-    })
-    .attr('y', d => {
-      return yPositionScale(d["P_Rate"])
-    })
-    .attr('fill', '#FED000').attr('opacity',0.3)
-    .lower()
  
 const xAxis = d3
     .axisBottom(xPositionScale)
     .tickSize(height)
     .tickFormat(d3.timeFormat('%b %d'))
-    .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%20)}));
+    .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%4)}));
 
 
     svg
@@ -363,6 +235,8 @@ const xAxis = d3
       })
 
     d3.select('#toggle10').on('click', () => {
+
+
 
         svg.selectAll('.average').remove()
         svg.selectAll('.rect_all').remove()
@@ -556,6 +430,12 @@ function render() {
     xPositionScale.domain(dates_array)
     yPositionScale.domain([0,d3.max(cases)])
 
+
+    const xAxis = d3
+    .axisBottom(xPositionScale)
+    .tickSize(height)
+    .tickFormat(d3.timeFormat('%b %d'))
+    .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%20)}));
 
         svg.append('path')
         .datum(datapoints)

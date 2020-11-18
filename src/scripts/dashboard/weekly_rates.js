@@ -35,9 +35,9 @@ const tip = d3
 .offset([-10, 0])
 .html(function(d) {
 
-  return `${d['town']}: ${d['caserate']}, ${d['most_recent']}
+  return `${d['town']} <div id='pointsTwo'> Rate on ${d['most_recent']}: ${d['caserate']}</div>
   <div id='tipDiv'></div>
-  ${d['min_value']}, 10-22` 
+  <div id='pointsOne'> Rate on 10-22: ${d['min_value']}</div>` 
 
 })
 
@@ -112,7 +112,7 @@ Promise.all([
 console.log(d3.max(dates), tomorrow.setDate(d3.max(dates).getDate()+1), 'these')
 var dates_array = d3.timeDays(d3.min(dates), tomorrow)
 
-
+      svg.append('rect').attr('x',-50).attr('y',-100).attr('height', height).attr('width', width).attr('fill', 'white').lower().on('click', tip.hide)
 
       var towns2 = svg
       .selectAll('path-town')
@@ -123,6 +123,7 @@ var dates_array = d3.timeDays(d3.min(dates), tomorrow)
       .attr('d', path)
       .attr('fill', 'gainsboro')  
       .attr('stroke', 'white')  
+      .on('click', tip.hide)
 
       svg.selectAll("circle")
       .data(datapoints)
@@ -153,7 +154,7 @@ var dates_array = d3.timeDays(d3.min(dates), tomorrow)
         return d.y;
       })
       .attr('opacity', 0.7)
-      .on('click', function(d){
+      .on('mouseover', function(d){
 
         const xPositionScale = d3.scaleBand().range([0, 180]).domain(dates_array)
 
@@ -218,6 +219,7 @@ var dates_array = d3.timeDays(d3.min(dates), tomorrow)
         .attr('r', 1)
     
       })
+      .on('mouseout', tip.hide)
 
 
       svg.append('circle').attr('cx', 50).attr('cy', height-50).attr('r', radiusScale(5)).attr('fill','none').attr('stroke', 'grey')
