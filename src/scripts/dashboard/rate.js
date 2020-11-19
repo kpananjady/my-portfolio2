@@ -159,12 +159,16 @@ svg.selectAll('circle_stuff')
 .attr('fill', '#FED000')
 .attr('r', 3)
 .on('mouseover', function(d){
-
+    d3.select(this).attr('r', 6)
     d.value = d.P_Rate_Avg
     tip.show.call(this, d)
 
 })
-.on('mouseout', tip.hide)
+.on('mouseout', function(d){
+  d3.select(this).attr('r', 3)
+  tip.hide.call(this, d)
+
+})
 
 
  
@@ -583,12 +587,18 @@ function render() {
        .attr('fill', '#FED000')
        .attr('r', 3)
        .on('mouseover', function(d){
+        d3.select(this).attr('r', 6)
 
         d.value = d.P_Rate_Avg
         tip.show.call(this, d)
     
     })
-    .on('mouseout', tip.hide)
+    .on('mouseout', function(d){
+      d3.select(this).attr('r', 3)
+      tip.hide.call(this, d)
+    
+    })
+    
      
         svg.append('path')
         .datum(datapoints_30)
