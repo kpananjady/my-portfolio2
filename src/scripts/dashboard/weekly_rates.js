@@ -156,6 +156,14 @@ var dates_array = d3.timeDays(d3.min(dates), tomorrow)
         return d.y;
       })
       .attr('opacity', 0.7)
+      .on('mouseover', function(d){
+        d3.select(this).attr('opacity','1')
+
+      })
+      .on('mouseout', function(d){
+        d3.select(this).attr('opacity','0.7')
+
+      })
       .on('click', function(d){
 
         const xPositionScale = d3.scaleBand().range([0, 180]).domain(dates_array)

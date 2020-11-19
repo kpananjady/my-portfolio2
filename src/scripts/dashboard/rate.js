@@ -1,4 +1,6 @@
 import * as d3 from 'd3'
+import d3Tip from 'd3-tip'
+d3.tip = d3Tip
 
 const margin = {
   top: 30,
@@ -37,6 +39,19 @@ const colorScale = d3
     '#b3de69'
   ])
 
+  const tip = d3
+.tip()
+.attr('class', 'd3-tip d3-tip-scrolly')
+.style('pointer-events', 'none')
+.offset([-10, 0])
+.html(function(d) {
+
+  return `${parseFloat(d['value']).toFixed(2)}%<br>
+  ${d['date']}` 
+
+})
+
+
 
 const parseTime = d3.timeParse('%Y-%m-%d')
 
@@ -53,6 +68,7 @@ Promise.all([
   })).then(ready)
   .catch(err => console.log('Failed on', err))
 
+svg.call(tip)
 
 function ready([datapoints, datapoints_30]) {
   // Sort the countries from low to high
@@ -131,6 +147,24 @@ svg
 .attr('fill', '#FED000').attr('opacity',0.3)
 .lower()
 
+
+svg.selectAll('circle_stuff')
+.data(datapoints_30)
+.enter()
+.append('circle')
+.attr('class', 'circles')
+.attr('cx', d=> xPositionScale(parseTime(d["date"])) + xPositionScale.bandwidth()/2)
+.attr('cy', d=> yPositionScale(d["P_Rate_Avg"]))
+.attr('stroke', '#FED000')
+.attr('fill', '#FED000')
+.attr('r', 3)
+.on('mouseover', function(d){
+
+    d.value = d.P_Rate_Avg
+    tip.show.call(this, d)
+
+})
+.on('mouseout', tip.hide)
 
 
  
@@ -421,6 +455,8 @@ function render() {
         const dates = datapoints.map(d => d.datetime)
         const cases = datapoints.map(d => +d["P_Rate"])
 
+        svg.selectAll('.circles').remove() 
+
         svg.selectAll('.average').remove() 
         svg.selectAll('.mean-line').remove() 
 
@@ -494,6 +530,7 @@ function render() {
 
         d3.select('#dynamic_hed').text('Past 30 days:')
 
+        svg.selectAll('.circles').remove()
 
         svg.selectAll('.average').remove()
         svg.selectAll('.rect_all').remove()
@@ -535,6 +572,23 @@ function render() {
        .attr('stroke-width', 2)
 
 
+       svg.selectAll('circle_stuff')
+       .data(datapoints_30)
+       .enter()
+       .append('circle')
+       .attr('class', 'circles')
+       .attr('cx', d=> xPositionScale(parseTime(d["date"])) + xPositionScale.bandwidth()/2)
+       .attr('cy', d=> yPositionScale(d["P_Rate_Avg"]))
+       .attr('stroke', '#FED000')
+       .attr('fill', '#FED000')
+       .attr('r', 3)
+       .on('mouseover', function(d){
+
+        d.value = d.P_Rate_Avg
+        tip.show.call(this, d)
+    
+    })
+    .on('mouseout', tip.hide)
      
         svg.append('path')
         .datum(datapoints_30)
@@ -596,6 +650,10 @@ function render() {
       .attr('d', function(d) {
         return line(d)
     })
+
+    svg.selectAll('.circles')   
+    .attr('cx', d=> xPositionScale(parseTime(d["date"])) + xPositionScale.bandwidth()/2)
+       .attr('cy', d=> yPositionScale(d["P_Rate_Avg"]))
 //       .attr('width', xPositionScale.bandwidth())
 //       .attr('height', d => {
 //         return height - yPositionScale(d.life_expectancy)
