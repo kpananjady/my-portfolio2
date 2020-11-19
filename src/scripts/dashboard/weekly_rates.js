@@ -12,7 +12,7 @@ let width = 1000 - margin.left - margin.right
 
 const radiusScale = d3
   .scaleSqrt()
-  .domain([0, 60])
+  .domain([0, 80])
   .range([2, 10])
 
 let svg = d3
@@ -248,6 +248,8 @@ var dates_array = d3.timeDays(d3.min(dates), tomorrow)
 
       svg.append('circle').attr('cx', 225).attr('cy', height-50).attr('r', radiusScale(55)).attr('fill','none').attr('stroke', 'grey')
 
+      svg.append('circle').attr('cx', 250).attr('cy', height-50).attr('r', radiusScale(65)).attr('fill','none').attr('stroke', 'grey')
+
      
       svg.append('rect').attr('id', 'box0').attr('width', 20).attr('height', 5).attr('x',40).attr('y', 330).attr('fill', colorScale('1. <5 cases per 100,000 or <5 reported cases')).attr('opacity',1)
 
@@ -255,7 +257,7 @@ var dates_array = d3.timeDays(d3.min(dates), tomorrow)
 
       svg.append('rect').attr('id', 'box0').attr('width', 20).attr('height', 5).attr('x',90).attr('y', 330).attr('stroke', 'none').attr('fill', colorScale('3. 10-14 cases per 100,000')).attr('opacity',1)
 
-      svg.append('rect').attr('id', 'box0').attr('width', 130).attr('height',5).attr('x',115).attr('y', 330).attr('stroke', 'none').attr('fill', colorScale('4. 15 or more cases per 100,000')).attr('opacity',1)
+      svg.append('rect').attr('id', 'box0').attr('width', 150).attr('height',5).attr('x',115).attr('y', 330).attr('stroke', 'none').attr('fill', colorScale('4. 15 or more cases per 100,000')).attr('opacity',1)
 
    
       svg.append('text').attr('x',10).attr('y', 340).text('Level').attr('font-size', '10px').attr('font-weight', 5).attr('x', 0)
@@ -281,6 +283,9 @@ var dates_array = d3.timeDays(d3.min(dates), tomorrow)
       svg.append('text').attr('x',195).attr('y', 380).text('45').attr('font-size', '10px').attr('font-weight', 5)
 
       svg.append('text').attr('x',220).attr('y', 380).text('55').attr('font-size', '10px').attr('font-weight', 5)
+
+      svg.append('text').attr('x',245).attr('y', 380).text('65').attr('font-size', '10px').attr('font-weight', 5)
+
 
 
       svg.append('text').attr('x',10).attr('y', 380).text('Case').attr('font-size', '10px').attr('font-weight', 5).attr('x', 0)
