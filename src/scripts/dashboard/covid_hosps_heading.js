@@ -23,7 +23,7 @@ let svg = d3
 
   function ready(dummydata) {
 
-    svg.append('text').attr('class', 'title').text('COVID hospitalizations over time').attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'title').text('CT COVID hospitalizations over time').attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
     svg.append('text').attr('class', 'sub-title').text("The bars represent the number of COVID-19 patients hospitalized on the.").attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
     svg.append('text').attr('class', 'sub-title').text("day the data were reported.").attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
