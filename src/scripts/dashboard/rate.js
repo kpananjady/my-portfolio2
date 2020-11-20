@@ -47,8 +47,8 @@ const colorScale = d3
 .html(function(d) {
 
   return `${parseFloat(d['value']).toFixed(2)}%<br>
-  ${d['date']}` 
-
+  ${parseTime(d['date']).getMonth()+1}/${parseTime(d['date']).getDate()}/${parseTime(d['date']).getFullYear()}` 
+  // (d3.max(dates).getMonth()+1) + "-" + d3.max(dates).getDate()
 })
 
 
