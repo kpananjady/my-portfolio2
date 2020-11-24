@@ -86,7 +86,7 @@ svg
     // .range(["4B4E6D","89a7a7","e3d26f","d65c6c","ff931f","bf0d22","d5cce0","540804","6E75A8"]
 
     console.log(ct_pop[0])
-    svg.append('rect').attr('x', -130).attr('y',0).attr('width', 10).attr('height', yPositionScale(4.7)).attr('fill','#6E75A8' )
+    svg.append('rect').attr('x', -130).attr('y',0).attr('width', 10).attr('height', yPositionScale(4.7)).attr('fill','#BC5F04' )
     svg.append('rect').attr('x', -130).attr('y', yPositionScale(4.7)).attr('width', 10).attr('height', yPositionScale(7.4)).attr('fill','#540804' )
     svg.append('rect').attr('x', -130).attr('y', yPositionScale(4.7)+yPositionScale(7.4)).attr('width', 10).attr('height', yPositionScale(12.8)).attr('fill','#e5aa70' )
     svg.append('rect').attr('x', -130).attr('y', yPositionScale(4.7)+yPositionScale(7.4)+yPositionScale(12.8)).attr('width', 10).attr('height', yPositionScale(14.4)).attr('fill','#bf0d22' )
@@ -119,7 +119,7 @@ xPositionScale.domain(dates_array)
     var color = d3.scaleOrdinal()
       .domain(keys)
     //   .range(d3.schemeSet2)
-      .range(["4B4E6D","89a7a7","e3d26f","d65c6c","ff931f","bf0d22","e5aa70","540804","6E75A8"]
+      .range(["4B4E6D","89a7a7","e3d26f","d65c6c","ff931f","bf0d22","#e5aa70","540804","BC5F04"]
       );
   
     // //stack the data?
@@ -277,7 +277,29 @@ areaChart
     .enter()
     .append("text")
       .attr("x", -125 + size*1.2)
-      .attr("y", function(d,i){ return 320 - i*(size+15) - (size/2)}) // 100 is where the first dot appears. 25 is the distance between dots
+      .attr("y", function(d,i){ 
+        if (i===0){
+        return height -15
+    }     if (i===1){
+        return height -60
+    }  if (i===2){
+        return height -105
+    } if (i===4){
+        return height - 190
+    } if (i===5){
+        return height - 240
+    } if (i===6){
+        return height - 285
+    }  if (i===7){
+        return height - 320
+    }
+    if (i===8){
+        return 0 + 10
+    }
+
+    return 320 - i*(size+15) - (size/2)
+
+    }) // 100 is where the first dot appears. 25 is the distance between dots
       .style("fill", function(d){ return color(d)})
       .text(function(d,i){ 
           if (i===0){
