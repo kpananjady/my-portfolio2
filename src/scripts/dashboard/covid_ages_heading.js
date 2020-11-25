@@ -23,7 +23,7 @@ let svg = d3
 
   function ready(dummydata) {
 
-    svg.append('text').attr('class', 'title').text("Age Distribution of CT COVID cases").attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'title').text("Age distribution of CT COVID cases").attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
     svg.append('text').attr('class', 'sub-title').text("Percentage of COVID cases in each age bracket daily since March.").attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
     svg.append('text').attr('class', 'sub-title').text('Mouseover a label to highlight an age bracket.').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 

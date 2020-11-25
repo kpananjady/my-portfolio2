@@ -83,10 +83,17 @@ function calcCellSize(w, h, ncol, nrow) {
   }
 
   Promise.all([
-    d3.csv(require('/data/square_states.csv')),
-    d3.csv(require('/data/ct_nyt_nh.csv'))
-  ]).then(ready)
-  .catch(err => console.log('Failed on', err))
+    "https://test-uploading-file.s3.amazonaws.com/square_states.csv",
+    "https://test-uploading-file.s3.amazonaws.com/case_rate.csv",
+    ]
+    .map(function(url) {
+      return fetch(url).then(function(response) {
+        return response.ok ? response.text() : Promise.reject(response.status);
+      }).then(function(text) {
+        return d3.csvParse(text);
+      });
+    })).then(ready)
+    .catch(err => console.log('Failed on', err))
 
 
   const tip = d3
