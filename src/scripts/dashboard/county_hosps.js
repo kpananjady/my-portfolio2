@@ -42,20 +42,8 @@ const colorScale = d3
 const parseTime = d3.timeParse('%Y-%m-%d')
 // const parseTime = d3.timeParse('%m/%d/%Y')
 
-Promise.all([
-    "https://test-uploading-file.s3.amazonaws.com/county_hosps_test.csv",
-    ]
-    .map(function(url) {
-      return fetch(url).then(function(response) {
-        return response.ok ? response.text() : Promise.reject(response.status);
-      }).then(function(text) {
-        return d3.csvParse(text);
-      });
-    })).then(ready)
-    .catch(err => console.log('Failed on', err))
-
 // Promise.all([
-//     "https://test-uploading-file.s3.amazonaws.com/county_hosps.csv",
+//     "https://test-uploading-file.s3.amazonaws.com/county_hosps_test.csv",
 //     ]
 //     .map(function(url) {
 //       return fetch(url).then(function(response) {
@@ -65,6 +53,18 @@ Promise.all([
 //       });
 //     })).then(ready)
 //     .catch(err => console.log('Failed on', err))
+
+Promise.all([
+    "https://test-uploading-file.s3.amazonaws.com/county_hosps.csv",
+    ]
+    .map(function(url) {
+      return fetch(url).then(function(response) {
+        return response.ok ? response.text() : Promise.reject(response.status);
+      }).then(function(text) {
+        return d3.csvParse(text);
+      });
+    })).then(ready)
+    .catch(err => console.log('Failed on', err))
 
     const tip = d3
     .tip()
