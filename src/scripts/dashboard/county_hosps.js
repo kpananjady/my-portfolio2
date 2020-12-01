@@ -4,7 +4,7 @@ d3.tip = d3Tip
 
 const margin = {
   top: 30,
-  right: 20,
+  right: 40,
   bottom: 30,
   left: 120
 }
