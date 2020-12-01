@@ -42,9 +42,8 @@ const colorScale = d3
 const parseTime = d3.timeParse('%Y-%m-%d')
 // const parseTime = d3.timeParse('%m/%d/%Y')
 
-
 Promise.all([
-    "https://test-uploading-file.s3.amazonaws.com/county_hosps.csv",
+    "https://test-uploading-file.s3.amazonaws.com/county_hosps_test.csv",
     ]
     .map(function(url) {
       return fetch(url).then(function(response) {
@@ -54,6 +53,18 @@ Promise.all([
       });
     })).then(ready)
     .catch(err => console.log('Failed on', err))
+
+// Promise.all([
+//     "https://test-uploading-file.s3.amazonaws.com/county_hosps.csv",
+//     ]
+//     .map(function(url) {
+//       return fetch(url).then(function(response) {
+//         return response.ok ? response.text() : Promise.reject(response.status);
+//       }).then(function(text) {
+//         return d3.csvParse(text);
+//       });
+//     })).then(ready)
+//     .catch(err => console.log('Failed on', err))
 
     const tip = d3
     .tip()
@@ -98,12 +109,18 @@ const hosps = datapoints.map(d => +d['Pop_Adjusted'])
 xPositionScale.domain(dates_array)
 yPositionScale.domain([0,d3.max(hosps)])
 
-
+const arrayNames =[]
 var nested = d3.nest()
       .key(k => k['county'])
       .entries(datapoints);
 
-    // console.log(nested, 'nested')
+   nested.forEach(function(d){
+
+    arrayNames.push(d.key)
+   })
+   console.log(nested)
+
+   console.log(arrayNames)
     const xAxis = d3
     .axisBottom(xPositionScale)
     .tickSize(50)
@@ -121,14 +138,17 @@ var nested = d3.nest()
         const  arrayHosps = []
         // console.log(county.values['hospitalization'], 'finding the maximum')
 
+        // const countyName;
         county.values.forEach(function(d){
             arrayHosps.push(d['hospitalization'])
+            // const countyName = d['County']
         })
         console.log(Math.max.apply(null, arrayHosps), 'all of em')
         const maxValue = Math.max.apply(null, arrayHosps)
         // console.log(county.values[0]['county'], 'here I am')
         const container = d3.select(this)
 
+        console.log(county.values[0]['county'], 'countyName')
    
     
     
@@ -206,21 +226,21 @@ container        .append('g')
 
         
       container.attr('transform', `translate(${0},${0})`)
-      if (i === 0) {
+      if (county.values[0]['county'] === 'Windham') {
       container
     .append('text').attr('font-size', '10px').attr('font-weight', 5)
     .text('Windham')
     .attr('x',-80)    .attr('y',25)
 }
 
-      if (i === 1) {
+      if (county.values[0]['county'] === 'Fairfield') {
         container.attr('transform', `translate(${0},${75})`)
         container
     .append('text').attr('font-size', '10px').attr('font-weight', 5)
     .text('Fairfield')
     .attr('x',-80)    .attr('y',25)
       }
-      if (i === 2) {
+      if (county.values[0]['county'] === 'Hartford') {
         container.attr('transform', `translate(${0},${150})`)
 
         container
@@ -229,7 +249,7 @@ container        .append('g')
     .attr('x',-80)    .attr('y',25)
       }
 
-      if (i === 3) {
+      if (county.values[0]['county'] === 'Litchfield') {
         container.attr('transform', `translate(${0},${225})`)
 
         container
@@ -238,7 +258,7 @@ container        .append('g')
     .attr('x',-80)    .attr('y',25)
       }
 
-      if (i === 4) {
+      if (county.values[0]['county'] === 'Tolland') {
         container.attr('transform', `translate(${0},${300})`)
 
         container
@@ -247,7 +267,7 @@ container        .append('g')
     .attr('x',-80)    .attr('y',25)
       }
 
-      if (i === 5) {
+      if (county.values[0]['county'] === 'New Haven') {
         container.attr('transform', `translate(${0},${375})`)
 
         container
@@ -256,7 +276,7 @@ container        .append('g')
     .attr('x',-80)    .attr('y',25)
       }
 
-      if (i === 6) {
+      if (county.values[0]['county'] === 'New London') {
         container.attr('transform', `translate(${0},${450})`)
 
         container
@@ -265,7 +285,7 @@ container        .append('g')
     .attr('x',-80)    .attr('y',25)
       }
 
-      if (i === 7) {
+      if (county.values[0]['county'] === 'Middlesex') {
         container.attr('transform', `translate(${0},${525})`)
 
         container

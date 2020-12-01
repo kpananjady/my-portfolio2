@@ -478,7 +478,7 @@ function render() {
     .axisBottom(xPositionScale)
     .tickSize(height)
     .tickFormat(d3.timeFormat('%b %d'))
-    .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%20)}));
+    .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%50)}));
 
         svg.append('path')
         .datum(datapoints)

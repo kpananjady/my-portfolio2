@@ -264,7 +264,7 @@ const xAxis = d3
     .axisBottom(xPositionScale)
     .tickSize(height)
     .tickFormat(d3.timeFormat('%b %d'))
-    .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%20)}));
+    .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%50)}));
 
   
 
