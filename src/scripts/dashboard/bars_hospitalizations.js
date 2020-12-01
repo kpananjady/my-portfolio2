@@ -1,4 +1,6 @@
 import * as d3 from 'd3'
+import d3Tip from 'd3-tip'
+d3.tip = d3Tip
 
 const margin = {
   top: 30,
@@ -52,7 +54,19 @@ Promise.all([
   })).then(ready)
   .catch(err => console.log('Failed on', err))
 
+  const tip = d3
+.tip()
+.attr('class', 'd3-tip d3-tip-scrolly')
+.style('pointer-events', 'none')
+.offset([-10, 0])
+.html(function(d) {
 
+  return `${parseFloat(d['value']).toFixed(2)}<br>
+  ${parseTime(d['date']).getMonth()+1}/${parseTime(d['date']).getDate()}/${parseTime(d['date']).getFullYear()}` 
+  // (d3.max(dates).getMonth()+1) + "-" + d3.max(dates).getDate()
+})
+
+svg.call(tip)
 function ready([datapoints, datapoints_30]) {
   // Sort the countries from low to high
 
@@ -72,8 +86,8 @@ function ready([datapoints, datapoints_30]) {
 var tomorrow = new Date();
 
 
-console.log(d3.max(dates), tomorrow.setDate(d3.max(dates).getDate()+1), 'these')
-var dates_array = d3.timeDays(d3.min(dates), tomorrow)
+var dates_array = d3.timeDays(d3.min(dates), d3.max(dates))
+dates_array.push(d3.max(dates))
 
 console.log(dates_array[dates_array.length-1], 'this')
 
@@ -181,8 +195,8 @@ const xAxis = d3
       var tomorrow = new Date();
       
       
-      console.log(d3.max(dates), tomorrow.setDate(d3.max(dates).getDate()+1), 'these')
-      var dates_array = d3.timeDays(d3.min(dates), tomorrow)
+      var dates_array = d3.timeDays(d3.min(dates), d3.max(dates))
+      dates_array.push(d3.max(dates))
       
       console.log(dates_array[dates_array.length-1], 'this')
       
@@ -245,6 +259,8 @@ const xAxis = d3
       svg.selectAll('.average_2').remove()
       svg.selectAll('.rect_all').remove()
 
+      
+
         datapoints_30.forEach(d => {
     
             console.log(parseTime(d["date"]))
@@ -257,8 +273,8 @@ const xAxis = d3
       
       
       var tomorrow = new Date();
-      console.log(d3.max(dates), tomorrow.setDate(d3.max(dates).getDate()+1), 'these')
-      var dates_array = d3.timeDays(d3.min(dates2), tomorrow)
+      var dates_array = d3.timeDays(d3.min(dates2), d3.max(dates2))
+      dates_array.push(d3.max(dates2))
       
       console.log(dates_array[dates_array.length-1], 'this')
             
@@ -335,7 +351,8 @@ const xAxis = d3
 
           svg.selectAll('.average_2').remove()
           svg.selectAll('.rect_30').remove()
-  
+          svg.selectAll('.circles').remove() 
+
         
           
           datapoints.forEach(d => {
@@ -351,10 +368,8 @@ const xAxis = d3
           const dates = datapoints.map(d => d.datetime)
         var tomorrow = new Date();
         
-        
-        console.log(d3.max(dates), tomorrow.setDate(d3.max(dates).getDate()+1), 'these')
-        var dates_array = d3.timeDays(d3.min(dates), tomorrow)
-        
+        var dates_array = d3.timeDays(d3.min(dates), d3.max(dates))
+        dates_array.push(d3.max(dates))
         console.log(dates_array[dates_array.length-1], 'this')
         
         const hosps = datapoints.map(d => +d['hospitalizedcases'])
@@ -431,8 +446,8 @@ const xAxis = d3
     
     
     var tomorrow = new Date();
-    console.log(d3.max(dates), tomorrow.setDate(d3.max(dates).getDate()+1), 'these')
-    var dates_array = d3.timeDays(d3.min(dates2), tomorrow)
+    var dates_array = d3.timeDays(d3.min(dates2), d3.max(dates2))
+    dates_array.push(d3.max(dates2))
     
     console.log(dates_array[dates_array.length-1], 'this')
           
@@ -455,6 +470,28 @@ const xAxis = d3
           .attr('stroke', '#FFA07A')
           .attr('stroke-width', 2)
           .attr('fill', 'none')
+
+          svg.selectAll('circle_stuff')
+.data(datapoints_30)
+.enter()
+.append('circle')
+.attr('class', 'circles')
+.attr('cx', d=> xPositionScale(parseTime(d["date"])) + xPositionScale.bandwidth()/2)
+.attr('cy', d=> yPositionScale(d["Hosp_Avg"]))
+.attr('stroke', '#FFA07A')
+.attr('fill', '#FFA07A')
+.attr('r', 3)
+.on('mouseover', function(d){
+    d3.select(this).attr('r', 6)
+    d.value = d.Hosp_Avg
+    tip.show.call(this, d)
+
+})
+.on('mouseout', function(d){
+  d3.select(this).attr('r', 3)
+  tip.hide.call(this, d)
+
+})
 
           svg
           .selectAll('rect')
@@ -506,6 +543,10 @@ const xAxis = d3
         .attr('d', function(d) {
           return line(d)
       })
+
+      svg.selectAll('.circles')   
+      .attr('cx', d=> xPositionScale(parseTime(d["date"])) + xPositionScale.bandwidth()/2)
+         .attr('cy', d=> yPositionScale(d["Hosp_Avg"]))
     //       .attr('width', xPositionScale.bandwidth())
     //       .attr('height', d => {
     //         return height - yPositionScale(d.life_expectancy)

@@ -1,4 +1,6 @@
 import * as d3 from 'd3'
+import d3Tip from 'd3-tip'
+d3.tip = d3Tip
 
 const margin = {
   top: 30,
@@ -53,6 +55,20 @@ Promise.all([
     })).then(ready)
     .catch(err => console.log('Failed on', err))
 
+    const tip = d3
+    .tip()
+    .attr('class', 'd3-tip d3-tip-scrolly')
+    .style('pointer-events', 'none')
+    .offset([-10, 0])
+    .html(function(d) {
+    
+      return `Hospitalizations: ${parseFloat(d['value'])}<br>
+      ${parseFloat(d['pct'].toFixed(2))}% of county peak<br>
+      ${parseTime(d['dateupdated']).getMonth()+1}/${parseTime(d['dateupdated']).getDate()}/${parseTime(d['dateupdated']).getFullYear()}` 
+      // (d3.max(dates).getMonth()+1) + "-" + d3.max(dates).getDate()
+    })
+    
+    svg.call(tip)
 
 function ready([datapoints]) {
   // Sort the countries from low to high
@@ -69,11 +85,11 @@ function ready([datapoints]) {
 
 
 const dates = datapoints.map(d => d.datetime)
-var tomorrow = new Date();
 
 
-console.log(d3.max(dates), tomorrow.setDate(d3.max(dates).getDate()+1), 'these')
-var dates_array = d3.timeDays(d3.min(dates), tomorrow)
+
+var dates_array = d3.timeDays(d3.min(dates), d3.max(dates))
+dates_array.push(d3.max(dates))
 
 // console.log(dates_array[dates_array.length-1], 'this')
 
@@ -102,9 +118,15 @@ var nested = d3.nest()
     .each(function(d, i) {
 
         const county = d;
+        const  arrayHosps = []
+        // console.log(county.values['hospitalization'], 'finding the maximum')
 
-        const county_name = 
-        console.log(county.values[0]['county'], 'here I am')
+        county.values.forEach(function(d){
+            arrayHosps.push(d['hospitalization'])
+        })
+        console.log(Math.max.apply(null, arrayHosps), 'all of em')
+        const maxValue = Math.max.apply(null, arrayHosps)
+        // console.log(county.values[0]['county'], 'here I am')
         const container = d3.select(this)
 
    
@@ -136,7 +158,7 @@ container        .append('g')
         .selectAll('text_label')
     .data(county)
     .enter()
-    .append('text').attr('font-size', '10px').attr('font-weight', 5)
+    .append('text').attr('font-size', '15px').attr('font-weight', 5)
     .text(function(d){
        
         return d
@@ -150,6 +172,9 @@ container        .append('g')
     .enter()
     .append('rect')
     .attr('class', 'rect_all')
+    .attr('id', function(d){
+        return `url_${d['dateupdated']}`
+    })
     .attr('width', xPositionScale.bandwidth())
     .attr('height', d => {
         // console.log('here')
@@ -163,8 +188,19 @@ container        .append('g')
       return yPositionScale(d['Pop_Adjusted'])
     })
     .attr('fill', '#FFA07A')
-     .attr('opacity',0.5)
+     .attr('opacity',0.7)
+.on('mouseover', function(d){
+    d3.selectAll(`#url_${d['dateupdated']}`).attr('opacity',1)
+    d.value = d['hospitalization']
+    d.pct = 100*d['hospitalization']/maxValue
+    tip.show.call(this, d)
 
+})
+.on('mouseout', function(d){
+    d3.selectAll(`#url_${d['dateupdated']}`).attr('opacity',0.7)
+  tip.hide.call(this, d)
+
+})
     // .lower()
 
 

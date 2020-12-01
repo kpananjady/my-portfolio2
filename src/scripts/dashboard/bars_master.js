@@ -71,8 +71,8 @@ const cases = datapoints.map(d => +d["Total"])
 var tomorrow = new Date();
 
 
-console.log(d3.max(dates), tomorrow.setDate(d3.max(dates).getDate()+1), 'these')
-var dates_array = d3.timeDays(d3.min(dates), tomorrow)
+var dates_array = d3.timeDays(d3.min(dates), d3.max(dates))
+dates_array.push(d3.max(dates))
 
 console.log(dates_array[dates_array.length-1], 'this')
 xPositionScale.domain(dates_array)
@@ -337,8 +337,8 @@ const xAxis = d3
         var tomorrow = new Date();
         
         
-        console.log(d3.max(dates), tomorrow.setDate(d3.max(dates).getDate()+1), 'these')
-        var dates_array = d3.timeDays(d3.min(dates), tomorrow)
+        var dates_array = d3.timeDays(d3.min(dates), d3.max(dates))
+        dates_array.push(d3.max(dates))
         
         console.log(dates_array[dates_array.length-1], 'this')
         xPositionScale.domain(dates_array)
@@ -413,8 +413,8 @@ const xAxis = d3
 var tomorrow = new Date();
 
 
-console.log(d3.max(dates2), tomorrow.setDate(d3.max(dates2).getDate()+1), 'these')
-var dates_array = d3.timeDays(d3.min(dates2), tomorrow)
+var dates_array = d3.timeDays(d3.min(dates2), d3.max(dates2))
+dates_array.push(d3.max(dates2))
 
 console.log(dates_array[dates_array.length-1], 'this')
 xPositionScale.domain(dates_array)
