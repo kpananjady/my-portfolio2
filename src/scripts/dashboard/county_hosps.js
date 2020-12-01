@@ -4,7 +4,7 @@ d3.tip = d3Tip
 
 const margin = {
   top: 30,
-  right: 40,
+  right: 0,
   bottom: 30,
   left: 120
 }
@@ -108,7 +108,7 @@ var nested = d3.nest()
     .axisBottom(xPositionScale)
     .tickSize(50)
     .tickFormat(d3.timeFormat('%b %d'))
-    .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%20)}));
+    .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%30)}));
 
     svg
     .selectAll('.player-data')
