@@ -73,6 +73,7 @@ svg.call(tip)
 function ready([datapoints, datapoints_30]) {
   // Sort the countries from low to high
 
+
   svg.append('text').attr('x',0).attr('y',-5).text('Past 30 days:').attr('font-size', '15px').attr('font-weight', 5).attr('id', 'dynamic_hed')
 
 
@@ -84,7 +85,7 @@ const dates2 = datapoints_30.map(d => d.datetime)
 const cases2 = datapoints_30.map(d => +d["P_Rate"])
 
 
-
+console.log(d3.max(cases2), 'yo')
 
 var dates_array = d3.timeDays(d3.min(dates2), d3.max(dates2))
 dates_array.push(d3.max(dates2))
@@ -92,7 +93,8 @@ dates_array.push(d3.max(dates2))
 
 
 xPositionScale.domain(dates_array)
-yPositionScale.domain([0,d3.max(cases2)])
+yPositionScale.domain([0,d3.max(cases2)+1])
+
 
 svg.append("line")
 .attr("class", "mean-line")
@@ -299,7 +301,7 @@ const xAxis = d3
 
 
         xPositionScale.domain(dates_array)
-        yPositionScale.domain([0,d3.max(cases2)])
+        yPositionScale.domain([0,d3.max(cases2)+1])
 
         svg.append("line")
         .attr("class", "mean-line")
@@ -552,7 +554,7 @@ function render() {
 
     console.log(dates_array[dates_array.length-1], 'this')
     xPositionScale.domain(dates_array)
-    yPositionScale.domain([0,d3.max(cases2)])
+    yPositionScale.domain([0,d3.max(cases2)+1])
 
 
         const xAxis = d3
