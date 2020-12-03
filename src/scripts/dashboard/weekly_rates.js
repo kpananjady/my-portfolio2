@@ -35,9 +35,10 @@ const tip = d3
 .offset([-10, 0])
 .html(function(d) {
 
-  return `${d['town']} <div id='pointsTwo'> Rate on ${d['most_recent']}: ${d['caserate']}</div>
-  <div id='tipDiv'></div>
-  <div id='pointsOne'> Rate on 10-22: ${d['min_value']}</div>` 
+  return `${d['town']} <div id='pointsTwo'> Rate on ${d['most_recent']}: ${d['caserate']}</div>`
+  // return `${d['town']} <div id='pointsTwo'> Rate on ${d['most_recent']}: ${d['caserate']}</div>
+  // <div id='tipDiv'></div>
+  // <div id='pointsOne'> Rate on 10-22: ${d['min_value']}</div>` 
 
 })
 
@@ -176,16 +177,19 @@ var dates_array = d3.timeDays(d3.min(dates), tomorrow)
         var data_to_use = all_data.filter(function(r){ return r['town'] == d["town"]})
         console.log(data_to_use)
 
+      d['most_recent'] =  (d3.max(dates).getMonth()+1) + "-" + d3.max(dates).getDate() 
+      d['least_recent'] =  (d3.min(dates).getMonth()+1) + "-" + d3.min(dates).getDate() 
+
+
       data_to_use.forEach(r => {
     
-          if (r["updatedate"]==='2020-10-22'){
+          if (r["updatedate"]==='2020-'+(d3.min(dates).getMonth()+1) + "-" + d3.min(dates).getDate()){
               console.log('min_value',d)
               var min_value = r['caserate']
               d['min_value'] = min_value
           }
         })
 
-        d['most_recent'] =  (d3.max(dates).getMonth()+1) + "-" + d3.max(dates).getDate() 
         tip.show.call(this, d)
 
 
