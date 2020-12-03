@@ -75,7 +75,7 @@ d3.csv(require('/data/county_rate.csv')).then(ready)
     .offset([-10, 0])
     .html(function(d) {
     
-      return `Rate: ${parseFloat(100*d['value']).toFixed(2)}<br>
+      return `Rate: ${parseFloat(100*d['value']).toFixed(2)}%<br>
       ${parseTime(d['Timeframe']).getMonth()+1}/${parseTime(d['Timeframe']).getDate()}/${parseTime(d['Timeframe']).getFullYear()}` 
       // (d3.max(dates).getMonth()+1) + "-" + d3.max(dates).getDate()
     })
@@ -209,7 +209,13 @@ container        .append('g')
       return yPositionScale(100*d['Percent Positivity in prior 14 days'])
     })
     .attr('fill', function(d){
-        return d['Test Positivity Classification - 14 days']
+
+        if (d['Test Positivity Classification - 14 days']=="Yellow"){
+            return '#FED000'
+        }
+        else {
+            return d['Test Positivity Classification - 14 days']
+        }
     })
      .attr('opacity',0.7)
 .on('mouseover', function(d){
