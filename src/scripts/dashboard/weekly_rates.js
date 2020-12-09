@@ -12,7 +12,7 @@ let width = 1000 - margin.left - margin.right
 
 const radiusScale = d3
   .scaleSqrt()
-  .domain([0, 80])
+  .domain([0, 95])
   .range([2, 10])
 
 let svg = d3
@@ -100,7 +100,7 @@ Promise.all([
       const cats = datapoints.map(d => d.ratecategory)
       console.log(cats, 'CATS')
       var colorScale = d3.scaleOrdinal().domain(['1. <5 cases per 100,000 or <5 reported cases','2. 5-9 cases per 100,000','3. 10-14 cases per 100,000','4. 15 or more cases per 100,000'])
-      .range(["grey", "yellow", "orange", "red"])
+      .range(["grey", "#FFFF00", "orange", "red"])
 
       all_data.forEach(d => {
     
