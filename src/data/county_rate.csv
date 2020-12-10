@@ -1,4 +1,12 @@
 County,FIPS,State,FEMA Region,Population,NCHS Urban Rural Classification,Tests in prior 14 days,14-day test rate,Percent Positivity in prior 14 days,Test Positivity Classification - 14 days,Timeframe,"14-day test rate per 100,000","14-day test rate per 100,000 population",FIPS code,FEMA region,Percent Positive in prior 7 days,Test Positivity Classification
+Fairfield,9001,CT,1,943332,Medium metro,29812,3160,0.107,Red,12/02/2020,,,,,,
+Hartford,9003,CT,1,891720,Large central metro,27820,3120,0.086,Yellow,12/02/2020,,,,,,
+Litchfield,9005,CT,1,180333,Micropolitan,6952,3855,0.092,Yellow,12/02/2020,,,,,,
+Middlesex,9007,CT,1,162436,Large fringe metro,5279,3250,0.056,Yellow,12/02/2020,,,,,,
+New Haven,9009,CT,1,854757,Medium metro,20862,2441,0.12,Red,12/02/2020,,,,,,
+New London,9011,CT,1,265206,Medium metro,6745,2543,0.058,Yellow,12/02/2020,,,,,,
+Tolland,9013,CT,1,150721,Large fringe metro,3880,2574,0.052,Yellow,12/02/2020,,,,,,
+Windham,9015,CT,1,116782,Medium metro,3480,2980,0.076,Yellow,12/02/2020,,,,,,
 Fairfield,9001.0,CT,1.0,943332,Medium metro,44791,4748,0.109,Red,11/25/2020,,,,,,
 Hartford,9003.0,CT,1.0,891720,Large central metro,41136,4613,0.089,Yellow,11/25/2020,,,,,,
 Litchfield,9005.0,CT,1.0,180333,Micropolitan,10563,5857,0.079,Yellow,11/25/2020,,,,,,

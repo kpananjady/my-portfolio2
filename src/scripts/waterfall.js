@@ -141,7 +141,6 @@ var timer;
       moving = true;
       timer = setInterval(step, 1000);
       button.text("Pause");
-      updateBars()
     }
     console.log("Slider moving: " + moving);
   })
@@ -169,6 +168,7 @@ var timer;
       .attr("x", x(h))
       .text(formatDate(h));
   
+    updateBars()
     // filter data set and redraw plot
     // var newData = dataset.filter(function(d) {
     //   return d.date < h;
@@ -181,6 +181,8 @@ var timer;
     // update position and text of label according to slider scale
 
     // tick = h
+
+    console.log('here I am')
     d3.selectAll('.bars').remove()
   
     svg.selectAll('.nonsese').data(datapoints.filter(function(d){ return parseTime(d.date).getMonth() ===  x.invert(currentValue).getMonth()}))
@@ -302,6 +304,11 @@ svg
 .lower()
 
 d3.select('.y-axis .domain').remove()
+
+
+svg.append('text').text('2020').attr('x', -20).attr('y',20)
+
+svg.append('text').text('2019').attr('x', -20).attr('y',height/2+50)
 // var cumulative = 0;
 // for (var i = 0; i < datapoints.length; i++) {
 //     datapoints[i].start = cumulative;
@@ -319,5 +326,8 @@ d3.select('.y-axis .domain').remove()
 // });
 
 
-console.log(getFilteredData(datapoints, x.invert(currentValue)), 'yo')
+// console.log(getFilteredData(datapoints, x.invert(currentValue)), 'yo')
+
+
+
 }
