@@ -1,8 +1,10 @@
 import * as d3 from 'd3'
+import d3Tip from 'd3-tip'
+d3.tip = d3Tip
 
 const margin = {
   top: 30,
-  right: 20,
+  right: 50,
   bottom: 30,
   left: 50
 }
@@ -22,41 +24,39 @@ const xPositionScale = d3.scaleBand().range([0, width])
 
 const yPositionScale = d3
   .scaleLinear()
-  .domain([0, 85])
+  // .domain([0, 85])
   .range([height/2, 50])
 
-  const yPositionScale2 = d3
-  .scaleLinear()
-  .domain([0, 85])
-  .range([height,height/2-40])
 
-
-const colorScale = d3
-  .scaleOrdinal()
-  .range([
-    '#8dd3c7',
-    '#ffffb3',
-    '#bebada',
-    '#fb8072',
-    '#80b1d3',
-    '#fdb462',
-    '#b3de69'
-  ])
-
-  var newData;
 const parseTime = d3.timeParse('%Y-%m-%d')
 
 // var tick = new Date()
 
-Promise.all([
-//   d3.csv('data/waterfall_dummy_data.csv'),
-  d3.csv(require('/data/waterfall_dummy_data.csv')),
-  d3.csv(require('/data/affordable_housing.csv'))
-
-]).then(ready)
-  .catch(err => console.log('Failed on', err))
 
 
+
+
+  Promise.all([
+    //   d3.csv('data/waterfall_dummy_data.csv'),
+      d3.csv(require('/data/waterfall_dummy_data.csv')),
+      d3.csv(require('/data/water_dummy_data_2.csv'))
+    
+    ]).then(ready)
+      .catch(err => console.log('Failed on', err))
+
+      const tip = d3
+      .tip()
+      .attr('class', 'd3-tip d3-tip-scrolly')
+      .style('pointer-events', 'none')
+      .offset([-10, 0])
+      .html(function(d) {
+      
+        return `${parseFloat(d['value']).toFixed(2)}% of ${d['sentenced']} <br>
+         sentenced inmates` 
+        // (d3.max(dates).getMonth()+1) + "-" + d3.max(dates).getDate()
+      })
+      
+      svg.call(tip)
 function ready([datapoints, datapoints_30]) {
 
     var formatDateIntoYear = d3.timeFormat("%Y");
@@ -182,72 +182,81 @@ var timer;
 
     // tick = h
 
-    console.log('here I am')
+    // console.log('here I am')
     d3.selectAll('.bars').remove()
-  
+
     svg.selectAll('.nonsese').data(datapoints.filter(function(d){ return parseTime(d.date).getMonth() ===  x.invert(currentValue).getMonth()}))
-.enter()
-.append('rect')
-.attr('class','bars')
-.attr("y", function(d) { return yPositionScale( Math.max(d.start, d.end) ); })
-.attr("height", function(d) { return Math.abs( yPositionScale(d.start) - yPositionScale(d.end) ); })
-.attr("width", xPositionScale.bandwidth()-20)
-.attr('x', d=>xPositionScale(d.name)+xPositionScale.bandwidth()/2)
-.attr('fill', function(d){
-    if (d.value > 0){
-        return '#FED000'
-    } if (d.value < 0){
-        return 'darkred'
-    } else {
+    .enter()
+    .append('rect')
+    .attr('class','bars')
+    .attr("y", function(d) { return yPositionScale( Math.max(d.start, d.end) ); })
+    .attr("height", function(d) { return Math.abs( yPositionScale(d.start) - yPositionScale(d.end) ); })
+    .attr("width", xPositionScale.bandwidth()-20)
+    .attr('x', d=>xPositionScale(d.name))
+    .attr('fill', function(d){
+      if (d.name =='Net Change') {
         return '#ff6600'
     }
-
-}).attr('opacity', 0.7)
-// const xAxis = d3
-//     .axisBottom(xPositionScale)
-//     .tickSize(height)
-//     .tickFormat(d3.timeFormat('%b %d'))
-//     .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%50)}));
-
+      if (d.value > 0){
+          return '#FED000'
+      } if (d.value < 0){
+          return 'darkred'
+      } 
   
-
-//     svg
-//     .append('g')
-//     .attr('class', 'axis x-axis')
-//     .call(xAxis)
-//     .lower()
-
-
+  }).attr('opacity', 0.7)
+    .on('mouseover', function(d){
+      // d3.select(this).attr('r', 6)
+      // d.value = d.Hosp_Avg
+      tip.show.call(this, d)
+  
+  })
+  .on('mouseout', function(d){
+    // d3.select(this).attr('r', 3)
+    tip.hide.call(this, d)
+  
+  })
 svg
 .append('g')
 .attr('transform', 'translate(' + 0 + ',' +200+ ')')
 .selectAll('.nonsese2')
-.data(datapoints.filter(function(d){ return parseTime(d.date).getMonth() ===  x.invert(currentValue).getMonth()}))
+.data(datapoints_30.filter(function(d){ return parseTime(d.date).getMonth() ===  x.invert(currentValue).getMonth()}))
 .enter()
 .append('rect')
 .attr('class','bars')
 .attr("y", function(d) { return yPositionScale( Math.max(d.start, d.end) ); })
 .attr("height", function(d) { return Math.abs( yPositionScale(d.start) - yPositionScale(d.end) ); })
 .attr("width", xPositionScale.bandwidth()-20)
-.attr('x', d=>xPositionScale(d.name)+xPositionScale.bandwidth()/2)
+.attr('x', d=>xPositionScale(d.name))
 .attr('fill', function(d){
+  if (d.name =='Net Change') {
+    return '#ff6600'
+}
     if (d.value > 0){
         return '#FED000'
     } if (d.value < 0){
         return 'darkred'
-    } else {
-        return '#ff6600'
-    }
+    } 
 
 }).attr('opacity', 0.7)
+.on('mouseover', function(d){
+  // d3.select(this).attr('r', 6)
+  // d.value = d.Hosp_Avg
+  tip.show.call(this, d)
 
+})
+.on('mouseout', function(d){
+// d3.select(this).attr('r', 3)
+tip.hide.call(this, d)
 
+})
     // filter data set and redraw plot
     // var newData = dataset.filter(function(d) {
     //   return d.date < h;
     // })
     // drawPlot(newData);
   }
+
+
 
 //   function store(h) {
 //     // update position and text of label according to slider scale
@@ -264,18 +273,38 @@ svg
 console.log(x.invert(currentValue), 'check this out')
 
 
+  
 
 
-function getFilteredData(data, value) {
-  data.filter(function(point) { 
-        // console.log(parseTime(point.date).getMonth(), value.getMonth())
-        return parseTime(point.date).getMonth() === value.getMonth()
-        // console.log('here')
-    });
-}
+
 
 xPositionScale.domain(datapoints.map(function(d) { return d.name; }))
-yPositionScale.domain([0, 700000])
+yPositionScale.domain([-15, 10])
+
+const xAxis = d3
+    .axisBottom(xPositionScale)
+    .tickSize(height)
+    // .tickFormat(d3.timeFormat('%b %d'))
+    // .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%50)}));
+
+  
+
+    svg
+    .append('g')
+    .attr('class', 'axis x-axis')
+    .attr('transform', 'translate(' + 0 + ',' +20+ ')')
+    .call(xAxis)
+    .lower()
+
+
+    svg
+    .append('g')
+    .attr('class', 'axis x-axis-2')
+    .attr('transform', 'translate(' + 0 + ',' +-170+ ')')
+    // .paddingInner(1)
+    // .style("text-anchor", "middle")
+    .call(xAxis)
+    .lower()
 
 
 const yAxis = d3
@@ -293,17 +322,19 @@ svg
 
 
 d3.select('.y-axis .domain').remove()
+d3.select('.x-axis .domain').remove()
+d3.select('.x-axis-2 .domain').remove()
 
 
 
 svg
 .append('g')
 .attr('transform', 'translate(' + 0 + ',' +200+ ')')
-.attr('class', 'axis y-axis')
+.attr('class', 'axis y-axis-2')
 .call(yAxis)
 .lower()
 
-d3.select('.y-axis .domain').remove()
+d3.select('.y-axis-2 .domain').remove()
 
 
 svg.append('text').text('2020').attr('x', -20).attr('y',20)
@@ -330,4 +361,52 @@ svg.append('text').text('2019').attr('x', -20).attr('y',height/2+50)
 
 
 
+function render() {
+  const svgContainer = svg.node().closest('div')
+  const svgWidth = svgContainer.offsetWidth
+  // Do you want it to be full height? Pick one of the two below
+  const svgHeight = height + margin.top + margin.bottom
+  // const svgHeight = window.innerHeight
+
+  const actualSvg = d3.select(svg.node().closest('svg'))
+  actualSvg.attr('width', svgWidth).attr('height', svgHeight)
+
+  const newWidth = svgWidth - margin.left - margin.right
+  // const newHeight = svgHeight - margin.top - margin.bottom
+
+  // Update our scale
+  xPositionScale.range([0, newWidth])
+  svg.select('.x-axis').call(xAxis)
+  d3.select('.x-axis .domain').remove()
+  // yPositionScale.range([newHeight, 0])
+
+  svg.select('.x-axis-2').call(xAxis)
+  d3.select('.x-axis-2 .domain').remove()
+
+  svg
+  .selectAll('.bars')
+  .attr('x', d => {
+    return xPositionScale(d.name)
+  })
+  .attr("width", xPositionScale.bandwidth()-20)
+}
+
+// svg
+// .selectAll('.bars')
+// .attr('mouseover',
+// function(d){
+// // d3.select(this).attr('r', 3)
+// tip.show.call(this, d)
+// })
+// .attr('mouseout',function(d){
+// // d3.select(this).attr('r', 3)
+// tip.hide.call(this, d)
+
+// })
+
+  window.addEventListener('resize', render)
+    
+  //   // And now that the page has loaded, let's just try
+  //   // to do it once before the page has resized
+    render()
 }
