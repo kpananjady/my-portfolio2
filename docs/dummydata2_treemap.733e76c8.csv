@@ -1,0 +1,44 @@
+UNITID,Ugrad_revenue,Grad_revenue,name,value,percent,parent
+,,,Origin,,,
+129020,65853920.0,73813114.0,University of Connecticut,3867.0,14.106960455275061,Origin
+130794,34515780.0,89630900.0,Yale University,2775.0,20.658080845678555,Origin
+128744,10762500.0,9000030.0,University of Bridgeport,841.0,15.332725615314493,Origin
+129941,8255660.0,9025560.0,University of New Haven,766.0,11.154798310761613,Origin
+130697,19987552.0,2118246.0,Wesleyan University,407.0,12.651538700652779,Origin
+129525,9034678.0,1676340.0,University of Hartford,373.0,5.509601181683898,Origin
+130590,15432560.0,188100.0,Trinity College,295.0,13.199105145413869,Origin
+130253,3127400.0,4880416.0,Sacred Heart University,260.0,2.902433578923867,Origin
+129242,7242800.0,1299375.0,Fairfield University,227.0,4.304949743978759,Origin
+130226,6375600.0,801090.0,Quinnipiac University,183.0,1.7928872342510045,Origin
+128771,2329716.0,506856.0,Central Connecticut State University,166.0,1.4041617323633904,Origin
+130183,1678380.0,315000.0,Post University,152.0,1.5439309294057897,Origin
+128902,7466500.0,,Connecticut College,137.0,7.429501084598697,Origin
+436836,4402000.0,,University of Connecticut-Stamford,125.0,6.322711178553363,Origin
+129534,322560.0,295680.0,Holy Apostles College and Seminary,119.0,21.794871794871803,Origin
+130004,1290960.0,,Norwalk Community College,110.0,2.032144836504711,Origin
+130493,589400.0,541140.0,Southern Connecticut State University,65.0,0.6467661691542288,Origin
+129215,725926.0,90510.0,Eastern Connecticut State University,48.0,0.9216589861751152,Origin
+130396,516384.0,,Gateway Community College,44.0,0.6271379703534777,Origin
+130314,523054.0,273720.0,University of Saint Joseph,34.0,1.3793103448275863,Origin
+130624,,,United States Coast Guard Academy,31.0,2.894491129785248,Origin
+129729,269928.0,,Naugatuck Valley Community College,23.0,0.3687670354337021,Origin
+463056,739536.0,,University of Connecticut-Hartford Campus,21.0,1.4664804469273742,Origin
+130606,234720.0,,Tunxis Community College,20.0,0.5125576627370578,Origin
+129491,,228582.0,Hartford Seminary,17.0,12.318840579710145,Origin
+128498,347270.0,100560.0,Albertus Magnus College,16.0,1.0989010989010992,Origin
+129808,176040.0,,Three Rivers Community College,15.0,0.3752814610958219,Origin
+436818,422592.0,,University of Connecticut-Waterbury Campus,12.0,1.3872832369942196,Origin
+129543,140832.0,,Housatonic Community College,12.0,0.23942537909018355,Origin
+129154,159904.0,0.0,Goodwin College,8.0,0.23550191345304686,Origin
+128780,58752.0,0.0,Charter Oak State College,6.0,0.3656307129798903,Origin
+436827,176080.0,,University of Connecticut-Avery Point,5.0,0.8756567425569177,Origin
+457341,,,International Institute of Cosmetology,2.0,1.2048192771084338,Origin
+130110,34200.0,,Paier College of Art Inc,2.0,2.409638554216868,Origin
+129695,23472.0,,Manchester Community College,2.0,0.03331667499583542,Origin
+129367,23472.0,,Capital Community College,2.0,0.06079027355623101,Origin
+130776,16882.0,0.0,Western Connecticut State University,1.0,0.017724211272598368,Origin
+128577,11736.0,,Asnuntuck Community College,1.0,0.05382131324004305,Origin
+130040,11736.0,,Northwestern Connecticut Community College,1.0,0.07698229407236336,Origin
+129774,31200.0,,Mitchell College,1.0,0.15037593984962408,Origin
+129932,,,New England Tractor Trailer Training School of Connecticut,1.0,0.33783783783783783,Origin
+129349,,,Paul Mitchell the School-North Haven,1.0,0.5181347150259068,Origin
