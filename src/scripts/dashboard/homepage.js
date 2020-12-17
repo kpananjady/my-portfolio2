@@ -2,12 +2,12 @@ import * as d3 from 'd3'
 
 const margin = {
   top: 0,
-  right: 50,
+  right: 80,
   bottom: 0,
   left: 0
 }
 
-const width = 600 - margin.left - margin.right
+const width = 700 - margin.left - margin.right
 const height = 100 - margin.top - margin.bottom
 
 const svg = d3
@@ -58,27 +58,27 @@ function ready([datapoints, datapoints_30]) {
   // Sort the countries from low to high
 
   console.log(datapoints[datapoints.length-1])
-  svg.append('rect').attr('x', 0).attr('y',40).attr('width',440).attr('height',100).attr('fill','#FFFACD')
+  svg.append('rect').attr('x', 10).attr('y',40).attr('width',width).attr('height',100).attr('fill','#FFFACD')
   
-  svg.append('rect').attr('y',4*height/5-20).attr('x',width/80).attr('width', 4*height/4).attr('height',35).attr('fill','white')
-  svg.append('text').text('Positivity').attr('font-size', '12px').attr('font-weight', 30).attr('x', 10).attr('y', 4*height/5-25).attr('class', 'label').attr('fill', 'black')
-  svg.append('text').text(`${parseFloat(datapoints[datapoints.length-1]['P_Rate']).toFixed(2)}%`).attr('font-size', '20px').attr('font-weight', 5).attr('x', 10).attr('y', 4*height/5).attr('class', 'daily_nos').attr('fill', 'darkred')
-  svg.append('text').text(`on ${datapoints[datapoints.length-1]['date']}`).attr('font-size', '10px').attr('font-weight', 5).attr('x', 10).attr('y', 4*height/5+10).attr('class', 'time').attr('fill', 'darkred')
+  svg.append('rect').attr('y',4*height/5-20).attr('x',width/10+width/80).attr('width', 4*height/4).attr('height',35).attr('fill','white').attr('class', 'rate')
+  svg.append('text').text('Positivity').attr('font-size', '12px').attr('font-weight', 30).attr('x', 10).attr('y', 4*height/5-25).attr('class', 'rate').attr('fill', 'black')
+  svg.append('text').text(`${parseFloat(datapoints[datapoints.length-1]['P_Rate']).toFixed(2)}%`).attr('font-size', '20px').attr('font-weight', 5).attr('x', 10).attr('y', 4*height/5).attr('class', 'rate').attr('fill', 'darkred')
+  svg.append('text').text(`on ${datapoints[datapoints.length-1]['date']}`).attr('font-size', '10px').attr('font-weight', 5).attr('x', 10).attr('y', 4*height/5+10).attr('class', 'rate').attr('fill', 'darkred')
 
-  svg.append('rect').attr('y',4*height/5-20).attr('x',4*height/4+2*width/80).attr('width', 4*height/4).attr('height',35).attr('fill','white')
-  svg.append('text').text('Cases').attr('font-size', '12px').attr('font-weight', 5).attr('x', 4*height/4+2*width/80).attr('y', 4*height/5-25).attr('class', 'label').attr('fill', 'black')
-  svg.append('text').text(`+${parseFloat(datapoints[datapoints.length-1]['Total']).toFixed()}`).attr('font-size', '20px').attr('font-weight', 5).attr('x', 4*height/4+2*width/80).attr('y', 4*height/5).attr('class', 'daily_nos').attr('fill', 'darkred')
-  svg.append('text').text(`on ${datapoints[datapoints.length-1]['date']}`).attr('font-size', '10px').attr('font-weight', 5).attr('x', 4*height/4+2*width/80).attr('y', 4*height/5+10).attr('class', 'time').attr('fill', 'darkred')
+  svg.append('rect').attr('y',4*height/5-20).attr('x',2*width/10+2*width/80).attr('width', 4*height/4).attr('height',35).attr('fill','white').attr('class', 'cases')
+  svg.append('text').text('Cases').attr('font-size', '12px').attr('font-weight', 5).attr('x', 4*width/4+2*width/80).attr('y', 4*height/5-25).attr('class', 'cases').attr('fill', 'black')
+  svg.append('text').text(`+${parseFloat(datapoints[datapoints.length-1]['Total']).toFixed()}`).attr('font-size', '20px').attr('font-weight', 5).attr('x', 4*width/4+2*width/80).attr('y', 4*height/5).attr('class', 'cases').attr('fill', 'darkred')
+  svg.append('text').text(`on ${datapoints[datapoints.length-1]['date']}`).attr('font-size', '10px').attr('font-weight', 5).attr('x', 4*width/4+2*width/80).attr('y', 4*height/5+10).attr('class', 'cases').attr('fill', 'darkred')
 
-  svg.append('rect').attr('y',4*height/5-20).attr('x',2*4*height/4+3*width/80).attr('width', 4*height/4).attr('height',35).attr('fill','white')
-  svg.append('text').text('Hospitalizations').attr('font-size', '12px').attr('font-weight', 5).attr('x', 2*4*height/4+3*width/80).attr('y', 4*height/5-25).attr('class', 'label').attr('fill', 'black')
-  svg.append('text').text(`${parseFloat(datapoints[datapoints.length-1]['hospitalizedcases']).toFixed()}`).attr('font-size', '20px').attr('font-weight', 5).attr('x',2*4*height/4+3*width/80).attr('y', 4*height/5).attr('class', 'daily_nos').attr('fill', 'darkred')
-  svg.append('text').text(`currently in hospital`).attr('font-size', '10px').attr('font-weight', 5).attr('x',2*4*height/4+3*width/80).attr('y', 4*height/5+10).attr('class', 'time').attr('fill', 'darkred')
+  svg.append('rect').attr('y',4*height/5-20).attr('x',3*width/10+3*width/80).attr('width', 4*height/4).attr('height',35).attr('fill','white').attr('class', 'hosps')
+  svg.append('text').text('Hospitalizations').attr('font-size', '12px').attr('font-weight', 5).attr('x', 2*4*height/4+3*width/80).attr('y', 4*height/5-25).attr('class', 'hosps').attr('fill', 'black')
+  svg.append('text').text(`${parseFloat(datapoints[datapoints.length-1]['hospitalizedcases']).toFixed()}`).attr('font-size', '20px').attr('font-weight', 5).attr('x',2*4*height/4+3*width/80).attr('y', 4*height/5).attr('class', 'hosps').attr('fill', 'darkred')
+  svg.append('text').text(`currently in hospital`).attr('font-size', '10px').attr('font-weight', 5).attr('x',2*4*height/4+3*width/80).attr('y', 4*height/5+10).attr('class', 'hosps').attr('fill', 'darkred')
   
-  svg.append('rect').attr('y',4*height/5-20).attr('x',3*4*height/4+4*width/80).attr('width', 4*height/4).attr('height',35).attr('fill','white')
-  svg.append('text').text('Deaths').attr('font-size', '12px').attr('font-weight', 5).attr('x', 3*4*height/4+4*width/80).attr('y', 4*height/5-25).attr('class', 'label').attr('fill', 'black')
-  svg.append('text').text(`+${parseFloat(datapoints[datapoints.length-1]['Deaths_per_day']).toFixed()}`).attr('font-size', '20px').attr('font-weight', 5).attr('x', 3*4*height/4+4*width/80).attr('y', 4*height/5).attr('class', 'daily_nos').attr('fill', 'darkred')
-  svg.append('text').text(`on ${datapoints[datapoints.length-1]['date']}`).attr('font-size', '10px').attr('font-weight', 5).attr('x', 3*4*height/4+4*width/80).attr('y', 4*height/5+10).attr('class', 'time').attr('fill', 'darkred')
+  svg.append('rect').attr('y',4*height/5-20).attr('x',4*width/10+4*width/80).attr('width', 4*height/4).attr('height',35).attr('fill','white').attr('class', 'deaths')
+  svg.append('text').text('Deaths').attr('font-size', '12px').attr('font-weight', 5).attr('x', 3*4*height/4+4*width/80).attr('y', 4*height/5-25).attr('class', 'deaths').attr('fill', 'black')
+  svg.append('text').text(`+${parseFloat(datapoints[datapoints.length-1]['Deaths_per_day']).toFixed()}`).attr('font-size', '20px').attr('font-weight', 5).attr('x', 3*4*height/4+4*width/80).attr('y', 4*height/5).attr('class', 'deaths').attr('fill', 'darkred')
+  svg.append('text').text(`on ${datapoints[datapoints.length-1]['date']}`).attr('font-size', '10px').attr('font-weight', 5).attr('x', 3*4*height/4+4*width/80).attr('y', 4*height/5+10).attr('class', 'deaths').attr('fill', 'darkred')
 
 
 
@@ -100,7 +100,11 @@ function ready([datapoints, datapoints_30]) {
         // yPositionScale.range([newHeight, 0])
     
     //     // Update things you draw
-    
+         d3.selectAll('.rate').attr('x',newWidth/200+5*newWidth/80)
+        d3.selectAll('.cases').attr('x', 5*newWidth/20+5*newWidth/80)
+        d3.selectAll('.hosps').attr('x',10*newWidth/20+5*newWidth/80)
+        d3.selectAll('.deaths').attr('x',15*newWidth/20+5*newWidth/80)
+
     //     // Update axes
         
 

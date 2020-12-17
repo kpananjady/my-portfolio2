@@ -110,18 +110,18 @@ Promise.all([
         // d3.select(this).attr('stroke', 'black').attr('opacity','0.5')
     })
 
-    svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', height-200).attr('font-size', 10)
-    svg.append('text').attr('id', 'box4-text').text('100').attr('x',width-55).attr('y', height-200).attr('font-size', 10)
+    svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', height-250).attr('font-size', 10)
+    svg.append('text').attr('id', 'box4-text').text('100').attr('x',width-55).attr('y', height-250).attr('font-size', 10)
 
-  svg.append('text').attr('id', 'box4-text').text('80').attr('x',width-55).attr('y', height-200).attr('font-size', 10)
-  svg.append('text').attr('id', 'under-box-text').attr('x',width-200).attr('y', height-180).attr('font-size', 10)
+//   svg.append('text').attr('id', 'box4-text').text('80').attr('x',width-55).attr('y', height-200).attr('font-size', 10)
+  svg.append('text').attr('id', 'under-box-text').attr('x',width-200).attr('y', height-230).attr('font-size', 10)
 
 
-  svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-200).attr('fill', colorScale(-40))
-  svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-200).attr('fill', colorScale(-20))
-  svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-200).attr('fill', colorScale(0))
-  svg.append('rect').attr('id', 'box4').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-200).attr('fill', colorScale(20))
-  svg.append('rect').attr('id', 'box5').attr('width', 25).attr('height', 5).attr('x',width-55).attr('y', height-200).attr('fill', colorScale(40))
+  svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-250).attr('fill', colorScale(0))
+  svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-250).attr('fill', colorScale(25))
+  svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-250).attr('fill', colorScale(50))
+  svg.append('rect').attr('id', 'box4').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-250).attr('fill', colorScale(75))
+  svg.append('rect').attr('id', 'box5').attr('width', 25).attr('height', 5).attr('x',width-55).attr('y', height-250).attr('fill', colorScale(100))
 
 
      
