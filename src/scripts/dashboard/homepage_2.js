@@ -110,18 +110,18 @@ Promise.all([
         // d3.select(this).attr('stroke', 'black').attr('opacity','0.5')
     })
 
-    svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', height-250).attr('font-size', 10)
-    svg.append('text').attr('id', 'box4-text').text('100').attr('x',width-55).attr('y', height-250).attr('font-size', 10)
+    svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', height-300).attr('font-size', 10)
+    svg.append('text').attr('id', 'box4-text').text('100').attr('x',width-55).attr('y', height-300).attr('font-size', 10)
 
 //   svg.append('text').attr('id', 'box4-text').text('80').attr('x',width-55).attr('y', height-200).attr('font-size', 10)
-  svg.append('text').attr('id', 'under-box-text').attr('x',width-200).attr('y', height-230).attr('font-size', 10)
+  svg.append('text').attr('id', 'under-box-text').attr('x',width-200).attr('y', height-280).attr('font-size', 10)
 
 
-  svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-250).attr('fill', colorScale(0))
-  svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-250).attr('fill', colorScale(25))
-  svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-250).attr('fill', colorScale(50))
-  svg.append('rect').attr('id', 'box4').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-250).attr('fill', colorScale(75))
-  svg.append('rect').attr('id', 'box5').attr('width', 25).attr('height', 5).attr('x',width-55).attr('y', height-250).attr('fill', colorScale(100))
+  svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-300).attr('fill', colorScale(0))
+  svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-300).attr('fill', colorScale(25))
+  svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-300).attr('fill', colorScale(50))
+  svg.append('rect').attr('id', 'box4').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-300).attr('fill', colorScale(75))
+  svg.append('rect').attr('id', 'box5').attr('width', 25).attr('height', 5).attr('x',width-55).attr('y', height-300).attr('fill', colorScale(100))
 
 
      
@@ -167,10 +167,27 @@ Promise.all([
     
         
   
-          } else if (newWidth > 487){
+          } else if (newWidth > 470) {
+
+            console.log(newWidth, 'newWidth 1.5')
+            projection
+            .scale(newWidth*19)
+            .center([-72.68, 40.5])
+            .translate([(newWidth) / 2, (newHeight)/2]);
+
+            svg.selectAll('.towns')
+        .attr('d', path)
+
+
+    
+        
+  
+          } 
+          else if (newWidth > 400){
   
           
-  
+            console.log(newWidth, 'newWidth 2')
+
             projection
           .scale(newWidth*26)
           .center([-72.68, 41])
@@ -194,11 +211,37 @@ Promise.all([
 
 
           }
+
+          else if (newWidth > 325) {
+  
+            console.log(newWidth, 'newWidth 3.5')
+            projection
+            .center([-72.68, 40.6])
+            .scale(newWidth*28)
+            .translate([(newWidth) / 2, (newHeight)/2]);
+
+            svg.selectAll('.towns')
+        .attr('d', path)
+
+
+          }
           else if (newWidth > 250) {
   
-            console.log(newWidth, 'newWidth 3')
+            console.log(newWidth, 'newWidth 4')
             projection
-            .center([-72.68, 41])
+            .center([-72.68, 40.5])
+            .scale(newWidth*28)
+            .translate([(newWidth) / 2, (newHeight)/2]);
+
+            svg.selectAll('.towns')
+        .attr('d', path)
+
+
+          }      else if (newWidth > 200) {
+  
+            console.log(newWidth, 'newWidth 4.5')
+            projection
+            .center([-72.68, 40.3])
             .scale(newWidth*28)
             .translate([(newWidth) / 2, (newHeight)/2]);
 
@@ -208,14 +251,14 @@ Promise.all([
 
           }
           else {
-            console.log(newWidth, 'newWidth 4')
+            console.log(newWidth, 'newWidth 5')
 
   
             svg.select('.school_name').attr('font-size', '15px')
             
             projection
             .scale(svgWidth*25)
-            .center([-72.4, 40.4])
+            .center([-72.4, 39.8])
             .translate([(svgWidth) / 2, (svgHeight)/2]);
 
             svg.selectAll('.towns')
