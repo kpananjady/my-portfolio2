@@ -226,15 +226,15 @@ function movingAverage(values, N) {
 
    
 
-      svg.append('path')
-      .datum(datapoints)
-      .attr('class', 'average')
-      .attr('d', function(d) {
-          return line(d)
-      })
-      .attr('stroke', '#FF8C00')
-      .attr('stroke-width', 2)
-      .attr('fill', 'none')
+      // svg.append('path')
+      // .datum(datapoints)
+      // .attr('class', 'average')
+      // .attr('d', function(d) {
+      //     return line(d)
+      // })
+      // .attr('stroke', '#FF8C00')
+      // .attr('stroke-width', 2)
+      // .attr('fill', 'none')
 
      
   svg
@@ -341,15 +341,15 @@ const xAxis = d3
         yPositionScale.domain([0,d3.max(cases)])
   
   
-          svg.append('path')
-          .datum(datapoints)
-          .attr('class', 'average')
-          .attr('d', function(d) {
-              return line(d)
-          })
-          .attr('stroke', '#FF8C00')
-          .attr('stroke-width', 2)
-          .attr('fill', 'none')
+          // svg.append('path')
+          // .datum(datapoints)
+          // .attr('class', 'average')
+          // .attr('d', function(d) {
+          //     return line(d)
+          // })
+          // .attr('stroke', '#FF8C00')
+          // .attr('stroke-width', 2)
+          // .attr('fill', 'none')
           
   
           svg
@@ -445,15 +445,15 @@ xPositionScale.domain(dates_array)
           .attr('fill', '#FFA500').attr('opacity',0.3)
           .lower()
   
-          svg.append('path')
-          .datum(datapoints_30)
-          .attr('class', 'average')
-          .attr('d', function(d) {
-              return line(d)
-          })
-          .attr('stroke', '#FF8C00')
-          .attr('stroke-width', 2)
-          .attr('fill', 'none')
+          // svg.append('path')
+          // .datum(datapoints_30)
+          // .attr('class', 'average')
+          // .attr('d', function(d) {
+          //     return line(d)
+          // })
+          // .attr('stroke', '#FF8C00')
+          // .attr('stroke-width', 2)
+          // .attr('fill', 'none')
   
           svg.select('.x-axis').transition().duration(1000).call(xAxis)
   
