@@ -6,7 +6,7 @@ d3.tip = d3Tip
 
 let margin = { top: 100, left: 50, right: 50, bottom: 0 }
 
-let height = 500 - margin.top - margin.bottom
+let height = 600 - margin.top - margin.bottom
 
 let width = 1000 - margin.left - margin.right
 
