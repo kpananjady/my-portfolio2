@@ -30,8 +30,8 @@ const tip = d3
 .style('pointer-events', 'none')
 .offset([-10, 0])
 .html(function(d) {
-  return `${d.properties.NAME}: ${Math.round(d['difference'])} <br>
-  hospitalizations per 100k`
+  return `${d.properties.NAME}: ${Math.round(d['difference'])} hospitalizations<br>
+ per 100k; ${Math.round(d['difference2'])} currently in hospital`
 })
 
 
@@ -73,11 +73,14 @@ Promise.all([
     newArray.push(datapoints[datapoints.length-2])
     newArray.push(datapoints[datapoints.length-1])
 
-    console.log(newArray)
+    // console.log(newArray)
     const towns = topojson.feature(json2[0], json2[0].objects.cb_2015_connecticut_county_20m)
-      console.log(towns, 'towns')
+      // console.log(towns, 'towns')
 
-
+svg.append('rect').attr('x',0).attr('y',0).attr('width', width).attr('height', height).attr('fill', 'white').attr('stroke', 'none').on('click', function(d){
+  tip.hide.call(this, d)
+  // d3.select(this).attr('stroke', 'black').attr('opacity','0.5')
+})
       var towns2 = svg
       .selectAll('path-town')
       .data(towns.features)
@@ -88,12 +91,14 @@ Promise.all([
       .attr('fill', function(d){
         var colorVar = 0;
          
-        console.log(d)
+        // console.log(d)
 
         newArray.forEach(function(r){if (r.County===d.properties.NAME){
           // console.log(parseFloat(r['Hispanic'])+parseFloat(r['Black alone']))
           colorVar = colorScale(r['Pop_Adjusted'])
           d['difference'] = r['Pop_Adjusted']
+          d['difference2'] = r['hospitalization']
+
 
         }
       })  
@@ -108,7 +113,11 @@ Promise.all([
     })  .on('mouseout', function(d){
         tip.hide.call(this, d)
         // d3.select(this).attr('stroke', 'black').attr('opacity','0.5')
-    })
+    })  
+    .on('click', function(d){
+      tip.show.call(this, d)
+      // d3.select(this).attr('stroke', 'black').attr('opacity','0.5')
+  })
 
     svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', height-300).attr('font-size', 10)
     svg.append('text').attr('id', 'box4-text').text('100').attr('x',width-55).attr('y', height-300).attr('font-size', 10)
