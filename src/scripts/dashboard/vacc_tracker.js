@@ -1,4 +1,6 @@
 import * as d3 from 'd3'
+import d3Tip from 'd3-tip'
+d3.tip = d3Tip
 
 const margin = {
   top: 30,
@@ -41,25 +43,31 @@ const colorScale = d3
 const parseTime = d3.timeParse('%Y-%m-%d')
 
 Promise.all([
-  "https://test-uploading-file.s3.amazonaws.com/df.csv",
-  "https://test-uploading-file.s3.amazonaws.com/df_minus_30.csv",
-  ]
-  .map(function(url) {
-    return fetch(url).then(function(response) {
-      return response.ok ? response.text() : Promise.reject(response.status);
-    }).then(function(text) {
-      return d3.csvParse(text);
-    });
-  })).then(ready)
-  .catch(err => console.log('Failed on', err))
+    d3.csv(require('/data/vacc.csv')),
+    d3.csv(require('/data/vacc_allocations.csv'))
+  ])
+    .then(ready)
+    .catch(err => console.log('Failed on', err))
 
+    const tip = d3
+    .tip()
+    .attr('class', 'd3-tip d3-tip-scrolly')
+    .style('pointer-events', 'none')
+    .offset([-10, 0])
+    .html(function(d) {
+    
+      return `${d['type']}: ${d['value'].toLocaleString()}<br>`
+      // (d3.max(dates).getMonth()+1) + "-" + d3.max(dates).getDate()
+    })
+    
+    svg.call(tip)
 
 function ready([datapoints, datapoints_30]) {
   // Sort the countries from low to high
 
-  svg.append('text').attr('x',0).attr('y',-5).text('Since March:').attr('font-size', '15px').attr('font-weight', 5).attr('id', 'dynamic_hed')
+  svg.append('text').attr('x',0).attr('y',-5).text('Estimated:').attr('font-size', '15px').attr('font-weight', 5).attr('id', 'dynamic_hed')
 
-
+// console.log(datapoints)
   datapoints.forEach(d => {
 
     d.datetime = parseTime(d["date"])
@@ -67,6 +75,7 @@ function ready([datapoints, datapoints_30]) {
 const dates = datapoints.map(d => d.datetime)
 const cases = datapoints.map(d => +d["Total"])
 
+console.log(dates, cases)
 
 var tomorrow = new Date();
 
@@ -76,7 +85,7 @@ dates_array.push(d3.max(dates))
 
 console.log(dates_array[dates_array.length-1], 'this')
 xPositionScale.domain(dates_array)
-yPositionScale.domain([0,d3.max(cases)])
+yPositionScale.domain([0,d3.max(cases)+10000])
 
 
 function movingAverage(values, N) {
@@ -219,26 +228,26 @@ function movingAverage(values, N) {
 
 
 
-      const line = d3
-      .line()
-      .x(function(d) {
-        return xPositionScale(parseTime(d["date"]))+xPositionScale.bandwidth()/2
-      })
-      .y(function(d) {
-        return yPositionScale(d["Total_Avg"])
-      })
+    //   const line = d3
+    //   .line()
+    //   .x(function(d) {
+    //     return xPositionScale(parseTime(d["date"]))+xPositionScale.bandwidth()/2
+    //   })
+    //   .y(function(d) {
+    //     return yPositionScale(d["Total_Avg"])
+    //   })
 
    
 
-      svg.append('path')
-      .datum(datapoints)
-      .attr('class', 'average')
-      .attr('d', function(d) {
-          return line(d)
-      })
-      .attr('stroke', '#FF8C00')
-      .attr('stroke-width', 2)
-      .attr('fill', 'none')
+    //   svg.append('path')
+    //   .datum(datapoints)
+    //   .attr('class', 'average')
+    //   .attr('d', function(d) {
+    //       return line(d)
+    //   })
+    //   .attr('stroke', '#FF8C00')
+    //   .attr('stroke-width', 2)
+    //   .attr('fill', 'none')
 
      
   svg
@@ -247,7 +256,7 @@ function movingAverage(values, N) {
     .enter()
     .append('rect')
     .attr('class', 'rect_all')
-    .attr('width', 3)
+    .attr('width', xPositionScale.bandwidth())
     .attr('height', d => {
       return height - yPositionScale(d["Total"])
     })
@@ -257,14 +266,26 @@ function movingAverage(values, N) {
     .attr('y', d => {
       return yPositionScale(d["Total"])
     })
-    .attr('fill', '#FFA500').attr('opacity',0.3)
+    .attr('fill', '#6495ED').attr('opacity',0.3)
     .lower()
+.on('mouseover', function(d){
+    d3.select(this).attr('r', 6)
+    d.type = "Estimated"
+    d.value = +d['Total']
+    tip.show.call(this, d)
+
+})
+.on('mouseout', function(d){
+  d3.select(this).attr('r', 3)
+  tip.hide.call(this, d)
+
+})
  
 const xAxis = d3
     .axisBottom(xPositionScale)
     .tickSize(height)
     .tickFormat(d3.timeFormat('%b %d'))
-    .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%50)}));
+    .tickValues([d3.min(dates),d3.max(dates)]);
 
   
 
@@ -318,7 +339,7 @@ const xAxis = d3
 
          d3.select('#toggle').on('click', () => {
 
-          d3.select('#dynamic_hed').text('Since March:')
+          d3.select('#dynamic_hed').text('Estimated:')
 
 
           svg.selectAll('.average').remove() 
@@ -342,18 +363,18 @@ const xAxis = d3
         
         console.log(dates_array[dates_array.length-1], 'this')
         xPositionScale.domain(dates_array)
-        yPositionScale.domain([0,d3.max(cases)])
+        yPositionScale.domain([0,d3.max(cases)+10000])
   
   
-          svg.append('path')
-          .datum(datapoints)
-          .attr('class', 'average')
-          .attr('d', function(d) {
-              return line(d)
-          })
-          .attr('stroke', '#FF8C00')
-          .attr('stroke-width', 2)
-          .attr('fill', 'none')
+        //   svg.append('path')
+        //   .datum(datapoints)
+        //   .attr('class', 'average')
+        //   .attr('d', function(d) {
+        //       return line(d)
+        //   })
+        //   .attr('stroke', '#FF8C00')
+        //   .attr('stroke-width', 2)
+        //   .attr('fill', 'none')
           
   
           svg
@@ -362,7 +383,7 @@ const xAxis = d3
           .enter()
           .append('rect')
           .attr('class', 'rect_all')
-          .attr('width', 3)
+          .attr('width', xPositionScale.bandwidth())
           .attr('height', d => {
             return height - yPositionScale(d["Total"])
           })
@@ -372,17 +393,29 @@ const xAxis = d3
           .attr('y', d => {
             return yPositionScale(d["Total"])
           })
-          .attr('fill', '#FFA500').attr('opacity',0.3)
+          .attr('fill', '#6495ED').attr('opacity',0.3)
           .attr('id', d=> d["date"])
           .lower()
+          .on('mouseover', function(d){
+            d3.select(this).attr('r', 6)
+            d.type = "Estimated"
+            d.value = +d['Total']
+            tip.show.call(this, d)
+        
+        })
+        .on('mouseout', function(d){
+          d3.select(this).attr('r', 3)
+          tip.hide.call(this, d)
+        
+        })
   
           svg.select('.x-axis').transition().duration(1000).call(xAxis)
   
-              svg
-                .select('.y-axis')
-                .transition()
-                .duration(1000)
-                .call(yAxis)
+            //   svg
+            //     .select('.y-axis')
+            //     .transition()
+            //     .duration(1000)
+            //     .call(yAxis)
   
                 d3.select('.y-axis .domain').remove()
   
@@ -393,42 +426,49 @@ const xAxis = d3
   
       d3.select('#toggle2').on('click', () => {
 
-        d3.select('#dynamic_hed').text('Past 30 days')
+        d3.select('#dynamic_hed').text('Allocated:')
 
   
           svg.selectAll('.average').remove()
           svg.selectAll('.rect_all').remove()
   
           datapoints_30.forEach(d => {
-      
+            console.log(d["date"])
+            console.log(parseTime(d["date"]))
               d.datetime = parseTime(d["date"])
             })
+
+            datapoints_30.forEach(d => {
+      
+                d.Total = +d["Pfizer"] + +d['Moderna']
+              })
           const dates2 = datapoints_30.map(d => d.datetime)
-          const cases2 = datapoints_30.map(d => +d["Total"])
+          const cases2 = datapoints_30.map(d => +d["Pfizer"] + +d['Moderna'])
   
-          
+          console.log('cases2', cases2)
 
 
 
-var tomorrow = new Date();
+// var tomorrow = new Date();
 
 
 var dates_array = d3.timeDays(d3.min(dates2), d3.max(dates2))
 dates_array.push(d3.max(dates2))
 
 console.log(dates_array[dates_array.length-1], 'this')
-xPositionScale.domain(dates_array)
+// xPositionScale.domain(dates_array)
 
 
+console.log(dates[1], 'this yo')
 
-
-          yPositionScale.domain([0,d3.max(cases2)])
+        //   yPositionScale.domain([0,d3.max(cases2)])
   
           const xAxis = d3
           .axisBottom(xPositionScale)
           .tickSize(height)
           .tickFormat(d3.timeFormat('%b %d'))
-          .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%4)}));
+    .tickValues([d3.min(dates),dates[1]]);
+
   
           svg
           .selectAll('rect')
@@ -438,7 +478,8 @@ xPositionScale.domain(dates_array)
           .attr('class', 'rect_30')
           .attr('width', xPositionScale.bandwidth())
           .attr('height', d => {
-            return height - yPositionScale(+d["Total"])
+            console.log(d['Total'])
+            return height - yPositionScale(+d["Pfizer"]+ +d['Moderna'])
           })
           .attr('x', d => {
             return xPositionScale(d.datetime)
@@ -446,28 +487,71 @@ xPositionScale.domain(dates_array)
           .attr('y', d => {
             return yPositionScale(+d["Total"])
           })
-          .attr('fill', '#FFA500').attr('opacity',0.3)
+          .attr('fill', '#FFBF00').attr('opacity',0.3)
           .lower()
-  
-          svg.append('path')
-          .datum(datapoints_30)
-          .attr('class', 'average')
-          .attr('d', function(d) {
-              return line(d)
+          .on('mouseover', function(d){
+            d3.select(this).attr('r', 6)
+            d.type = "Moderna"
+            d.value = +d['Moderna']
+            tip.show.call(this, d)
+        
+        })
+        .on('mouseout', function(d){
+          d3.select(this).attr('r', 3)
+          tip.hide.call(this, d)
+        
+        })
+
+          svg
+          .selectAll('rect_new')
+          .data(datapoints_30)
+          .enter()
+          .append('rect')
+          .attr('class', 'rect_30')
+          .attr('width', xPositionScale.bandwidth())
+          .attr('height', d => {
+            return height - yPositionScale(+d["Pfizer"])
           })
-          .attr('stroke', '#FF8C00')
-          .attr('stroke-width', 2)
-          .attr('fill', 'none')
+          .attr('x', d => {
+            return xPositionScale(d.datetime)
+          })
+          .attr('y', d => {
+            return yPositionScale(+d["Pfizer"])
+          })
+          .attr('fill', '#DE3163').attr('opacity',0.3)
+          .raise()
+          .on('mouseover', function(d){
+            d3.select(this).attr('r', 6)
+            d.type = "Pfizer"
+            d.value = +d['Pfizer']
+            tip.show.call(this, d)
+        
+        })
+        .on('mouseout', function(d){
+          d3.select(this).attr('r', 3)
+          tip.hide.call(this, d)
+        
+        })
+  
+        //   svg.append('path')
+        //   .datum(datapoints_30)
+        //   .attr('class', 'average')
+        //   .attr('d', function(d) {
+        //       return line(d)
+        //   })
+        //   .attr('stroke', '#FF8C00')
+        //   .attr('stroke-width', 2)
+        //   .attr('fill', 'none')
   
           svg.select('.x-axis').transition().duration(1000).call(xAxis)
   
-              svg
-                .select('.y-axis')
-                .transition()
-                .duration(1000)
-                .call(yAxis)
+        //       svg
+        //         .select('.y-axis')
+        //         .transition()
+        //         .duration(1000)
+        //         .call(yAxis)
   
-                d3.select('.y-axis .domain').remove()
+        //         d3.select('.y-axis .domain').remove()
   
                 d3.select('.x-axis .domain').remove()
   
@@ -500,7 +584,7 @@ xPositionScale.domain(dates_array)
     //       .attr('y', d => {
     //         return yPositionScale(d.life_expectancy)
     //       })
-    //       .attr('fill', '#FFA500').attr('opacity',0.3)
+    //       .attr('fill', '#6495ED').attr('opacity',0.3)
     //       .attr('class', d => {
     //         return d.continent.toLowerCase().replace(/[^a-z]*/g, '')
     //       })

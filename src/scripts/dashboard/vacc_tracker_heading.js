@@ -22,12 +22,18 @@ let svg = d3
   ready()
 
   function ready(dummydata) {
+    svg.append('text').attr('class', 'title').text('CT COVID Vaccine: State Estimates').attr('alignment-baseline', 'middle').attr('y',25).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'title').text('vs Federal Allocations').attr('alignment-baseline', 'middle').attr('y',50).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text("The blue bars represent the first doses that state expects to get and").attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text('the orange bars represent those allocated to Connecticut.').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
-    svg.append('text').attr('class', 'title').text('CT COVID positivity rate over time').attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
-    svg.append('text').attr('class', 'sub-title').text("The positivity rate is the ratio of COVID cases to total tests. The ").attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
-    svg.append('text').attr('class', 'sub-title').text('data are represented based on the day a test result is reported.').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text('Pfizer').attr('alignment-baseline', 'middle').attr('y',125).attr('font-size', '10px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text('Moderna').attr('alignment-baseline', 'middle').attr('y',125).attr('font-size', '10px').attr('font-weight', 5).attr('x', 70)
+    svg.append('text').attr('class', 'sub-title').text('Total Estimated').attr('alignment-baseline', 'middle').attr('y',125).attr('font-size', '10px').attr('font-weight', 5).attr('x', 165)
 
-
+svg.append('circle').attr('cx',-10).attr('cy', 125).attr('r', 5).attr('fill','#DE3163')
+svg.append('circle').attr('cx',60).attr('cy', 125).attr('r',5).attr('fill','#FFBF00')
+svg.append('circle').attr('cx',155).attr('cy', 125).attr('r',5).attr('fill','#6495ED')
 
 
     function render() {
