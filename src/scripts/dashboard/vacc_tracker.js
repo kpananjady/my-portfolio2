@@ -270,7 +270,7 @@ function movingAverage(values, N) {
     .lower()
 .on('mouseover', function(d){
     d3.select(this).attr('r', 6)
-    d.type = "Estimated"
+    d.type = "Weekly Estimate"
     d.value = +d['Total']
     tip.show.call(this, d)
 
@@ -285,7 +285,7 @@ const xAxis = d3
     .axisBottom(xPositionScale)
     .tickSize(height)
     .tickFormat(d3.timeFormat('%b %d'))
-    .tickValues([d3.min(dates),d3.max(dates)]);
+    .tickValues([d3.min(dates),dates[1],dates[2],dates[3],dates[4],dates[5],d3.max(dates)]);
 
   
 
@@ -398,7 +398,7 @@ const xAxis = d3
           .lower()
           .on('mouseover', function(d){
             d3.select(this).attr('r', 6)
-            d.type = "Estimated"
+            d.type = "Weekly Estimate"
             d.value = +d['Total']
             tip.show.call(this, d)
         
