@@ -1,4 +1,6 @@
 import * as d3 from 'd3'
+import d3Tip from 'd3-tip'
+d3.tip = d3Tip
 
 const margin = {
   top: 30,
@@ -49,7 +51,17 @@ Promise.all([
       .catch(err => console.log('Failed on', err))
     
 
-
+      const tip = d3
+      .tip()
+      .attr('class', 'd3-tip d3-tip-scrolly')
+      .style('pointer-events', 'none')
+      .offset([-10, 0])
+      .html(function(d) {
+      
+        return `${d['DateUpdated']} : ${d['value']}<br>` 
+        // (d3.max(dates).getMonth()+1) + "-" + d3.max(dates).getDate()
+      })
+      svg.call(tip)
 function ready([datapoints, datapoints_30]) {
   // Sort the countries from low to high
 
@@ -253,8 +265,20 @@ function movingAverage(values, N) {
     .attr('y', d => {
       return yPositionScale(d["COVID_per_day"])
     })
-    .attr('fill', '#FFA500').attr('opacity',0.3)
+    .attr('fill', '#FFA500').attr('opacity',0.5)
     .lower()
+    .on('mouseover', function(d){
+      d3.select(this).attr('r', 6)
+      d.date = d.datetime
+      d.value = +d['COVID_per_day']
+      tip.show.call(this, d)
+  
+  })
+  .on('mouseout', function(d){
+    d3.select(this).attr('r', 3)
+    tip.hide.call(this, d)
+  
+  })
  
 const xAxis = d3
     .axisBottom(xPositionScale)
@@ -368,10 +392,22 @@ const xAxis = d3
           .attr('y', d => {
             return yPositionScale(d["COVID_per_day"])
           })
-          .attr('fill', '#FFA500').attr('opacity',0.3)
+          .attr('fill', '#FFA500').attr('opacity',0.5)
           .attr('id', d=> d["DateUpdated"])
           .lower()
-  
+          .on('mouseover', function(d){
+            d3.select(this).attr('r', 6)
+            d.date = d.datetime
+            d.value = +d['COVID_per_day']
+            tip.show.call(this, d)
+        
+        })
+        .on('mouseout', function(d){
+          d3.select(this).attr('r', 3)
+          tip.hide.call(this, d)
+        
+        })
+
           svg.select('.x-axis').transition().duration(1000).call(xAxis)
   
               svg
@@ -442,9 +478,20 @@ xPositionScale.domain(dates_array)
           .attr('y', d => {
             return yPositionScale(+d["COVID_per_day"])
           })
-          .attr('fill', '#FFA500').attr('opacity',0.3)
+          .attr('fill', '#FFA500').attr('opacity',0.5)
           .lower()
+    .on('mouseover', function(d){
+      d3.select(this).attr('r', 6)
+      d.date = d.datetime
+      d.value = +d['COVID_per_day']
+      tip.show.call(this, d)
   
+  })
+  .on('mouseout', function(d){
+    d3.select(this).attr('r', 3)
+    tip.hide.call(this, d)
+  
+  })
           // svg.append('path')
           // .datum(datapoints_30)
           // .attr('class', 'average')
