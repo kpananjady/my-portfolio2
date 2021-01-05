@@ -80,7 +80,7 @@ function ready([datapoints, datapoints_30]) {
   svg.append('text').text(`+${parseFloat(datapoints[datapoints.length-1]['Deaths_per_day']).toFixed()}`).attr('font-size', '20px').attr('font-weight', 5).attr('x', 3*4*height/4+4*width/80).attr('y', 4*height/5).attr('class', 'deaths').attr('fill', 'darkred')
   svg.append('text').text(`on ${datapoints[datapoints.length-1]['date']}`).attr('font-size', '10px').attr('font-weight', 5).attr('x', 3*4*height/4+4*width/80).attr('y', 4*height/5+10).attr('class', 'deaths').attr('fill', 'darkred').attr('id', 'date')
 
- 
+ svg.append('text').text('Arrows represent the trend in the 7-day rolling average.').attr('y',4*height/5-50).attr('x',10).attr('font-size', '10px').attr('font-weight', 5)
 
 
 
