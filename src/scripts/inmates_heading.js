@@ -24,8 +24,8 @@ let svg = d3
   function ready(dummydata) {
     svg.append('text').attr('class', 'title').text("Here are the inmates who have died").attr('alignment-baseline', 'middle').attr('y',25).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
     svg.append('text').attr('class', 'title').text("due to COVID-19").attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
-    svg.append('text').attr('class', 'sub-title').text("Click on the name to learn more about the 19 inmates who have ").attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
-    svg.append('text').attr('class', 'sub-title').text('died since April.').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text("Click on a name or hover over a grey dot to learn more about").attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text('the 19 inmates who have died since April.').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
 
 

@@ -109,12 +109,12 @@ d3.tip = d3Tip
 
             if (d.color =='#F5C52C' ){
                 return `${d.label} CI<br>
-                <div id ='count'> Dec 2020: ${d.r} inmates</div>`
+                <div id ='count'> Dec. pop.: ${d.r} inmates</div>`
 
             } if (d.color =='#BEBEBE' ){
                 return `${d.label}<br>
-                <div id ='count'> RACE: ${d['AGE']}<br>
-                AGE: ${d['RACE']}<br>
+                <div id ='count'> RACE: ${d['RACE']}<br>
+                AGE: ${d['AGE']}<br>
                  DATE OF DEATH: ${d['DATE OF DEATH']}`
 
             }
@@ -128,8 +128,8 @@ d3.tip = d3Tip
        svg.append('circle').attr('r', 5).attr('fill', '#BEBEBE').attr('cx', 100).attr('cy', height-50)
        svg.append('circle').attr('r', 10).attr('fill', '#F5C52C').attr('cx', 100).attr('cy', height-30)
 
-       svg.append('text').attr('y', height-50).attr('x', 110).text('Inmates deceased due to COVID-19').attr('font-size',10).attr('font-weight', 5)
-       svg.append('text').attr('y', height-30).attr('x', 110).text('Prisons sized by Dec population').attr('font-size',10).attr('font-weight', 5)
+       svg.append('text').attr('y', height-50).attr('x', 110).text('Inmate COVID deaths').attr('font-size',10).attr('font-weight', 5)
+       svg.append('text').attr('y', height-30).attr('x', 110).text('Prisons sized by population').attr('font-size',10).attr('font-weight', 5)
 
 svg.append("defs").selectAll("marker")
 .data(["dominating"])
