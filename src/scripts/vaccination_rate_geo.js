@@ -31,6 +31,10 @@ const tip = d3
 .style('pointer-events', 'none')
 .offset([-10, 0])
 .html(function(d) {
+
+    if (d.type === 'circle'){
+        return `${d.name}`
+    }
   return `${d.properties.NAME10} : ${d.percent}% <br>
   ${d['First doses administered ']} first doses`
 })
@@ -195,9 +199,11 @@ Promise.all([
         return `translate(${projection(coords)})`
       })
       .attr('fill', function(d){
+        d.type = "circle"
         return 'black'
       })
-
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
       })
 
       d3.select('#toggle2').on('click', () => {
