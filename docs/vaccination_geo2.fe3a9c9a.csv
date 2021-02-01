@@ -1,0 +1,170 @@
+Town No.,Town,Data_asof,Estimated population,Estimated population aged 75 and over,County,First Doses Administered,First Doses Administered among 75 and over,First Dose Coverage,First Dose Coverage among 75 and over
+1,Andover,1-Feb-21,3236,137,Tolland,210,58,6.49,42.34
+2,Ansonia,1-Feb-21,18654,1284,New Haven,1315,459,7.05,35.75
+3,Ashford,1-Feb-21,4255,186,Windham,339,105,7.97,56.45
+4,Avon,1-Feb-21,18276,1549,Hartford,2581,897,14.12,57.91
+5,Barkhamsted,1-Feb-21,3606,193,Litchfield,281,54,7.79,27.98
+6,Beacon Falls,1-Feb-21,6222,290,New Haven,659,231,10.59,79.66
+7,Berlin,1-Feb-21,20436,1830,Hartford,2190,712,10.72,38.91
+8,Bethany,1-Feb-21,5548,356,New Haven,724,211,13.05,59.27
+9,Bethel,1-Feb-21,19800,1122,Fairfield,1481,509,7.48,45.37
+10,Bethlehem,1-Feb-21,3402,234,Litchfield,344,88,10.11,37.61
+11,Bloomfield,1-Feb-21,21211,2584,Hartford,3286,1622,15.49,62.77
+12,Bolton,1-Feb-21,4884,286,Tolland,430,170,8.80,59.44
+13,Bozrah,1-Feb-21,2726,178,New London,331,139,12.14,78.09
+14,Branford,1-Feb-21,27900,2747,New Haven,4075,1579,14.61,57.48
+15,Bridgeport,1-Feb-21,144399,6914,Fairfield,5902,1613,4.09,23.33
+16,Bridgewater,1-Feb-21,1635,167,Litchfield,209,108,12.78,64.67
+17,Bristol,1-Feb-21,59947,4733,Hartford,4817,1323,8.04,27.95
+18,Brookfield,1-Feb-21,16973,1007,Fairfield,1572,624,9.26,61.97
+19,Brooklyn,1-Feb-21,8272,541,Windham,714,315,8.63,58.23
+20,Burlington,1-Feb-21,9704,342,Hartford,887,151,9.14,44.15
+21,Canaan,1-Feb-21,4304,526,Litchfield,279,70,,
+22,Canterbury,1-Feb-21,5079,222,Windham,381,116,7.50,52.25
+23,Canton,1-Feb-21,10254,708,Hartford,1041,342,10.15,48.31
+24,Chaplin,1-Feb-21,2239,116,Windham,160,48,7.15,41.38
+25,Cheshire,1-Feb-21,28937,2154,New Haven,4045,1205,13.98,55.94
+26,Chester,1-Feb-21,4213,494,Middlesex,485,188,11.51,38.06
+27,Clinton,1-Feb-21,12925,820,Middlesex,1274,404,9.86,49.27
+28,Colchester,1-Feb-21,15809,793,New London,1616,542,10.22,68.35
+29,Colebrook,1-Feb-21,1400,94,Litchfield,118,35,8.43,37.23
+30,Columbia,1-Feb-21,5379,340,Tolland,549,184,10.21,54.12
+31,Cornwall,1-Feb-21,1362,140,Litchfield,147,83,10.79,59.29
+32,Coventry,1-Feb-21,12407,500,Tolland,914,268,7.37,53.60
+33,Cromwell,1-Feb-21,13839,1334,Middlesex,1789,583,12.93,43.70
+34,Danbury,1-Feb-21,84694,4384,Fairfield,4861,1727,5.74,39.39
+35,Darien,1-Feb-21,21728,1126,Unknown,1670,883,7.69,78.42
+36,Deep River,1-Feb-21,4443,311,Middlesex,559,187,12.58,60.13
+37,Derby,1-Feb-21,12339,1046,New Haven,1043,394,8.45,37.67
+38,Durham,1-Feb-21,7165,399,Middlesex,855,234,11.93,58.65
+39,East Granby,1-Feb-21,5140,298,Hartford,402,163,7.82,54.70
+40,East Haddam,1-Feb-21,8997,477,Middlesex,799,343,8.88,71.91
+41,East Hampton,1-Feb-21,12800,618,Middlesex,1296,404,10.13,65.37
+42,East Hartford,1-Feb-21,49872,3438,Hartford,2957,1149,5.93,33.42
+43,East Haven,1-Feb-21,28569,2850,New Haven,2714,984,9.50,34.53
+44,East Lyme,1-Feb-21,18462,1488,New London,2243,994,12.15,66.80
+45,East Windsor,1-Feb-21,11668,795,Hartford,887,386,7.60,48.55
+46,Eastford,1-Feb-21,1790,103,Windham,101,38,5.64,36.89
+47,Easton,1-Feb-21,7521,528,Fairfield,676,220,8.99,41.67
+48,Ellington,1-Feb-21,16467,743,Tolland,1163,436,7.06,58.68
+49,Enfield,1-Feb-21,43659,3390,Hartford,2352,1000,5.39,29.50
+50,Essex,1-Feb-21,6668,762,Middlesex,1164,628,17.46,82.41
+51,Fairfield,1-Feb-21,62045,4908,Fairfield,5578,2346,8.99,47.80
+52,Farmington,1-Feb-21,25497,2353,Hartford,3709,1119,14.55,47.56
+53,Franklin,1-Feb-21,1920,106,New London,177,61,9.22,57.55
+54,Glastonbury,1-Feb-21,34482,2368,Hartford,3881,1610,11.26,67.99
+55,Goshen,1-Feb-21,2863,217,Litchfield,290,110,10.13,50.69
+56,Granby,1-Feb-21,11507,704,Hartford,968,386,8.41,54.83
+57,Greenwich,1-Feb-21,62840,5101,Fairfield,4820,2781,7.67,54.52
+58,Griswold,1-Feb-21,11534,573,New London,921,268,7.99,46.77
+59,Groton,1-Feb-21,38436,2728,New London,3510,1714,9.13,62.83
+60,Guilford,1-Feb-21,22133,1712,New Haven,3117,1158,14.08,67.64
+61,Haddam,1-Feb-21,8193,413,Middlesex,883,279,10.78,67.55
+62,Hamden,1-Feb-21,60556,5199,New Haven,6876,2412,11.35,46.39
+63,Hampton,1-Feb-21,1842,112,Windham,192,61,10.42,54.46
+64,Hartford,1-Feb-21,122105,4802,Hartford,6204,1465,5.08,30.51
+65,Hartland,1-Feb-21,2120,125,Hartford,111,39,5.24,31.20
+66,Harwinton,1-Feb-21,5420,391,Litchfield,534,146,9.85,37.34
+67,Hebron,1-Feb-21,9504,333,Tolland,822,280,8.65,84.08
+68,Kent,1-Feb-21,2777,303,Litchfield,378,217,13.61,71.62
+69,Killingly,1-Feb-21,17336,1171,Windham,1259,507,7.26,43.30
+70,Killingworth,1-Feb-21,6364,407,Middlesex,715,235,11.24,57.74
+71,Lebanon,1-Feb-21,7144,343,New London,571,154,7.99,44.90
+72,Ledyard,1-Feb-21,14621,777,New London,1194,430,8.17,55.34
+73,Lisbon,1-Feb-21,4220,263,Unknown,293,66,6.94,25.10
+74,Litchfield,1-Feb-21,8094,784,Litchfield,869,331,10.74,42.22
+75,Lyme,1-Feb-21,2316,258,New London,215,123,9.28,47.67
+76,Madison,1-Feb-21,18030,1578,New Haven,2380,914,13.20,57.92
+77,Manchester,1-Feb-21,57584,3826,Hartford,4137,1492,7.18,39.00
+78,Mansfield,1-Feb-21,25487,1016,Tolland,1217,537,4.77,52.85
+79,Marlborough,1-Feb-21,6335,323,Hartford,711,261,11.22,80.80
+80,Meriden,1-Feb-21,59395,4006,New Haven,4671,1307,7.86,32.63
+81,Middlebury,1-Feb-21,7798,622,New Haven,1044,355,13.39,57.07
+82,Middlefield,1-Feb-21,4374,355,Middlesex,455,128,10.40,36.06
+83,Middletown,1-Feb-21,46258,3172,Middlesex,4776,1364,10.32,43.00
+84,Milford,1-Feb-21,54747,4215,New Haven,5825,1811,10.64,42.97
+85,Monroe,1-Feb-21,19434,1198,Fairfield,1651,465,8.50,38.81
+86,Montville,1-Feb-21,18508,1199,New London,1726,572,9.33,47.71
+87,Morris,1-Feb-21,2254,165,Litchfield,178,39,7.90,23.64
+88,Naugatuck,1-Feb-21,31108,1802,New Haven,2161,562,6.95,31.19
+89,New Britain,1-Feb-21,72495,4935,Hartford,3794,839,5.23,17.00
+90,New Canaan,1-Feb-21,20233,1400,Fairfield,1603,894,7.92,63.86
+91,New Fairfield,1-Feb-21,13878,626,Fairfield,924,369,6.66,58.95
+92,New Hartford,1-Feb-21,6656,325,Litchfield,581,137,8.73,42.15
+93,New Haven,1-Feb-21,130250,5550,New Haven,9472,2079,7.27,37.46
+94,New London,1-Feb-21,26858,1377,New London,1613,438,6.01,31.81
+95,New Milford,1-Feb-21,26805,1498,Litchfield,2159,743,8.05,49.60
+96,Newington,1-Feb-21,30014,2931,Hartford,3427,1239,11.42,42.27
+97,Newtown,1-Feb-21,27891,1596,Fairfield,2646,1082,9.49,67.79
+98,Norfolk,1-Feb-21,1630,134,Litchfield,137,43,8.40,32.09
+99,North Branford,1-Feb-21,14146,1247,New Haven,1788,682,12.64,54.69
+100,North Canaan,1-Feb-21,4304,526,Litchfield,279,70,,
+101,North Haven,1-Feb-21,23683,2476,New Haven,3315,1193,14.00,48.18
+102,North Stonington,1-Feb-21,5196,325,New London,352,153,6.77,47.08
+103,Norwalk,1-Feb-21,88816,5198,Fairfield,5897,2211,6.64,42.54
+104,Norwich,1-Feb-21,38768,2719,New London,2857,872,7.37,32.07
+105,Old Lyme,1-Feb-21,7306,761,New London,1014,469,13.88,61.63
+106,Old Saybrook,1-Feb-21,10061,1316,Middlesex,1782,816,17.71,62.01
+107,Orange,1-Feb-21,13926,1505,New Haven,2140,852,15.37,56.61
+108,Oxford,1-Feb-21,13255,632,New Haven,1474,549,11.12,86.87
+109,Plainfield,1-Feb-21,15125,865,Windham,1043,367,6.90,42.43
+110,Plainville,1-Feb-21,17534,1302,Hartford,1403,343,8.00,26.34
+111,Plymouth,1-Feb-21,11598,729,Litchfield,935,225,8.06,30.86
+112,Pomfret,1-Feb-21,4203,212,Windham,370,127,8.80,59.91
+113,Portland,1-Feb-21,9267,716,Middlesex,1021,328,11.02,45.81
+114,Preston,1-Feb-21,4625,342,New London,404,147,8.74,42.98
+115,Prospect,1-Feb-21,9702,639,New Haven,1010,307,10.41,48.04
+116,Putnam,1-Feb-21,9389,785,Windham,650,293,6.92,37.32
+117,Redding,1-Feb-21,9116,840,Fairfield,927,507,10.17,60.36
+118,Ridgefield,1-Feb-21,24959,1616,Fairfield,2270,1278,9.09,79.08
+119,Rocky Hill,1-Feb-21,20115,1940,Hartford,2542,985,12.64,50.77
+120,Roxbury,1-Feb-21,2152,145,Litchfield,274,144,12.73,99.31
+121,Salem,1-Feb-21,4083,122,New London,369,89,9.04,72.95
+122,Salisbury,1-Feb-21,3600,489,Litchfield,427,248,11.86,50.72
+123,Scotland,1-Feb-21,1672,68,Windham,50,22,2.99,32.35
+124,Seymour,1-Feb-21,16437,1268,New Haven,1601,484,9.74,38.17
+125,Sharon,1-Feb-21,2689,333,Litchfield,259,131,9.63,39.34
+126,Shelton,1-Feb-21,41129,3416,Fairfield,5069,2099,12.32,61.45
+127,Sherman,1-Feb-21,3630,229,Fairfield,348,175,9.59,76.42
+128,Simsbury,1-Feb-21,25395,1679,Hartford,2816,1047,11.09,62.36
+129,Somers,1-Feb-21,10784,638,Tolland,624,267,5.79,41.85
+130,South Windsor,1-Feb-21,26162,2025,Hartford,2439,1097,9.32,54.17
+131,Southbury,1-Feb-21,19571,3205,New Haven,3089,1682,15.78,52.48
+132,Southington,1-Feb-21,43834,3527,Hartford,4741,1559,10.82,44.20
+133,Sprague,1-Feb-21,2859,131,New London,226,63,7.90,48.09
+134,Stafford,1-Feb-21,11893,799,Tolland,710,293,5.97,36.67
+135,Stamford,1-Feb-21,129638,8287,Fairfield,8857,3832,6.83,46.24
+136,Sterling,1-Feb-21,3782,102,Windham,168,45,4.44,44.12
+137,Stonington,1-Feb-21,18559,1933,New London,1906,1020,10.27,52.77
+138,Stratford,1-Feb-21,51849,4798,Fairfield,4298,1415,8.29,29.49
+139,Suffield,1-Feb-21,15814,1137,Hartford,1227,615,7.76,54.09
+140,Thomaston,1-Feb-21,7535,498,Litchfield,597,109,7.92,21.89
+141,Thompson,1-Feb-21,9379,618,Windham,444,204,4.73,33.01
+142,Tolland,1-Feb-21,14618,659,Tolland,1284,495,8.78,75.11
+143,Torrington,1-Feb-21,34044,3233,Litchfield,2929,1026,8.60,31.74
+144,Trumbull,1-Feb-21,35673,3718,Fairfield,4428,1764,12.41,47.44
+145,Union,1-Feb-21,839,61,Tolland,72,27,8.58,44.26
+146,Vernon,1-Feb-21,29359,2188,Tolland,2206,948,7.51,43.33
+147,Voluntown,1-Feb-21,2510,121,New London,174,51,6.93,42.15
+148,Wallingford,1-Feb-21,44326,4017,New Haven,6127,2239,13.82,55.74
+149,Warren,1-Feb-21,1395,103,Litchfield,167,70,11.97,67.96
+150,Washington,1-Feb-21,3428,319,Litchfield,407,210,11.87,65.83
+151,Waterbury,1-Feb-21,107568,7225,New Haven,5956,1770,5.54,24.50
+152,Waterford,1-Feb-21,18746,2093,New London,2454,1028,13.09,49.12
+153,Watertown,1-Feb-21,21578,1772,Litchfield,1566,409,7.26,23.08
+154,West Hartford,1-Feb-21,62965,6382,Hartford,8421,2786,13.37,43.65
+155,West Haven,1-Feb-21,54620,3494,New Haven,3649,1108,6.68,31.71
+156,Westbrook,1-Feb-21,6869,631,Middlesex,720,302,10.48,47.86
+157,Weston,1-Feb-21,10252,438,Fairfield,838,331,8.17,75.57
+158,Westport,1-Feb-21,28491,2049,Fairfield,2289,1095,8.03,53.44
+159,Wethersfield,1-Feb-21,26008,3086,Hartford,2973,1197,11.43,38.79
+160,Willington,1-Feb-21,5864,270,Tolland,352,105,6.00,38.89
+161,Wilton,1-Feb-21,18343,1235,Fairfield,1748,1046,9.53,84.70
+162,Winchester,1-Feb-21,10604,880,Litchfield,663,191,6.25,21.70
+163,Windham,1-Feb-21,24561,1497,Windham,1559,534,6.35,35.67
+164,Windsor,1-Feb-21,28733,2120,Hartford,2518,981,8.76,46.27
+165,Windsor Locks,1-Feb-21,12854,1134,Hartford,1054,472,8.20,41.62
+166,Wolcott,1-Feb-21,16587,1197,New Haven,1738,476,10.48,39.77
+167,Woodbridge,1-Feb-21,8750,922,New Haven,1691,610,19.33,66.16
+168,Woodbury,1-Feb-21,9502,726,Litchfield,960,295,10.10,40.63
+169,Woodstock,1-Feb-21,7858,455,Windham,599,243,7.62,53.41

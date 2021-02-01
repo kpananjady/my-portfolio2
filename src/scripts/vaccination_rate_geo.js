@@ -44,7 +44,7 @@ const colorScale =
 // d3.scaleQuantile()
 // .domain([0, 70])
 // .range([['white', 'orange']])
-d3.scaleSequential(d3.interpolateOranges).domain([0, 70])
+d3.scaleSequential(d3.interpolateOranges).domain([0, 80])
 
 
 
@@ -54,12 +54,13 @@ Promise.all([
     d3.json(require('/data/ct_towns_simplified.topojson')),
     d3.json(require('/data/tracts_ct.topojson')),
     d3.csv(require('/data/vaccination_clinics.csv')),
-    d3.csv(require('/data/vaccination_geo.csv'))
+    d3.csv(require('/data/vaccination_geo.csv')),
+    d3.csv(require('/data/vaccination_geo2.csv'))
   ]).then(ready)
   .catch(err => console.log('Failed on', err))
 
 
-  function ready([json2, json, clinics, geo]) {
+  function ready([json2, json, clinics, geo, geo2]) {
 
     // svg.append('text').attr('class', 'title').text('See how internet access compares in your town').attr('alignment-baseline', 'middle').attr('y',-90).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
     // svg.append('text').attr('class', 'sub-title').text('How many households in every 1,000 have good connections').attr('alignment-baseline', 'middle').attr('y',-65).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
@@ -69,10 +70,10 @@ Promise.all([
       svg.append('text').attr('id', 'box4-text').text('>800').attr('x',width-95).attr('y', height-200).attr('font-size', 10)
 
       svg.append('rect').attr('id', 'box0').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', height-200).attr('fill', colorScale(0))
-      svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-200).attr('fill', colorScale(10))
-      svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-200).attr('fill', colorScale(20))
-      svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-200).attr('fill', colorScale(40))
-      svg.append('rect').attr('id', 'box4').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-200).attr('fill', colorScale(50))
+      svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-200).attr('fill', colorScale(20))
+      svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-200).attr('fill', colorScale(40))
+      svg.append('rect').attr('id', 'box3').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-200).attr('fill', colorScale(60))
+      svg.append('rect').attr('id', 'box4').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-200).attr('fill', colorScale(80))
 
 
     const tract = topojson.feature(json, json.objects.tracts_ct)
@@ -140,7 +141,7 @@ Promise.all([
 
         var returnVar = '0'
     
-        geo.forEach( function(r) {if (r['Town']===d.properties.NAME10){
+        geo2.forEach( function(r) {if (r['Town']===d.properties.NAME10){
   
   
         //   if (r['variable'].includes("Biden")){
@@ -148,10 +149,10 @@ Promise.all([
             // console.log((100*r['value']/r['Vote Totals']).toFixed(2))
             // dem_vote = dem_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
             // console.log(colorScale(parseFloat(r['%_75_Plus'])), 'color')
-            d['percent'] = r['%_75_Plus']
-            d['First doses administered '] = r['First doses administered ']
+            d['percent'] = r['First Dose Coverage among 75 and over']
+            d['First doses administered '] = r['First Doses Administered among 75 and over']
 
-            returnVar = parseFloat(r['%_75_Plus'])
+            returnVar = parseFloat(r['First Dose Coverage among 75 and over'])
 
         //   } else if (r['variable'].includes("Trump")){
             // rep_vote = rep_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
@@ -246,7 +247,7 @@ Promise.all([
         const newHeight = svgHeight - margin.top - margin.bottom
 
         svg.select('#box1-text').text('0%').attr('x',newWidth-175).attr('y', height-200).attr('font-size', 10)
-        svg.select('#box4-text').text('50%').attr('x',newWidth-75).attr('y', height-200).attr('font-size', 10)
+        svg.select('#box4-text').text('80%').attr('x',newWidth-75).attr('y', height-200).attr('font-size', 10)
 
         svg.select('#box0').attr('x', newWidth-175)
         svg.select('#box1').attr('x', newWidth-150)
