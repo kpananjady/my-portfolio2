@@ -22,13 +22,13 @@ let svg = d3
   d3.csv(require('../data/NH.csv')).then(ready)
 
   function ready(dummydata) {
-    svg.append('text').attr('class', 'title').text('Vaccination rates not determined by clinic location').attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'title').text("Connecticut's vaccination rates dip noticeably in its major cities").attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
 
 //    svg.append('text').attr('class', 'title').text('See how internet access compares in your town').attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
     // svg.append('text').attr('class', 'sub-title').text('Households per 1,000 with good connections for passive online learning:').attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
     svg.append('text').attr('class', 'sub-title').text('Percentage of eligible 75 and over people who received a 1st dose by town.').attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
-    svg.append('text').attr('class', 'sub-title').text(' Connecticut;s vaccination rates dip noticeably in its major cities.').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text('Vaccination rates are not strongly dependent on clinic location.').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
     // svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', 100).attr('font-size', 10)
     // svg.append('text').attr('id', 'box4-text').text('>800').attr('x',width-95).attr('y', 100).attr('font-size', 10)

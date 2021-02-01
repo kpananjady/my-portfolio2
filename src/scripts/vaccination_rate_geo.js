@@ -32,7 +32,7 @@ const tip = d3
 .offset([-10, 0])
 .html(function(d) {
   return `${d.properties.NAME10} : ${d.percent}% <br>
-  ${d['First doses administered ']} First doses`
+  ${d['First doses administered ']} first doses`
 })
 
 const colorScale = 
@@ -145,6 +145,8 @@ Promise.all([
             // dem_vote = dem_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
             // console.log(colorScale(parseFloat(r['%_75_Plus'])), 'color')
             d['percent'] = r['%_75_Plus']
+            d['First doses administered '] = r['First doses administered ']
+
             returnVar = parseFloat(r['%_75_Plus'])
 
         //   } else if (r['variable'].includes("Trump")){
