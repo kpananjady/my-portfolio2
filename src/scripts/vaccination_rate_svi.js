@@ -10,7 +10,7 @@ let height = 600 - margin.top - margin.bottom
 let width = 1000 - margin.left - margin.right
 
 var centered;
-
+var varClicked = 0
 
 let svg = d3
   .select('#chart-1')
@@ -31,6 +31,10 @@ const tip = d3
 .style('pointer-events', 'none')
 .offset([-10, -10])
 .html(function(d) {
+    
+    if (varClicked===0){
+        return `${d.properties.NAME10}`
+    }
 
   return `${d.properties.NAME10} : ${d.percent}% <br>
   ${d['First doses administered ']} first doses`
@@ -126,6 +130,8 @@ Promise.all([
     //   })  
     //   .attr('stroke', 'none')  
     //   .attr('opacity', 0.7)
+
+    var homepage = 0
     var towns2 = svg
         .selectAll('path-town')
         .data(towns.features)
@@ -137,7 +143,7 @@ Promise.all([
         .style('fill', function(d){
 
 
-            // d['type']='Vul'
+            // d.type='Vul'
             var returnVar = 'none'
             geo.forEach( function(r) {if (r['Town']===d.properties.NAME10){
   
@@ -174,8 +180,8 @@ Promise.all([
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide)
 
-        svg.select('#box1-text').text('Socially vulnerable')
-        svg.select('#box4-text').text('Not vulnerable')
+        svg.select('#box1-text').text('Highly vulnerable')
+        svg.select('#box4-text').text('Less vulnerable')
         svg.select('#box0').attr('fill', '#000080')
         svg.select('#box1').attr('fill', 'white')
         svg.select('#box2').attr('fill', 'white')
@@ -185,7 +191,7 @@ Promise.all([
       
     //   .on('click', clicked)
 
-    var varClicked = 0
+
     d3.select('#toggle').on('click', () => {
         varClicked = 1
 
@@ -258,7 +264,7 @@ Promise.all([
       })
 
       d3.select('#toggle2').on('click', () => {
-        varClicked = 0
+        varClicked = 1
         svg.selectAll('.towns').remove()
 
         var towns2 = svg
@@ -309,8 +315,8 @@ Promise.all([
         svg.select('#box0').attr('fill', '#000080')
         // svg.select('#box1').attr('fill', 'lightgrey')
 
-        svg.select('#box1-text').text('Socially vulnerable')
-        svg.select('#box4-text').text('Not vulnerable')
+        svg.select('#box1-text').text('Highly vulnerable')
+        svg.select('#box4-text').text('Less vulnerable')
 
       svg.select('#box0').attr('fill','#000080')
       svg.select('#box1').attr('fill', 'white')
@@ -353,7 +359,7 @@ Promise.all([
         const newHeight = svgHeight - margin.top - margin.bottom
 
         svg.select('#box1-text').text('0%').attr('x',newWidth-175).attr('y', height-200).attr('font-size', 10).text('Socially vulnerable')
-        svg.select('#box4-text').text('50%').attr('x',newWidth-75).attr('y', height-200).attr('font-size', 10).text('Not vulnerable')
+        svg.select('#box4-text').text('50%').attr('x',newWidth-75).attr('y', height-200).attr('font-size', 10).text('Less vulnerable')
 
         svg.select('#box0').attr('x', newWidth-175)
         svg.select('#box1').attr('x', newWidth-150)
