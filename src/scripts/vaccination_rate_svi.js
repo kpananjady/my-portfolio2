@@ -32,9 +32,6 @@ const tip = d3
 .offset([-10, -10])
 .html(function(d) {
 
-    // if (){
-
-    // }
   return `${d.properties.NAME10} : ${d.percent}% <br>
   ${d['First doses administered ']} first doses`
 })
@@ -140,7 +137,7 @@ Promise.all([
         .style('fill', function(d){
 
 
-            d['type']='Vul'
+            // d['type']='Vul'
             var returnVar = 'none'
             geo.forEach( function(r) {if (r['Town']===d.properties.NAME10){
   
