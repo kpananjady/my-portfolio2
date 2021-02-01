@@ -31,6 +31,10 @@ const tip = d3
 .style('pointer-events', 'none')
 .offset([-10, -10])
 .html(function(d) {
+
+    // if (){
+
+    // }
   return `${d.properties.NAME10} : ${d.percent}% <br>
   ${d['First doses administered ']} first doses`
 })
@@ -42,6 +46,7 @@ const colorScale =
 // .range([['white', 'orange']])
 d3.scaleSequential(d3.interpolateOranges).domain([0, 70])
 
+const colorScale2 = d3.scaleOrdinal().domain(['yes ', 'no ']).range(['#000080', 'lightgrey'])
 
 
 svg.call(tip)
@@ -105,27 +110,92 @@ Promise.all([
     //         .style("stroke-width", 1.5 / k + "px");
     //   }
 
-      var tracts = svg
-      .selectAll('path-tract')
-      .data(tract.features)
-      .enter()
-      .append('path')
-      .attr('class', 'tracts')
-      .attr('d', path)
-      .attr('fill', function(d){
-        // console.log(d.properties.geoid)
-        var color = 0
-        internet.forEach(function(r){if (r.tractcode===d.properties.geoid){
-            color = colorScale(r.pcat_10x1)
-            }
-        })
+    //   var tracts = svg
+    //   .selectAll('path-tract')
+    //   .data(tract.features)
+    //   .enter()
+    //   .append('path')
+    //   .attr('class', 'tracts')
+    //   .attr('d', path)
+    //   .attr('fill', function(d){
+    //     // console.log(d.properties.geoid)
+    //     var color = 0
+    //     internet.forEach(function(r){if (r.tractcode===d.properties.geoid){
+    //         color = colorScale(r.pcat_10x1)
+    //         }
+    //     })
 
-          return color
-      })  
+    //       return color
+    //   })  
     //   .attr('stroke', 'none')  
     //   .attr('opacity', 0.7)
+    var towns2 = svg
+        .selectAll('path-town')
+        .data(towns.features)
+        .enter()
+        .append('path')
+        .attr('class', 'towns')
+        .attr('d',path)
+        
+        .style('fill', function(d){
 
-      var towns2 = svg
+
+            d['type']='Vul'
+            var returnVar = 'none'
+            geo.forEach( function(r) {if (r['Town']===d.properties.NAME10){
+  
+  
+             
+                  
+                    returnVar = r['Has SVI tract >0.75 (yes/no) ']
+        
+                //   } else if (r['variable'].includes("Trump")){
+                    // rep_vote = rep_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
+                //   }
+                  // console.log(r['variable'], Math.round(100*r['value']/r['Vote Totals']))
+               }
+          
+          
+                }) 
+        
+                if (d.properties.NAME10=='Canaan'){
+                    return 'lightgrey'
+                }
+        
+                if (d.properties.NAME10=='North Canaan'){
+                    return 'lightgrey'
+                }
+          
+                // console.log(dem_vote)
+                // console.log(parseFloat(dem_vote)-parseFloat(rep_vote))
+               return colorScale2(returnVar)
+
+            })
+      //   .attr('stroke', 'white')  
+      //   .attr('stroke-width', 1)  
+        .attr('opacity',0.8)
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide)
+
+        svg.select('#box1-text').text('Socially vulnerable')
+        svg.select('#box4-text').text('Not vulnerable')
+        svg.select('#box0').attr('fill', '#000080')
+        svg.select('#box1').attr('fill', 'white')
+        svg.select('#box2').attr('fill', 'white')
+        svg.select('#box3').attr('fill', 'white')
+
+        svg.select('#box4').attr('fill', 'lightgrey')
+      
+    //   .on('click', clicked)
+
+    var varClicked = 0
+    d3.select('#toggle').on('click', () => {
+        varClicked = 1
+
+        console.log('here')
+        
+        svg.selectAll('.towns').remove()
+        var towns2 = svg
       .selectAll('path-town')
       .data(towns.features)
       .enter()
@@ -177,34 +247,80 @@ Promise.all([
       .attr('opacity',0.8)
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
-    //   .on('click', clicked)
 
-    var varClicked = 0
-    d3.select('#toggle').on('click', () => {
-        varClicked = 1
-        svg
-      .selectAll('.circle-school')
-      .data(clinics)
-      .enter()
-      .append('circle')
-      .attr('class', 'circle-school')
-      .attr('r', 2.5)
-      .attr('opacity',0.7)
-      .attr('transform', function(d) {
-        const coords = [d.lat, d.lng]
-        return `translate(${projection(coords)})`
-      })
-      .attr('fill', function(d){
-        return 'black'
-      })
+      svg.select('#box1-text').text('0%')
+      svg.select('#box4-text').text('50%')
+      svg.select('#box0').attr('fill', colorScale(0))
+      svg.select('#box1').attr('fill', colorScale(10))
+      svg.select('#box2').attr('fill', colorScale(20))
+      svg.select('#box3').attr('fill', colorScale(30))
+      svg.select('#box4').attr('fill', colorScale(40))
+      svg.select('#box5').attr('fill', colorScale(50))
+
 
       })
 
       d3.select('#toggle2').on('click', () => {
         varClicked = 0
+        svg.selectAll('.towns').remove()
 
-        svg      .selectAll('.circle-school').remove()
-       
+        var towns2 = svg
+        .selectAll('path-town')
+        .data(towns.features)
+        .enter()
+        .append('path')
+        .attr('class', 'towns')
+        .attr('d',path)
+        
+        .style('fill', function(d){
+            var returnVar = 'none'
+            geo.forEach( function(r) {if (r['Town']===d.properties.NAME10){
+  
+  
+             
+                  
+                    returnVar = r['Has SVI tract >0.75 (yes/no) ']
+        
+                //   } else if (r['variable'].includes("Trump")){
+                    // rep_vote = rep_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
+                //   }
+                  // console.log(r['variable'], Math.round(100*r['value']/r['Vote Totals']))
+               }
+          
+          
+                }) 
+        
+                if (d.properties.NAME10=='Canaan'){
+                    return 'lightgrey'
+                }
+        
+                if (d.properties.NAME10=='North Canaan'){
+                    return 'lightgrey'
+                }
+          
+                // console.log(dem_vote)
+                // console.log(parseFloat(dem_vote)-parseFloat(rep_vote))
+               return colorScale2(returnVar)
+
+            })
+      //   .attr('stroke', 'white')  
+      //   .attr('stroke-width', 1)  
+        .attr('opacity',0.8)
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide)
+        // svg      .selectAll('.circle-school').remove()
+        svg.select('#box0').attr('fill', '#000080')
+        // svg.select('#box1').attr('fill', 'lightgrey')
+
+        svg.select('#box1-text').text('Socially vulnerable')
+        svg.select('#box4-text').text('Not vulnerable')
+
+      svg.select('#box0').attr('fill','#000080')
+      svg.select('#box1').attr('fill', 'white')
+      svg.select('#box2').attr('fill', 'white')
+      svg.select('#box3').attr('fill', 'white')
+      svg.select('#box4').attr('fill', 'white')
+      svg.select('#box4').attr('fill','lightgrey')
 
       })
 
@@ -239,8 +355,8 @@ Promise.all([
         const newWidth = svgWidth - margin.left - margin.right
         const newHeight = svgHeight - margin.top - margin.bottom
 
-        svg.select('#box1-text').text('0%').attr('x',newWidth-175).attr('y', height-200).attr('font-size', 10)
-        svg.select('#box4-text').text('50%').attr('x',newWidth-75).attr('y', height-200).attr('font-size', 10)
+        svg.select('#box1-text').text('0%').attr('x',newWidth-175).attr('y', height-200).attr('font-size', 10).text('Socially vulnerable')
+        svg.select('#box4-text').text('50%').attr('x',newWidth-75).attr('y', height-200).attr('font-size', 10).text('Not vulnerable')
 
         svg.select('#box0').attr('x', newWidth-175)
         svg.select('#box1').attr('x', newWidth-150)
