@@ -31,7 +31,8 @@ const tip = d3
 .style('pointer-events', 'none')
 .offset([-10, 0])
 .html(function(d) {
-  return `${d.properties.NAME10} : ${d.percent}% `
+  return `${d.properties.NAME10} : ${d.percent}% <br>
+  ${d['First doses administered ']} First doses`
 })
 
 const colorScale = 
