@@ -33,7 +33,7 @@ const tip = d3
 .html(function(d) {
 
     if (d.type === 'circle'){
-        return `${d.name}`
+        return `<div id = 'name'>${d.name}<div>`
     }
   return `${d.properties.NAME10} : ${d.percent}% <br>
   ${d['First doses administered ']} first doses`

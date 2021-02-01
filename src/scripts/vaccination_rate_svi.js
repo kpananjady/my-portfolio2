@@ -29,7 +29,7 @@ const tip = d3
 .tip()
 .attr('class', 'd3-tip d3-tip-scrolly')
 .style('pointer-events', 'none')
-.offset([-10, 0])
+.offset([-10, -10])
 .html(function(d) {
   return `${d.properties.NAME10} : ${d.percent}% <br>
   ${d['First doses administered ']} first doses`
