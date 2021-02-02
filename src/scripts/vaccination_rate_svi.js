@@ -265,11 +265,10 @@ if (varClicked = 0){
       svg.select('#box1-text').text('0%')
       svg.select('#box4-text').text('80%')
       svg.select('#box0').attr('fill', colorScale(0))
-      svg.select('#box1').attr('fill', colorScale(10))
-      svg.select('#box2').attr('fill', colorScale(20))
-      svg.select('#box3').attr('fill', colorScale(30))
-      svg.select('#box4').attr('fill', colorScale(40))
-      svg.select('#box5').attr('fill', colorScale(50))
+      svg.select('#box1').attr('fill', colorScale(20))
+      svg.select('#box2').attr('fill', colorScale(40))
+      svg.select('#box3').attr('fill', colorScale(60))
+      svg.select('#box4').attr('fill', colorScale(80))
 
 
       })
