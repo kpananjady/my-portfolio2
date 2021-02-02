@@ -351,8 +351,8 @@ Promise.all([
         svg.selectAll('.tracts')
         .attr('d', path)
 
-        svg.select('#box1-text').text('0').attr('x',newWidth-175).attr('y', height-400).attr('font-size', 10)
-        svg.select('#box4-text').text('>=800').attr('x',newWidth-75).attr('y', height-400).attr('font-size', 10)
+        svg.select('#box1-text').text('0%').attr('x',newWidth-175).attr('y', height-400).attr('font-size', 10)
+        svg.select('#box4-text').text('80%').attr('x',newWidth-75).attr('y', height-400).attr('font-size', 10)
 
 
         svg.select('#box0').attr('y', height-400)
