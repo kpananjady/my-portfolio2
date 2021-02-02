@@ -285,6 +285,12 @@ Promise.all([
       })
     }
         
+    svg.select('#box0').attr('y', height-200)
+    svg.select('#box1').attr('y', height-200)
+    svg.select('#box2').attr('y', height-200)
+    svg.select('#box3').attr('y', height-200)
+    svg.select('#box4').attr('y', height-200)
+    
   
           } else if (newWidth > 450){
   
@@ -306,6 +312,13 @@ Promise.all([
           const coords = [d.lat, d.lng]
           return `translate(${projection(coords)})`
         })
+
+        svg.select('#box0').attr('y', height-200)
+        svg.select('#box1').attr('y', height-200)
+        svg.select('#box2').attr('y', height-200)
+        svg.select('#box3').attr('y', height-200)
+        svg.select('#box4').attr('y', height-200)
+        
     }   
 
           } else if (newWidth > 350) {
@@ -332,6 +345,12 @@ Promise.all([
           return `translate(${projection(coords)})`
         })
     }
+    svg.select('#box0').attr('y', height-200)
+    svg.select('#box1').attr('y', height-200)
+    svg.select('#box2').attr('y', height-200)
+    svg.select('#box3').attr('y', height-200)
+    svg.select('#box4').attr('y', height-200)
+    
           }
           
           else if (newWidth > 250) {
