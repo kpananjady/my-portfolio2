@@ -67,10 +67,13 @@ Promise.all([
     // svg.append('text').attr('class', 'title').text('See how internet access compares in your town').attr('alignment-baseline', 'middle').attr('y',-90).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
     // svg.append('text').attr('class', 'sub-title').text('How many households in every 1,000 have good connections').attr('alignment-baseline', 'middle').attr('y',-65).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
-
+if (varClicked = 0){
     svg.append('text').attr('id', 'box1-text').text('Vulnerable').attr('x',width-220).attr('y', height-200).attr('font-size', 10)
       svg.append('text').attr('id', 'box4-text').text('Less so').attr('x',width-95).attr('y', height-200).attr('font-size', 10)
-
+} else {
+    svg.append('text').attr('id', 'box1-text').text('0%').attr('x',width-220).attr('y', height-200).attr('font-size', 10)
+    svg.append('text').attr('id', 'box4-text').text('80%').attr('x',width-95).attr('y', height-200).attr('font-size', 10)
+}
       svg.append('rect').attr('id', 'box0').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', height-200).attr('fill', colorScale(0))
       svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-200).attr('fill', colorScale(20))
       svg.append('rect').attr('id', 'box2').attr('width', 25).attr('height', 5).attr('x',width-125).attr('y', height-200).attr('fill', colorScale(40))
@@ -272,7 +275,7 @@ Promise.all([
       })
 
       d3.select('#toggle2').on('click', () => {
-        varClicked = 1
+        varClicked = 0
         svg.selectAll('.towns').remove()
 
         var towns2 = svg
@@ -366,9 +369,13 @@ Promise.all([
         const newWidth = svgWidth - margin.left - margin.right
         const newHeight = svgHeight - margin.top - margin.bottom
 
+        if (varClicked ==0){
         svg.select('#box1-text').text('0%').attr('x',newWidth-175).attr('y', height-200).attr('font-size', 10).text('Socially vulnerable')
         svg.select('#box4-text').text('80%').attr('x',newWidth-75).attr('y', height-200).attr('font-size', 10).text('Less vulnerable')
-
+        } else {
+            svg.select('#box1-text').text('0%').attr('x',newWidth-175).attr('y', height-200).attr('font-size', 10)
+            svg.select('#box4-text').text('80%').attr('x',newWidth-75).attr('y', height-200).attr('font-size', 10)
+        }
         svg.select('#box0').attr('x', newWidth-175)
         svg.select('#box1').attr('x', newWidth-150)
         svg.select('#box2').attr('x', newWidth-125)
@@ -471,15 +478,15 @@ Promise.all([
         svg.selectAll('.tracts')
         .attr('d', path)
 
-        svg.select('#box1-text').text('Vulnerable').attr('x',newWidth-175).attr('y', height-400).attr('font-size', 10)
-        svg.select('#box4-text').text('Less so').attr('x',newWidth-75).attr('y', height-400).attr('font-size', 10)
+        // svg.select('#box1-text').text('Vulnerable').attr('x',newWidth-175).attr('y', height-400).attr('font-size', 10)
+        // svg.select('#box4-text').text('Less so').attr('x',newWidth-75).attr('y', height-400).attr('font-size', 10)
 
 
-        svg.select('#box0').attr('y', height-400)
-        svg.select('#box1').attr('y', height-400)
-        svg.select('#box2').attr('y', height-400)
-        svg.select('#box3').attr('y', height-400)
-        svg.select('#box4').attr('y', height-400)
+        // svg.select('#box0').attr('y', height-400)
+        // svg.select('#box1').attr('y', height-400)
+        // svg.select('#box2').attr('y', height-400)
+        // svg.select('#box3').attr('y', height-400)
+        // svg.select('#box4').attr('y', height-400)
 
         if (varClicked ==1){
         svg

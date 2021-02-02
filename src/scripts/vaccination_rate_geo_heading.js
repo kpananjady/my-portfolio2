@@ -71,10 +71,16 @@ let svg = d3
          
 
           }
+          else if (newWidth > 350) {
+
+            svg.selectAll('.title').attr('font-size', '10px')
+            svg.selectAll('.sub-title').attr('font-size', '7px')
+
+          }
           
           else if (newWidth > 250) {
 
-            svg.selectAll('.title').attr('font-size', '12px')
+            svg.selectAll('.title').attr('font-size', '12px').text('CT vaccination rates dip in cities')
             svg.selectAll('.sub-title').attr('font-size', '9px')
 
           }

@@ -373,7 +373,11 @@ Promise.all([
           
           else {
 
-  
+            svg.select('#box0').attr('y', height-200)
+            svg.select('#box1').attr('y', height-200)
+            svg.select('#box2').attr('y', height-200)
+            svg.select('#box3').attr('y', height-200)
+            svg.select('#box4').attr('y', height-200)
             
             projection
             .scale(svgWidth*25)
