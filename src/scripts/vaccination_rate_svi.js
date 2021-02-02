@@ -68,8 +68,8 @@ Promise.all([
     // svg.append('text').attr('class', 'sub-title').text('How many households in every 1,000 have good connections').attr('alignment-baseline', 'middle').attr('y',-65).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
 
-    svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', height-200).attr('font-size', 10)
-      svg.append('text').attr('id', 'box4-text').text('>800').attr('x',width-95).attr('y', height-200).attr('font-size', 10)
+    svg.append('text').attr('id', 'box1-text').text('Vulnerable').attr('x',width-220).attr('y', height-200).attr('font-size', 10)
+      svg.append('text').attr('id', 'box4-text').text('Less so').attr('x',width-95).attr('y', height-200).attr('font-size', 10)
 
       svg.append('rect').attr('id', 'box0').attr('width', 25).attr('height', 5).attr('x',width-175).attr('y', height-200).attr('fill', colorScale(0))
       svg.append('rect').attr('id', 'box1').attr('width', 25).attr('height', 5).attr('x',width-150).attr('y', height-200).attr('fill', colorScale(20))
