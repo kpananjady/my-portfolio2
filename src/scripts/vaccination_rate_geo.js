@@ -182,6 +182,8 @@ Promise.all([
       .attr('opacity',0.8)
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
+      .on('click', tip.show)
+
     //   .on('click', clicked)
 
     var varClicked = 0
@@ -205,7 +207,11 @@ Promise.all([
       })
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
+      .on('click', tip.show)
+
       })
+      
+
 
       d3.select('#toggle2').on('click', () => {
         varClicked = 0

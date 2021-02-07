@@ -183,6 +183,9 @@ if (varClicked = 0){
         .attr('opacity',0.8)
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide)
+        .on('click', tip.show)
+
+
 
         svg.select('#box1-text').text('Highly vulnerable')
         svg.select('#box4-text').text('Less vulnerable')
@@ -259,6 +262,8 @@ if (varClicked = 0){
         .attr('opacity',0.8)
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide)
+        .on('click', tip.show)
+
 
 
 
@@ -321,6 +326,9 @@ if (varClicked = 0){
         .attr('opacity',0.8)
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide)
+        .on('click', tip.show)
+
+
         // svg      .selectAll('.circle-school').remove()
         svg.select('#box0').attr('fill', '#000080')
         // svg.select('#box1').attr('fill', 'lightgrey')

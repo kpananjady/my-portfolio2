@@ -1,0 +1,380 @@
+Date,variable,value,type
+2020-01-04,Zero,68.0,continued
+2020-01-11,Zero,72.0,continued
+2020-01-18,Zero,76.0,continued
+2020-01-25,Zero,67.0,continued
+2020-02-01,Zero,57.0,continued
+2020-02-08,Zero,47.0,continued
+2020-02-15,Zero,38.0,continued
+2020-02-22,Zero,33.0,continued
+2020-02-29,Zero,34.0,continued
+2020-03-07,Zero,29.0,continued
+2020-03-14,Zero,74.0,continued
+2020-03-21,Zero,1651.0,continued
+2020-03-28,Zero,2760.0,continued
+2020-04-04,Zero,3501.0,continued
+2020-04-11,Zero,3882.0,continued
+2020-04-18,Zero,3954.0,continued
+2020-04-25,Zero,3628.0,continued
+2020-05-02,Zero,3553.0,continued
+2020-05-09,Zero,3105.0,continued
+2020-05-16,Zero,2607.0,continued
+2020-05-23,Zero,2424.0,continued
+2020-05-30,Zero,2239.0,continued
+2020-06-06,Zero,2083.0,continued
+2020-06-13,Zero,2122.0,continued
+2020-06-20,Zero,2188.0,continued
+2020-06-27,Zero,2227.0,continued
+2020-07-04,Zero,2074.0,continued
+2020-07-11,Zero,2081.0,continued
+2020-07-18,Zero,1947.0,continued
+2020-07-25,Zero,1831.0,continued
+2020-08-01,Zero,1598.0,continued
+2020-08-08,Zero,1446.0,continued
+2020-08-15,Zero,1332.0,continued
+2020-08-22,Zero,1195.0,continued
+2020-08-29,Zero,1060.0,continued
+2020-09-05,Zero,882.0,continued
+2020-09-12,Zero,773.0,continued
+2020-09-19,Zero,621.0,continued
+2020-09-26,Zero,466.0,continued
+2020-10-03,Zero,412.0,continued
+2020-10-10,Zero,414.0,continued
+2020-10-17,Zero,415.0,continued
+2020-10-24,Zero,395.0,continued
+2020-10-31,Zero,360.0,continued
+2020-11-07,Zero,342.0,continued
+2020-11-14,Zero,306.0,continued
+2020-11-21,Zero,274.0,continued
+2020-11-28,Zero,294.0,continued
+2020-12-05,Zero,279.0,continued
+2020-12-12,Zero,270.0,continued
+2020-12-19,Zero,274.0,continued
+2020-12-26,Zero,326.0,continued
+2021-01-02,Zero,350.0,continued
+2021-01-09,Zero,488.0,continued
+2020-01-04,"Less than $20,000",13247.0,continued
+2020-01-11,"Less than $20,000",11891.0,continued
+2020-01-18,"Less than $20,000",11987.0,continued
+2020-01-25,"Less than $20,000",12030.0,continued
+2020-02-01,"Less than $20,000",11733.0,continued
+2020-02-08,"Less than $20,000",11723.0,continued
+2020-02-15,"Less than $20,000",11769.0,continued
+2020-02-22,"Less than $20,000",11697.0,continued
+2020-02-29,"Less than $20,000",11408.0,continued
+2020-03-07,"Less than $20,000",11403.0,continued
+2020-03-14,"Less than $20,000",14023.0,continued
+2020-03-21,"Less than $20,000",43830.0,continued
+2020-03-28,"Less than $20,000",66712.0,continued
+2020-04-04,"Less than $20,000",86114.0,continued
+2020-04-11,"Less than $20,000",99308.0,continued
+2020-04-18,"Less than $20,000",106723.0,continued
+2020-04-25,"Less than $20,000",110870.0,continued
+2020-05-02,"Less than $20,000",116754.0,continued
+2020-05-09,"Less than $20,000",117653.0,continued
+2020-05-16,"Less than $20,000",119106.0,continued
+2020-05-23,"Less than $20,000",120248.0,continued
+2020-05-30,"Less than $20,000",119808.0,continued
+2020-06-06,"Less than $20,000",118432.0,continued
+2020-06-13,"Less than $20,000",117891.0,continued
+2020-06-20,"Less than $20,000",117356.0,continued
+2020-06-27,"Less than $20,000",116811.0,continued
+2020-07-04,"Less than $20,000",115501.0,continued
+2020-07-11,"Less than $20,000",118402.0,continued
+2020-07-18,"Less than $20,000",116918.0,continued
+2020-07-25,"Less than $20,000",115289.0,continued
+2020-08-01,"Less than $20,000",111109.0,continued
+2020-08-08,"Less than $20,000",107099.0,continued
+2020-08-15,"Less than $20,000",103800.0,continued
+2020-08-22,"Less than $20,000",98545.0,continued
+2020-08-29,"Less than $20,000",94663.0,continued
+2020-09-05,"Less than $20,000",90025.0,continued
+2020-09-12,"Less than $20,000",85796.0,continued
+2020-09-19,"Less than $20,000",81521.0,continued
+2020-09-26,"Less than $20,000",77279.0,continued
+2020-10-03,"Less than $20,000",73843.0,continued
+2020-10-10,"Less than $20,000",71666.0,continued
+2020-10-17,"Less than $20,000",69424.0,continued
+2020-10-24,"Less than $20,000",67711.0,continued
+2020-10-31,"Less than $20,000",66014.0,continued
+2020-11-07,"Less than $20,000",64473.0,continued
+2020-11-14,"Less than $20,000",62549.0,continued
+2020-11-21,"Less than $20,000",61443.0,continued
+2020-11-28,"Less than $20,000",60970.0,continued
+2020-12-05,"Less than $20,000",61408.0,continued
+2020-12-12,"Less than $20,000",62174.0,continued
+2020-12-19,"Less than $20,000",61774.0,continued
+2020-12-26,"Less than $20,000",63492.0,continued
+2021-01-02,"Less than $20,000",67041.0,continued
+2021-01-09,"Less than $20,000",68530.0,continued
+2020-01-04,"$20,000 to less than $35,000",14369.0,continued
+2020-01-11,"$20,000 to less than $35,000",12103.0,continued
+2020-01-18,"$20,000 to less than $35,000",11956.0,continued
+2020-01-25,"$20,000 to less than $35,000",11775.0,continued
+2020-02-01,"$20,000 to less than $35,000",11611.0,continued
+2020-02-08,"$20,000 to less than $35,000",11633.0,continued
+2020-02-15,"$20,000 to less than $35,000",11893.0,continued
+2020-02-22,"$20,000 to less than $35,000",11867.0,continued
+2020-02-29,"$20,000 to less than $35,000",11470.0,continued
+2020-03-07,"$20,000 to less than $35,000",11396.0,continued
+2020-03-14,"$20,000 to less than $35,000",13708.0,continued
+2020-03-21,"$20,000 to less than $35,000",38416.0,continued
+2020-03-28,"$20,000 to less than $35,000",53940.0,continued
+2020-04-04,"$20,000 to less than $35,000",65033.0,continued
+2020-04-11,"$20,000 to less than $35,000",70736.0,continued
+2020-04-18,"$20,000 to less than $35,000",73773.0,continued
+2020-04-25,"$20,000 to less than $35,000",74355.0,continued
+2020-05-02,"$20,000 to less than $35,000",74691.0,continued
+2020-05-09,"$20,000 to less than $35,000",72193.0,continued
+2020-05-16,"$20,000 to less than $35,000",70476.0,continued
+2020-05-23,"$20,000 to less than $35,000",69058.0,continued
+2020-05-30,"$20,000 to less than $35,000",67180.0,continued
+2020-06-06,"$20,000 to less than $35,000",64841.0,continued
+2020-06-13,"$20,000 to less than $35,000",63455.0,continued
+2020-06-20,"$20,000 to less than $35,000",62969.0,continued
+2020-06-27,"$20,000 to less than $35,000",62514.0,continued
+2020-07-04,"$20,000 to less than $35,000",61734.0,continued
+2020-07-11,"$20,000 to less than $35,000",61269.0,continued
+2020-07-18,"$20,000 to less than $35,000",60346.0,continued
+2020-07-25,"$20,000 to less than $35,000",59347.0,continued
+2020-08-01,"$20,000 to less than $35,000",57093.0,continued
+2020-08-08,"$20,000 to less than $35,000",55194.0,continued
+2020-08-15,"$20,000 to less than $35,000",53514.0,continued
+2020-08-22,"$20,000 to less than $35,000",52143.0,continued
+2020-08-29,"$20,000 to less than $35,000",50280.0,continued
+2020-09-05,"$20,000 to less than $35,000",48050.0,continued
+2020-09-12,"$20,000 to less than $35,000",45750.0,continued
+2020-09-19,"$20,000 to less than $35,000",43919.0,continued
+2020-09-26,"$20,000 to less than $35,000",42128.0,continued
+2020-10-03,"$20,000 to less than $35,000",40720.0,continued
+2020-10-10,"$20,000 to less than $35,000",39669.0,continued
+2020-10-17,"$20,000 to less than $35,000",38812.0,continued
+2020-10-24,"$20,000 to less than $35,000",38064.0,continued
+2020-10-31,"$20,000 to less than $35,000",37495.0,continued
+2020-11-07,"$20,000 to less than $35,000",37042.0,continued
+2020-11-14,"$20,000 to less than $35,000",36635.0,continued
+2020-11-21,"$20,000 to less than $35,000",36313.0,continued
+2020-11-28,"$20,000 to less than $35,000",36487.0,continued
+2020-12-05,"$20,000 to less than $35,000",37545.0,continued
+2020-12-12,"$20,000 to less than $35,000",38124.0,continued
+2020-12-19,"$20,000 to less than $35,000",38077.0,continued
+2020-12-26,"$20,000 to less than $35,000",38978.0,continued
+2021-01-02,"$20,000 to less than $35,000",40917.0,continued
+2021-01-09,"$20,000 to less than $35,000",40188.0,continued
+2020-01-04,"$35,000 to less than $50,000",8807.0,continued
+2020-01-11,"$35,000 to less than $50,000",8116.0,continued
+2020-01-18,"$35,000 to less than $50,000",8106.0,continued
+2020-01-25,"$35,000 to less than $50,000",8037.0,continued
+2020-02-01,"$35,000 to less than $50,000",8035.0,continued
+2020-02-08,"$35,000 to less than $50,000",8097.0,continued
+2020-02-15,"$35,000 to less than $50,000",8214.0,continued
+2020-02-22,"$35,000 to less than $50,000",8178.0,continued
+2020-02-29,"$35,000 to less than $50,000",7930.0,continued
+2020-03-07,"$35,000 to less than $50,000",7875.0,continued
+2020-03-14,"$35,000 to less than $50,000",8822.0,continued
+2020-03-21,"$35,000 to less than $50,000",23004.0,continued
+2020-03-28,"$35,000 to less than $50,000",33710.0,continued
+2020-04-04,"$35,000 to less than $50,000",42094.0,continued
+2020-04-11,"$35,000 to less than $50,000",46233.0,continued
+2020-04-18,"$35,000 to less than $50,000",48493.0,continued
+2020-04-25,"$35,000 to less than $50,000",48718.0,continued
+2020-05-02,"$35,000 to less than $50,000",48510.0,continued
+2020-05-09,"$35,000 to less than $50,000",46161.0,continued
+2020-05-16,"$35,000 to less than $50,000",44037.0,continued
+2020-05-23,"$35,000 to less than $50,000",42742.0,continued
+2020-05-30,"$35,000 to less than $50,000",41188.0,continued
+2020-06-06,"$35,000 to less than $50,000",38928.0,continued
+2020-06-13,"$35,000 to less than $50,000",37547.0,continued
+2020-06-20,"$35,000 to less than $50,000",36912.0,continued
+2020-06-27,"$35,000 to less than $50,000",36554.0,continued
+2020-07-04,"$35,000 to less than $50,000",36027.0,continued
+2020-07-11,"$35,000 to less than $50,000",35811.0,continued
+2020-07-18,"$35,000 to less than $50,000",34968.0,continued
+2020-07-25,"$35,000 to less than $50,000",34283.0,continued
+2020-08-01,"$35,000 to less than $50,000",32666.0,continued
+2020-08-08,"$35,000 to less than $50,000",31521.0,continued
+2020-08-15,"$35,000 to less than $50,000",30484.0,continued
+2020-08-22,"$35,000 to less than $50,000",29579.0,continued
+2020-08-29,"$35,000 to less than $50,000",28620.0,continued
+2020-09-05,"$35,000 to less than $50,000",27588.0,continued
+2020-09-12,"$35,000 to less than $50,000",26560.0,continued
+2020-09-19,"$35,000 to less than $50,000",25669.0,continued
+2020-09-26,"$35,000 to less than $50,000",24847.0,continued
+2020-10-03,"$35,000 to less than $50,000",24081.0,continued
+2020-10-10,"$35,000 to less than $50,000",23536.0,continued
+2020-10-17,"$35,000 to less than $50,000",23211.0,continued
+2020-10-24,"$35,000 to less than $50,000",22812.0,continued
+2020-10-31,"$35,000 to less than $50,000",22554.0,continued
+2020-11-07,"$35,000 to less than $50,000",22351.0,continued
+2020-11-14,"$35,000 to less than $50,000",22156.0,continued
+2020-11-21,"$35,000 to less than $50,000",21928.0,continued
+2020-11-28,"$35,000 to less than $50,000",22052.0,continued
+2020-12-05,"$35,000 to less than $50,000",22709.0,continued
+2020-12-12,"$35,000 to less than $50,000",22988.0,continued
+2020-12-19,"$35,000 to less than $50,000",23012.0,continued
+2020-12-26,"$35,000 to less than $50,000",23011.0,continued
+2021-01-02,"$35,000 to less than $50,000",24237.0,continued
+2021-01-09,"$35,000 to less than $50,000",23946.0,continued
+2020-01-04,"$50,000 to less than $75,000",7295.0,continued
+2020-01-11,"$50,000 to less than $75,000",6878.0,continued
+2020-01-18,"$50,000 to less than $75,000",6816.0,continued
+2020-01-25,"$50,000 to less than $75,000",6808.0,continued
+2020-02-01,"$50,000 to less than $75,000",6817.0,continued
+2020-02-08,"$50,000 to less than $75,000",6932.0,continued
+2020-02-15,"$50,000 to less than $75,000",7000.0,continued
+2020-02-22,"$50,000 to less than $75,000",6901.0,continued
+2020-02-29,"$50,000 to less than $75,000",6721.0,continued
+2020-03-07,"$50,000 to less than $75,000",6631.0,continued
+2020-03-14,"$50,000 to less than $75,000",6996.0,continued
+2020-03-21,"$50,000 to less than $75,000",16004.0,continued
+2020-03-28,"$50,000 to less than $75,000",25251.0,continued
+2020-04-04,"$50,000 to less than $75,000",32952.0,continued
+2020-04-11,"$50,000 to less than $75,000",36869.0,continued
+2020-04-18,"$50,000 to less than $75,000",39129.0,continued
+2020-04-25,"$50,000 to less than $75,000",39217.0,continued
+2020-05-02,"$50,000 to less than $75,000",39149.0,continued
+2020-05-09,"$50,000 to less than $75,000",36845.0,continued
+2020-05-16,"$50,000 to less than $75,000",34591.0,continued
+2020-05-23,"$50,000 to less than $75,000",33526.0,continued
+2020-05-30,"$50,000 to less than $75,000",32113.0,continued
+2020-06-06,"$50,000 to less than $75,000",30309.0,continued
+2020-06-13,"$50,000 to less than $75,000",29108.0,continued
+2020-06-20,"$50,000 to less than $75,000",28474.0,continued
+2020-06-27,"$50,000 to less than $75,000",28569.0,continued
+2020-07-04,"$50,000 to less than $75,000",28279.0,continued
+2020-07-11,"$50,000 to less than $75,000",28147.0,continued
+2020-07-18,"$50,000 to less than $75,000",27227.0,continued
+2020-07-25,"$50,000 to less than $75,000",26719.0,continued
+2020-08-01,"$50,000 to less than $75,000",25319.0,continued
+2020-08-08,"$50,000 to less than $75,000",24422.0,continued
+2020-08-15,"$50,000 to less than $75,000",23685.0,continued
+2020-08-22,"$50,000 to less than $75,000",23076.0,continued
+2020-08-29,"$50,000 to less than $75,000",22475.0,continued
+2020-09-05,"$50,000 to less than $75,000",21683.0,continued
+2020-09-12,"$50,000 to less than $75,000",20994.0,continued
+2020-09-19,"$50,000 to less than $75,000",20160.0,continued
+2020-09-26,"$50,000 to less than $75,000",19686.0,continued
+2020-10-03,"$50,000 to less than $75,000",19281.0,continued
+2020-10-10,"$50,000 to less than $75,000",18901.0,continued
+2020-10-17,"$50,000 to less than $75,000",18831.0,continued
+2020-10-24,"$50,000 to less than $75,000",18514.0,continued
+2020-10-31,"$50,000 to less than $75,000",18217.0,continued
+2020-11-07,"$50,000 to less than $75,000",17971.0,continued
+2020-11-14,"$50,000 to less than $75,000",17897.0,continued
+2020-11-21,"$50,000 to less than $75,000",17622.0,continued
+2020-11-28,"$50,000 to less than $75,000",17651.0,continued
+2020-12-05,"$50,000 to less than $75,000",18051.0,continued
+2020-12-12,"$50,000 to less than $75,000",18123.0,continued
+2020-12-19,"$50,000 to less than $75,000",18112.0,continued
+2020-12-26,"$50,000 to less than $75,000",18308.0,continued
+2021-01-02,"$50,000 to less than $75,000",19251.0,continued
+2021-01-09,"$50,000 to less than $75,000",19058.0,continued
+2020-01-04,"$75,000 to less than $150,000",4414.0,continued
+2020-01-11,"$75,000 to less than $150,000",4125.0,continued
+2020-01-18,"$75,000 to less than $150,000",4093.0,continued
+2020-01-25,"$75,000 to less than $150,000",4075.0,continued
+2020-02-01,"$75,000 to less than $150,000",4060.0,continued
+2020-02-08,"$75,000 to less than $150,000",4123.0,continued
+2020-02-15,"$75,000 to less than $150,000",4142.0,continued
+2020-02-22,"$75,000 to less than $150,000",4082.0,continued
+2020-02-29,"$75,000 to less than $150,000",4008.0,continued
+2020-03-07,"$75,000 to less than $150,000",3971.0,continued
+2020-03-14,"$75,000 to less than $150,000",4025.0,continued
+2020-03-21,"$75,000 to less than $150,000",7309.0,continued
+2020-03-28,"$75,000 to less than $150,000",11979.0,continued
+2020-04-04,"$75,000 to less than $150,000",16796.0,continued
+2020-04-11,"$75,000 to less than $150,000",19422.0,continued
+2020-04-18,"$75,000 to less than $150,000",20967.0,continued
+2020-04-25,"$75,000 to less than $150,000",21126.0,continued
+2020-05-02,"$75,000 to less than $150,000",21488.0,continued
+2020-05-09,"$75,000 to less than $150,000",20256.0,continued
+2020-05-16,"$75,000 to less than $150,000",19106.0,continued
+2020-05-23,"$75,000 to less than $150,000",19096.0,continued
+2020-05-30,"$75,000 to less than $150,000",18321.0,continued
+2020-06-06,"$75,000 to less than $150,000",17195.0,continued
+2020-06-13,"$75,000 to less than $150,000",17302.0,continued
+2020-06-20,"$75,000 to less than $150,000",16491.0,continued
+2020-06-27,"$75,000 to less than $150,000",17210.0,continued
+2020-07-04,"$75,000 to less than $150,000",16909.0,continued
+2020-07-11,"$75,000 to less than $150,000",16773.0,continued
+2020-07-18,"$75,000 to less than $150,000",15846.0,continued
+2020-07-25,"$75,000 to less than $150,000",16008.0,continued
+2020-08-01,"$75,000 to less than $150,000",14635.0,continued
+2020-08-08,"$75,000 to less than $150,000",14147.0,continued
+2020-08-15,"$75,000 to less than $150,000",14351.0,continued
+2020-08-22,"$75,000 to less than $150,000",13516.0,continued
+2020-08-29,"$75,000 to less than $150,000",13687.0,continued
+2020-09-05,"$75,000 to less than $150,000",13189.0,continued
+2020-09-12,"$75,000 to less than $150,000",12746.0,continued
+2020-09-19,"$75,000 to less than $150,000",11799.0,continued
+2020-09-26,"$75,000 to less than $150,000",11909.0,continued
+2020-10-03,"$75,000 to less than $150,000",11223.0,continued
+2020-10-10,"$75,000 to less than $150,000",11415.0,continued
+2020-10-17,"$75,000 to less than $150,000",11048.0,continued
+2020-10-24,"$75,000 to less than $150,000",10990.0,continued
+2020-10-31,"$75,000 to less than $150,000",10878.0,continued
+2020-11-07,"$75,000 to less than $150,000",10755.0,continued
+2020-11-14,"$75,000 to less than $150,000",10656.0,continued
+2020-11-21,"$75,000 to less than $150,000",10343.0,continued
+2020-11-28,"$75,000 to less than $150,000",10471.0,continued
+2020-12-05,"$75,000 to less than $150,000",10365.0,continued
+2020-12-12,"$75,000 to less than $150,000",10295.0,continued
+2020-12-19,"$75,000 to less than $150,000",10132.0,continued
+2020-12-26,"$75,000 to less than $150,000",10370.0,continued
+2021-01-02,"$75,000 to less than $150,000",10952.0,continued
+2021-01-09,"$75,000 to less than $150,000",10756.0,continued
+2020-01-04,"$150,000 or more ",857.0,continued
+2020-01-11,"$150,000 or more ",881.0,continued
+2020-01-18,"$150,000 or more ",877.0,continued
+2020-01-25,"$150,000 or more ",858.0,continued
+2020-02-01,"$150,000 or more ",865.0,continued
+2020-02-08,"$150,000 or more ",875.0,continued
+2020-02-15,"$150,000 or more ",901.0,continued
+2020-02-22,"$150,000 or more ",899.0,continued
+2020-02-29,"$150,000 or more ",910.0,continued
+2020-03-07,"$150,000 or more ",916.0,continued
+2020-03-14,"$150,000 or more ",968.0,continued
+2020-03-21,"$150,000 or more ",1420.0,continued
+2020-03-28,"$150,000 or more ",2113.0,continued
+2020-04-04,"$150,000 or more ",3131.0,continued
+2020-04-11,"$150,000 or more ",3618.0,continued
+2020-04-18,"$150,000 or more ",3885.0,continued
+2020-04-25,"$150,000 or more ",4030.0,continued
+2020-05-02,"$150,000 or more ",4173.0,continued
+2020-05-09,"$150,000 or more ",4026.0,continued
+2020-05-16,"$150,000 or more ",3850.0,continued
+2020-05-23,"$150,000 or more ",3867.0,continued
+2020-05-30,"$150,000 or more ",3778.0,continued
+2020-06-06,"$150,000 or more ",3665.0,continued
+2020-06-13,"$150,000 or more ",3716.0,continued
+2020-06-20,"$150,000 or more ",3615.0,continued
+2020-06-27,"$150,000 or more ",3670.0,continued
+2020-07-04,"$150,000 or more ",3549.0,continued
+2020-07-11,"$150,000 or more ",3505.0,continued
+2020-07-18,"$150,000 or more ",3402.0,continued
+2020-07-25,"$150,000 or more ",3399.0,continued
+2020-08-01,"$150,000 or more ",3223.0,continued
+2020-08-08,"$150,000 or more ",3127.0,continued
+2020-08-15,"$150,000 or more ",3162.0,continued
+2020-08-22,"$150,000 or more ",3079.0,continued
+2020-08-29,"$150,000 or more ",3104.0,continued
+2020-09-05,"$150,000 or more ",3013.0,continued
+2020-09-12,"$150,000 or more ",2935.0,continued
+2020-09-19,"$150,000 or more ",2797.0,continued
+2020-09-26,"$150,000 or more ",2805.0,continued
+2020-10-03,"$150,000 or more ",2678.0,continued
+2020-10-10,"$150,000 or more ",2711.0,continued
+2020-10-17,"$150,000 or more ",2666.0,continued
+2020-10-24,"$150,000 or more ",2666.0,continued
+2020-10-31,"$150,000 or more ",2617.0,continued
+2020-11-07,"$150,000 or more ",2588.0,continued
+2020-11-14,"$150,000 or more ",2575.0,continued
+2020-11-21,"$150,000 or more ",2486.0,continued
+2020-11-28,"$150,000 or more ",2465.0,continued
+2020-12-05,"$150,000 or more ",2482.0,continued
+2020-12-12,"$150,000 or more ",2442.0,continued
+2020-12-19,"$150,000 or more ",2364.0,continued
+2020-12-26,"$150,000 or more ",2327.0,continued
+2021-01-02,"$150,000 or more ",2376.0,continued
+2021-01-09,"$150,000 or more ",2383.0,continued
+,continued
