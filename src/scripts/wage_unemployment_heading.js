@@ -29,8 +29,8 @@ let svg = d3
  //   svg.append('text').attr('class', 'title').text('CT COVID hospitalizations by county').attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
  //svg.append('text').attr('class', 'sub-title').text("Hospitalizations per 100,000 residents in CT's eight counties ").attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
- svg.append('text').attr('class', 'sub-title').text("Unemployments claims in Connecticut by wage bracket show how").attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
-    svg.append('text').attr('class', 'sub-title').text('pandemic job losses have not affected everyone equally.').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+ svg.append('text').attr('class', 'sub-title').text("Unemployment claims in Connecticut by wage bracket show how").attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+ svg.append('text').attr('class', 'sub-title').text('pandemic job losses have not affected everyone equally.').attr('alignment-baseline', 'middle').attr('y',95).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
 svg.append('circle').attr('r',5).attr('cx', 50).attr('cy', 120).attr('fill', 'red').attr('opacity', 0.2)
 svg.append('circle').attr('r',5).attr('cx', 50).attr('cy', 140).attr('fill', 'darkgreen').attr('opacity', 0.5)
