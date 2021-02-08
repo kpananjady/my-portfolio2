@@ -127,7 +127,7 @@ var nested = d3.nest()
     .axisBottom(xPositionScale)
     .tickSize(50)
     .tickFormat(d3.timeFormat('%b %d'))
-    .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%20)}));
+    .tickValues(xPositionScale.domain().filter(function(d,i){ return !(i%50)}));
 
     svg
     .selectAll('.player-data')
