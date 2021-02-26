@@ -143,16 +143,15 @@ Promise.all([
     
         geo2.forEach( function(r) {if (r['Town']===d.properties.NAME10){
   
-  
+     
         //   if (r['variable'].includes("Biden")){
             // console.log('dems')
             // console.log((100*r['value']/r['Vote Totals']).toFixed(2))
             // dem_vote = dem_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
             // console.log(colorScale(parseFloat(r['%_75_Plus'])), 'color')
-            d['percent'] = 100*parseFloat(r['First Dose Coverage among those aged 75 and above'])
-            d['First doses administered '] = r['First doses aged 75 and above']
-
-            returnVar = 100*parseFloat(r['First Dose Coverage among those aged 75 and above'])
+            d['percent'] = 100*parseFloat(r['First Doses 65+ cov'])
+            d['First doses administered '] = r['First Doses 65+'] 
+            returnVar = 100*parseFloat(r['First Doses 65+ cov'])
 
         //   } else if (r['variable'].includes("Trump")){
             // rep_vote = rep_vote + (100*r['value']/r['Vote Totals']).toFixed(2)
