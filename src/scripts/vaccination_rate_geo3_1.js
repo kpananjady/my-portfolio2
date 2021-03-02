@@ -264,7 +264,7 @@ Promise.all([
 
 
       d3.select('#toggle2').on('click', () => {
-        varClicked = 0
+         varClicked = 0
 
         svg.selectAll('.towns').remove()
         svg.select('#box0').remove()
@@ -287,10 +287,8 @@ Promise.all([
             var returnVar = 'lightgrey'
             zipcodes.forEach( function(r) {if (r['Zipcode']===d.properties.ZCTA5CE10){
                 // console.log(r['Zipcode'])
-                returnVar =  'grey'
-               } else {
-                console.log(r['Zipcode'])
-               }
+                 returnVar =  'grey'
+               } 
           
           
                 }) 
