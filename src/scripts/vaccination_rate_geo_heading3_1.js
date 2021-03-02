@@ -27,6 +27,7 @@ let svg = d3
 //    svg.append('text').attr('class', 'title').text('See how internet access compares in your town').attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
     // svg.append('text').attr('class', 'sub-title').text('Households per 1,000 with good connections for passive online learning:').attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
     svg.append('text').attr('class', 'sub-title').text('Percentage of eligible 65 and over people who received a 1st dose by town.').attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+    svg.append('text').attr('class', 'sub-title').text('Click to overlay high priority zipcodes, which will receive 25% of vaccines.').attr('alignment-baseline', 'middle').attr('y',100).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
 
     d3.select('#toggle').on('click', () => {
@@ -35,6 +36,7 @@ svg.select('.sub-title').remove()
 
 svg.append('text').attr('class', 'title').text("CT's vaccination rates among 65+ residents").attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '25px').attr('font-weight', 5).attr('x', 0)
 svg.append('text').attr('class', 'sub-title').text('Percentage of eligible 65 and over people who received a 1st dose by town.').attr('alignment-baseline', 'middle').attr('y',75).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
+svg.append('text').attr('class', 'sub-title').text('Click to overlay high priority zipcodes, which will receive 25% of vaccines.').attr('alignment-baseline', 'middle').attr('y',45).attr('font-size', '20px').attr('font-weight', 5).attr('x', 0)
 
 
 })
