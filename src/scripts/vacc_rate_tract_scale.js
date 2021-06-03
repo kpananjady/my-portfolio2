@@ -58,29 +58,37 @@ Promise.all([
     svg.append('rect').attr('id', 'box3-m').attr('width', 25).attr('height', 5).attr('x',width-100).attr('y', height-10).style('fill', 'white').attr('opacity',0.3)
     svg.append('rect').attr('id', 'box4-m').attr('width', 25).attr('height', 5).attr('x',width-75).attr('y', height-10).style('fill', 'white').attr('opacity',0.3)
 
-    d3.select('#toggle').on('click', () => {
+    d3.select('#toggle').on('click.blahblah2', () => {
+
+
+        svg.select('#box1-text').text('0')
+        svg.select('#box4-text').text('1000000')
         //income
-        svg.select('#box0').attr('fill', colorScale(0)).attr('opacity',0.7)
-        svg.select('#box1').attr('fill', colorScale(0)).attr('opacity',0.7)
-        svg.select('#box2').attr('fill', colorScale(0)).attr('opacity',0.7)
-        svg.select('#box3').attr('fill', colorScale(0)).attr('opacity',0.7)
-        svg.select('#box4').attr('fill', colorScale(0)).attr('opacity',0.7)
+        svg.select('#box0').attr('fill', colorScale2(0)).attr('opacity',0.7)
+        svg.select('#box1').attr('fill', colorScale2(200000)).attr('opacity',0.7)
+        svg.select('#box2').attr('fill', colorScale2(400000)).attr('opacity',0.7)
+        svg.select('#box3').attr('fill', colorScale2(800000)).attr('opacity',0.7)
+        svg.select('#box4').attr('fill', colorScale2(1000000)).attr('opacity',0.7)
        })
 
     d3.select('#toggle2').on('click.blahblah2', () => {
         //race
-        svg.select('#box0').attr('fill', colorScale(0)).attr('opacity',0.7)
-        svg.select('#box1').attr('fill', colorScale(0)).attr('opacity',0.7)
-        svg.select('#box2').attr('fill', colorScale(0)).attr('opacity',0.7)
-        svg.select('#box3').attr('fill', colorScale(0)).attr('opacity',0.7)
-        svg.select('#box4').attr('fill', colorScale(0)).attr('opacity',0.7)
+
+        svg.select('#box1-text').text('0')
+        svg.select('#box4-text').text('100%')
+
+        svg.select('#box0').attr('fill', colorScale1(0)).attr('opacity',0.7)
+        svg.select('#box1').attr('fill', colorScale1(20)).attr('opacity',0.7)
+        svg.select('#box2').attr('fill', colorScale1(40)).attr('opacity',0.7)
+        svg.select('#box3').attr('fill', colorScale1(80)).attr('opacity',0.7)
+        svg.select('#box4').attr('fill', colorScale1(100)).attr('opacity',0.7)
 
     })
       
-    d3.select('#toggle3').on('click', () => {
+    d3.select('#toggle3').on('click.blahblah2', () => {
 
-        svg.append('#box1-text').text('30%')
-        svg.append('#box4-text').text('100%')
+        svg.select('#box1-text').text('30%')
+        svg.select('#box4-text').text('100%')
 
         svg.select('#box0').attr('fill', colorScale(30)).attr('opacity',0.7)
         svg.select('#box1').attr('fill', colorScale(45)).attr('opacity',0.7)
@@ -102,8 +110,8 @@ Promise.all([
                 const newWidth = svgWidth - margin.left - margin.right
                 const newHeight = svgHeight - margin.top - margin.bottom
 
-                svg.select('#box1-text').text('30%').attr('x',newWidth-175).attr('y', height-10).attr('font-size', 10)
-                svg.select('#box4-text').text('100%').attr('x',newWidth-75).attr('y', height-10).attr('font-size', 10)
+                svg.select('#box1-text').attr('x',newWidth-175).attr('y', height-10).attr('font-size', 10)
+                svg.select('#box4-text').attr('x',newWidth-75).attr('y', height-10).attr('font-size', 10)
         
                 svg.select('#box0').attr('x', newWidth-175)
                 svg.select('#box1').attr('x', newWidth-150)

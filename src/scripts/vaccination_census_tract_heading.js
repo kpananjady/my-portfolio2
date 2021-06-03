@@ -31,13 +31,13 @@ let svg = d3
 
 
     d3.select('#toggle2').on('click.blahblah2', () => {
-      console.log('the code is here')
-      svg.select('.title').text("I'm changing the text by clicking on it!1")
+      // console.log('the code is here')
+      // svg.select('.title').text("I'm changing the text by clicking on it!1")
       })
     
-      d3.select('#toggle3').on('click', () => {
+      d3.select('#toggle3').on('click.blahblah2', () => {
 
-        console.log('the code is here')
+        // console.log('the code is here')
 
         })
     // svg.append('text').attr('id', 'box1-text').text('0').attr('x',width-220).attr('y', 100).attr('font-size', 10)
